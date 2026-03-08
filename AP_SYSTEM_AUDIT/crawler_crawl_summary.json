@@ -1,0 +1,317 @@
+{
+  "modules_discovered": 51,
+  "directories_scanned": 0,
+  "files_scanned": 156,
+  "orphans_detected": 51,
+  "anomalies": [
+    {
+      "type": "orphan_module",
+      "path": "controllers/analysis_controller.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "controllers/audit_controller.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "controllers/config_loader.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "controllers/crawler_controller.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "controllers/pipeline_controller.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "controllers/repair_controller.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "controllers/simulation_controller.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "utils/logger.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "crawler/core/crawl_engine.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "crawler/core/crawl_monitor.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "crawler/engine/crawl_engine.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "crawler/monitor/crawl_monitor.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "crawler/utils/file_scanner.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "repair/operators/dependency_normalizer.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "repair/operators/header_injection_operator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "repair/operators/import_rewrite_operator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "repair/operators/module_relocation_operator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "repair/operators/namespace_disambiguator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "simulation/dependency_simulator/dependency_simulator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "simulation/import_simulator/import_simulator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "simulation/namespace_simulator/namespace_simulator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "simulation/repo_simulator/repo_simulator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "simulation/runtime_simulator/runtime_simulator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/audit_utils.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/circular_dependency_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/duplicate_module_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/facade_bypass_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/file_size_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/governance_contract_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/governance_coverage_map.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/governance_module_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/header_schema_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/import_surface_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/namespace_shadow_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/orphan_module_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/run_audit_suite.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/run_governance_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/runtime_entry_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/symbol_collision_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/audit_tools/unused_import_audit.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/governance_analysis/governance_scanner.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/import_analysis/import_scanner.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/normalization_tools/header_validator.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/repo_mapping/repo_scanner.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "tools/runtime_analysis/dependency_graph.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.0279
+    },
+    {
+      "type": "orphan_module",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.028
+    },
+    {
+      "type": "orphan_module",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.028
+    },
+    {
+      "type": "orphan_module",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "detail": "No package __init__.py in parent dir",
+      "elapsed_at": 0.028
+    }
+  ],
+  "anomaly_count": 51,
+  "elapsed_seconds": 0.028,
+  "status": "complete"
+}

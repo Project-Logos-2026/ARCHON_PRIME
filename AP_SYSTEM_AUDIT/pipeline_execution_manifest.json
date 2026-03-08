@@ -1,0 +1,38 @@
+{
+  "pipeline_stages": [
+    "audit",
+    "analysis",
+    "simulation",
+    "crawl",
+    "repair"
+  ],
+  "pipeline_status": "COMPLETE",
+  "mutation_allowed": false,
+  "dry_run": true,
+  "started_at": "2026-03-08T20:53:29.962567+00:00",
+  "completed_at": "2026-03-08T20:53:30.070801+00:00",
+  "stages": {
+    "audit": {
+      "status": "success",
+      "completed_at": "2026-03-08T20:53:29.975454+00:00"
+    },
+    "analysis": {
+      "status": "success",
+      "completed_at": "2026-03-08T20:53:29.983280+00:00"
+    },
+    "simulation": {
+      "status": "success",
+      "completed_at": "2026-03-08T20:53:29.996719+00:00"
+    },
+    "crawl": {
+      "status": "success",
+      "completed_at": "2026-03-08T20:53:30.063271+00:00"
+    },
+    "repair": {
+      "status": "success",
+      "completed_at": "2026-03-08T20:53:30.070343+00:00"
+    }
+  },
+  "halted": false,
+  "halt_reason": null
+}

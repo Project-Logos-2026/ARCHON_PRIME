@@ -1,0 +1,423 @@
+{
+  "target_repo": ".",
+  "total_files_discovered": 156,
+  "total_modules_discovered": 51,
+  "orphan_modules": [
+    {
+      "path": "controllers/analysis_controller.py",
+      "absolute_path": "controllers/analysis_controller.py",
+      "import_path": "controllers.analysis_controller",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 9555
+    },
+    {
+      "path": "controllers/audit_controller.py",
+      "absolute_path": "controllers/audit_controller.py",
+      "import_path": "controllers.audit_controller",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 7401
+    },
+    {
+      "path": "controllers/config_loader.py",
+      "absolute_path": "controllers/config_loader.py",
+      "import_path": "controllers.config_loader",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 1423
+    },
+    {
+      "path": "controllers/crawler_controller.py",
+      "absolute_path": "controllers/crawler_controller.py",
+      "import_path": "controllers.crawler_controller",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 9292
+    },
+    {
+      "path": "controllers/pipeline_controller.py",
+      "absolute_path": "controllers/pipeline_controller.py",
+      "import_path": "controllers.pipeline_controller",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 20909
+    },
+    {
+      "path": "controllers/repair_controller.py",
+      "absolute_path": "controllers/repair_controller.py",
+      "import_path": "controllers.repair_controller",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 16068
+    },
+    {
+      "path": "controllers/simulation_controller.py",
+      "absolute_path": "controllers/simulation_controller.py",
+      "import_path": "controllers.simulation_controller",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 9932
+    },
+    {
+      "path": "utils/logger.py",
+      "absolute_path": "utils/logger.py",
+      "import_path": "utils.logger",
+      "is_package_init": false,
+      "depth": 1,
+      "size_bytes": 362
+    },
+    {
+      "path": "crawler/core/crawl_engine.py",
+      "absolute_path": "crawler/core/crawl_engine.py",
+      "import_path": "crawler.core.crawl_engine",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 9567
+    },
+    {
+      "path": "crawler/core/crawl_monitor.py",
+      "absolute_path": "crawler/core/crawl_monitor.py",
+      "import_path": "crawler.core.crawl_monitor",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 4851
+    },
+    {
+      "path": "crawler/engine/crawl_engine.py",
+      "absolute_path": "crawler/engine/crawl_engine.py",
+      "import_path": "crawler.engine.crawl_engine",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 146
+    },
+    {
+      "path": "crawler/monitor/crawl_monitor.py",
+      "absolute_path": "crawler/monitor/crawl_monitor.py",
+      "import_path": "crawler.monitor.crawl_monitor",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 142
+    },
+    {
+      "path": "crawler/utils/file_scanner.py",
+      "absolute_path": "crawler/utils/file_scanner.py",
+      "import_path": "crawler.utils.file_scanner",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 4541
+    },
+    {
+      "path": "repair/operators/dependency_normalizer.py",
+      "absolute_path": "repair/operators/dependency_normalizer.py",
+      "import_path": "repair.operators.dependency_normalizer",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 3996
+    },
+    {
+      "path": "repair/operators/header_injection_operator.py",
+      "absolute_path": "repair/operators/header_injection_operator.py",
+      "import_path": "repair.operators.header_injection_operator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 3377
+    },
+    {
+      "path": "repair/operators/import_rewrite_operator.py",
+      "absolute_path": "repair/operators/import_rewrite_operator.py",
+      "import_path": "repair.operators.import_rewrite_operator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 3355
+    },
+    {
+      "path": "repair/operators/module_relocation_operator.py",
+      "absolute_path": "repair/operators/module_relocation_operator.py",
+      "import_path": "repair.operators.module_relocation_operator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 3448
+    },
+    {
+      "path": "repair/operators/namespace_disambiguator.py",
+      "absolute_path": "repair/operators/namespace_disambiguator.py",
+      "import_path": "repair.operators.namespace_disambiguator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 4161
+    },
+    {
+      "path": "simulation/dependency_simulator/dependency_simulator.py",
+      "absolute_path": "simulation/dependency_simulator/dependency_simulator.py",
+      "import_path": "simulation.dependency_simulator.dependency_simulator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 2545
+    },
+    {
+      "path": "simulation/import_simulator/import_simulator.py",
+      "absolute_path": "simulation/import_simulator/import_simulator.py",
+      "import_path": "simulation.import_simulator.import_simulator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 1933
+    },
+    {
+      "path": "simulation/namespace_simulator/namespace_simulator.py",
+      "absolute_path": "simulation/namespace_simulator/namespace_simulator.py",
+      "import_path": "simulation.namespace_simulator.namespace_simulator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 1623
+    },
+    {
+      "path": "simulation/repo_simulator/repo_simulator.py",
+      "absolute_path": "simulation/repo_simulator/repo_simulator.py",
+      "import_path": "simulation.repo_simulator.repo_simulator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 166
+    },
+    {
+      "path": "simulation/runtime_simulator/runtime_simulator.py",
+      "absolute_path": "simulation/runtime_simulator/runtime_simulator.py",
+      "import_path": "simulation.runtime_simulator.runtime_simulator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 2668
+    },
+    {
+      "path": "tools/audit_tools/audit_utils.py",
+      "absolute_path": "tools/audit_tools/audit_utils.py",
+      "import_path": "tools.audit_tools.audit_utils",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 853
+    },
+    {
+      "path": "tools/audit_tools/circular_dependency_audit.py",
+      "absolute_path": "tools/audit_tools/circular_dependency_audit.py",
+      "import_path": "tools.audit_tools.circular_dependency_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 1058
+    },
+    {
+      "path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "absolute_path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "import_path": "tools.audit_tools.cross_package_dependency_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 824
+    },
+    {
+      "path": "tools/audit_tools/duplicate_module_audit.py",
+      "absolute_path": "tools/audit_tools/duplicate_module_audit.py",
+      "import_path": "tools.audit_tools.duplicate_module_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 525
+    },
+    {
+      "path": "tools/audit_tools/facade_bypass_audit.py",
+      "absolute_path": "tools/audit_tools/facade_bypass_audit.py",
+      "import_path": "tools.audit_tools.facade_bypass_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 784
+    },
+    {
+      "path": "tools/audit_tools/file_size_audit.py",
+      "absolute_path": "tools/audit_tools/file_size_audit.py",
+      "import_path": "tools.audit_tools.file_size_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 463
+    },
+    {
+      "path": "tools/audit_tools/governance_contract_audit.py",
+      "absolute_path": "tools/audit_tools/governance_contract_audit.py",
+      "import_path": "tools.audit_tools.governance_contract_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 979
+    },
+    {
+      "path": "tools/audit_tools/governance_coverage_map.py",
+      "absolute_path": "tools/audit_tools/governance_coverage_map.py",
+      "import_path": "tools.audit_tools.governance_coverage_map",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 1229
+    },
+    {
+      "path": "tools/audit_tools/governance_module_audit.py",
+      "absolute_path": "tools/audit_tools/governance_module_audit.py",
+      "import_path": "tools.audit_tools.governance_module_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 817
+    },
+    {
+      "path": "tools/audit_tools/header_schema_audit.py",
+      "absolute_path": "tools/audit_tools/header_schema_audit.py",
+      "import_path": "tools.audit_tools.header_schema_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 442
+    },
+    {
+      "path": "tools/audit_tools/import_surface_audit.py",
+      "absolute_path": "tools/audit_tools/import_surface_audit.py",
+      "import_path": "tools.audit_tools.import_surface_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 791
+    },
+    {
+      "path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "absolute_path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "import_path": "tools.audit_tools.module_path_ambiguity_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 619
+    },
+    {
+      "path": "tools/audit_tools/namespace_shadow_audit.py",
+      "absolute_path": "tools/audit_tools/namespace_shadow_audit.py",
+      "import_path": "tools.audit_tools.namespace_shadow_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 556
+    },
+    {
+      "path": "tools/audit_tools/orphan_module_audit.py",
+      "absolute_path": "tools/audit_tools/orphan_module_audit.py",
+      "import_path": "tools.audit_tools.orphan_module_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 766
+    },
+    {
+      "path": "tools/audit_tools/run_audit_suite.py",
+      "absolute_path": "tools/audit_tools/run_audit_suite.py",
+      "import_path": "tools.audit_tools.run_audit_suite",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 979
+    },
+    {
+      "path": "tools/audit_tools/run_governance_audit.py",
+      "absolute_path": "tools/audit_tools/run_governance_audit.py",
+      "import_path": "tools.audit_tools.run_governance_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 317
+    },
+    {
+      "path": "tools/audit_tools/runtime_entry_audit.py",
+      "absolute_path": "tools/audit_tools/runtime_entry_audit.py",
+      "import_path": "tools.audit_tools.runtime_entry_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 442
+    },
+    {
+      "path": "tools/audit_tools/symbol_collision_audit.py",
+      "absolute_path": "tools/audit_tools/symbol_collision_audit.py",
+      "import_path": "tools.audit_tools.symbol_collision_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 936
+    },
+    {
+      "path": "tools/audit_tools/unused_import_audit.py",
+      "absolute_path": "tools/audit_tools/unused_import_audit.py",
+      "import_path": "tools.audit_tools.unused_import_audit",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 951
+    },
+    {
+      "path": "tools/governance_analysis/governance_scanner.py",
+      "absolute_path": "tools/governance_analysis/governance_scanner.py",
+      "import_path": "tools.governance_analysis.governance_scanner",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 243
+    },
+    {
+      "path": "tools/import_analysis/import_scanner.py",
+      "absolute_path": "tools/import_analysis/import_scanner.py",
+      "import_path": "tools.import_analysis.import_scanner",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 646
+    },
+    {
+      "path": "tools/normalization_tools/header_validator.py",
+      "absolute_path": "tools/normalization_tools/header_validator.py",
+      "import_path": "tools.normalization_tools.header_validator",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 338
+    },
+    {
+      "path": "tools/repo_mapping/repo_scanner.py",
+      "absolute_path": "tools/repo_mapping/repo_scanner.py",
+      "import_path": "tools.repo_mapping.repo_scanner",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 443
+    },
+    {
+      "path": "tools/runtime_analysis/dependency_graph.py",
+      "absolute_path": "tools/runtime_analysis/dependency_graph.py",
+      "import_path": "tools.runtime_analysis.dependency_graph",
+      "is_package_init": false,
+      "depth": 2,
+      "size_bytes": 327
+    },
+    {
+      "path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "absolute_path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "import_path": "AUDIT_SYSTEM.scripts.repo_scanners.repo_mapper",
+      "is_package_init": false,
+      "depth": 3,
+      "size_bytes": 2447
+    },
+    {
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "absolute_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "import_path": "Designs_and_Guides.Canonical_Import_Facade.Import_Facade.generate_deep_import_violations",
+      "is_package_init": false,
+      "depth": 3,
+      "size_bytes": 4891
+    },
+    {
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "absolute_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "import_path": "Designs_and_Guides.Canonical_Import_Facade.Import_Facade.generate_symbol_import_index",
+      "is_package_init": false,
+      "depth": 3,
+      "size_bytes": 4803
+    },
+    {
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "absolute_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "import_path": "Designs_and_Guides.Canonical_Import_Facade.Import_Facade.repo_structure_export",
+      "is_package_init": false,
+      "depth": 3,
+      "size_bytes": 2070
+    }
+  ],
+  "orphan_count": 51,
+  "file_type_summary": {
+    "documentation": 47,
+    "config_json": 57,
+    "python_module": 51,
+    "config_yaml": 1
+  },
+  "traversal_order_count": 51
+}

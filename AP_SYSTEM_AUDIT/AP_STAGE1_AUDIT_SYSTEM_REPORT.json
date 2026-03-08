@@ -1,0 +1,40 @@
+{
+  "stage": "Audit System Wiring",
+  "generated": "2026-03-08T20:14:09.597119Z",
+  "dry_run_mode": true,
+  "audit_modules_detected": 19,
+  "audit_modules_registered": 19,
+  "audit_modules_imported": 19,
+  "audit_modules_failed_import": 0,
+  "audit_count_by_role": {
+    "audit": 16,
+    "runner": 2,
+    "utility": 1
+  },
+  "audit_registry_path": "registry/audit_registry.json",
+  "controller_created": "controllers/audit_controller.py",
+  "artifact_output_dir": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT",
+  "imported_modules": [
+    "tools.audit_tools.audit_utils",
+    "tools.audit_tools.circular_dependency_audit",
+    "tools.audit_tools.cross_package_dependency_audit",
+    "tools.audit_tools.duplicate_module_audit",
+    "tools.audit_tools.facade_bypass_audit",
+    "tools.audit_tools.file_size_audit",
+    "tools.audit_tools.governance_contract_audit",
+    "tools.audit_tools.governance_coverage_map",
+    "tools.audit_tools.governance_module_audit",
+    "tools.audit_tools.header_schema_audit",
+    "tools.audit_tools.import_surface_audit",
+    "tools.audit_tools.module_path_ambiguity_audit",
+    "tools.audit_tools.namespace_shadow_audit",
+    "tools.audit_tools.orphan_module_audit",
+    "tools.audit_tools.run_audit_suite",
+    "tools.audit_tools.run_governance_audit",
+    "tools.audit_tools.runtime_entry_audit",
+    "tools.audit_tools.symbol_collision_audit",
+    "tools.audit_tools.unused_import_audit"
+  ],
+  "import_errors": [],
+  "validation_status": "PASS"
+}

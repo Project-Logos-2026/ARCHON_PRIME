@@ -1,0 +1,89 @@
+{
+  "stage": "Analysis Tools Integration",
+  "stage_number": 2,
+  "timestamp": "2026-03-08T00:00:00Z",
+  "analysis_modules_detected": 6,
+  "analysis_modules_registered": 6,
+  "analysis_modules_imported": 4,
+  "analysis_modules_import_failed": 2,
+  "controller_created": "controllers/analysis_controller.py",
+  "registry_updated": "registry/module_registry.json",
+  "import_error_artifact": "AP_SYSTEM_AUDIT/ANALYSIS_IMPORT_ERRORS.json",
+  "artifact_routing": {
+    "output_directory": "AP_SYSTEM_AUDIT/",
+    "artifacts_expected": [
+      "AP_SYSTEM_AUDIT/dependency_graph.json",
+      "AP_SYSTEM_AUDIT/module_topology.json",
+      "AP_SYSTEM_AUDIT/structure_map.json",
+      "AP_SYSTEM_AUDIT/governance_map.json",
+      "AP_SYSTEM_AUDIT/namespace_conflicts.json",
+      "AP_SYSTEM_AUDIT/circular_dependency_report.json"
+    ]
+  },
+  "modules_registered": [
+    {
+      "name": "DependencyGraphBuilder",
+      "module": "tools.runtime_analysis.dependency_graph",
+      "entry_function": "build_graph",
+      "import_status": "SUCCESS",
+      "artifact_output": "AP_SYSTEM_AUDIT/dependency_graph.json"
+    },
+    {
+      "name": "ImportScanner",
+      "module": "tools.import_analysis.import_scanner",
+      "entry_function": "scan",
+      "import_status": "SUCCESS",
+      "artifact_output": "AP_SYSTEM_AUDIT/module_topology.json"
+    },
+    {
+      "name": "RepoScanner",
+      "module": "tools.repo_mapping.repo_scanner",
+      "entry_function": "scan_repo",
+      "import_status": "SUCCESS",
+      "artifact_output": "AP_SYSTEM_AUDIT/structure_map.json"
+    },
+    {
+      "name": "GovernanceScanner",
+      "module": "tools.governance_analysis.governance_scanner",
+      "entry_function": "scan",
+      "import_status": "SUCCESS",
+      "artifact_output": "AP_SYSTEM_AUDIT/governance_map.json"
+    },
+    {
+      "name": "NamespaceShadowAuditor",
+      "module": "tools.audit_tools.namespace_shadow_audit",
+      "entry_function": "run",
+      "import_status": "FAILED",
+      "import_failure_reason": "Missing __init__.py in tools/audit_tools; audit_utils not resolvable as package import",
+      "artifact_output": "AP_SYSTEM_AUDIT/namespace_conflicts.json"
+    },
+    {
+      "name": "CircularDependencyAuditor",
+      "module": "tools.audit_tools.circular_dependency_audit",
+      "entry_function": "run",
+      "import_status": "FAILED",
+      "import_failure_reason": "Missing __init__.py in tools/audit_tools; audit_utils not resolvable as package import",
+      "artifact_output": "AP_SYSTEM_AUDIT/circular_dependency_report.json"
+    }
+  ],
+  "configuration_integration": {
+    "crawl_config_loaded": true,
+    "simulation_config_loaded": true,
+    "dry_run_respected": true,
+    "dry_run_active": true,
+    "mutation_allowed": false
+  },
+  "constraints_observed": {
+    "crawler_not_executed": true,
+    "mutation_operators_not_run": true,
+    "repair_system_not_invoked": true,
+    "existing_modules_not_modified": true
+  },
+  "validation_status": "PASS",
+  "notes": [
+    "2 modules (NamespaceShadowAuditor, CircularDependencyAuditor) failed import due to missing __init__.py in tools/audit_tools/. Errors logged to ANALYSIS_IMPORT_ERRORS.json.",
+    "4 of 6 modules import cleanly and are ready for execution.",
+    "All artifact outputs routed to AP_SYSTEM_AUDIT/.",
+    "dry_run mode active via crawl_config.json — no execution performed."
+  ]
+}

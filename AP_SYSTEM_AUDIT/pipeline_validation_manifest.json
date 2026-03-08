@@ -1,0 +1,10 @@
+{
+  "schema_used": "ValidationManifest",
+  "checks": {
+    "imports_normalized": false,
+    "dependencies_resolved": false,
+    "namespaces_clean": false,
+    "governance_enforced": false,
+    "runtime_boot_valid": false
+  }
+}
