@@ -1,0 +1,97 @@
+{
+  "generated": "2026-03-08T18:25:48.650893Z",
+  "crawler_root": "/workspaces/ARCHON_PRIME/crawler",
+  "status": "skeleton",
+  "modules_present": [
+    "crawler/engine/crawl_engine.py",
+    "crawler/monitor/crawl_monitor.py"
+  ],
+  "modules_missing": [
+    "crawler/pipeline/ \u2014 empty, no pipeline module",
+    "crawler/repair/   \u2014 empty, no repair module"
+  ],
+  "subsystem_analysis": {
+    "file_discovery": {
+      "status": "present",
+      "implementation": "Path('.').rglob('*.py') in crawl_engine.py",
+      "limitation": "hardcoded to cwd, no configurable root, no filtering"
+    },
+    "repository_traversal": {
+      "status": "minimal",
+      "implementation": "single rglob loop, no state tracking",
+      "limitation": "no visited-set, no depth limit, no exclusion rules"
+    },
+    "dependency_scanning": {
+      "status": "missing",
+      "implementation": "none in crawler \u2014 handled separately by tools/import_analysis/",
+      "limitation": "not integrated with crawler pipeline"
+    },
+    "crawl_entrypoints": {
+      "status": "present",
+      "modules": [
+        "crawler/engine/crawl_engine.py (__main__)"
+      ]
+    },
+    "crawl_outputs": {
+      "status": "missing",
+      "current": "stdout print only",
+      "required": "structured JSON artifact to AUDIT_LOGS or logs/"
+    },
+    "live_monitoring": {
+      "status": "skeleton",
+      "implementation": "crawl_monitor.py \u2014 infinite sleep loop with print, no actual state polling"
+    }
+  },
+  "gap_summary": [
+    "No JSON output from crawler",
+    "No pipeline/ stage between engine and monitor",
+    "No repair/ integration",
+    "No target directory argument \u2014 hardcoded to cwd",
+    "No integration with audit_tools or orchestration"
+  ],
+  "module_details": [
+    {
+      "module": "crawler/engine/crawl_engine.py",
+      "purpose": "Crawl engine skeleton \u2014 iterates all .py files",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "crawl"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [],
+      "loc": 8
+    },
+    {
+      "module": "crawler/monitor/crawl_monitor.py",
+      "purpose": "Live crawl status monitor (polling loop)",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "time"
+      ],
+      "from_imports": [],
+      "functions": [
+        "monitor"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [
+        "blocking_loop"
+      ],
+      "loc": 9
+    }
+  ]
+}

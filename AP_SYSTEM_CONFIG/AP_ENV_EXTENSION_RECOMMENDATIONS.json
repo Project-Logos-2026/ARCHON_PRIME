@@ -1,0 +1,121 @@
+{
+  "rationale": "Based on ARCHON_PRIME repository contents: heavy Python tooling, JSON/YAML artifacts, Markdown governance docs, Git-tracked development in Codespaces.",
+  "recommended_extensions": [
+    {
+      "id": "ms-python.python",
+      "name": "Python",
+      "priority": "required"
+    },
+    {
+      "id": "ms-python.vscode-pylance",
+      "name": "Pylance",
+      "priority": "required"
+    },
+    {
+      "id": "charliermarsh.ruff",
+      "name": "Ruff",
+      "priority": "required"
+    },
+    {
+      "id": "ms-python.black-formatter",
+      "name": "Black Formatter",
+      "priority": "required"
+    },
+    {
+      "id": "ryanluker.vscode-coverage-gutters",
+      "name": "Coverage Gutters",
+      "priority": "recommended"
+    },
+    {
+      "id": "eamodio.gitlens",
+      "name": "GitLens",
+      "priority": "recommended"
+    },
+    {
+      "id": "eriklynd.json-tools",
+      "name": "JSON Tools",
+      "priority": "recommended"
+    },
+    {
+      "id": "redhat.vscode-yaml",
+      "name": "YAML",
+      "priority": "recommended"
+    },
+    {
+      "id": "ms-azuretools.vscode-docker",
+      "name": "Docker",
+      "priority": "optional"
+    },
+    {
+      "id": "ms-vscode.makefile-tools",
+      "name": "Makefile Tools",
+      "priority": "optional"
+    },
+    {
+      "id": "ms-python.mypy-type-checker",
+      "name": "Mypy Type Checker",
+      "priority": "recommended"
+    },
+    {
+      "id": "tamasfe.even-better-toml",
+      "name": "Even Better TOML",
+      "priority": "optional"
+    }
+  ],
+  "recommended_python_tools": [
+    {
+      "tool": "ruff",
+      "purpose": "Fast linting and import sorting"
+    },
+    {
+      "tool": "black",
+      "purpose": "Deterministic code formatting"
+    },
+    {
+      "tool": "mypy",
+      "purpose": "Static type checking"
+    },
+    {
+      "tool": "pytest",
+      "purpose": "Unit and integration testing"
+    },
+    {
+      "tool": "coverage",
+      "purpose": "Test coverage measurement"
+    },
+    {
+      "tool": "bandit",
+      "purpose": "Security vulnerability scanning"
+    },
+    {
+      "tool": "pylint",
+      "purpose": "Deep static analysis"
+    },
+    {
+      "tool": "isort",
+      "purpose": "Import ordering enforcement"
+    }
+  ],
+  "recommended_system_tools": [
+    {
+      "tool": "tree",
+      "purpose": "Visual directory tree generation \u2014 already installed"
+    },
+    {
+      "tool": "jq",
+      "purpose": "JSON query and pretty-print from terminal"
+    },
+    {
+      "tool": "ripgrep",
+      "purpose": "Fast regex search across repository"
+    },
+    {
+      "tool": "gh",
+      "purpose": "GitHub CLI for PR and issue management \u2014 already installed"
+    },
+    {
+      "tool": "make",
+      "purpose": "Task runner for audit suite orchestration"
+    }
+  ]
+}

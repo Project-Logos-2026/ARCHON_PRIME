@@ -1,0 +1,850 @@
+{
+  "generated": "2026-03-08T18:25:48.702187Z",
+  "node_count": 32,
+  "total_edge_count": 97,
+  "internal_edge_count": 32,
+  "external_edge_count": 65,
+  "nodes": [
+    {
+      "id": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "label": "repo_mapper",
+      "subsystem": "repo_scanners"
+    },
+    {
+      "id": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "label": "generate_deep_import_violations",
+      "subsystem": "Import_Facade"
+    },
+    {
+      "id": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "label": "generate_symbol_import_index",
+      "subsystem": "Import_Facade"
+    },
+    {
+      "id": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "label": "repo_structure_export",
+      "subsystem": "Import_Facade"
+    },
+    {
+      "id": "crawler/engine/crawl_engine.py",
+      "label": "crawl_engine",
+      "subsystem": "engine"
+    },
+    {
+      "id": "crawler/monitor/crawl_monitor.py",
+      "label": "crawl_monitor",
+      "subsystem": "monitor"
+    },
+    {
+      "id": "simulation/repo_simulator/repo_simulator.py",
+      "label": "repo_simulator",
+      "subsystem": "repo_simulator"
+    },
+    {
+      "id": "tools/audit_tools/audit_utils.py",
+      "label": "audit_utils",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/circular_dependency_audit.py",
+      "label": "circular_dependency_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/cross_package_dependency_audit.py",
+      "label": "cross_package_dependency_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/duplicate_module_audit.py",
+      "label": "duplicate_module_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/facade_bypass_audit.py",
+      "label": "facade_bypass_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/file_size_audit.py",
+      "label": "file_size_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/governance_contract_audit.py",
+      "label": "governance_contract_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/governance_coverage_map.py",
+      "label": "governance_coverage_map",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/governance_module_audit.py",
+      "label": "governance_module_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/header_schema_audit.py",
+      "label": "header_schema_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/import_surface_audit.py",
+      "label": "import_surface_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "label": "module_path_ambiguity_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/namespace_shadow_audit.py",
+      "label": "namespace_shadow_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/orphan_module_audit.py",
+      "label": "orphan_module_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/run_audit_suite.py",
+      "label": "run_audit_suite",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/run_governance_audit.py",
+      "label": "run_governance_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/runtime_entry_audit.py",
+      "label": "runtime_entry_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/symbol_collision_audit.py",
+      "label": "symbol_collision_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/audit_tools/unused_import_audit.py",
+      "label": "unused_import_audit",
+      "subsystem": "audit_tools"
+    },
+    {
+      "id": "tools/governance_analysis/governance_scanner.py",
+      "label": "governance_scanner",
+      "subsystem": "governance_analysis"
+    },
+    {
+      "id": "tools/import_analysis/import_scanner.py",
+      "label": "import_scanner",
+      "subsystem": "import_analysis"
+    },
+    {
+      "id": "tools/normalization_tools/header_validator.py",
+      "label": "header_validator",
+      "subsystem": "normalization_tools"
+    },
+    {
+      "id": "tools/repo_mapping/repo_scanner.py",
+      "label": "repo_scanner",
+      "subsystem": "repo_mapping"
+    },
+    {
+      "id": "tools/runtime_analysis/dependency_graph.py",
+      "label": "dependency_graph",
+      "subsystem": "runtime_analysis"
+    },
+    {
+      "id": "utils/logger.py",
+      "label": "logger",
+      "subsystem": "utils"
+    }
+  ],
+  "all_edges": [
+    {
+      "from": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "to": "os",
+      "type": "import"
+    },
+    {
+      "from": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "to": "hashlib",
+      "type": "import"
+    },
+    {
+      "from": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "to": "os",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "to": "sys",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "to": "datetime",
+      "type": "from_import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "to": "os",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "to": "sys",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "to": "os",
+      "type": "import"
+    },
+    {
+      "from": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "crawler/engine/crawl_engine.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "crawler/monitor/crawl_monitor.py",
+      "to": "time",
+      "type": "import"
+    },
+    {
+      "from": "simulation/repo_simulator/repo_simulator.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/audit_utils.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/audit_utils.py",
+      "to": "hashlib",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/audit_utils.py",
+      "to": "datetime",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/audit_utils.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/circular_dependency_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/circular_dependency_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/circular_dependency_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/cross_package_dependency_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/cross_package_dependency_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/cross_package_dependency_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/duplicate_module_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/duplicate_module_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/facade_bypass_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/facade_bypass_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/facade_bypass_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/file_size_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/file_size_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_contract_audit.py",
+      "to": "re",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/governance_contract_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_contract_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_coverage_map.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/governance_coverage_map.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_coverage_map.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_module_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/governance_module_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_module_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/header_schema_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/header_schema_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/import_surface_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/import_surface_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/import_surface_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/namespace_shadow_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/namespace_shadow_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/orphan_module_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/orphan_module_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/orphan_module_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "sys",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "import_surface_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "circular_dependency_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "header_schema_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "unused_import_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "duplicate_module_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "file_size_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "runtime_entry_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "orphan_module_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "symbol_collision_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "cross_package_dependency_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "namespace_shadow_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "module_path_ambiguity_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "facade_bypass_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "sys",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "governance_contract_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "governance_module_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "governance_coverage_map",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/runtime_entry_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/runtime_entry_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/symbol_collision_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/symbol_collision_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/symbol_collision_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/unused_import_audit.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/unused_import_audit.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/unused_import_audit.py",
+      "to": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/governance_analysis/governance_scanner.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/governance_analysis/governance_scanner.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/import_analysis/import_scanner.py",
+      "to": "ast",
+      "type": "import"
+    },
+    {
+      "from": "tools/import_analysis/import_scanner.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/import_analysis/import_scanner.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/normalization_tools/header_validator.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/normalization_tools/header_validator.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/repo_mapping/repo_scanner.py",
+      "to": "os",
+      "type": "import"
+    },
+    {
+      "from": "tools/repo_mapping/repo_scanner.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/repo_mapping/repo_scanner.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/runtime_analysis/dependency_graph.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "tools/runtime_analysis/dependency_graph.py",
+      "to": "pathlib",
+      "type": "from_import"
+    },
+    {
+      "from": "utils/logger.py",
+      "to": "datetime",
+      "type": "import"
+    },
+    {
+      "from": "utils/logger.py",
+      "to": "json",
+      "type": "import"
+    },
+    {
+      "from": "utils/logger.py",
+      "to": "pathlib",
+      "type": "from_import"
+    }
+  ],
+  "internal_edges": [
+    {
+      "from": "tools/audit_tools/circular_dependency_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/cross_package_dependency_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/duplicate_module_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/facade_bypass_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/file_size_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_contract_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_coverage_map.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/governance_module_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/header_schema_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/import_surface_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/namespace_shadow_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/orphan_module_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/import_surface_audit.py",
+      "via": "import_surface_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/circular_dependency_audit.py",
+      "via": "circular_dependency_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/header_schema_audit.py",
+      "via": "header_schema_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/unused_import_audit.py",
+      "via": "unused_import_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/duplicate_module_audit.py",
+      "via": "duplicate_module_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/file_size_audit.py",
+      "via": "file_size_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/runtime_entry_audit.py",
+      "via": "runtime_entry_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/orphan_module_audit.py",
+      "via": "orphan_module_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/symbol_collision_audit.py",
+      "via": "symbol_collision_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/cross_package_dependency_audit.py",
+      "via": "cross_package_dependency_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/namespace_shadow_audit.py",
+      "via": "namespace_shadow_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "via": "module_path_ambiguity_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_audit_suite.py",
+      "to": "tools/audit_tools/facade_bypass_audit.py",
+      "via": "facade_bypass_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "tools/audit_tools/governance_contract_audit.py",
+      "via": "governance_contract_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "tools/audit_tools/governance_module_audit.py",
+      "via": "governance_module_audit",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/run_governance_audit.py",
+      "to": "tools/audit_tools/governance_coverage_map.py",
+      "via": "governance_coverage_map",
+      "type": "import"
+    },
+    {
+      "from": "tools/audit_tools/runtime_entry_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/symbol_collision_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    },
+    {
+      "from": "tools/audit_tools/unused_import_audit.py",
+      "to": "tools/audit_tools/audit_utils.py",
+      "via": "audit_utils",
+      "type": "from_import"
+    }
+  ]
+}

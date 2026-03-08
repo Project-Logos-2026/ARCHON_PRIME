@@ -1,0 +1,85 @@
+{
+  "scan_root": "/workspaces/ARCHON_PRIME",
+  "generated": "2026-03-08T18:25:48.649584Z",
+  "pipeline_description": "ARCHON_PRIME two-track runtime pipeline",
+  "tracks": [
+    {
+      "track": "structural_audit",
+      "entrypoint": "tools/audit_tools/run_audit_suite.py",
+      "invocation": "python run_audit_suite.py <target_dir>",
+      "execution_flow": [
+        "import_surface_audit.run(target)",
+        "circular_dependency_audit.run(target)",
+        "header_schema_audit.run(target)",
+        "unused_import_audit.run(target)",
+        "duplicate_module_audit.run(target)",
+        "file_size_audit.run(target)",
+        "runtime_entry_audit.run(target)",
+        "orphan_module_audit.run(target)",
+        "symbol_collision_audit.run(target)",
+        "cross_package_dependency_audit.run(target)",
+        "namespace_shadow_audit.run(target)",
+        "module_path_ambiguity_audit.run(target)",
+        "facade_bypass_audit.run(target)"
+      ],
+      "report_sink": "/workspaces/ARCHON_PRIME/AUDIT_LOGS/",
+      "report_format": "JSON per audit with standardised header",
+      "status": "wired"
+    },
+    {
+      "track": "governance_audit",
+      "entrypoint": "tools/audit_tools/run_governance_audit.py",
+      "invocation": "python run_governance_audit.py <target_dir>",
+      "execution_flow": [
+        "governance_contract_audit.run(target)  \u2192 produces governance_contract_audit.json",
+        "governance_module_audit.run(target)    \u2192 produces governance_module_audit.json",
+        "governance_coverage_map.run(target)    \u2192 consumes both, produces governance_coverage_map.json"
+      ],
+      "report_sink": "/workspaces/ARCHON_PRIME/AUDIT_LOGS/",
+      "report_format": "JSON per stage with standardised header",
+      "status": "wired"
+    },
+    {
+      "track": "crawler",
+      "entrypoint": "crawler/engine/crawl_engine.py",
+      "invocation": "python crawl_engine.py",
+      "execution_flow": [
+        "crawl() iterates Path('.').rglob('*.py') and prints each path"
+      ],
+      "report_sink": "stdout only",
+      "report_format": "none",
+      "status": "skeleton \u2014 no output routing, no pipeline integration"
+    },
+    {
+      "track": "repo_scan_pipeline",
+      "entrypoint": "tools/repo_mapping/repo_scanner.py",
+      "invocation": "python repo_scanner.py",
+      "execution_flow": [
+        "scan_repo() walks filesystem",
+        "writes logs/repo_scan.json"
+      ],
+      "report_sink": "logs/repo_scan.json",
+      "report_format": "flat JSON array of file paths",
+      "status": "wired"
+    },
+    {
+      "track": "import_dependency_pipeline",
+      "entrypoint": "tools/import_analysis/import_scanner.py",
+      "invocation": "python import_scanner.py",
+      "execution_flow": [
+        "scan() AST-parses all .py \u2192 logs/import_map.json",
+        "tools/runtime_analysis/dependency_graph.py reads import_map.json \u2192 logs/dependency_graph.json"
+      ],
+      "report_sink": "logs/import_map.json \u2192 logs/dependency_graph.json",
+      "report_format": "JSON dict of module \u2192 imports",
+      "status": "wired (two-stage serial)"
+    }
+  ],
+  "unwired_segments": [
+    "crawler/pipeline/  \u2014 empty directory, no modules",
+    "crawler/repair/    \u2014 empty directory, no modules",
+    "orchestration/controllers/ \u2014 empty",
+    "orchestration/task_router/ \u2014 empty",
+    "simulation/* \u2014 no pipeline integration, stdout only"
+  ]
+}

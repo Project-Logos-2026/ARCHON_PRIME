@@ -1,0 +1,76 @@
+{
+  "generated": "2026-03-08T18:25:48.649857Z",
+  "total_artifact_types": 8,
+  "artifacts": [
+    {
+      "artifact_name": "repo_scan.json",
+      "generator_module": "tools/repo_mapping/repo_scanner.py",
+      "destination_path": "logs/repo_scan.json",
+      "metadata_structure": "flat array of file path strings",
+      "header_format": "none"
+    },
+    {
+      "artifact_name": "import_map.json",
+      "generator_module": "tools/import_analysis/import_scanner.py",
+      "destination_path": "logs/import_map.json",
+      "metadata_structure": "dict: {module_path: [import_names]}",
+      "header_format": "none"
+    },
+    {
+      "artifact_name": "dependency_graph.json",
+      "generator_module": "tools/runtime_analysis/dependency_graph.py",
+      "destination_path": "logs/dependency_graph.json",
+      "metadata_structure": "dict: {module_path: [import_names]} (same as import_map, passthrough)",
+      "header_format": "none"
+    },
+    {
+      "artifact_name": "header_violations.json",
+      "generator_module": "tools/normalization_tools/header_validator.py",
+      "destination_path": "logs/header_violations.json",
+      "metadata_structure": "flat array of file path strings with missing headers",
+      "header_format": "none"
+    },
+    {
+      "artifact_name": "governance_modules.json",
+      "generator_module": "tools/governance_analysis/governance_scanner.py",
+      "destination_path": "logs/governance_modules.json",
+      "metadata_structure": "flat array of file path strings matching *governance*.py",
+      "header_format": "none"
+    },
+    {
+      "artifact_name": "execution_log.json",
+      "generator_module": "utils/logger.py",
+      "destination_path": "logs/execution_log.json",
+      "metadata_structure": "NDJSON: {timestamp, event, data}",
+      "header_format": "per-entry: timestamp ISO8601, event string, data dict"
+    },
+    {
+      "artifact_name": "<audit_name>.json (\u00d713)",
+      "generator_module": "tools/audit_tools/<audit_name>.py via audit_utils.write_log()",
+      "destination_path": "AUDIT_LOGS/<audit_name>.json",
+      "metadata_structure": "{header: {...}, issues: [...]}",
+      "header_format": {
+        "audit": "audit name",
+        "target_directory": "scanned path",
+        "identity_tag": "sha1[:12] of name+target",
+        "error_type": "issue category string",
+        "total_errors": "int",
+        "files_affected": "int",
+        "date": "M-D-YYYY"
+      }
+    },
+    {
+      "artifact_name": "governance_coverage_map.json",
+      "generator_module": "tools/audit_tools/governance_coverage_map.py",
+      "destination_path": "AUDIT_LOGS/governance_coverage_map.json",
+      "metadata_structure": "{header: {...}, issues: [{contract, module, issue}]}",
+      "header_format": "same as audit_utils standard header"
+    }
+  ],
+  "routing_gaps": [
+    "crawler/engine/crawl_engine.py \u2014 no artifact output, stdout only",
+    "crawler/monitor/crawl_monitor.py \u2014 no artifact output, stdout only",
+    "simulation/repo_simulator/repo_simulator.py \u2014 no artifact output, stdout only",
+    "No orchestration/task_router wiring exists to chain pipelines end-to-end"
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "scan_root": "/workspaces/ARCHON_PRIME",
+  "generated": "2026-03-08T18:25:48.605600Z",
+  "total_directories": 76,
+  "total_files": 91,
+  "visual_tree": "/workspaces/ARCHON_PRIME\n\u251c\u2500\u2500 AP_SYSTEM_AUDIT\n\u251c\u2500\u2500 AP_SYSTEM_CONFIG\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_AP_ARTIFACT_AUDIT.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_DIRECTORY_TREE.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_ENVIRONMENT_CONFIG.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_EXTENSION_RECOMMENDATIONS.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_FILETYPE_INDEX.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_FILE_INDEX.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_FUNCTIONALITY_REPORT.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_WORKFLOW_OVERVIEW.md\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 EXECUTION_AGENT_ROLE.md\n\u251c\u2500\u2500 AUDIT_LOGS\n\u251c\u2500\u2500 AUDIT_SYSTEM\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 analysis\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 dependency_graphs\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 protocol_maps\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_maps\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 module_index.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_directory_tree.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 repo_python_files.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 runtime_maps\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 baselines\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 initial_repo_snapshot\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 post_normalization_snapshot\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 diagnostics\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 error_catalogs\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repair_recommendations\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 violation_logs\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 reports\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 concept_reports\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 governance_reports\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 import_reports\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 runtime_reports\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 structural_reports\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 runtime_monitor\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 live_status\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 progress_tracking\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 scripts\n\u2502\u00a0\u00a0     \u251c\u2500\u2500 dependency_scanners\n\u2502\u00a0\u00a0     \u251c\u2500\u2500 governance_scanners\n\u2502\u00a0\u00a0     \u251c\u2500\u2500 header_scanners\n\u2502\u00a0\u00a0     \u251c\u2500\u2500 import_scanners\n\u2502\u00a0\u00a0     \u251c\u2500\u2500 repo_scanners\n\u2502\u00a0\u00a0     \u2502\u00a0\u00a0 \u2514\u2500\u2500 repo_mapper.py\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 runtime_scanners\n\u251c\u2500\u2500 Designs_and_Guides\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 AP\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_Design_Spec_SPEC001_v1.docx\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_ENV_CONFIG_OPS002_v1.docx\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 AP_Implementation_Guide_IMPL001_v1.docx\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 IMPL-002_AP_Repair_Validation_Layer_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 SPEC-003_AP_Repair_Validation_Layer_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 ARP\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 ARP_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 ARP_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 COMPLIANCE_REPORTS\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 P1_P4_Compliance_Audit_Report.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 CSP\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 CSP_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 CSP_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 Canonical_Import_Facade\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Canonical_Import_Facade_Blueprint.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Canonical_Import_Facade_Integration_Plan.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Deep_Import_Violations.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Import_Facade\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 generate_deep_import_violations.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 generate_symbol_import_index.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 repo_structure_export.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_directory_tree.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_imports.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_python_files.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_symbol_imports.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 runtime_surface_audit.json\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 DRAC\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 DRAC_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 DRAC_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 EMP\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 EMP_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 EMP_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 Epistemic_Artifacts\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 EA_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 EA_System_Design_Spec_V1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 I2\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 I2_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 I2_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 Logos_Core\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Logos_Core_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Logos_Core_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 MSPC_Promotion.txt\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 MSPC\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 MSPC_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 MSPC_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 MTP\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 MTP_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 MTP_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 P1-5\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 Audits\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 P1_P4_Compliance_Audit_Report.json\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 p1-4_audit_vs_code.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 LOGOS_V1_Operational_Readiness_Blueprint.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 LOGOS_V1_P1_Runtime_Activation_Spec.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 LOGOS_V1_P2_Subsystem_Completion_Spec.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 LOGOS_V1_P3_Integration_Wiring_Spec.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 LOGOS_V1_P4_Hardening_Validation_Spec.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 LOGOS_V1_P5_Documentation_Closure_Spec.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 M6_Implementation_Blueprint.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 RGE\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 RGE_Design_Spec.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 RGE_Implentation_Guide.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 SCP\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 SCP_Design_Specification_v1.md\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 SCP_Implementation_Guide_v1.md\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 SOP\n\u2502\u00a0\u00a0     \u251c\u2500\u2500 SOP_Design_Specification_v1.md\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 SOP_Implementation_Guide_v1.md\n\u251c\u2500\u2500 MASTER_SYSTEM_DESIGN_SPEC.md\n\u251c\u2500\u2500 README.md\n\u251c\u2500\u2500 STAGING_ARTIFACTS\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 incoming\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 sorted\n\u251c\u2500\u2500 configs\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 audit_configs\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 PRE_CRAWL_CHECKLIST.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 phase_maps\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 IMPLEMENTATION_SEQUENCE.md\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 repair_registry\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 FAILURE_TAXONOMY.md\n\u251c\u2500\u2500 crawler\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 engine\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 crawl_engine.py\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 monitor\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 crawl_monitor.py\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 pipeline\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 repair\n\u251c\u2500\u2500 logs\n\u251c\u2500\u2500 orchestration\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 OUTPUT_ROUTING_TABLE.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 controllers\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 json_drivers\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 ARTIFACT_SCHEMAS.md\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 task_router\n\u251c\u2500\u2500 simulation\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 import_simulator\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_simulator\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 repo_simulator.py\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 runtime_simulator\n\u251c\u2500\u2500 tools\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 MODULE_INVENTORY.md\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 audit_tools\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 audit_utils.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 circular_dependency_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 cross_package_dependency_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 duplicate_module_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 facade_bypass_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 file_size_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 governance_contract_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 governance_coverage_map.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 governance_module_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 header_schema_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 import_surface_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 module_path_ambiguity_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 namespace_shadow_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 orphan_module_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 run_audit_suite.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 run_governance_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 runtime_entry_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 symbol_collision_audit.py\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 unused_import_audit.py\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 governance_analysis\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 governance_scanner.py\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 import_analysis\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 import_scanner.py\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 normalization_tools\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 header_validator.py\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 repo_mapping\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 repo_scanner.py\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 runtime_analysis\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 dependency_graph.py\n\u2514\u2500\u2500 utils\n    \u2514\u2500\u2500 logger.py\n",
+  "machine_tree": {
+    "AUDIT_SYSTEM/": {
+      "analysis/": {
+        "dependency_graphs/": {},
+        "protocol_maps/": {},
+        "repo_maps/": {
+          "module_index.json": 235,
+          "repo_directory_tree.json": 6524,
+          "repo_python_files.json": 173
+        },
+        "runtime_maps/": {}
+      },
+      "baselines/": {
+        "initial_repo_snapshot/": {},
+        "post_normalization_snapshot/": {}
+      },
+      "diagnostics/": {
+        "error_catalogs/": {},
+        "repair_recommendations/": {},
+        "violation_logs/": {}
+      },
+      "reports/": {
+        "concept_reports/": {},
+        "governance_reports/": {},
+        "import_reports/": {},
+        "runtime_reports/": {},
+        "structural_reports/": {}
+      },
+      "runtime_monitor/": {
+        "live_status/": {},
+        "progress_tracking/": {}
+      },
+      "scripts/": {
+        "dependency_scanners/": {},
+        "governance_scanners/": {},
+        "header_scanners/": {},
+        "import_scanners/": {},
+        "repo_scanners/": {
+          "repo_mapper.py": 2447
+        },
+        "runtime_scanners/": {}
+      }
+    },
+    "Designs_and_Guides/": {
+      "AP/": {
+        "AP_Design_Spec_SPEC001_v1.docx": 29770,
+        "AP_ENV_CONFIG_OPS002_v1.docx": 16542,
+        "AP_Implementation_Guide_IMPL001_v1.docx": 26107,
+        "IMPL-002_AP_Repair_Validation_Layer_v1.md": 46305,
+        "SPEC-003_AP_Repair_Validation_Layer_v1.md": 33625
+      },
+      "ARP/": {
+        "ARP_Design_Specification_v1.md": 37606,
+        "ARP_Implementation_Guide_v1.md": 52796
+      },
+      "COMPLIANCE_REPORTS/": {
+        "P1_P4_Compliance_Audit_Report.json": 32607
+      },
+      "CSP/": {
+        "CSP_Design_Specification_v1.md": 17832,
+        "CSP_Implementation_Guide_v1.md": 19781
+      },
+      "Canonical_Import_Facade/": {
+        "Canonical_Import_Facade_Blueprint.md": 51203,
+        "Canonical_Import_Facade_Integration_Plan.md": 17644,
+        "Deep_Import_Violations.json": 86408,
+        "Import_Facade/": {
+          "generate_deep_import_violations.py": 4891,
+          "generate_symbol_import_index.py": 4803,
+          "repo_structure_export.py": 2070
+        },
+        "repo_directory_tree.json": 71162,
+        "repo_imports.json": 1525279,
+        "repo_python_files.json": 290002,
+        "repo_symbol_imports.json": 3179212,
+        "runtime_surface_audit.json": 732827
+      },
+      "DRAC/": {
+        "DRAC_Design_Specification_v1.md": 16788,
+        "DRAC_Implementation_Guide_v1.md": 25062
+      },
+      "EMP/": {
+        "EMP_Design_Specification_v1.md": 18977,
+        "EMP_Implementation_Guide_v1.md": 34523
+      },
+      "Epistemic_Artifacts/": {
+        "EA_Implementation_Guide_v1.md": 30550,
+        "EA_System_Design_Spec_V1.md": 44882
+      },
+      "I2/": {
+        "I2_Design_Specification_v1.md": 38754,
+        "I2_Implementation_Guide_v1.md": 54518
+      },
+      "Logos_Core/": {
+        "Logos_Core_Design_Specification_v1.md": 38850,
+        "Logos_Core_Implementation_Guide_v1.md": 25075,
+        "MSPC_Promotion.txt": 11545
+      },
+      "MSPC/": {
+        "MSPC_Design_Specification_v1.md": 19398,
+        "MSPC_Implementation_Guide_v1.md": 36625
+      },
+      "MTP/": {
+        "MTP_Design_Specification_v1.md": 23741,
+        "MTP_Implementation_Guide_v1.md": 34390
+      },
+      "P1-5/": {
+        "Audits/": {
+          "P1_P4_Compliance_Audit_Report.json": 32607,
+          "p1-4_audit_vs_code.md": 79737
+        },
+        "LOGOS_V1_Operational_Readiness_Blueprint.md": 28277,
+        "LOGOS_V1_P1_Runtime_Activation_Spec.md": 46296,
+        "LOGOS_V1_P2_Subsystem_Completion_Spec.md": 41949,
+        "LOGOS_V1_P3_Integration_Wiring_Spec.md": 36661,
+        "LOGOS_V1_P4_Hardening_Validation_Spec.md": 36118,
+        "LOGOS_V1_P5_Documentation_Closure_Spec.md": 25534,
+        "M6_Implementation_Blueprint.md": 28159
+      },
+      "RGE/": {
+        "RGE_Design_Spec.md": 59166,
+        "RGE_Implentation_Guide.md": 44001
+      },
+      "SCP/": {
+        "SCP_Design_Specification_v1.md": 21042,
+        "SCP_Implementation_Guide_v1.md": 37644
+      },
+      "SOP/": {
+        "SOP_Design_Specification_v1.md": 26214,
+        "SOP_Implementation_Guide_v1.md": 26650
+      }
+    },
+    "MASTER_SYSTEM_DESIGN_SPEC.md": 23017,
+    "README.md": 14,
+    "STAGING_ARTIFACTS/": {
+      "incoming/": {},
+      "sorted/": {}
+    },
+    "configs/": {
+      "audit_configs/": {
+        "PRE_CRAWL_CHECKLIST.md": 9001
+      },
+      "phase_maps/": {
+        "IMPLEMENTATION_SEQUENCE.md": 17742
+      },
+      "repair_registry/": {
+        "FAILURE_TAXONOMY.md": 14793
+      }
+    },
+    "crawler/": {
+      "engine/": {
+        "crawl_engine.py": 146
+      },
+      "monitor/": {
+        "crawl_monitor.py": 142
+      },
+      "pipeline/": {},
+      "repair/": {}
+    },
+    "orchestration/": {
+      "OUTPUT_ROUTING_TABLE.md": 16713,
+      "controllers/": {},
+      "json_drivers/": {
+        "ARTIFACT_SCHEMAS.md": 19663
+      },
+      "task_router/": {}
+    },
+    "simulation/": {
+      "import_simulator/": {},
+      "repo_simulator/": {
+        "repo_simulator.py": 166
+      },
+      "runtime_simulator/": {}
+    },
+    "tools/": {
+      "MODULE_INVENTORY.md": 24221,
+      "audit_tools/": {
+        "audit_utils.py": 853,
+        "circular_dependency_audit.py": 1058,
+        "cross_package_dependency_audit.py": 824,
+        "duplicate_module_audit.py": 525,
+        "facade_bypass_audit.py": 784,
+        "file_size_audit.py": 463,
+        "governance_contract_audit.py": 979,
+        "governance_coverage_map.py": 1229,
+        "governance_module_audit.py": 817,
+        "header_schema_audit.py": 442,
+        "import_surface_audit.py": 791,
+        "module_path_ambiguity_audit.py": 619,
+        "namespace_shadow_audit.py": 556,
+        "orphan_module_audit.py": 766,
+        "run_audit_suite.py": 979,
+        "run_governance_audit.py": 317,
+        "runtime_entry_audit.py": 442,
+        "symbol_collision_audit.py": 936,
+        "unused_import_audit.py": 951
+      },
+      "governance_analysis/": {
+        "governance_scanner.py": 243
+      },
+      "import_analysis/": {
+        "import_scanner.py": 646
+      },
+      "normalization_tools/": {
+        "header_validator.py": 338
+      },
+      "repo_mapping/": {
+        "repo_scanner.py": 443
+      },
+      "runtime_analysis/": {
+        "dependency_graph.py": 327
+      }
+    },
+    "utils/": {
+      "logger.py": 362
+    }
+  }
+}

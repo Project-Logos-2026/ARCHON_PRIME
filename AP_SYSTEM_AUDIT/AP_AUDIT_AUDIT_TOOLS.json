@@ -1,0 +1,184 @@
+{
+  "generated": "2026-03-08T18:25:48.653564Z",
+  "audit_tools_root": "tools/audit_tools/",
+  "total_tools": 19,
+  "runners": [
+    "run_audit_suite",
+    "run_governance_audit"
+  ],
+  "utilities": [
+    "audit_utils"
+  ],
+  "audit_modules": [
+    "circular_dependency_audit",
+    "cross_package_dependency_audit",
+    "duplicate_module_audit",
+    "facade_bypass_audit",
+    "file_size_audit",
+    "governance_contract_audit",
+    "governance_coverage_map",
+    "governance_module_audit",
+    "header_schema_audit",
+    "import_surface_audit",
+    "module_path_ambiguity_audit",
+    "namespace_shadow_audit",
+    "orphan_module_audit",
+    "runtime_entry_audit",
+    "symbol_collision_audit",
+    "unused_import_audit"
+  ],
+  "tools": [
+    {
+      "tool_name": "audit_utils",
+      "module_path": "tools/audit_tools/audit_utils.py",
+      "purpose": "Shared utilities: SHA1 ID generation, date helper, JSON log writer",
+      "expected_output": "shared utility \u2014 no direct output",
+      "is_runner": false,
+      "is_utility": true
+    },
+    {
+      "tool_name": "circular_dependency_audit",
+      "module_path": "tools/audit_tools/circular_dependency_audit.py",
+      "purpose": "Detects bidirectional import cycles between module pairs",
+      "expected_output": "AUDIT_LOGS/circular_dependency_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "cross_package_dependency_audit",
+      "module_path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "purpose": "Flags from-imports crossing package directory boundaries",
+      "expected_output": "AUDIT_LOGS/cross_package_dependency_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "duplicate_module_audit",
+      "module_path": "tools/audit_tools/duplicate_module_audit.py",
+      "purpose": "Identifies .py files sharing an identical filename",
+      "expected_output": "AUDIT_LOGS/duplicate_module_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "facade_bypass_audit",
+      "module_path": "tools/audit_tools/facade_bypass_audit.py",
+      "purpose": "Detects from-imports not routed through canonical 'imports' facade",
+      "expected_output": "AUDIT_LOGS/facade_bypass_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "file_size_audit",
+      "module_path": "tools/audit_tools/file_size_audit.py",
+      "purpose": "Flags modules exceeding 50,000 bytes",
+      "expected_output": "AUDIT_LOGS/file_size_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "governance_contract_audit",
+      "module_path": "tools/audit_tools/governance_contract_audit.py",
+      "purpose": "Scans .md/.json/.yaml/.txt files for governance terminology",
+      "expected_output": "AUDIT_LOGS/governance_contract_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "governance_coverage_map",
+      "module_path": "tools/audit_tools/governance_coverage_map.py",
+      "purpose": "Pairs governance contracts to enforcement modules; flags gaps",
+      "expected_output": "AUDIT_LOGS/governance_coverage_map.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "governance_module_audit",
+      "module_path": "tools/audit_tools/governance_module_audit.py",
+      "purpose": "Finds .py files containing governance/policy/enforcement keywords",
+      "expected_output": "AUDIT_LOGS/governance_module_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "header_schema_audit",
+      "module_path": "tools/audit_tools/header_schema_audit.py",
+      "purpose": "Flags .py files whose first character is not '#'",
+      "expected_output": "AUDIT_LOGS/header_schema_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "import_surface_audit",
+      "module_path": "tools/audit_tools/import_surface_audit.py",
+      "purpose": "Flags from-imports with dotted module paths (deep imports)",
+      "expected_output": "AUDIT_LOGS/import_surface_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "module_path_ambiguity_audit",
+      "module_path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "purpose": "Detects modules whose stem name appears in multiple directories",
+      "expected_output": "AUDIT_LOGS/module_path_ambiguity_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "namespace_shadow_audit",
+      "module_path": "tools/audit_tools/namespace_shadow_audit.py",
+      "purpose": "Flags duplicate module stems across the directory tree",
+      "expected_output": "AUDIT_LOGS/namespace_shadow_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "orphan_module_audit",
+      "module_path": "tools/audit_tools/orphan_module_audit.py",
+      "purpose": "Identifies .py stems never referenced by any import statement",
+      "expected_output": "AUDIT_LOGS/orphan_module_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "run_audit_suite",
+      "module_path": "tools/audit_tools/run_audit_suite.py",
+      "purpose": "Master runner: executes all 13 structural audit tools sequentially",
+      "expected_output": "orchestrates all 13 structural audits",
+      "is_runner": true,
+      "is_utility": false
+    },
+    {
+      "tool_name": "run_governance_audit",
+      "module_path": "tools/audit_tools/run_governance_audit.py",
+      "purpose": "Master runner: executes governance contract \u2192 module \u2192 coverage pipeline",
+      "expected_output": "orchestrates 3-stage governance pipeline",
+      "is_runner": true,
+      "is_utility": false
+    },
+    {
+      "tool_name": "runtime_entry_audit",
+      "module_path": "tools/audit_tools/runtime_entry_audit.py",
+      "purpose": "Catalogs every .py file containing '__main__'",
+      "expected_output": "AUDIT_LOGS/runtime_entry_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "symbol_collision_audit",
+      "module_path": "tools/audit_tools/symbol_collision_audit.py",
+      "purpose": "Detects function/class names defined in more than one file",
+      "expected_output": "AUDIT_LOGS/symbol_collision_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    },
+    {
+      "tool_name": "unused_import_audit",
+      "module_path": "tools/audit_tools/unused_import_audit.py",
+      "purpose": "Flags top-level imports whose name never appears as ast.Name",
+      "expected_output": "AUDIT_LOGS/unused_import_audit.json",
+      "is_runner": false,
+      "is_utility": false
+    }
+  ]
+}

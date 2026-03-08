@@ -1,0 +1,169 @@
+{
+  "scan_root": "/workspaces/ARCHON_PRIME",
+  "generated": "2026-03-08T17:46:36.313858Z",
+  "subsystems": [
+    {
+      "subsystem_name": "audit_tools",
+      "location": "tools/audit_tools/",
+      "purpose": "Modular audit suite: import surface, circular deps, header schema, unused imports, duplicate modules, file size, runtime entrypoints, orphan modules, symbol collisions, cross-package deps, namespace shadows, module path ambiguity, facade bypass, governance contracts and coverage",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/audit_utils.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/circular_dependency_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/cross_package_dependency_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/duplicate_module_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/facade_bypass_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/file_size_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/governance_contract_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/governance_coverage_map.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/governance_module_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/header_schema_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/import_surface_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/module_path_ambiguity_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/namespace_shadow_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/orphan_module_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/run_audit_suite.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/run_governance_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/runtime_entry_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/symbol_collision_audit.py",
+        "/workspaces/ARCHON_PRIME/tools/audit_tools/unused_import_audit.py"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "crawler",
+      "location": "crawler/",
+      "purpose": "Crawl engine skeleton and live monitor for iterating repository Python files",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/crawler/engine/crawl_engine.py",
+        "/workspaces/ARCHON_PRIME/crawler/monitor/crawl_monitor.py"
+      ],
+      "status_estimate": "partial"
+    },
+    {
+      "subsystem_name": "repair",
+      "location": "crawler/repair/",
+      "purpose": "Repair pipeline placeholder for automated fix application",
+      "modules": [],
+      "status_estimate": "missing"
+    },
+    {
+      "subsystem_name": "simulation",
+      "location": "simulation/",
+      "purpose": "Repo, runtime and import simulators for offline testing",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/simulation/repo_simulator/repo_simulator.py"
+      ],
+      "status_estimate": "partial"
+    },
+    {
+      "subsystem_name": "orchestration",
+      "location": "orchestration/",
+      "purpose": "Output routing table, artifact schemas, controller and task router stubs",
+      "modules": [],
+      "status_estimate": "partial"
+    },
+    {
+      "subsystem_name": "utilities",
+      "location": "utils/",
+      "purpose": "Shared JSON event logger writing to logs/execution_log.json",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/utils/logger.py"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "repo_mapping",
+      "location": "tools/repo_mapping/",
+      "purpose": "Full repository file walk producing logs/repo_scan.json",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/tools/repo_mapping/repo_scanner.py"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "import_analysis",
+      "location": "tools/import_analysis/",
+      "purpose": "AST-based import extraction producing logs/import_map.json",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/tools/import_analysis/import_scanner.py"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "runtime_analysis",
+      "location": "tools/runtime_analysis/",
+      "purpose": "Dependency graph builder consuming import_map.json",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/tools/runtime_analysis/dependency_graph.py"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "normalization_tools",
+      "location": "tools/normalization_tools/",
+      "purpose": "Header comment validator producing logs/header_violations.json",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/tools/normalization_tools/header_validator.py"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "governance_artifacts",
+      "location": "Designs_and_Guides/ / configs/ / AP_SYSTEM_CONFIG/",
+      "purpose": "Design specs, implementation guides, compliance reports, audit configs, phase maps, failure taxonomy, workflow overviews and role documents",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/IMPL-002_AP_Repair_Validation_Layer_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/SPEC-003_AP_Repair_Validation_Layer_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/ARP/ARP_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/ARP/ARP_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/CSP/CSP_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/CSP/CSP_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Blueprint.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Integration_Plan.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/DRAC/DRAC_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/DRAC/DRAC_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/EMP/EMP_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/EMP/EMP_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/Epistemic_Artifacts/EA_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/Epistemic_Artifacts/EA_System_Design_Spec_V1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/I2/I2_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/I2/I2_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/Logos_Core/Logos_Core_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/Logos_Core/Logos_Core_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/MSPC/MSPC_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/MSPC/MSPC_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/MTP/MTP_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/MTP/MTP_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/Audits/p1-4_audit_vs_code.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_Operational_Readiness_Blueprint.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P1_Runtime_Activation_Spec.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P3_Integration_Wiring_Spec.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P4_Hardening_Validation_Spec.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P5_Documentation_Closure_Spec.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/M6_Implementation_Blueprint.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/RGE/RGE_Design_Spec.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/RGE/RGE_Implentation_Guide.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/SCP/SCP_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/SCP/SCP_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/SOP/SOP_Design_Specification_v1.md",
+        "/workspaces/ARCHON_PRIME/Designs_and_Guides/SOP/SOP_Implementation_Guide_v1.md",
+        "/workspaces/ARCHON_PRIME/configs/audit_configs/PRE_CRAWL_CHECKLIST.md",
+        "/workspaces/ARCHON_PRIME/configs/phase_maps/IMPLEMENTATION_SEQUENCE.md",
+        "/workspaces/ARCHON_PRIME/configs/repair_registry/FAILURE_TAXONOMY.md",
+        "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/AP_WORKFLOW_OVERVIEW.md",
+        "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/EXECUTION_AGENT_ROLE.md"
+      ],
+      "status_estimate": "present"
+    },
+    {
+      "subsystem_name": "audit_system_infrastructure",
+      "location": "AUDIT_SYSTEM/",
+      "purpose": "Static analysis maps, baselines, diagnostics, reports and runtime monitor directories for structured audit artifact storage",
+      "modules": [
+        "/workspaces/ARCHON_PRIME/AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py"
+      ],
+      "status_estimate": "partial"
+    }
+  ]
+}

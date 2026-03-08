@@ -1,0 +1,67 @@
+{
+  "generated": "2026-03-08T18:25:48.651774Z",
+  "simulation_root": "/workspaces/ARCHON_PRIME/simulation",
+  "status": "minimal",
+  "modules_present": [
+    "simulation/repo_simulator/repo_simulator.py"
+  ],
+  "directories_empty": [
+    "simulation/runtime_simulator/",
+    "simulation/import_simulator/"
+  ],
+  "subsystem_analysis": {
+    "repo_simulator": {
+      "status": "skeleton",
+      "implementation": "counts .py files via rglob, prints count to stdout",
+      "outputs": "none",
+      "limitations": [
+        "no argument for target directory",
+        "no JSON output",
+        "no simulation model \u2014 just a file count"
+      ]
+    },
+    "runtime_simulator": {
+      "status": "missing",
+      "implementation": "directory exists, no modules"
+    },
+    "import_simulator": {
+      "status": "missing",
+      "implementation": "directory exists, no modules"
+    },
+    "analysis_models": "none present",
+    "execution_simulations": "none present",
+    "simulation_outputs": "stdout print only"
+  },
+  "gap_summary": [
+    "Only 1 of 3 simulation modules implemented, and only as a skeleton",
+    "No runtime simulation capability",
+    "No import simulation capability",
+    "No JSON artifact output from any simulation module",
+    "No integration with crawler or audit pipeline"
+  ],
+  "module_details": [
+    {
+      "module": "simulation/repo_simulator/repo_simulator.py",
+      "purpose": "Repo simulation harness \u2014 counts .py files",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "simulate"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [],
+      "loc": 8
+    }
+  ]
+}

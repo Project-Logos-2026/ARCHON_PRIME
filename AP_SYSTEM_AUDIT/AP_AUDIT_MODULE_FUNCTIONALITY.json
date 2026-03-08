@@ -1,0 +1,948 @@
+{
+  "scan_root": "/workspaces/ARCHON_PRIME",
+  "generated": "2026-03-08T18:25:48.648091Z",
+  "total_modules": 32,
+  "modules": [
+    {
+      "module": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "purpose": "Repository mapper producing AUDIT_SYSTEM map JSON files",
+      "entrypoints": [],
+      "imports": [
+        "os",
+        "json",
+        "hashlib",
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "hash_file",
+        "build_directory_tree",
+        "collect_python_files",
+        "extract_imports",
+        "build_module_index"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [
+        "writes_files",
+        "creates_directories"
+      ],
+      "loc": 88
+    },
+    {
+      "module": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "purpose": "Python module: generate_deep_import_violations",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "json",
+        "os",
+        "sys"
+      ],
+      "from_imports": [
+        {
+          "module": "datetime",
+          "names": [
+            "timezone",
+            "datetime"
+          ]
+        }
+      ],
+      "functions": [
+        "is_import_line",
+        "path_is_allowlisted",
+        "scan",
+        "main"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 140
+    },
+    {
+      "module": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "purpose": "Python module: generate_symbol_import_index",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "ast",
+        "json",
+        "os",
+        "sys"
+      ],
+      "from_imports": [],
+      "functions": [
+        "should_skip",
+        "discover_python_files",
+        "load_python_files",
+        "read_source_lines",
+        "parse_imports",
+        "main"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 138
+    },
+    {
+      "module": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "purpose": "Python module: repo_structure_export",
+      "entrypoints": [],
+      "imports": [
+        "os",
+        "json"
+      ],
+      "from_imports": [],
+      "functions": [],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 54
+    },
+    {
+      "module": "crawler/engine/crawl_engine.py",
+      "purpose": "Crawl engine skeleton \u2014 iterates all .py files",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "crawl"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [],
+      "loc": 8
+    },
+    {
+      "module": "crawler/monitor/crawl_monitor.py",
+      "purpose": "Live crawl status monitor (polling loop)",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "time"
+      ],
+      "from_imports": [],
+      "functions": [
+        "monitor"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [
+        "blocking_loop"
+      ],
+      "loc": 9
+    },
+    {
+      "module": "simulation/repo_simulator/repo_simulator.py",
+      "purpose": "Repo simulation harness \u2014 counts .py files",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "simulate"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [],
+      "loc": 8
+    },
+    {
+      "module": "tools/audit_tools/audit_utils.py",
+      "purpose": "Shared audit utilities: ID generation, log writing",
+      "entrypoints": [],
+      "imports": [
+        "json",
+        "hashlib",
+        "datetime"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "generate_id",
+        "today",
+        "write_log"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [
+        "writes_files",
+        "creates_directories"
+      ],
+      "loc": 36
+    },
+    {
+      "module": "tools/audit_tools/circular_dependency_audit.py",
+      "purpose": "Detects circular import cycles between modules",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 44
+    },
+    {
+      "module": "tools/audit_tools/cross_package_dependency_audit.py",
+      "purpose": "Flags cross-package from-imports",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 33
+    },
+    {
+      "module": "tools/audit_tools/duplicate_module_audit.py",
+      "purpose": "Identifies duplicate filenames across directories",
+      "entrypoints": [],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 25
+    },
+    {
+      "module": "tools/audit_tools/facade_bypass_audit.py",
+      "purpose": "Detects from-imports that bypass the canonical facade",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 33
+    },
+    {
+      "module": "tools/audit_tools/file_size_audit.py",
+      "purpose": "Flags Python modules exceeding 50 KB",
+      "entrypoints": [],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 21
+    },
+    {
+      "module": "tools/audit_tools/governance_contract_audit.py",
+      "purpose": "Scans doc/config files for governance terms",
+      "entrypoints": [],
+      "imports": [
+        "re"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 49
+    },
+    {
+      "module": "tools/audit_tools/governance_coverage_map.py",
+      "purpose": "Maps governance contracts to enforcement modules",
+      "entrypoints": [],
+      "imports": [
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 49
+    },
+    {
+      "module": "tools/audit_tools/governance_module_audit.py",
+      "purpose": "Finds Python modules containing governance keywords",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 46
+    },
+    {
+      "module": "tools/audit_tools/header_schema_audit.py",
+      "purpose": "Flags Python files missing a leading comment header",
+      "entrypoints": [],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 20
+    },
+    {
+      "module": "tools/audit_tools/import_surface_audit.py",
+      "purpose": "Flags deep chained import paths",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 28
+    },
+    {
+      "module": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "purpose": "Detects modules whose stems collide across directories",
+      "entrypoints": [],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 28
+    },
+    {
+      "module": "tools/audit_tools/namespace_shadow_audit.py",
+      "purpose": "Flags modules sharing a stem name in different directories",
+      "entrypoints": [],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 26
+    },
+    {
+      "module": "tools/audit_tools/orphan_module_audit.py",
+      "purpose": "Identifies modules not imported by any other module",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 37
+    },
+    {
+      "module": "tools/audit_tools/run_audit_suite.py",
+      "purpose": "Master runner for all 13 structural audit tools",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "sys",
+        "import_surface_audit",
+        "circular_dependency_audit",
+        "header_schema_audit",
+        "unused_import_audit",
+        "duplicate_module_audit",
+        "file_size_audit",
+        "runtime_entry_audit",
+        "orphan_module_audit",
+        "symbol_collision_audit",
+        "cross_package_dependency_audit",
+        "namespace_shadow_audit",
+        "module_path_ambiguity_audit",
+        "facade_bypass_audit"
+      ],
+      "from_imports": [],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [],
+      "loc": 37
+    },
+    {
+      "module": "tools/audit_tools/run_governance_audit.py",
+      "purpose": "Master runner for the 3-stage governance audit pipeline",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "sys",
+        "governance_contract_audit",
+        "governance_module_audit",
+        "governance_coverage_map"
+      ],
+      "from_imports": [],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [],
+      "side_effects": [],
+      "loc": 19
+    },
+    {
+      "module": "tools/audit_tools/runtime_entry_audit.py",
+      "purpose": "Catalogs all __main__ runtime entrypoints",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 20
+    },
+    {
+      "module": "tools/audit_tools/symbol_collision_audit.py",
+      "purpose": "Detects duplicate function/class names across files",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 37
+    },
+    {
+      "module": "tools/audit_tools/unused_import_audit.py",
+      "purpose": "Flags imports whose top-level name is never used",
+      "entrypoints": [],
+      "imports": [
+        "ast"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": "audit_utils",
+          "names": [
+            "write_log",
+            "generate_id"
+          ]
+        }
+      ],
+      "functions": [
+        "run"
+      ],
+      "classes": [],
+      "outputs": [
+        "AUDIT_LOGS/<audit_name>.json"
+      ],
+      "side_effects": [],
+      "loc": 39
+    },
+    {
+      "module": "tools/governance_analysis/governance_scanner.py",
+      "purpose": "Pattern scan for governance-named Python modules",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "scan"
+      ],
+      "classes": [],
+      "outputs": [
+        "logs/governance_modules.json"
+      ],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 11
+    },
+    {
+      "module": "tools/import_analysis/import_scanner.py",
+      "purpose": "AST import extraction producing logs/import_map.json",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "ast",
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "extract_imports",
+        "scan"
+      ],
+      "classes": [],
+      "outputs": [
+        "logs/import_map.json"
+      ],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 26
+    },
+    {
+      "module": "tools/normalization_tools/header_validator.py",
+      "purpose": "Header comment validator producing logs/header_violations.json",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "check_headers"
+      ],
+      "classes": [],
+      "outputs": [
+        "logs/header_violations.json"
+      ],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 13
+    },
+    {
+      "module": "tools/repo_mapping/repo_scanner.py",
+      "purpose": "Full repo walk producing logs/repo_scan.json",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "os",
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "scan_repo"
+      ],
+      "classes": [],
+      "outputs": [
+        "logs/repo_scan.json"
+      ],
+      "side_effects": [
+        "writes_files",
+        "creates_directories"
+      ],
+      "loc": 19
+    },
+    {
+      "module": "tools/runtime_analysis/dependency_graph.py",
+      "purpose": "Dependency graph builder from import_map.json",
+      "entrypoints": [
+        "__main__"
+      ],
+      "imports": [
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "build_graph"
+      ],
+      "classes": [],
+      "outputs": [
+        "logs/import_map.json",
+        "logs/dependency_graph.json"
+      ],
+      "side_effects": [
+        "writes_files"
+      ],
+      "loc": 14
+    },
+    {
+      "module": "utils/logger.py",
+      "purpose": "JSON event logger writing to logs/execution_log.json",
+      "entrypoints": [],
+      "imports": [
+        "datetime",
+        "json"
+      ],
+      "from_imports": [
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ],
+      "functions": [
+        "log"
+      ],
+      "classes": [],
+      "outputs": [
+        "logs/execution_log.json"
+      ],
+      "side_effects": [
+        "creates_directories"
+      ],
+      "loc": 15
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "scan_root": "/workspaces/ARCHON_PRIME",
+  "generated": "2026-03-08T17:46:36.314720Z",
+  "total_checked": 25,
+  "present": 22,
+  "missing": 3,
+  "artifacts": [
+    {
+      "artifact_name": "AP_WORKFLOW_OVERVIEW.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/AP_WORKFLOW_OVERVIEW.md",
+      "authority_scope": "OPS-SYS-001"
+    },
+    {
+      "artifact_name": "EXECUTION_AGENT_ROLE.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/EXECUTION_AGENT_ROLE.md",
+      "authority_scope": "OPS-SYS-002"
+    },
+    {
+      "artifact_name": "AP_VSCODE_PIPELINE_INTEGRATION.md",
+      "present": false,
+      "path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/AP_VSCODE_PIPELINE_INTEGRATION.md",
+      "authority_scope": "OPS-SYS-003"
+    },
+    {
+      "artifact_name": "ap_config.yaml",
+      "present": false,
+      "path": "/workspaces/ARCHON_PRIME/ap_config.yaml",
+      "authority_scope": "system_config"
+    },
+    {
+      "artifact_name": "logos_targets.yaml",
+      "present": false,
+      "path": "/workspaces/ARCHON_PRIME/logos_targets.yaml",
+      "authority_scope": "target_config"
+    },
+    {
+      "artifact_name": "MASTER_SYSTEM_DESIGN_SPEC.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/MASTER_SYSTEM_DESIGN_SPEC.md",
+      "authority_scope": "system_design"
+    },
+    {
+      "artifact_name": "README.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/README.md",
+      "authority_scope": "repository_root"
+    },
+    {
+      "artifact_name": "run_audit_suite.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/tools/audit_tools/run_audit_suite.py",
+      "authority_scope": "audit_tools"
+    },
+    {
+      "artifact_name": "run_governance_audit.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/tools/audit_tools/run_governance_audit.py",
+      "authority_scope": "governance_audit"
+    },
+    {
+      "artifact_name": "audit_utils.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/tools/audit_tools/audit_utils.py",
+      "authority_scope": "audit_tools"
+    },
+    {
+      "artifact_name": "crawl_engine.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/crawler/engine/crawl_engine.py",
+      "authority_scope": "crawler"
+    },
+    {
+      "artifact_name": "crawl_monitor.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/crawler/monitor/crawl_monitor.py",
+      "authority_scope": "crawler"
+    },
+    {
+      "artifact_name": "repair",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/crawler/repair",
+      "authority_scope": "repair"
+    },
+    {
+      "artifact_name": "repo_simulator.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/simulation/repo_simulator/repo_simulator.py",
+      "authority_scope": "simulation"
+    },
+    {
+      "artifact_name": "runtime_simulator",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/simulation/runtime_simulator",
+      "authority_scope": "simulation"
+    },
+    {
+      "artifact_name": "import_simulator",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/simulation/import_simulator",
+      "authority_scope": "simulation"
+    },
+    {
+      "artifact_name": "OUTPUT_ROUTING_TABLE.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/orchestration/OUTPUT_ROUTING_TABLE.md",
+      "authority_scope": "orchestration"
+    },
+    {
+      "artifact_name": "controllers",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/orchestration/controllers",
+      "authority_scope": "orchestration"
+    },
+    {
+      "artifact_name": "task_router",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/orchestration/task_router",
+      "authority_scope": "orchestration"
+    },
+    {
+      "artifact_name": "logger.py",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/utils/logger.py",
+      "authority_scope": "utilities"
+    },
+    {
+      "artifact_name": "AUDIT_LOGS",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/AUDIT_LOGS",
+      "authority_scope": "audit_output"
+    },
+    {
+      "artifact_name": "logs",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/logs",
+      "authority_scope": "runtime_logs"
+    },
+    {
+      "artifact_name": "PRE_CRAWL_CHECKLIST.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/configs/audit_configs/PRE_CRAWL_CHECKLIST.md",
+      "authority_scope": "config"
+    },
+    {
+      "artifact_name": "IMPLEMENTATION_SEQUENCE.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/configs/phase_maps/IMPLEMENTATION_SEQUENCE.md",
+      "authority_scope": "config"
+    },
+    {
+      "artifact_name": "FAILURE_TAXONOMY.md",
+      "present": true,
+      "path": "/workspaces/ARCHON_PRIME/configs/repair_registry/FAILURE_TAXONOMY.md",
+      "authority_scope": "config"
+    }
+  ]
+}
