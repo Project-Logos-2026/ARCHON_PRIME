@@ -1,0 +1,1512 @@
+{
+  "generated_at": "2026-03-09T15:24:07.321319Z",
+  "repo_root": "/workspaces/ARCHON_PRIME/",
+  "total_files": 188,
+  "total_python_files": 52,
+  "files": [
+    {
+      "relative_path": "MASTER_SYSTEM_DESIGN_SPEC.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/MASTER_SYSTEM_DESIGN_SPEC.md",
+      "filename": "MASTER_SYSTEM_DESIGN_SPEC.md",
+      "extension": ".md",
+      "size_bytes": 23017,
+      "line_count": 376
+    },
+    {
+      "relative_path": "requirements.txt",
+      "absolute_path": "/workspaces/ARCHON_PRIME/requirements.txt",
+      "filename": "requirements.txt",
+      "extension": ".txt",
+      "size_bytes": 115,
+      "line_count": null
+    },
+    {
+      "relative_path": "README.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/README.md",
+      "filename": "README.md",
+      "extension": ".md",
+      "size_bytes": 14,
+      "line_count": 1
+    },
+    {
+      "relative_path": "registry/module_registry.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/registry/module_registry.json",
+      "filename": "module_registry.json",
+      "extension": ".json",
+      "size_bytes": 1920,
+      "line_count": null
+    },
+    {
+      "relative_path": "registry/simulation_registry.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/registry/simulation_registry.json",
+      "filename": "simulation_registry.json",
+      "extension": ".json",
+      "size_bytes": 1818,
+      "line_count": null
+    },
+    {
+      "relative_path": "registry/audit_registry.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/registry/audit_registry.json",
+      "filename": "audit_registry.json",
+      "extension": ".json",
+      "size_bytes": 7755,
+      "line_count": null
+    },
+    {
+      "relative_path": "registry/repair_registry.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/registry/repair_registry.json",
+      "filename": "repair_registry.json",
+      "extension": ".json",
+      "size_bytes": 1888,
+      "line_count": null
+    },
+    {
+      "relative_path": "crawler/engine/crawl_engine.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/crawler/engine/crawl_engine.py",
+      "filename": "crawl_engine.py",
+      "extension": ".py",
+      "size_bytes": 146,
+      "line_count": 9
+    },
+    {
+      "relative_path": "crawler/core/crawl_monitor.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/crawler/core/crawl_monitor.py",
+      "filename": "crawl_monitor.py",
+      "extension": ".py",
+      "size_bytes": 4851,
+      "line_count": 143
+    },
+    {
+      "relative_path": "crawler/core/crawl_engine.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/crawler/core/crawl_engine.py",
+      "filename": "crawl_engine.py",
+      "extension": ".py",
+      "size_bytes": 9567,
+      "line_count": 272
+    },
+    {
+      "relative_path": "crawler/utils/file_scanner.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/crawler/utils/file_scanner.py",
+      "filename": "file_scanner.py",
+      "extension": ".py",
+      "size_bytes": 4541,
+      "line_count": 158
+    },
+    {
+      "relative_path": "crawler/monitor/crawl_monitor.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/crawler/monitor/crawl_monitor.py",
+      "filename": "crawl_monitor.py",
+      "extension": ".py",
+      "size_bytes": 142,
+      "line_count": 10
+    },
+    {
+      "relative_path": "repair/operators/module_relocation_operator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/repair/operators/module_relocation_operator.py",
+      "filename": "module_relocation_operator.py",
+      "extension": ".py",
+      "size_bytes": 3448,
+      "line_count": 103
+    },
+    {
+      "relative_path": "repair/operators/header_injection_operator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/repair/operators/header_injection_operator.py",
+      "filename": "header_injection_operator.py",
+      "extension": ".py",
+      "size_bytes": 3377,
+      "line_count": 110
+    },
+    {
+      "relative_path": "repair/operators/import_rewrite_operator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/repair/operators/import_rewrite_operator.py",
+      "filename": "import_rewrite_operator.py",
+      "extension": ".py",
+      "size_bytes": 3355,
+      "line_count": 101
+    },
+    {
+      "relative_path": "repair/operators/dependency_normalizer.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/repair/operators/dependency_normalizer.py",
+      "filename": "dependency_normalizer.py",
+      "extension": ".py",
+      "size_bytes": 3996,
+      "line_count": 117
+    },
+    {
+      "relative_path": "repair/operators/namespace_disambiguator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/repair/operators/namespace_disambiguator.py",
+      "filename": "namespace_disambiguator.py",
+      "extension": ".py",
+      "size_bytes": 4161,
+      "line_count": 120
+    },
+    {
+      "relative_path": ".github/CODEOWNERS",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/CODEOWNERS",
+      "filename": "CODEOWNERS",
+      "extension": "",
+      "size_bytes": 57,
+      "line_count": null
+    },
+    {
+      "relative_path": ".github/pull_request_template.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/pull_request_template.md",
+      "filename": "pull_request_template.md",
+      "extension": ".md",
+      "size_bytes": 352,
+      "line_count": 25
+    },
+    {
+      "relative_path": ".github/workflows/ap_validation.yml",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/workflows/ap_validation.yml",
+      "filename": "ap_validation.yml",
+      "extension": ".yml",
+      "size_bytes": 544,
+      "line_count": null
+    },
+    {
+      "relative_path": ".github/workflows/packet_validation.yml",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/workflows/packet_validation.yml",
+      "filename": "packet_validation.yml",
+      "extension": ".yml",
+      "size_bytes": 1028,
+      "line_count": null
+    },
+    {
+      "relative_path": ".github/workflows/test.yml",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/workflows/test.yml",
+      "filename": "test.yml",
+      "extension": ".yml",
+      "size_bytes": 549,
+      "line_count": null
+    },
+    {
+      "relative_path": ".github/workflows/lint.yml",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/workflows/lint.yml",
+      "filename": "lint.yml",
+      "extension": ".yml",
+      "size_bytes": 460,
+      "line_count": null
+    },
+    {
+      "relative_path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/ISSUE_TEMPLATE/bug_report.md",
+      "filename": "bug_report.md",
+      "extension": ".md",
+      "size_bytes": 254,
+      "line_count": 23
+    },
+    {
+      "relative_path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.github/ISSUE_TEMPLATE/feature_request.md",
+      "filename": "feature_request.md",
+      "extension": ".md",
+      "size_bytes": 242,
+      "line_count": 17
+    },
+    {
+      "relative_path": "simulation/dependency_simulator/dependency_simulator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/simulation/dependency_simulator/dependency_simulator.py",
+      "filename": "dependency_simulator.py",
+      "extension": ".py",
+      "size_bytes": 2545,
+      "line_count": 85
+    },
+    {
+      "relative_path": "simulation/namespace_simulator/namespace_simulator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/simulation/namespace_simulator/namespace_simulator.py",
+      "filename": "namespace_simulator.py",
+      "extension": ".py",
+      "size_bytes": 1623,
+      "line_count": 56
+    },
+    {
+      "relative_path": "simulation/repo_simulator/repo_simulator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/simulation/repo_simulator/repo_simulator.py",
+      "filename": "repo_simulator.py",
+      "extension": ".py",
+      "size_bytes": 166,
+      "line_count": 9
+    },
+    {
+      "relative_path": "simulation/import_simulator/import_simulator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/simulation/import_simulator/import_simulator.py",
+      "filename": "import_simulator.py",
+      "extension": ".py",
+      "size_bytes": 1933,
+      "line_count": 66
+    },
+    {
+      "relative_path": "simulation/runtime_simulator/runtime_simulator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/simulation/runtime_simulator/runtime_simulator.py",
+      "filename": "runtime_simulator.py",
+      "extension": ".py",
+      "size_bytes": 2668,
+      "line_count": 93
+    },
+    {
+      "relative_path": "configs/audit_configs/PRE_CRAWL_CHECKLIST.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/configs/audit_configs/PRE_CRAWL_CHECKLIST.md",
+      "filename": "PRE_CRAWL_CHECKLIST.md",
+      "extension": ".md",
+      "size_bytes": 9001,
+      "line_count": 182
+    },
+    {
+      "relative_path": "configs/repair_registry/FAILURE_TAXONOMY.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/configs/repair_registry/FAILURE_TAXONOMY.md",
+      "filename": "FAILURE_TAXONOMY.md",
+      "extension": ".md",
+      "size_bytes": 14793,
+      "line_count": 269
+    },
+    {
+      "relative_path": "configs/phase_maps/IMPLEMENTATION_SEQUENCE.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/configs/phase_maps/IMPLEMENTATION_SEQUENCE.md",
+      "filename": "IMPLEMENTATION_SEQUENCE.md",
+      "extension": ".md",
+      "size_bytes": 17742,
+      "line_count": 403
+    },
+    {
+      "relative_path": "schemas/CrawlMutationRecord.schema.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/schemas/CrawlMutationRecord.schema.json",
+      "filename": "CrawlMutationRecord.schema.json",
+      "extension": ".json",
+      "size_bytes": 496,
+      "line_count": null
+    },
+    {
+      "relative_path": "schemas/PhaseGate.schema.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/schemas/PhaseGate.schema.json",
+      "filename": "PhaseGate.schema.json",
+      "extension": ".json",
+      "size_bytes": 306,
+      "line_count": null
+    },
+    {
+      "relative_path": "schemas/QuarantineRecord.schema.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/schemas/QuarantineRecord.schema.json",
+      "filename": "QuarantineRecord.schema.json",
+      "extension": ".json",
+      "size_bytes": 324,
+      "line_count": null
+    },
+    {
+      "relative_path": "schemas/ValidationManifest.schema.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/schemas/ValidationManifest.schema.json",
+      "filename": "ValidationManifest.schema.json",
+      "extension": ".json",
+      "size_bytes": 292,
+      "line_count": null
+    },
+    {
+      "relative_path": "AUDIT_SYSTEM/analysis/repo_maps/repo_directory_tree.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AUDIT_SYSTEM/analysis/repo_maps/repo_directory_tree.json",
+      "filename": "repo_directory_tree.json",
+      "extension": ".json",
+      "size_bytes": 6524,
+      "line_count": null
+    },
+    {
+      "relative_path": "AUDIT_SYSTEM/analysis/repo_maps/module_index.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AUDIT_SYSTEM/analysis/repo_maps/module_index.json",
+      "filename": "module_index.json",
+      "extension": ".json",
+      "size_bytes": 235,
+      "line_count": null
+    },
+    {
+      "relative_path": "AUDIT_SYSTEM/analysis/repo_maps/repo_python_files.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AUDIT_SYSTEM/analysis/repo_maps/repo_python_files.json",
+      "filename": "repo_python_files.json",
+      "extension": ".json",
+      "size_bytes": 173,
+      "line_count": null
+    },
+    {
+      "relative_path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "filename": "repo_mapper.py",
+      "extension": ".py",
+      "size_bytes": 2447,
+      "line_count": 89
+    },
+    {
+      "relative_path": "targets/logos_targets.yaml",
+      "absolute_path": "/workspaces/ARCHON_PRIME/targets/logos_targets.yaml",
+      "filename": "logos_targets.yaml",
+      "extension": ".yaml",
+      "size_bytes": 160,
+      "line_count": null
+    },
+    {
+      "relative_path": ".vscode/settings.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.vscode/settings.json",
+      "filename": "settings.json",
+      "extension": ".json",
+      "size_bytes": 630,
+      "line_count": null
+    },
+    {
+      "relative_path": ".vscode/tasks.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.vscode/tasks.json",
+      "filename": "tasks.json",
+      "extension": ".json",
+      "size_bytes": 1955,
+      "line_count": null
+    },
+    {
+      "relative_path": ".vscode/extensions.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.vscode/extensions.json",
+      "filename": "extensions.json",
+      "extension": ".json",
+      "size_bytes": 351,
+      "line_count": null
+    },
+    {
+      "relative_path": "controllers/crawler_controller.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/crawler_controller.py",
+      "filename": "crawler_controller.py",
+      "extension": ".py",
+      "size_bytes": 9292,
+      "line_count": 264
+    },
+    {
+      "relative_path": "controllers/repair_controller.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/repair_controller.py",
+      "filename": "repair_controller.py",
+      "extension": ".py",
+      "size_bytes": 16068,
+      "line_count": 414
+    },
+    {
+      "relative_path": "controllers/pipeline_controller.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/pipeline_controller.py",
+      "filename": "pipeline_controller.py",
+      "extension": ".py",
+      "size_bytes": 20909,
+      "line_count": 539
+    },
+    {
+      "relative_path": "controllers/config_loader.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/config_loader.py",
+      "filename": "config_loader.py",
+      "extension": ".py",
+      "size_bytes": 1423,
+      "line_count": 45
+    },
+    {
+      "relative_path": "controllers/simulation_controller.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/simulation_controller.py",
+      "filename": "simulation_controller.py",
+      "extension": ".py",
+      "size_bytes": 9932,
+      "line_count": 280
+    },
+    {
+      "relative_path": "controllers/audit_controller.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/audit_controller.py",
+      "filename": "audit_controller.py",
+      "extension": ".py",
+      "size_bytes": 7401,
+      "line_count": 173
+    },
+    {
+      "relative_path": "controllers/analysis_controller.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/controllers/analysis_controller.py",
+      "filename": "analysis_controller.py",
+      "extension": ".py",
+      "size_bytes": 9555,
+      "line_count": 274
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/EXECUTION_AGENT_ROLE.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/EXECUTION_AGENT_ROLE.md",
+      "filename": "EXECUTION_AGENT_ROLE.md",
+      "extension": ".md",
+      "size_bytes": 13548,
+      "line_count": 298
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/AP_WORKFLOW_CONTEXT.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/AP_WORKFLOW_CONTEXT.md",
+      "filename": "AP_WORKFLOW_CONTEXT.md",
+      "extension": ".md",
+      "size_bytes": 33816,
+      "line_count": 709
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/AP_WORKFLOW_OVERVIEW.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/AP_WORKFLOW_OVERVIEW.md",
+      "filename": "AP_WORKFLOW_OVERVIEW.md",
+      "extension": ".md",
+      "size_bytes": 13291,
+      "line_count": 307
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/AP_VSCODE_PIPELINE_INTEGRATION.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/AP_VSCODE_PIPELINE_INTEGRATION.md",
+      "filename": "AP_VSCODE_PIPELINE_INTEGRATION.md",
+      "extension": ".md",
+      "size_bytes": 1712,
+      "line_count": 80
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+      "filename": "AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+      "extension": ".json",
+      "size_bytes": 2770,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_ENVIRONMENT_CONFIG.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_ENVIRONMENT_CONFIG.json",
+      "filename": "AP_ENV_ENVIRONMENT_CONFIG.json",
+      "extension": ".json",
+      "size_bytes": 4624,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_DIRECTORY_TREE.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_DIRECTORY_TREE.json",
+      "filename": "AP_ENV_DIRECTORY_TREE.json",
+      "extension": ".json",
+      "size_bytes": 18864,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_FILE_INDEX.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_FILE_INDEX.json",
+      "filename": "AP_ENV_FILE_INDEX.json",
+      "extension": ".json",
+      "size_bytes": 32040,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_AP_ARTIFACT_AUDIT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_AP_ARTIFACT_AUDIT.json",
+      "filename": "AP_ENV_AP_ARTIFACT_AUDIT.json",
+      "extension": ".json",
+      "size_bytes": 4941,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_FILETYPE_INDEX.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_FILETYPE_INDEX.json",
+      "filename": "AP_ENV_FILETYPE_INDEX.json",
+      "extension": ".json",
+      "size_bytes": 11479,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_FUNCTIONALITY_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_CONFIG/reports/AP_ENV_FUNCTIONALITY_REPORT.json",
+      "filename": "AP_ENV_FUNCTIONALITY_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 9312,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_HEADER_METADATA.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_HEADER_METADATA.json",
+      "filename": "AP_AUDIT_HEADER_METADATA.json",
+      "extension": ".json",
+      "size_bytes": 31556,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_ARTIFACT_FLOW.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_ARTIFACT_FLOW.json",
+      "filename": "AP_AUDIT_ARTIFACT_FLOW.json",
+      "extension": ".json",
+      "size_bytes": 3155,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/REPAIR_IMPORT_ERRORS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/REPAIR_IMPORT_ERRORS.json",
+      "filename": "REPAIR_IMPORT_ERRORS.json",
+      "extension": ".json",
+      "size_bytes": 89,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/pipeline_execution_manifest.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/pipeline_execution_manifest.json",
+      "filename": "pipeline_execution_manifest.json",
+      "extension": ".json",
+      "size_bytes": 889,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/CRAWLER_IMPORT_ERRORS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/CRAWLER_IMPORT_ERRORS.json",
+      "filename": "CRAWLER_IMPORT_ERRORS.json",
+      "extension": ".json",
+      "size_bytes": 90,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/crawler_orphan_report.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/crawler_orphan_report.json",
+      "filename": "crawler_orphan_report.json",
+      "extension": ".json",
+      "size_bytes": 14429,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/crawler_crawl_summary.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/crawler_crawl_summary.json",
+      "filename": "crawler_crawl_summary.json",
+      "extension": ".json",
+      "size_bytes": 9762,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/crawler_file_index.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/crawler_file_index.json",
+      "filename": "crawler_file_index.json",
+      "extension": ".json",
+      "size_bytes": 45389,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/ANALYSIS_IMPORT_ERRORS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/ANALYSIS_IMPORT_ERRORS.json",
+      "filename": "ANALYSIS_IMPORT_ERRORS.json",
+      "extension": ".json",
+      "size_bytes": 87,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/repair_plan.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/repair_plan.json",
+      "filename": "repair_plan.json",
+      "extension": ".json",
+      "size_bytes": 28953,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/pipeline_validation_manifest.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/pipeline_validation_manifest.json",
+      "filename": "pipeline_validation_manifest.json",
+      "extension": ".json",
+      "size_bytes": 226,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/PIPELINE_IMPORT_ERRORS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/PIPELINE_IMPORT_ERRORS.json",
+      "filename": "PIPELINE_IMPORT_ERRORS.json",
+      "extension": ".json",
+      "size_bytes": 95,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_DEPENDENCY_GRAPH.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_DEPENDENCY_GRAPH.json",
+      "filename": "AP_AUDIT_DEPENDENCY_GRAPH.json",
+      "extension": ".json",
+      "size_bytes": 22949,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+      "filename": "AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 1479,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+      "filename": "AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 3366,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_SIMULATION_SYSTEM.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_SIMULATION_SYSTEM.json",
+      "filename": "AP_AUDIT_SIMULATION_SYSTEM.json",
+      "extension": ".json",
+      "size_bytes": 1818,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_AUDIT_TOOLS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_AUDIT_TOOLS.json",
+      "filename": "AP_AUDIT_AUDIT_TOOLS.json",
+      "extension": ".json",
+      "size_bytes": 6855,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_FILE_INDEX.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_FILE_INDEX.json",
+      "filename": "AP_AUDIT_FILE_INDEX.json",
+      "extension": ".json",
+      "size_bytes": 24166,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_MODULE_FUNCTIONALITY.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_MODULE_FUNCTIONALITY.json",
+      "filename": "AP_AUDIT_MODULE_FUNCTIONALITY.json",
+      "extension": ".json",
+      "size_bytes": 20019,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+      "filename": "AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 3988,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+      "filename": "AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 3021,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_DIRECTORY_TREE.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_DIRECTORY_TREE.json",
+      "filename": "AP_AUDIT_DIRECTORY_TREE.json",
+      "extension": ".json",
+      "size_bytes": 19227,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/SIMULATION_IMPORT_ERRORS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/SIMULATION_IMPORT_ERRORS.json",
+      "filename": "SIMULATION_IMPORT_ERRORS.json",
+      "extension": ".json",
+      "size_bytes": 89,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+      "filename": "AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 3367,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_GAPS.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_GAPS.json",
+      "filename": "AP_AUDIT_GAPS.json",
+      "extension": ".json",
+      "size_bytes": 4150,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE0_FOUNDATION_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE0_FOUNDATION_REPORT.json",
+      "filename": "AP_STAGE0_FOUNDATION_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 2256,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/crawler_traversal_plan.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/crawler_traversal_plan.json",
+      "filename": "crawler_traversal_plan.json",
+      "extension": ".json",
+      "size_bytes": 14673,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_PIPELINE_WIRING.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_PIPELINE_WIRING.json",
+      "filename": "AP_AUDIT_PIPELINE_WIRING.json",
+      "extension": ".json",
+      "size_bytes": 3439,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_AUDIT_CRAWLER_SYSTEM.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_AUDIT_CRAWLER_SYSTEM.json",
+      "filename": "AP_AUDIT_CRAWLER_SYSTEM.json",
+      "extension": ".json",
+      "size_bytes": 2655,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+      "filename": "AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+      "extension": ".json",
+      "size_bytes": 3176,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/config_file_presence.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/config_file_presence.json",
+      "filename": "config_file_presence.json",
+      "extension": ".json",
+      "size_bytes": 1304,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/repo_completion_score.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/repo_completion_score.json",
+      "filename": "repo_completion_score.json",
+      "extension": ".json",
+      "size_bytes": 378,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/module_implementation_depth.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/module_implementation_depth.json",
+      "filename": "module_implementation_depth.json",
+      "extension": ".json",
+      "size_bytes": 1444,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/pipeline_stage_readiness.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/pipeline_stage_readiness.json",
+      "filename": "pipeline_stage_readiness.json",
+      "extension": ".json",
+      "size_bytes": 4991,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/_run_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/_run_audit.py",
+      "filename": "_run_audit.py",
+      "extension": ".py",
+      "size_bytes": 52449,
+      "line_count": 1306
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/prior_audit_verification.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/prior_audit_verification.json",
+      "filename": "prior_audit_verification.json",
+      "extension": ".json",
+      "size_bytes": 4334,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/subsystem_completion_metrics.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/subsystem_completion_metrics.json",
+      "filename": "subsystem_completion_metrics.json",
+      "extension": ".json",
+      "size_bytes": 3907,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/ap_repo_mechanical_audit_report.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/ap_repo_mechanical_audit_report.md",
+      "filename": "ap_repo_mechanical_audit_report.md",
+      "extension": ".md",
+      "size_bytes": 12464,
+      "line_count": 143
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/step_failures.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/step_failures.json",
+      "filename": "step_failures.json",
+      "extension": ".json",
+      "size_bytes": 2,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/spec_module_inventory.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/spec_module_inventory.json",
+      "filename": "spec_module_inventory.json",
+      "extension": ".json",
+      "size_bytes": 13110,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/module_presence_matrix.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/module_presence_matrix.json",
+      "filename": "module_presence_matrix.json",
+      "extension": ".json",
+      "size_bytes": 9345,
+      "line_count": null
+    },
+    {
+      "relative_path": "AP_SYSTEM_AUDIT/Complettion_Audit/repo_file_inventory.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/repo_file_inventory.json",
+      "filename": "repo_file_inventory.json",
+      "extension": ".json",
+      "size_bytes": 55041,
+      "line_count": null
+    },
+    {
+      "relative_path": "orchestration/OUTPUT_ROUTING_TABLE.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/orchestration/OUTPUT_ROUTING_TABLE.md",
+      "filename": "OUTPUT_ROUTING_TABLE.md",
+      "extension": ".md",
+      "size_bytes": 16713,
+      "line_count": 382
+    },
+    {
+      "relative_path": "orchestration/json_drivers/ARTIFACT_SCHEMAS.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/orchestration/json_drivers/ARTIFACT_SCHEMAS.md",
+      "filename": "ARTIFACT_SCHEMAS.md",
+      "extension": ".md",
+      "size_bytes": 19663,
+      "line_count": 708
+    },
+    {
+      "relative_path": "tools/MODULE_INVENTORY.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/MODULE_INVENTORY.md",
+      "filename": "MODULE_INVENTORY.md",
+      "extension": ".md",
+      "size_bytes": 24221,
+      "line_count": 538
+    },
+    {
+      "relative_path": "tools/repo_mapping/repo_scanner.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/repo_mapping/repo_scanner.py",
+      "filename": "repo_scanner.py",
+      "extension": ".py",
+      "size_bytes": 443,
+      "line_count": 20
+    },
+    {
+      "relative_path": "tools/normalization_tools/header_validator.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/normalization_tools/header_validator.py",
+      "filename": "header_validator.py",
+      "extension": ".py",
+      "size_bytes": 338,
+      "line_count": 14
+    },
+    {
+      "relative_path": "tools/governance_analysis/governance_scanner.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/governance_analysis/governance_scanner.py",
+      "filename": "governance_scanner.py",
+      "extension": ".py",
+      "size_bytes": 243,
+      "line_count": 12
+    },
+    {
+      "relative_path": "tools/audit_tools/import_surface_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/import_surface_audit.py",
+      "filename": "import_surface_audit.py",
+      "extension": ".py",
+      "size_bytes": 791,
+      "line_count": 29
+    },
+    {
+      "relative_path": "tools/audit_tools/run_governance_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/run_governance_audit.py",
+      "filename": "run_governance_audit.py",
+      "extension": ".py",
+      "size_bytes": 317,
+      "line_count": 20
+    },
+    {
+      "relative_path": "tools/audit_tools/unused_import_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/unused_import_audit.py",
+      "filename": "unused_import_audit.py",
+      "extension": ".py",
+      "size_bytes": 951,
+      "line_count": 40
+    },
+    {
+      "relative_path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/cross_package_dependency_audit.py",
+      "filename": "cross_package_dependency_audit.py",
+      "extension": ".py",
+      "size_bytes": 824,
+      "line_count": 34
+    },
+    {
+      "relative_path": "tools/audit_tools/header_schema_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/header_schema_audit.py",
+      "filename": "header_schema_audit.py",
+      "extension": ".py",
+      "size_bytes": 442,
+      "line_count": 21
+    },
+    {
+      "relative_path": "tools/audit_tools/governance_module_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/governance_module_audit.py",
+      "filename": "governance_module_audit.py",
+      "extension": ".py",
+      "size_bytes": 817,
+      "line_count": 47
+    },
+    {
+      "relative_path": "tools/audit_tools/runtime_entry_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/runtime_entry_audit.py",
+      "filename": "runtime_entry_audit.py",
+      "extension": ".py",
+      "size_bytes": 442,
+      "line_count": 21
+    },
+    {
+      "relative_path": "tools/audit_tools/governance_contract_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/governance_contract_audit.py",
+      "filename": "governance_contract_audit.py",
+      "extension": ".py",
+      "size_bytes": 979,
+      "line_count": 50
+    },
+    {
+      "relative_path": "tools/audit_tools/facade_bypass_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/facade_bypass_audit.py",
+      "filename": "facade_bypass_audit.py",
+      "extension": ".py",
+      "size_bytes": 784,
+      "line_count": 34
+    },
+    {
+      "relative_path": "tools/audit_tools/symbol_collision_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/symbol_collision_audit.py",
+      "filename": "symbol_collision_audit.py",
+      "extension": ".py",
+      "size_bytes": 936,
+      "line_count": 38
+    },
+    {
+      "relative_path": "tools/audit_tools/circular_dependency_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/circular_dependency_audit.py",
+      "filename": "circular_dependency_audit.py",
+      "extension": ".py",
+      "size_bytes": 1058,
+      "line_count": 45
+    },
+    {
+      "relative_path": "tools/audit_tools/namespace_shadow_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/namespace_shadow_audit.py",
+      "filename": "namespace_shadow_audit.py",
+      "extension": ".py",
+      "size_bytes": 556,
+      "line_count": 27
+    },
+    {
+      "relative_path": "tools/audit_tools/file_size_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/file_size_audit.py",
+      "filename": "file_size_audit.py",
+      "extension": ".py",
+      "size_bytes": 463,
+      "line_count": 22
+    },
+    {
+      "relative_path": "tools/audit_tools/governance_coverage_map.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/governance_coverage_map.py",
+      "filename": "governance_coverage_map.py",
+      "extension": ".py",
+      "size_bytes": 1229,
+      "line_count": 50
+    },
+    {
+      "relative_path": "tools/audit_tools/duplicate_module_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/duplicate_module_audit.py",
+      "filename": "duplicate_module_audit.py",
+      "extension": ".py",
+      "size_bytes": 525,
+      "line_count": 26
+    },
+    {
+      "relative_path": "tools/audit_tools/run_audit_suite.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/run_audit_suite.py",
+      "filename": "run_audit_suite.py",
+      "extension": ".py",
+      "size_bytes": 979,
+      "line_count": 38
+    },
+    {
+      "relative_path": "tools/audit_tools/orphan_module_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/orphan_module_audit.py",
+      "filename": "orphan_module_audit.py",
+      "extension": ".py",
+      "size_bytes": 766,
+      "line_count": 38
+    },
+    {
+      "relative_path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/module_path_ambiguity_audit.py",
+      "filename": "module_path_ambiguity_audit.py",
+      "extension": ".py",
+      "size_bytes": 619,
+      "line_count": 29
+    },
+    {
+      "relative_path": "tools/audit_tools/audit_utils.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/audit_tools/audit_utils.py",
+      "filename": "audit_utils.py",
+      "extension": ".py",
+      "size_bytes": 853,
+      "line_count": 37
+    },
+    {
+      "relative_path": "tools/runtime_analysis/dependency_graph.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/runtime_analysis/dependency_graph.py",
+      "filename": "dependency_graph.py",
+      "extension": ".py",
+      "size_bytes": 327,
+      "line_count": 15
+    },
+    {
+      "relative_path": "tools/import_analysis/import_scanner.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/tools/import_analysis/import_scanner.py",
+      "filename": "import_scanner.py",
+      "extension": ".py",
+      "size_bytes": 646,
+      "line_count": 27
+    },
+    {
+      "relative_path": "utils/logger.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/utils/logger.py",
+      "filename": "logger.py",
+      "extension": ".py",
+      "size_bytes": 362,
+      "line_count": 16
+    },
+    {
+      "relative_path": "config/simulation_config.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/config/simulation_config.json",
+      "filename": "simulation_config.json",
+      "extension": ".json",
+      "size_bytes": 160,
+      "line_count": null
+    },
+    {
+      "relative_path": "config/repair_config.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/config/repair_config.json",
+      "filename": "repair_config.json",
+      "extension": ".json",
+      "size_bytes": 131,
+      "line_count": null
+    },
+    {
+      "relative_path": "config/crawl_config.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/config/crawl_config.json",
+      "filename": "crawl_config.json",
+      "extension": ".json",
+      "size_bytes": 160,
+      "line_count": null
+    },
+    {
+      "relative_path": ".devcontainer/devcontainer.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/.devcontainer/devcontainer.json",
+      "filename": "devcontainer.json",
+      "extension": ".json",
+      "size_bytes": 941,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/I2/I2_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/I2/I2_Design_Specification_v1.md",
+      "filename": "I2_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 38754,
+      "line_count": 1042
+    },
+    {
+      "relative_path": "Designs_and_Guides/I2/I2_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/I2/I2_Implementation_Guide_v1.md",
+      "filename": "I2_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 54518,
+      "line_count": 1661
+    },
+    {
+      "relative_path": "Designs_and_Guides/MTP/MTP_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/MTP/MTP_Design_Specification_v1.md",
+      "filename": "MTP_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 23741,
+      "line_count": 713
+    },
+    {
+      "relative_path": "Designs_and_Guides/MTP/MTP_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/MTP/MTP_Implementation_Guide_v1.md",
+      "filename": "MTP_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 34390,
+      "line_count": 1138
+    },
+    {
+      "relative_path": "Designs_and_Guides/Epistemic_Artifacts/EA_System_Design_Spec_V1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Epistemic_Artifacts/EA_System_Design_Spec_V1.md",
+      "filename": "EA_System_Design_Spec_V1.md",
+      "extension": ".md",
+      "size_bytes": 44882,
+      "line_count": 826
+    },
+    {
+      "relative_path": "Designs_and_Guides/Epistemic_Artifacts/EA_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Epistemic_Artifacts/EA_Implementation_Guide_v1.md",
+      "filename": "EA_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 30550,
+      "line_count": 931
+    },
+    {
+      "relative_path": "Designs_and_Guides/ARP/ARP_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/ARP/ARP_Design_Specification_v1.md",
+      "filename": "ARP_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 37606,
+      "line_count": 993
+    },
+    {
+      "relative_path": "Designs_and_Guides/ARP/ARP_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/ARP/ARP_Implementation_Guide_v1.md",
+      "filename": "ARP_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 52796,
+      "line_count": 1612
+    },
+    {
+      "relative_path": "Designs_and_Guides/RGE/RGE_Design_Spec.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/RGE/RGE_Design_Spec.md",
+      "filename": "RGE_Design_Spec.md",
+      "extension": ".md",
+      "size_bytes": 59166,
+      "line_count": 850
+    },
+    {
+      "relative_path": "Designs_and_Guides/RGE/RGE_Implentation_Guide.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/RGE/RGE_Implentation_Guide.md",
+      "filename": "RGE_Implentation_Guide.md",
+      "extension": ".md",
+      "size_bytes": 44001,
+      "line_count": 796
+    },
+    {
+      "relative_path": "Designs_and_Guides/MSPC/MSPC_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/MSPC/MSPC_Implementation_Guide_v1.md",
+      "filename": "MSPC_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 36625,
+      "line_count": 1287
+    },
+    {
+      "relative_path": "Designs_and_Guides/MSPC/MSPC_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/MSPC/MSPC_Design_Specification_v1.md",
+      "filename": "MSPC_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 19398,
+      "line_count": 542
+    },
+    {
+      "relative_path": "Designs_and_Guides/COMPLIANCE_REPORTS/P1_P4_Compliance_Audit_Report.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/COMPLIANCE_REPORTS/P1_P4_Compliance_Audit_Report.json",
+      "filename": "P1_P4_Compliance_Audit_Report.json",
+      "extension": ".json",
+      "size_bytes": 32607,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Logos_Core/Logos_Core_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Logos_Core/Logos_Core_Design_Specification_v1.md",
+      "filename": "Logos_Core_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 38850,
+      "line_count": 797
+    },
+    {
+      "relative_path": "Designs_and_Guides/Logos_Core/MSPC_Promotion.txt",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Logos_Core/MSPC_Promotion.txt",
+      "filename": "MSPC_Promotion.txt",
+      "extension": ".txt",
+      "size_bytes": 11545,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Logos_Core/Logos_Core_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Logos_Core/Logos_Core_Implementation_Guide_v1.md",
+      "filename": "Logos_Core_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 25075,
+      "line_count": 895
+    },
+    {
+      "relative_path": "Designs_and_Guides/AP/AP_Implementation_Guide_IMPL001_v1.docx",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/AP_Implementation_Guide_IMPL001_v1.docx",
+      "filename": "AP_Implementation_Guide_IMPL001_v1.docx",
+      "extension": ".docx",
+      "size_bytes": 26107,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/AP/SPEC-003_AP_Repair_Validation_Layer_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/SPEC-003_AP_Repair_Validation_Layer_v1.md",
+      "filename": "SPEC-003_AP_Repair_Validation_Layer_v1.md",
+      "extension": ".md",
+      "size_bytes": 33625,
+      "line_count": 809
+    },
+    {
+      "relative_path": "Designs_and_Guides/AP/IMPL-002_AP_Repair_Validation_Layer_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/IMPL-002_AP_Repair_Validation_Layer_v1.md",
+      "filename": "IMPL-002_AP_Repair_Validation_Layer_v1.md",
+      "extension": ".md",
+      "size_bytes": 46305,
+      "line_count": 1032
+    },
+    {
+      "relative_path": "Designs_and_Guides/AP/AP_ENV_CONFIG_OPS002_v1.docx",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/AP_ENV_CONFIG_OPS002_v1.docx",
+      "filename": "AP_ENV_CONFIG_OPS002_v1.docx",
+      "extension": ".docx",
+      "size_bytes": 16542,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/AP/AP_Design_Spec_SPEC001_v1.docx",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP/AP_Design_Spec_SPEC001_v1.docx",
+      "filename": "AP_Design_Spec_SPEC001_v1.docx",
+      "extension": ".docx",
+      "size_bytes": 29770,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/repo_directory_tree.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/repo_directory_tree.json",
+      "filename": "repo_directory_tree.json",
+      "extension": ".json",
+      "size_bytes": 71162,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/repo_imports.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/repo_imports.json",
+      "filename": "repo_imports.json",
+      "extension": ".json",
+      "size_bytes": 1525279,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/Deep_Import_Violations.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Deep_Import_Violations.json",
+      "filename": "Deep_Import_Violations.json",
+      "extension": ".json",
+      "size_bytes": 86408,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/repo_symbol_imports.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/repo_symbol_imports.json",
+      "filename": "repo_symbol_imports.json",
+      "extension": ".json",
+      "size_bytes": 3179212,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Blueprint.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Blueprint.md",
+      "filename": "Canonical_Import_Facade_Blueprint.md",
+      "extension": ".md",
+      "size_bytes": 51203,
+      "line_count": 1439
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Integration_Plan.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Integration_Plan.md",
+      "filename": "Canonical_Import_Facade_Integration_Plan.md",
+      "extension": ".md",
+      "size_bytes": 17644,
+      "line_count": 333
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/runtime_surface_audit.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/runtime_surface_audit.json",
+      "filename": "runtime_surface_audit.json",
+      "extension": ".json",
+      "size_bytes": 732827,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/repo_python_files.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/repo_python_files.json",
+      "filename": "repo_python_files.json",
+      "extension": ".json",
+      "size_bytes": 290002,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "filename": "repo_structure_export.py",
+      "extension": ".py",
+      "size_bytes": 2070,
+      "line_count": 55
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "filename": "generate_symbol_import_index.py",
+      "extension": ".py",
+      "size_bytes": 4803,
+      "line_count": 139
+    },
+    {
+      "relative_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "filename": "generate_deep_import_violations.py",
+      "extension": ".py",
+      "size_bytes": 4891,
+      "line_count": 141
+    },
+    {
+      "relative_path": "Designs_and_Guides/EMP/EMP_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/EMP/EMP_Implementation_Guide_v1.md",
+      "filename": "EMP_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 34523,
+      "line_count": 1212
+    },
+    {
+      "relative_path": "Designs_and_Guides/EMP/EMP_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/EMP/EMP_Design_Specification_v1.md",
+      "filename": "EMP_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 18977,
+      "line_count": 548
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/M6_Implementation_Blueprint.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/M6_Implementation_Blueprint.md",
+      "filename": "M6_Implementation_Blueprint.md",
+      "extension": ".md",
+      "size_bytes": 28159,
+      "line_count": 689
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/LOGOS_V1_Operational_Readiness_Blueprint.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_Operational_Readiness_Blueprint.md",
+      "filename": "LOGOS_V1_Operational_Readiness_Blueprint.md",
+      "extension": ".md",
+      "size_bytes": 28277,
+      "line_count": 542
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+      "filename": "LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+      "extension": ".md",
+      "size_bytes": 41949,
+      "line_count": 1150
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/LOGOS_V1_P3_Integration_Wiring_Spec.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P3_Integration_Wiring_Spec.md",
+      "filename": "LOGOS_V1_P3_Integration_Wiring_Spec.md",
+      "extension": ".md",
+      "size_bytes": 36661,
+      "line_count": 931
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/LOGOS_V1_P5_Documentation_Closure_Spec.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P5_Documentation_Closure_Spec.md",
+      "filename": "LOGOS_V1_P5_Documentation_Closure_Spec.md",
+      "extension": ".md",
+      "size_bytes": 25534,
+      "line_count": 721
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/LOGOS_V1_P1_Runtime_Activation_Spec.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P1_Runtime_Activation_Spec.md",
+      "filename": "LOGOS_V1_P1_Runtime_Activation_Spec.md",
+      "extension": ".md",
+      "size_bytes": 46296,
+      "line_count": 1283
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/LOGOS_V1_P4_Hardening_Validation_Spec.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/LOGOS_V1_P4_Hardening_Validation_Spec.md",
+      "filename": "LOGOS_V1_P4_Hardening_Validation_Spec.md",
+      "extension": ".md",
+      "size_bytes": 36118,
+      "line_count": 888
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/Audits/P1_P4_Compliance_Audit_Report.json",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/Audits/P1_P4_Compliance_Audit_Report.json",
+      "filename": "P1_P4_Compliance_Audit_Report.json",
+      "extension": ".json",
+      "size_bytes": 32607,
+      "line_count": null
+    },
+    {
+      "relative_path": "Designs_and_Guides/P1-5/Audits/p1-4_audit_vs_code.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/P1-5/Audits/p1-4_audit_vs_code.md",
+      "filename": "p1-4_audit_vs_code.md",
+      "extension": ".md",
+      "size_bytes": 79737,
+      "line_count": 1726
+    },
+    {
+      "relative_path": "Designs_and_Guides/SOP/SOP_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/SOP/SOP_Design_Specification_v1.md",
+      "filename": "SOP_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 26214,
+      "line_count": 538
+    },
+    {
+      "relative_path": "Designs_and_Guides/SOP/SOP_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/SOP/SOP_Implementation_Guide_v1.md",
+      "filename": "SOP_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 26650,
+      "line_count": 957
+    },
+    {
+      "relative_path": "Designs_and_Guides/SCP/SCP_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/SCP/SCP_Design_Specification_v1.md",
+      "filename": "SCP_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 21042,
+      "line_count": 613
+    },
+    {
+      "relative_path": "Designs_and_Guides/SCP/SCP_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/SCP/SCP_Implementation_Guide_v1.md",
+      "filename": "SCP_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 37644,
+      "line_count": 1151
+    },
+    {
+      "relative_path": "Designs_and_Guides/DRAC/DRAC_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/DRAC/DRAC_Implementation_Guide_v1.md",
+      "filename": "DRAC_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 25062,
+      "line_count": 841
+    },
+    {
+      "relative_path": "Designs_and_Guides/DRAC/DRAC_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/DRAC/DRAC_Design_Specification_v1.md",
+      "filename": "DRAC_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 16788,
+      "line_count": 441
+    },
+    {
+      "relative_path": "Designs_and_Guides/CSP/CSP_Design_Specification_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/CSP/CSP_Design_Specification_v1.md",
+      "filename": "CSP_Design_Specification_v1.md",
+      "extension": ".md",
+      "size_bytes": 17832,
+      "line_count": 370
+    },
+    {
+      "relative_path": "Designs_and_Guides/CSP/CSP_Implementation_Guide_v1.md",
+      "absolute_path": "/workspaces/ARCHON_PRIME/Designs_and_Guides/CSP/CSP_Implementation_Guide_v1.md",
+      "filename": "CSP_Implementation_Guide_v1.md",
+      "extension": ".md",
+      "size_bytes": 19781,
+      "line_count": 730
+    }
+  ]
+}

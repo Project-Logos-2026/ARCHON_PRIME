@@ -1,0 +1,706 @@
+{
+  "report_metadata": {
+    "generated": "2026-03-09",
+    "repository": "Project-Logos-2026/ARCHON_PRIME",
+    "branch": "main",
+    "audit_scope": "read_only",
+    "auditor": "GitHub Copilot automated environment audit"
+  },
+  "workspace_configuration": {
+    "file": ".vscode/settings.json",
+    "settings": {
+      "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+      "editor.formatOnSave": true,
+      "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+      },
+      "ruff.enable": true,
+      "ruff.organizeImports": true,
+      "mypy-type-checker.enabled": true,
+      "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true
+      },
+      "python.testing.pytestEnabled": true,
+      "python.testing.pytestArgs": [
+        "tests/"
+      ],
+      "coverage-gutters.coverageFileNames": [
+        "coverage.xml"
+      ],
+      "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
+      }
+    },
+    "classified": {
+      "python_runtime": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python"
+      },
+      "formatting": {
+        "editor.formatOnSave": true,
+        "[python].editor.defaultFormatter": "ms-python.black-formatter"
+      },
+      "linting": {
+        "ruff.enable": true,
+        "ruff.organizeImports": true,
+        "mypy-type-checker.enabled": true
+      },
+      "terminal": {},
+      "editor_behavior": {
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/.pytest_cache": true
+        }
+      },
+      "extensions": {
+        "coverage-gutters.coverageFileNames": [
+          "coverage.xml"
+        ],
+        "yaml.schemas": {
+          "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
+        }
+      },
+      "other": {
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": [
+          "tests/"
+        ]
+      }
+    },
+    "diagnostics": {
+      "interpreter_path_raw": "${workspaceFolder}/venv/bin/python",
+      "interpreter_path_resolved": "/workspaces/ARCHON_PRIME/venv/bin/python",
+      "interpreter_path_exists": true,
+      "interpreter_real_path": "/usr/local/bin/python3.12",
+      "previous_broken_path": "${workspaceFolder}/.venv/bin/python",
+      "path_corrected_in_session": true,
+      "conflict_with_devcontainer_interpreter": true,
+      "conflict_detail": "devcontainer.json sets python.defaultInterpreterPath=/usr/local/bin/python; workspace overrides to venv/bin/python (symlink to same binary \u2014 functionally equivalent but different activation semantics)",
+      "terminal_accessibility_setting_visible": false,
+      "terminal_accessibility_note": "terminal.integrated.accessibleViewFocusOnCommandExecution not set in workspace settings; lives in client-side user settings \u2014 inaccessible from container"
+    }
+  },
+  "devcontainer_configuration": {
+    "file": ".devcontainer/devcontainer.json",
+    "container_image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "remote_user": "vscode",
+    "post_create_command": "pip install -r requirements.txt",
+    "features": {
+      "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    "forward_ports": [],
+    "vscode_extensions": [
+      "ms-python.python",
+      "ms-python.pylance",
+      "charliermarsh.ruff",
+      "ms-python.black-formatter",
+      "ryanluker.vscode-coverage-gutters",
+      "eamodio.gitlens",
+      "ms-python.mypy-type-checker",
+      "redhat.vscode-yaml",
+      "ZainChen.json"
+    ],
+    "vscode_settings": {
+      "python.defaultInterpreterPath": "/usr/local/bin/python",
+      "editor.formatOnSave": true,
+      "python.formatting.provider": "black",
+      "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+      },
+      "ruff.enable": true
+    },
+    "python_interpreter_configuration": "/usr/local/bin/python",
+    "compatibility_check": {
+      "python_3_12": {
+        "status": "PASS",
+        "detail": "Image mcr.microsoft.com/devcontainers/python:3.12 provides Python 3.12.12"
+      },
+      "ruff": {
+        "status": "PASS",
+        "detail": "charliermarsh.ruff extension declared; ruff 0.15.5 installed in system site-packages"
+      },
+      "black": {
+        "status": "PASS",
+        "detail": "ms-python.black-formatter declared; black 26.3.0 installed"
+      },
+      "mypy": {
+        "status": "PASS",
+        "detail": "ms-python.mypy-type-checker declared; mypy 1.19.1 installed"
+      },
+      "pytest": {
+        "status": "PASS",
+        "detail": "pytest 9.0.2 and pytest-cov 7.0.0 installed"
+      },
+      "deprecated_setting": {
+        "status": "WARN",
+        "detail": "python.formatting.provider=black is deprecated since Black extension handles formatting; not harmful but redundant"
+      }
+    }
+  },
+  "python_runtime_status": {
+    "system_python_version": "3.12.12",
+    "system_python_path": "/usr/local/bin/python",
+    "system_python3_path": "/usr/local/bin/python3",
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "environments": {
+      "venv": {
+        "path": "/workspaces/ARCHON_PRIME/venv",
+        "exists": true,
+        "python_symlink": "venv/bin/python -> python3 -> /usr/local/bin/python3.12",
+        "python_version": "3.12.12",
+        "include_system_site_packages": false,
+        "created_by": "python3 -m venv /workspaces/ARCHON_PRIME/venv",
+        "packages_installed": [
+          {
+            "name": "pip",
+            "version": "25.0.1"
+          }
+        ],
+        "requirements_txt_installed": false,
+        "origin": "Manually created during Alpine recovery session; not part of devcontainer setup",
+        "is_active": false,
+        "referenced_by_workspace_settings": true
+      },
+      ".venv": {
+        "path": "/workspaces/ARCHON_PRIME/.venv",
+        "exists": false,
+        "origin": "Was referenced by .vscode/settings.json (now corrected to venv/)",
+        "is_active": false,
+        "referenced_by_workspace_settings": false
+      }
+    },
+    "active_interpreter": {
+      "VIRTUAL_ENV": "",
+      "which_python": "/usr/local/bin/python",
+      "which_python3": "/usr/local/bin/python3",
+      "effective_python": "/usr/local/bin/python (system, no venv active in audited terminal)"
+    },
+    "configured_interpreter_path": "${workspaceFolder}/venv/bin/python",
+    "system_site_packages": [
+      {
+        "name": "attrs",
+        "version": "25.4.0"
+      },
+      {
+        "name": "bandit",
+        "version": "1.9.4"
+      },
+      {
+        "name": "black",
+        "version": "26.3.0"
+      },
+      {
+        "name": "click",
+        "version": "8.3.1"
+      },
+      {
+        "name": "coverage",
+        "version": "7.13.4"
+      },
+      {
+        "name": "gitdb",
+        "version": "4.0.12"
+      },
+      {
+        "name": "GitPython",
+        "version": "3.1.41"
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.0"
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.26.0"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "librt",
+        "version": "0.8.1"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "mypy",
+        "version": "1.19.1"
+      },
+      {
+        "name": "mypy_extensions",
+        "version": "1.1.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0"
+      },
+      {
+        "name": "pathspec",
+        "version": "1.0.4"
+      },
+      {
+        "name": "pip",
+        "version": "25.0.1"
+      },
+      {
+        "name": "platformdirs",
+        "version": "4.9.4"
+      },
+      {
+        "name": "pluggy",
+        "version": "1.6.0"
+      },
+      {
+        "name": "Pygments",
+        "version": "2.19.2"
+      },
+      {
+        "name": "pytest",
+        "version": "9.0.2"
+      },
+      {
+        "name": "pytest-cov",
+        "version": "7.0.0"
+      },
+      {
+        "name": "pytokens",
+        "version": "0.4.1"
+      },
+      {
+        "name": "PyYAML",
+        "version": "6.0.3"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "rpds-py",
+        "version": "0.30.0"
+      },
+      {
+        "name": "ruff",
+        "version": "0.15.5"
+      },
+      {
+        "name": "setuptools",
+        "version": "78.1.1"
+      },
+      {
+        "name": "smmap",
+        "version": "5.0.2"
+      },
+      {
+        "name": "stevedore",
+        "version": "5.7.0"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.15.0"
+      }
+    ],
+    "requirements_txt_satisfied": {
+      "jsonschema>=4.0": {
+        "installed": "4.26.0",
+        "status": "PASS"
+      },
+      "PyYAML>=6.0": {
+        "installed": "6.0.3",
+        "status": "PASS"
+      },
+      "GitPython>=3.1": {
+        "installed": "3.1.41",
+        "status": "PASS"
+      },
+      "pytest>=7.0": {
+        "installed": "9.0.2",
+        "status": "PASS"
+      },
+      "pytest-cov>=4.0": {
+        "installed": "7.0.0",
+        "status": "PASS"
+      },
+      "black>=24.0": {
+        "installed": "26.3.0",
+        "status": "PASS"
+      },
+      "ruff>=0.4": {
+        "installed": "0.15.5",
+        "status": "PASS"
+      },
+      "mypy>=1.0": {
+        "installed": "1.19.1",
+        "status": "PASS"
+      },
+      "bandit>=1.7": {
+        "installed": "1.9.4",
+        "status": "PASS"
+      }
+    }
+  },
+  "git_repository_hygiene": {
+    "gitignore_present": true,
+    "gitignore_path": ".gitignore",
+    "gitignore_rules_verified": {
+      "venv/": {
+        "ignored": true,
+        "rule": ".gitignore:2:venv/"
+      },
+      ".venv/": {
+        "ignored": true,
+        "rule": ".gitignore:3:.venv/"
+      },
+      "__pycache__/": {
+        "ignored": true,
+        "rule": ".gitignore:8:__pycache__/"
+      },
+      "*.pyc": {
+        "ignored": true,
+        "rule": ".gitignore:9:*.pyc"
+      }
+    },
+    "requirements_txt_present": true,
+    "github_actions_workflows": [
+      "ap_validation.yml",
+      "lint.yml",
+      "packet_validation.yml",
+      "test.yml"
+    ],
+    "tracked_file_count": 219,
+    "untracked_file_count": 5,
+    "untracked_files": [
+      {
+        "path": ".gitignore",
+        "note": "New file \u2014 added this session, not yet committed"
+      },
+      {
+        "path": "AP_SYSTEM_AUDIT/Complettion_Audit/",
+        "note": "Audit artifacts \u2014 intentional, not ignored"
+      },
+      {
+        "path": "AP_SYSTEM_AUDIT/source_control_changes_report.json",
+        "note": "Session audit artifact"
+      },
+      {
+        "path": "AP_SYSTEM_AUDIT/source_control_changes_report.md",
+        "note": "Session audit artifact"
+      }
+    ],
+    "modified_tracked_files": [
+      {
+        "path": ".vscode/settings.json",
+        "status": "M",
+        "detail": "python.defaultInterpreterPath corrected from .venv/ to venv/ this session"
+      }
+    ],
+    "venv_files_in_untracked": false,
+    "venv_files_ignored_correctly": true,
+    "hygiene_score": "GOOD",
+    "hygiene_notes": "venv/ properly excluded. 5 pending changes are all intentional session artifacts. No junk committed."
+  },
+  "terminal_environment": {
+    "SHELL": "/bin/bash",
+    "HOME": "/home/vscode",
+    "TERM": "xterm-256color",
+    "COLORTERM": "truecolor",
+    "VIRTUAL_ENV": "",
+    "DISPLAY": "",
+    "DBUS_SESSION_BUS_ADDRESS": "",
+    "which_python": "/usr/local/bin/python",
+    "which_python3": "/usr/local/bin/python3",
+    "PATH_entries": [
+      "/home/vscode/.vscode-remote/data/User/globalStorage/github.copilot-chat/debugCommand",
+      "/home/vscode/.vscode-remote/data/User/globalStorage/github.copilot-chat/copilotCli",
+      "/vscode/bin/linux-x64/ce099c1ed25d9eb3076c11e4a280f3eb52b4fbeb/bin/remote-cli",
+      "/usr/local/python/current/bin",
+      "/usr/local/py-utils/bin",
+      "/usr/local/jupyter",
+      "/usr/local/share/nvm/current/bin",
+      "/usr/local/bin",
+      "/usr/local/sbin",
+      "/usr/sbin",
+      "/usr/bin",
+      "/sbin",
+      "/bin",
+      "/home/vscode/.local/bin",
+      "/home/vscode/.vscode-remote/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts"
+    ],
+    "shell_integration": {
+      "scripts_found": 21,
+      "script_type": "shellIntegration-bash.sh",
+      "status": "PRESENT \u2014 shell integration active"
+    },
+    "accessibility": {
+      "DISPLAY": "empty \u2014 no X11",
+      "DBUS_SESSION_BUS_ADDRESS": "empty \u2014 no D-Bus",
+      "AT_accessibility_env_vars": "none detected",
+      "server_side_accessibility_mode": false,
+      "accessible_view_redirect": {
+        "observed": true,
+        "cause": "terminal.integrated.accessibleViewFocusOnCommandExecution=true (client-side user settings \u2014 not visible from container)",
+        "status": "UNRESOLVED \u2014 requires client-side VS Code settings change"
+      }
+    }
+  },
+  "extension_inventory": [
+    {
+      "id": "charliermarsh.ruff",
+      "version": "2026.36.0",
+      "category": "linting",
+      "status": "ACTIVE",
+      "note": "Ruff linter/formatter \u2014 primary linting tool"
+    },
+    {
+      "id": "dbaeumer.vscode-eslint",
+      "version": "3.0.24",
+      "category": "linting",
+      "status": "ACTIVE",
+      "note": "ESLint \u2014 JavaScript only; no conflict with Python workflow"
+    },
+    {
+      "id": "eamodio.gitlens",
+      "version": "17.11.0",
+      "category": "git",
+      "status": "ACTIVE",
+      "note": "Git history/blame overlay"
+    },
+    {
+      "id": "github.codespaces",
+      "version": "1.18.5",
+      "category": "codespaces_infrastructure",
+      "status": "ACTIVE",
+      "note": "Codespaces management \u2014 required"
+    },
+    {
+      "id": "github.copilot-chat",
+      "version": "0.39.0",
+      "category": "editor_utilities",
+      "status": "ACTIVE",
+      "note": "AI assistant"
+    },
+    {
+      "id": "github.github-vscode-theme",
+      "version": "6.3.5",
+      "category": "editor_utilities",
+      "status": "ACTIVE",
+      "note": "Theme \u2014 no impact on tooling"
+    },
+    {
+      "id": "github.vscode-pull-request-github",
+      "version": "0.132.0",
+      "category": "git",
+      "status": "ACTIVE",
+      "note": "GitHub PR integration"
+    },
+    {
+      "id": "ms-python.autopep8",
+      "version": "2025.2.0",
+      "category": "formatting",
+      "status": "INSTALLED \u2014 potential conflict",
+      "note": "autopep8 formatter \u2014 NOT declared in devcontainer.json or workspace settings but installed. Could conflict with black if accidentally selected as default formatter. Currently inactive (black-formatter is default)."
+    },
+    {
+      "id": "ms-python.black-formatter",
+      "version": "2025.2.0",
+      "category": "formatting",
+      "status": "ACTIVE",
+      "note": "Black formatter \u2014 configured as default Python formatter"
+    },
+    {
+      "id": "ms-python.debugpy",
+      "version": "2025.18.0",
+      "category": "python_tooling",
+      "status": "ACTIVE",
+      "note": "Python debugger"
+    },
+    {
+      "id": "ms-python.mypy-type-checker",
+      "version": "2025.2.0",
+      "category": "linting",
+      "status": "ACTIVE",
+      "note": "mypy type checking"
+    },
+    {
+      "id": "ms-python.python",
+      "version": "2026.2.0",
+      "category": "python_tooling",
+      "status": "ACTIVE",
+      "note": "Python extension \u2014 core language support"
+    },
+    {
+      "id": "ms-python.vscode-pylance",
+      "version": "2026.1.1",
+      "category": "python_tooling",
+      "status": "ACTIVE",
+      "note": "Pylance language server"
+    },
+    {
+      "id": "ms-python.vscode-python-envs",
+      "version": "1.20.1",
+      "category": "python_tooling",
+      "status": "ACTIVE",
+      "note": "Python environment manager \u2014 may surface .venv/venv in environment picker"
+    },
+    {
+      "id": "redhat.vscode-yaml",
+      "version": "1.21.0",
+      "category": "editor_utilities",
+      "status": "ACTIVE",
+      "note": "YAML schema validation \u2014 configured for GitHub Actions"
+    },
+    {
+      "id": "ryanluker.vscode-coverage-gutters",
+      "version": "2.14.0",
+      "category": "python_tooling",
+      "status": "ACTIVE",
+      "note": "Coverage display in editor \u2014 configured for coverage.xml"
+    },
+    {
+      "id": "zainchen.json",
+      "version": "2.0.2",
+      "category": "editor_utilities",
+      "status": "ACTIVE",
+      "note": "JSON tools"
+    }
+  ],
+  "extension_conflict_flags": [
+    {
+      "extension": "ms-python.autopep8",
+      "risk": "LOW",
+      "detail": "autopep8 is installed but not configured as default formatter. If user accidentally selects it, it will conflict with black. Not declared in devcontainer.json \u2014 its presence is unexplained."
+    }
+  ],
+  "design_spec_alignment": {
+    "baseline_requirements": {
+      "python_3_12_container": {
+        "required": true,
+        "status": "PASS",
+        "actual": "mcr.microsoft.com/devcontainers/python:3.12 running Python 3.12.12"
+      },
+      "ruff": {
+        "required": true,
+        "status": "PASS",
+        "actual": "ruff 0.15.5 installed; charliermarsh.ruff 2026.36.0 active; ruff.enable=true in workspace settings"
+      },
+      "black": {
+        "required": true,
+        "status": "PASS",
+        "actual": "black 26.3.0 installed; ms-python.black-formatter active; configured as default Python formatter"
+      },
+      "mypy": {
+        "required": true,
+        "status": "PASS",
+        "actual": "mypy 1.19.1 installed; ms-python.mypy-type-checker active; mypy-type-checker.enabled=true"
+      },
+      "pytest": {
+        "required": true,
+        "status": "PASS",
+        "actual": "pytest 9.0.2 + pytest-cov 7.0.0 installed; python.testing.pytestEnabled=true; pytestArgs=[tests/]"
+      },
+      "github_actions_validation_workflow": {
+        "required": true,
+        "status": "PASS",
+        "actual": "4 workflows present: ap_validation.yml, lint.yml, packet_validation.yml, test.yml"
+      },
+      "gitignore": {
+        "required": true,
+        "status": "PASS",
+        "actual": ".gitignore present; venv/, .venv/, __pycache__/, *.pyc all verified ignored"
+      }
+    },
+    "open_gaps": [
+      {
+        "item": "No pyproject.toml or ruff.toml",
+        "severity": "LOW",
+        "detail": "Ruff runs with default config. For reproducible linting, a pyproject.toml [tool.ruff] section should define target Python version and rule selection."
+      },
+      {
+        "item": "No mypy.ini or mypy config in pyproject.toml",
+        "severity": "LOW",
+        "detail": "mypy runs with defaults. Strict mode and target Python version should be pinned."
+      },
+      {
+        "item": "venv/ not committed, not formally documented in README",
+        "severity": "INFO",
+        "detail": "The local venv exists but is only a manually created artifact. The canonical Python environment is system site-packages (postCreateCommand). venv/ should be deleted or its role documented."
+      },
+      {
+        "item": "devcontainer.json interpreter and workspace interpreter diverge",
+        "severity": "LOW",
+        "detail": "devcontainer.json sets /usr/local/bin/python; workspace .vscode/settings.json sets venv/bin/python (symlink to same binary). Functionally equivalent but creates confusing dual-path situation."
+      },
+      {
+        "item": "terminal.integrated.accessibleViewFocusOnCommandExecution unresolved",
+        "severity": "MEDIUM",
+        "detail": "Terminal output routes to Accessible View panel. Requires client-side settings change \u2014 not fixable from within container."
+      }
+    ],
+    "overall_alignment": "SUBSTANTIALLY_ALIGNED"
+  },
+  "freeze_readiness_verdict": "CONFIGURATION_PASS_REQUIRED",
+  "freeze_verdict_rationale": "The runtime environment is structurally healthy: correct container image, correct Python version, all requirements.txt packages installed, all GitHub Actions workflows present, .gitignore in place. A freeze is blocked only by configuration-level items that should be resolved before the state is considered canonical.",
+  "recommended_actions": [
+    {
+      "priority": 1,
+      "action": "Fix Accessible View terminal redirect",
+      "location": "VS Code client-side user settings (Ctrl+,)",
+      "setting": "terminal.integrated.accessibleViewFocusOnCommandExecution",
+      "change": "Set to false",
+      "impact": "Terminal output returns to normal terminal buffer",
+      "risk": "NONE",
+      "blocks_freeze": true
+    },
+    {
+      "priority": 2,
+      "action": "Commit pending session changes",
+      "location": "Git repository",
+      "detail": "Stage and commit: .gitignore, .vscode/settings.json (interpreter fix), AP_SYSTEM_AUDIT/ artifacts",
+      "impact": "Persists hygiene fixes and audit record to main branch",
+      "risk": "NONE",
+      "blocks_freeze": true
+    },
+    {
+      "priority": 3,
+      "action": "Resolve venv/ vs system Python ambiguity",
+      "location": "/workspaces/ARCHON_PRIME/venv",
+      "options": [
+        "Delete venv/ and set python.defaultInterpreterPath=/usr/local/bin/python \u2014 aligns workspace with devcontainer.json",
+        "Keep venv/ and install requirements.txt into it, document it as the project venv \u2014 requires updating devcontainer.json postCreateCommand to create and populate venv"
+      ],
+      "impact": "Eliminates dual-interpreter ambiguity",
+      "risk": "LOW",
+      "blocks_freeze": false
+    },
+    {
+      "priority": 4,
+      "action": "Add pyproject.toml with tool configuration",
+      "location": "/workspaces/ARCHON_PRIME/pyproject.toml",
+      "detail": "Pin [tool.ruff] target-version, rule selection. Pin [tool.mypy] strict mode and python_version=3.12.",
+      "impact": "Makes linting and type-checking reproducible across contributors",
+      "risk": "NONE",
+      "blocks_freeze": false
+    },
+    {
+      "priority": 5,
+      "action": "Remove or reconcile ms-python.autopep8 extension",
+      "location": "VS Code extensions",
+      "detail": "autopep8 is installed but not declared in devcontainer.json. Remove it or add it explicitly if needed.",
+      "impact": "Eliminates formatter conflict risk",
+      "risk": "NONE",
+      "blocks_freeze": false
+    }
+  ]
+}

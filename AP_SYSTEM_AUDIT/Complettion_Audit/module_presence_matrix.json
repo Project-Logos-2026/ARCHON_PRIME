@@ -1,0 +1,275 @@
+[
+  {
+    "module_id": "M00",
+    "module_name": "schema_registry.py",
+    "expected_full_path": "ARCHON_PRIME/tools/normalization_tools/schema_registry.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M01",
+    "module_name": "routing_table_loader.py",
+    "expected_full_path": "ARCHON_PRIME/orchestration/task_router/routing_table_loader.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M02",
+    "module_name": "repair_registry_loader.py",
+    "expected_full_path": "ARCHON_PRIME/tools/audit_tools/repair_registry_loader.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M10",
+    "module_name": "repo_directory_scanner.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_directory_scanner.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M11",
+    "module_name": "python_file_collector.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/repo_scanners/python_file_collector.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M12",
+    "module_name": "import_extractor.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/import_scanners/import_extractor.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M13",
+    "module_name": "symbol_import_extractor.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/import_scanners/symbol_import_extractor.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M14",
+    "module_name": "header_schema_scanner.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/header_scanners/header_schema_scanner.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M15",
+    "module_name": "governance_contract_scanner.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/governance_scanners/governance_contract_scanner.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M16",
+    "module_name": "runtime_phase_scanner.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/runtime_scanners/runtime_phase_scanner.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M17",
+    "module_name": "concept_spec_gap_detector.py",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/repo_scanners/concept_spec_gap_detector.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M20",
+    "module_name": "module_index_builder.py",
+    "expected_full_path": "ARCHON_PRIME/tools/repo_mapping/module_index_builder.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M21",
+    "module_name": "dependency_graph_builder.py",
+    "expected_full_path": "ARCHON_PRIME/tools/import_analysis/dependency_graph_builder.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M22",
+    "module_name": "circular_dependency_detector.py",
+    "expected_full_path": "ARCHON_PRIME/tools/import_analysis/circular_dependency_detector.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M23",
+    "module_name": "runtime_phase_mapper.py",
+    "expected_full_path": "ARCHON_PRIME/tools/runtime_analysis/runtime_phase_mapper.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M24",
+    "module_name": "runtime_boot_sequencer.py",
+    "expected_full_path": "ARCHON_PRIME/tools/runtime_analysis/runtime_boot_sequencer.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M25",
+    "module_name": "canonical_import_registry_builder.py",
+    "expected_full_path": "ARCHON_PRIME/tools/import_analysis/canonical_import_registry_builder.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M30",
+    "module_name": "repo_simulator.py",
+    "expected_full_path": "ARCHON_PRIME/simulation/repo_simulator/repo_simulator.py",
+    "status": "PRESENT_CORRECT",
+    "actual_path": "simulation/repo_simulator/repo_simulator.py"
+  },
+  {
+    "module_id": "M31",
+    "module_name": "runtime_simulator.py",
+    "expected_full_path": "ARCHON_PRIME/simulation/runtime_simulator/runtime_simulator.py",
+    "status": "PRESENT_CORRECT",
+    "actual_path": "simulation/runtime_simulator/runtime_simulator.py"
+  },
+  {
+    "module_id": "M32",
+    "module_name": "import_simulator.py",
+    "expected_full_path": "ARCHON_PRIME/simulation/import_simulator/import_simulator.py",
+    "status": "PRESENT_CORRECT",
+    "actual_path": "simulation/import_simulator/import_simulator.py"
+  },
+  {
+    "module_id": "M38",
+    "module_name": "crawl_planner.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/engine/crawl_planner.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M39",
+    "module_name": "execution_graph_builder.py",
+    "expected_full_path": "ARCHON_PRIME/orchestration/execution_graphs/execution_graph_builder.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M50",
+    "module_name": "header_injector.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/mutation/header_injector.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M51",
+    "module_name": "import_rewriter.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/mutation/import_rewriter.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M60",
+    "module_name": "crawl_executor.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/engine/crawl_executor.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M61",
+    "module_name": "module_processor.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/module_processor.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M62",
+    "module_name": "syntax_validator.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/syntax_validator.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M63",
+    "module_name": "governance_validator.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/governance_validator.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M64",
+    "module_name": "phase_validator.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/phase_validator.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M65",
+    "module_name": "crawl_monitor.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/monitor/crawl_monitor.py",
+    "status": "PRESENT_CORRECT",
+    "actual_path": "crawler/monitor/crawl_monitor.py"
+  },
+  {
+    "module_id": "M70",
+    "module_name": "error_classifier.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/repair/error_classifier.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M71",
+    "module_name": "repair_router.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/repair/repair_router.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M72",
+    "module_name": "repair_executor.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/repair/repair_executor.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M80",
+    "module_name": "quarantine_manager.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/quarantine/quarantine_manager.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M90",
+    "module_name": "artifact_router.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/commit/artifact_router.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M91",
+    "module_name": "report_generator.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/commit/report_generator.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M92",
+    "module_name": "commit_finalizer.py",
+    "expected_full_path": "ARCHON_PRIME/crawler/commit/commit_finalizer.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M95",
+    "module_name": "task_router.py",
+    "expected_full_path": "ARCHON_PRIME/orchestration/task_router/task_router.py",
+    "status": "MISSING",
+    "actual_path": null
+  },
+  {
+    "module_id": "M96",
+    "module_name": "controller_main.py",
+    "expected_full_path": "ARCHON_PRIME/orchestration/controllers/controller_main.py",
+    "status": "MISSING",
+    "actual_path": null
+  }
+]

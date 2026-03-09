@@ -1,0 +1,190 @@
+[
+  {
+    "stage_id": "Stage_0",
+    "stage_name": "Foundation: Schemas + Config Layer",
+    "required_modules": [
+      "schema_registry.py",
+      "routing_table_loader.py",
+      "repair_registry_loader.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "schema_registry.py",
+      "routing_table_loader.py",
+      "repair_registry_loader.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_1",
+    "stage_name": "Pre-Crawl Audit Regeneration Scripts",
+    "required_modules": [
+      "repo_directory_scanner.py",
+      "python_file_collector.py",
+      "import_extractor.py",
+      "symbol_import_extractor.py",
+      "header_schema_scanner.py",
+      "governance_contract_scanner.py",
+      "runtime_phase_scanner.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "repo_directory_scanner.py",
+      "python_file_collector.py",
+      "import_extractor.py",
+      "symbol_import_extractor.py",
+      "header_schema_scanner.py",
+      "governance_contract_scanner.py",
+      "runtime_phase_scanner.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_2",
+    "stage_name": "Repo Analysis Tools",
+    "required_modules": [
+      "module_index_builder.py",
+      "dependency_graph_builder.py",
+      "circular_dependency_detector.py",
+      "runtime_phase_mapper.py",
+      "runtime_boot_sequencer.py",
+      "canonical_import_registry_builder.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "module_index_builder.py",
+      "dependency_graph_builder.py",
+      "circular_dependency_detector.py",
+      "runtime_phase_mapper.py",
+      "runtime_boot_sequencer.py",
+      "canonical_import_registry_builder.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_3",
+    "stage_name": "Mutation Operators (Isolated)",
+    "required_modules": [
+      "header_injector.py",
+      "import_rewriter.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "header_injector.py",
+      "import_rewriter.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_4",
+    "stage_name": "Validation Pipeline + Syntax Tools",
+    "required_modules": [
+      "syntax_validator.py",
+      "governance_validator.py",
+      "phase_validator.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "syntax_validator.py",
+      "governance_validator.py",
+      "phase_validator.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_5",
+    "stage_name": "Simulation Layer",
+    "required_modules": [
+      "repo_simulator.py",
+      "runtime_simulator.py",
+      "import_simulator.py",
+      "crawl_planner.py",
+      "execution_graph_builder.py"
+    ],
+    "modules_present": [
+      "repo_simulator.py",
+      "runtime_simulator.py",
+      "import_simulator.py"
+    ],
+    "modules_missing": [
+      "crawl_planner.py",
+      "execution_graph_builder.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_6",
+    "stage_name": "Crawl Executor + Processing Pipeline",
+    "required_modules": [
+      "module_processor.py",
+      "crawl_executor.py",
+      "crawl_monitor.py"
+    ],
+    "modules_present": [
+      "crawl_monitor.py"
+    ],
+    "modules_missing": [
+      "module_processor.py",
+      "crawl_executor.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_7",
+    "stage_name": "Error Classification + Repair + Quarantine",
+    "required_modules": [
+      "error_classifier.py",
+      "repair_router.py",
+      "repair_executor.py",
+      "quarantine_manager.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "error_classifier.py",
+      "repair_router.py",
+      "repair_executor.py",
+      "quarantine_manager.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_8",
+    "stage_name": "Artifact Routing + Reporting + Commit",
+    "required_modules": [
+      "artifact_router.py",
+      "report_generator.py",
+      "commit_finalizer.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "artifact_router.py",
+      "report_generator.py",
+      "commit_finalizer.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  },
+  {
+    "stage_id": "Stage_9",
+    "stage_name": "Orchestration + Controller",
+    "required_modules": [
+      "task_router.py",
+      "controller_main.py"
+    ],
+    "modules_present": [],
+    "modules_missing": [
+      "task_router.py",
+      "controller_main.py"
+    ],
+    "validation_gate_passable": false,
+    "readiness_status": "NOT_IMPLEMENTED"
+  }
+]

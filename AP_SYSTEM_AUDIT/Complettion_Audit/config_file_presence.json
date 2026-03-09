@@ -1,0 +1,44 @@
+[
+  {
+    "config_file": "configs/crawl_configs/crawl_config.json",
+    "exists": false,
+    "size_bytes": null,
+    "is_empty": null,
+    "blocker_impact": "controller_main.py cannot initialize without this file"
+  },
+  {
+    "config_file": "configs/crawl_configs/routing_table.json",
+    "exists": false,
+    "size_bytes": null,
+    "is_empty": null,
+    "blocker_impact": "artifact_router.py cannot route outputs without this file"
+  },
+  {
+    "config_file": "AP_SYSTEM_CONFIG/logos_targets.yaml",
+    "exists": false,
+    "size_bytes": null,
+    "is_empty": null,
+    "blocker_impact": "target_selector cannot identify crawl targets"
+  },
+  {
+    "config_file": "AP_SYSTEM_CONFIG/ap_config.yaml",
+    "exists": false,
+    "size_bytes": null,
+    "is_empty": null,
+    "blocker_impact": "pipeline_orchestrator cannot validate mutation_allowed flag"
+  },
+  {
+    "config_file": "tools/normalization_tools/header_schema.json",
+    "exists": false,
+    "size_bytes": null,
+    "is_empty": null,
+    "blocker_impact": "header_injector.py cannot operate without this file"
+  },
+  {
+    "config_file": "configs/repair_registry/repair_registry.json",
+    "exists": false,
+    "size_bytes": null,
+    "is_empty": null,
+    "blocker_impact": "repair_router.py cannot classify failures without this file"
+  }
+]

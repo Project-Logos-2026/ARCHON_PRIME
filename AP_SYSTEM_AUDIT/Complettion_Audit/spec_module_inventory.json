@@ -1,0 +1,392 @@
+[
+  {
+    "module_id": "M00",
+    "module_name": "schema_registry.py",
+    "expected_path": "ARCHON_PRIME/tools/normalization_tools/",
+    "expected_full_path": "ARCHON_PRIME/tools/normalization_tools/schema_registry.py",
+    "subsystem": "S0_FOUNDATION",
+    "blocking_class": "BLOCKING",
+    "phase": "FOUND",
+    "required": true
+  },
+  {
+    "module_id": "M01",
+    "module_name": "routing_table_loader.py",
+    "expected_path": "ARCHON_PRIME/orchestration/task_router/",
+    "expected_full_path": "ARCHON_PRIME/orchestration/task_router/routing_table_loader.py",
+    "subsystem": "S0_FOUNDATION",
+    "blocking_class": "BLOCKING",
+    "phase": "FOUND",
+    "required": true
+  },
+  {
+    "module_id": "M02",
+    "module_name": "repair_registry_loader.py",
+    "expected_path": "ARCHON_PRIME/tools/audit_tools/",
+    "expected_full_path": "ARCHON_PRIME/tools/audit_tools/repair_registry_loader.py",
+    "subsystem": "S0_FOUNDATION",
+    "blocking_class": "BLOCKING",
+    "phase": "FOUND",
+    "required": true
+  },
+  {
+    "module_id": "M10",
+    "module_name": "repo_directory_scanner.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/repo_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_directory_scanner.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M11",
+    "module_name": "python_file_collector.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/repo_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/repo_scanners/python_file_collector.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M12",
+    "module_name": "import_extractor.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/import_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/import_scanners/import_extractor.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M13",
+    "module_name": "symbol_import_extractor.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/import_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/import_scanners/symbol_import_extractor.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "SUPPORTING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M14",
+    "module_name": "header_schema_scanner.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/header_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/header_scanners/header_schema_scanner.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M15",
+    "module_name": "governance_contract_scanner.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/governance_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/governance_scanners/governance_contract_scanner.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M16",
+    "module_name": "runtime_phase_scanner.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/runtime_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/runtime_scanners/runtime_phase_scanner.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M17",
+    "module_name": "concept_spec_gap_detector.py",
+    "expected_path": "AUDIT_SYSTEM/scripts/repo_scanners/",
+    "expected_full_path": "AUDIT_SYSTEM/scripts/repo_scanners/concept_spec_gap_detector.py",
+    "subsystem": "S1_AUDIT_REGENERATION",
+    "blocking_class": "SUPPORTING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M20",
+    "module_name": "module_index_builder.py",
+    "expected_path": "ARCHON_PRIME/tools/repo_mapping/",
+    "expected_full_path": "ARCHON_PRIME/tools/repo_mapping/module_index_builder.py",
+    "subsystem": "S2_REPO_ANALYSIS",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M21",
+    "module_name": "dependency_graph_builder.py",
+    "expected_path": "ARCHON_PRIME/tools/import_analysis/",
+    "expected_full_path": "ARCHON_PRIME/tools/import_analysis/dependency_graph_builder.py",
+    "subsystem": "S2_REPO_ANALYSIS",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M22",
+    "module_name": "circular_dependency_detector.py",
+    "expected_path": "ARCHON_PRIME/tools/import_analysis/",
+    "expected_full_path": "ARCHON_PRIME/tools/import_analysis/circular_dependency_detector.py",
+    "subsystem": "S2_REPO_ANALYSIS",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M23",
+    "module_name": "runtime_phase_mapper.py",
+    "expected_path": "ARCHON_PRIME/tools/runtime_analysis/",
+    "expected_full_path": "ARCHON_PRIME/tools/runtime_analysis/runtime_phase_mapper.py",
+    "subsystem": "S2_REPO_ANALYSIS",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M24",
+    "module_name": "runtime_boot_sequencer.py",
+    "expected_path": "ARCHON_PRIME/tools/runtime_analysis/",
+    "expected_full_path": "ARCHON_PRIME/tools/runtime_analysis/runtime_boot_sequencer.py",
+    "subsystem": "S2_REPO_ANALYSIS",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M25",
+    "module_name": "canonical_import_registry_builder.py",
+    "expected_path": "ARCHON_PRIME/tools/import_analysis/",
+    "expected_full_path": "ARCHON_PRIME/tools/import_analysis/canonical_import_registry_builder.py",
+    "subsystem": "S2_REPO_ANALYSIS",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M30",
+    "module_name": "repo_simulator.py",
+    "expected_path": "ARCHON_PRIME/simulation/repo_simulator/",
+    "expected_full_path": "ARCHON_PRIME/simulation/repo_simulator/repo_simulator.py",
+    "subsystem": "S3_SIMULATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M31",
+    "module_name": "runtime_simulator.py",
+    "expected_path": "ARCHON_PRIME/simulation/runtime_simulator/",
+    "expected_full_path": "ARCHON_PRIME/simulation/runtime_simulator/runtime_simulator.py",
+    "subsystem": "S3_SIMULATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M32",
+    "module_name": "import_simulator.py",
+    "expected_path": "ARCHON_PRIME/simulation/import_simulator/",
+    "expected_full_path": "ARCHON_PRIME/simulation/import_simulator/import_simulator.py",
+    "subsystem": "S3_SIMULATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M38",
+    "module_name": "crawl_planner.py",
+    "expected_path": "ARCHON_PRIME/crawler/engine/",
+    "expected_full_path": "ARCHON_PRIME/crawler/engine/crawl_planner.py",
+    "subsystem": "S4_CRAWL_PLANNING",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M39",
+    "module_name": "execution_graph_builder.py",
+    "expected_path": "ARCHON_PRIME/orchestration/execution_graphs/",
+    "expected_full_path": "ARCHON_PRIME/orchestration/execution_graphs/execution_graph_builder.py",
+    "subsystem": "S4_CRAWL_PLANNING",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE",
+    "required": true
+  },
+  {
+    "module_id": "M50",
+    "module_name": "header_injector.py",
+    "expected_path": "ARCHON_PRIME/crawler/mutation/",
+    "expected_full_path": "ARCHON_PRIME/crawler/mutation/header_injector.py",
+    "subsystem": "S5_MUTATION_OPERATORS",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M51",
+    "module_name": "import_rewriter.py",
+    "expected_path": "ARCHON_PRIME/crawler/mutation/",
+    "expected_full_path": "ARCHON_PRIME/crawler/mutation/import_rewriter.py",
+    "subsystem": "S5_MUTATION_OPERATORS",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M60",
+    "module_name": "crawl_executor.py",
+    "expected_path": "ARCHON_PRIME/crawler/engine/",
+    "expected_full_path": "ARCHON_PRIME/crawler/engine/crawl_executor.py",
+    "subsystem": "S6_CRAWL_EXECUTION",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M61",
+    "module_name": "module_processor.py",
+    "expected_path": "ARCHON_PRIME/crawler/pipeline/",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/module_processor.py",
+    "subsystem": "S6_CRAWL_EXECUTION",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M62",
+    "module_name": "syntax_validator.py",
+    "expected_path": "ARCHON_PRIME/crawler/pipeline/",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/syntax_validator.py",
+    "subsystem": "S6_CRAWL_EXECUTION",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M63",
+    "module_name": "governance_validator.py",
+    "expected_path": "ARCHON_PRIME/crawler/pipeline/",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/governance_validator.py",
+    "subsystem": "S6_CRAWL_EXECUTION",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M64",
+    "module_name": "phase_validator.py",
+    "expected_path": "ARCHON_PRIME/crawler/pipeline/",
+    "expected_full_path": "ARCHON_PRIME/crawler/pipeline/phase_validator.py",
+    "subsystem": "S6_CRAWL_EXECUTION",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M65",
+    "module_name": "crawl_monitor.py",
+    "expected_path": "ARCHON_PRIME/crawler/monitor/",
+    "expected_full_path": "ARCHON_PRIME/crawler/monitor/crawl_monitor.py",
+    "subsystem": "S6_CRAWL_EXECUTION",
+    "blocking_class": "SUPPORTING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M70",
+    "module_name": "error_classifier.py",
+    "expected_path": "ARCHON_PRIME/crawler/repair/",
+    "expected_full_path": "ARCHON_PRIME/crawler/repair/error_classifier.py",
+    "subsystem": "S7_ERROR_REPAIR",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M71",
+    "module_name": "repair_router.py",
+    "expected_path": "ARCHON_PRIME/crawler/repair/",
+    "expected_full_path": "ARCHON_PRIME/crawler/repair/repair_router.py",
+    "subsystem": "S7_ERROR_REPAIR",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M72",
+    "module_name": "repair_executor.py",
+    "expected_path": "ARCHON_PRIME/crawler/repair/",
+    "expected_full_path": "ARCHON_PRIME/crawler/repair/repair_executor.py",
+    "subsystem": "S7_ERROR_REPAIR",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M80",
+    "module_name": "quarantine_manager.py",
+    "expected_path": "ARCHON_PRIME/crawler/quarantine/",
+    "expected_full_path": "ARCHON_PRIME/crawler/quarantine/quarantine_manager.py",
+    "subsystem": "S8_QUARANTINE",
+    "blocking_class": "BLOCKING",
+    "phase": "IN",
+    "required": true
+  },
+  {
+    "module_id": "M90",
+    "module_name": "artifact_router.py",
+    "expected_path": "ARCHON_PRIME/crawler/commit/",
+    "expected_full_path": "ARCHON_PRIME/crawler/commit/artifact_router.py",
+    "subsystem": "S9_ARTIFACT_REPORTING",
+    "blocking_class": "BLOCKING",
+    "phase": "IN + POST",
+    "required": true
+  },
+  {
+    "module_id": "M91",
+    "module_name": "report_generator.py",
+    "expected_path": "ARCHON_PRIME/crawler/commit/",
+    "expected_full_path": "ARCHON_PRIME/crawler/commit/report_generator.py",
+    "subsystem": "S9_ARTIFACT_REPORTING",
+    "blocking_class": "BLOCKING",
+    "phase": "POST",
+    "required": true
+  },
+  {
+    "module_id": "M92",
+    "module_name": "commit_finalizer.py",
+    "expected_path": "ARCHON_PRIME/crawler/commit/",
+    "expected_full_path": "ARCHON_PRIME/crawler/commit/commit_finalizer.py",
+    "subsystem": "S9_ARTIFACT_REPORTING",
+    "blocking_class": "BLOCKING",
+    "phase": "POST",
+    "required": true
+  },
+  {
+    "module_id": "M95",
+    "module_name": "task_router.py",
+    "expected_path": "ARCHON_PRIME/orchestration/task_router/",
+    "expected_full_path": "ARCHON_PRIME/orchestration/task_router/task_router.py",
+    "subsystem": "S10_ORCHESTRATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE + IN + POST",
+    "required": true
+  },
+  {
+    "module_id": "M96",
+    "module_name": "controller_main.py",
+    "expected_path": "ARCHON_PRIME/orchestration/controllers/",
+    "expected_full_path": "ARCHON_PRIME/orchestration/controllers/controller_main.py",
+    "subsystem": "S10_ORCHESTRATION",
+    "blocking_class": "BLOCKING",
+    "phase": "PRE + IN + POST",
+    "required": true
+  }
+]

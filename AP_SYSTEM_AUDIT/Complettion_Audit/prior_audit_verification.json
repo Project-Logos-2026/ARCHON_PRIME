@@ -1,0 +1,100 @@
+{
+  "prior_audit_score": "38/100",
+  "prior_audit_grade": "D+",
+  "missing_module_claims": [
+    {
+      "claim_location": "crawler/pipeline/",
+      "claim_expected": "Pipeline stage module connecting crawl_engine → audit_tools",
+      "verified_status": "CONFIRMED",
+      "evidence": "module_processor.py status=MISSING at ARCHON_PRIME/crawler/pipeline/module_processor.py"
+    },
+    {
+      "claim_location": "crawler/repair/",
+      "claim_expected": "Repair module applying fixes from audit results",
+      "verified_status": "CONFIRMED",
+      "evidence": "error_classifier.py status=MISSING at ARCHON_PRIME/crawler/repair/error_classifier.py"
+    },
+    {
+      "claim_location": "simulation/runtime_simulator/",
+      "claim_expected": "Runtime execution simulator",
+      "verified_status": "REFUTED",
+      "evidence": "runtime_simulator.py PRESENT_CORRECT at simulation/runtime_simulator/runtime_simulator.py"
+    },
+    {
+      "claim_location": "simulation/import_simulator/",
+      "claim_expected": "Import resolution simulator",
+      "verified_status": "REFUTED",
+      "evidence": "import_simulator.py PRESENT_CORRECT at simulation/import_simulator/import_simulator.py"
+    },
+    {
+      "claim_location": "orchestration/controllers/",
+      "claim_expected": "Orchestration controller wiring all subsystems",
+      "verified_status": "CONFIRMED",
+      "evidence": "controller_main.py status=MISSING at ARCHON_PRIME/orchestration/controllers/controller_main.py"
+    },
+    {
+      "claim_location": "orchestration/task_router/",
+      "claim_expected": "Task routing module dispatching jobs between subsystems",
+      "verified_status": "CONFIRMED",
+      "evidence": "routing_table_loader.py status=MISSING at ARCHON_PRIME/orchestration/task_router/routing_table_loader.py"
+    }
+  ],
+  "partial_module_claims": [
+    {
+      "claim_module": "crawler/engine/crawl_engine.py",
+      "claim_issue": "Prints to stdout only — no JSON output, no configurable root, no pipeline integration",
+      "verified_status": "CONFIRMED",
+      "evidence": "crawl_engine.py: not found in depth analysis — SKELETON or MISSING"
+    },
+    {
+      "claim_module": "crawler/monitor/crawl_monitor.py",
+      "claim_issue": "Infinite sleep loop printing to stdout — no actual state polling or progress reporting",
+      "verified_status": "CONFIRMED",
+      "evidence": "line_count: 9, classification: SKELETON, has_only_print: False"
+    },
+    {
+      "claim_module": "simulation/repo_simulator/repo_simulator.py",
+      "claim_issue": "Counts .py files and prints — no simulation model, no JSON output",
+      "verified_status": "CONFIRMED",
+      "evidence": "line_count: 8, classification: SKELETON, has_only_print: False"
+    },
+    {
+      "claim_module": "tools/runtime_analysis/dependency_graph.py",
+      "claim_issue": "Passthrough only — copies import_map.json verbatim without graph analysis",
+      "verified_status": "CONFIRMED",
+      "evidence": "dependency_graph.py: not found in depth analysis — SKELETON or MISSING"
+    }
+  ],
+  "readiness_blocker_claims": [
+    {
+      "blocker": "No end-to-end pipeline runner",
+      "verified_status": "CONFIRMED",
+      "evidence": "controller_main.py MISSING from repo"
+    },
+    {
+      "blocker": "No target configuration file (logos_targets.yaml missing)",
+      "verified_status": "CONFIRMED",
+      "evidence": "logos_targets.yaml: exists=false in config_file_presence.json"
+    },
+    {
+      "blocker": "No ap_config.yaml present",
+      "verified_status": "CONFIRMED",
+      "evidence": "ap_config.yaml: exists=false in config_file_presence.json"
+    },
+    {
+      "blocker": "Crawler cannot accept LOGOS repo as configurable target",
+      "verified_status": "CONFIRMED",
+      "evidence": "crawl_executor.py MISSING"
+    },
+    {
+      "blocker": "No repair capability to act on audit findings",
+      "verified_status": "CONFIRMED",
+      "evidence": "No repair modules present in repo"
+    },
+    {
+      "blocker": "Simulation subsystem is non-functional",
+      "verified_status": "REFUTED",
+      "evidence": "Functional simulators: ['runtime_simulator.py', 'import_simulator.py']"
+    }
+  ]
+}

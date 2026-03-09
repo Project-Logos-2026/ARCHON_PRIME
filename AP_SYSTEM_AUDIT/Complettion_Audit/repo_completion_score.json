@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-03-09T15:24:07.368793Z",
+  "total_required_modules": 39,
+  "total_present_modules": 4,
+  "total_functional_modules": 2,
+  "total_skeleton_or_noop": 2,
+  "total_missing_modules": 35,
+  "blocking_gaps": 33,
+  "config_files_missing": 6,
+  "completion_score": 5.1,
+  "completion_grade": "F",
+  "prior_audit_score": 38.0,
+  "delta_from_prior_audit": -32.9
+}

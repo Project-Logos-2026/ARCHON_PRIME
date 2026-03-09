@@ -1,0 +1,54 @@
+[
+  {
+    "module_id": "M30",
+    "module_name": "repo_simulator.py",
+    "actual_path": "simulation/repo_simulator/repo_simulator.py",
+    "line_count": 8,
+    "function_count": 1,
+    "class_count": 0,
+    "has_only_pass": false,
+    "has_only_print": false,
+    "has_docstring_only": false,
+    "has_no_output": true,
+    "classification": "SKELETON"
+  },
+  {
+    "module_id": "M31",
+    "module_name": "runtime_simulator.py",
+    "actual_path": "simulation/runtime_simulator/runtime_simulator.py",
+    "line_count": 92,
+    "function_count": 3,
+    "class_count": 0,
+    "has_only_pass": false,
+    "has_only_print": false,
+    "has_docstring_only": false,
+    "has_no_output": false,
+    "classification": "FUNCTIONAL"
+  },
+  {
+    "module_id": "M32",
+    "module_name": "import_simulator.py",
+    "actual_path": "simulation/import_simulator/import_simulator.py",
+    "line_count": 65,
+    "function_count": 2,
+    "class_count": 0,
+    "has_only_pass": false,
+    "has_only_print": false,
+    "has_docstring_only": false,
+    "has_no_output": false,
+    "classification": "FUNCTIONAL"
+  },
+  {
+    "module_id": "M65",
+    "module_name": "crawl_monitor.py",
+    "actual_path": "crawler/monitor/crawl_monitor.py",
+    "line_count": 9,
+    "function_count": 1,
+    "class_count": 0,
+    "has_only_pass": false,
+    "has_only_print": false,
+    "has_docstring_only": false,
+    "has_no_output": true,
+    "classification": "SKELETON"
+  }
+]
