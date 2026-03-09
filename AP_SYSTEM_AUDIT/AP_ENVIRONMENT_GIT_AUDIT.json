@@ -1,0 +1,405 @@
+{
+  "artifact_id": "AP_ENVIRONMENT_GIT_AUDIT",
+  "schema_version": "1.0.0",
+  "generated_at": "2026-03-09T17:52:48.018101Z",
+  "audit_scope": "deterministic_environment_verification",
+  "auditor": "GitHub Copilot / Claude Sonnet 4.6",
+  "phases": [
+    "git_repository_state",
+    "github_remote_configuration",
+    "dev_environment_configuration",
+    "codespaces_runtime_inventory",
+    "repository_structural_inventory",
+    "drift_and_freeze_readiness"
+  ],
+  "phase_1_git_repository_state": {
+    "status": "PASS",
+    "branch": "main",
+    "head_commit": "45dafc60dd154dcf90364c70178ff6e1e74b9356",
+    "head_message": "chore: Phase 1 environment normalization",
+    "upstream_tracking": "origin/main",
+    "sync_state": {
+      "ahead": 0,
+      "behind": 0,
+      "in_sync": true
+    },
+    "working_tree_clean": true,
+    "staged_files": [],
+    "modified_tracked_files": [],
+    "detached_head": false,
+    "merge_in_progress": false,
+    "rebase_in_progress": false,
+    "stash_entries": 0,
+    "commit_log_recent": [
+      "45dafc6 chore: Phase 1 environment normalization"
+    ],
+    "local_git_config": {
+      "remote.origin.url": "https://github.com/Project-Logos-2026/ARCHON_PRIME",
+      "branch.main.remote": "origin",
+      "branch.main.merge": "refs/heads/main",
+      "lfs.repositoryformatversion": "0"
+    },
+    "untracked_files_note": "AP_SYSTEM_AUDIT session artifacts only \u2014 covered by .gitignore"
+  },
+  "phase_2_github_remote_configuration": {
+    "status": "PASS_WITH_NOTES",
+    "remote_name": "origin",
+    "remote_url": "https://github.com/Project-Logos-2026/ARCHON_PRIME",
+    "protocol": "HTTPS",
+    "fetch_refspec": "+refs/heads/*:refs/remotes/origin/*",
+    "lfs": {
+      "configured": true,
+      "access_mode": "basic",
+      "gitattributes_present": false,
+      "note": "LFS configured but no .gitattributes \u2014 no tracked LFS objects yet"
+    },
+    "hooks": {
+      "active": [
+        "post-checkout (LFS)",
+        "post-merge (LFS)"
+      ],
+      "samples_only": true
+    },
+    "workflows": [
+      {
+        "file": "ap_validation.yml",
+        "purpose": "AP pipeline validation",
+        "required_files_present": {
+          ".vscode/extensions.json": true,
+          ".vscode/tasks.json": true
+        }
+      },
+      {
+        "file": "lint.yml",
+        "purpose": "Ruff/Black lint checks"
+      },
+      {
+        "file": "packet_validation.yml",
+        "purpose": "Schema/packet validation"
+      },
+      {
+        "file": "test.yml",
+        "purpose": "pytest test suite"
+      }
+    ],
+    "codeowners": "* @repository-owner",
+    "notes": [
+      "All 4 CI workflows declared and syntactically present",
+      "No .gitattributes despite LFS configuration \u2014 benign if no binary blobs are tracked"
+    ]
+  },
+  "phase_3_dev_environment_configuration": {
+    "status": "PASS",
+    "devcontainer": {
+      "path": ".devcontainer/devcontainer.json",
+      "image": "mcr.microsoft.com/devcontainers/python:3.12",
+      "remote_user": "vscode",
+      "post_create_command": "pip install -r requirements.txt",
+      "interpreter_setting": "/usr/local/bin/python",
+      "deprecated_settings": [
+        "python.formatting.provider: black (deprecated, harmless)"
+      ]
+    },
+    "vscode_settings": {
+      "path": ".vscode/settings.json",
+      "python.defaultInterpreterPath": "/usr/local/bin/python",
+      "editor.formatOnSave": true,
+      "ruff.enable": true,
+      "ruff.organizeImports": true,
+      "mypy-type-checker.enabled": true,
+      "python.testing.pytestEnabled": true,
+      "python.testing.pytestArgs": [
+        "tests/"
+      ],
+      "interpreter_alignment_with_devcontainer": "ALIGNED"
+    },
+    "pyproject_toml": {
+      "path": "pyproject.toml",
+      "present": true,
+      "committed": true,
+      "tool.black": {
+        "line-length": 88,
+        "target-version": [
+          "py312"
+        ]
+      },
+      "tool.ruff": {
+        "select": [
+          "E",
+          "F",
+          "B",
+          "I"
+        ],
+        "fix": true,
+        "target-version": "py312"
+      },
+      "tool.mypy": {
+        "strict": true,
+        "python_version": "3.12"
+      }
+    },
+    "gitignore": {
+      "path": ".gitignore",
+      "present": true,
+      "committed": true,
+      "rules_verified": [
+        "venv/",
+        ".venv/",
+        "__pycache__/",
+        "*.pyc",
+        "*.pyo",
+        ".pytest_cache/",
+        "*.egg-info/",
+        "dist/",
+        "build/",
+        ".mypy_cache/",
+        ".ruff_cache/"
+      ]
+    },
+    "requirements_txt": {
+      "path": "requirements.txt",
+      "declared_packages": [
+        "jsonschema>=4.0",
+        "PyYAML>=6.0",
+        "GitPython>=3.1",
+        "pytest>=7.0",
+        "pytest-cov>=4.0",
+        "black>=24.0",
+        "ruff>=0.4",
+        "mypy>=1.0",
+        "bandit>=1.7"
+      ],
+      "all_satisfied": true
+    },
+    "extensions_json": {
+      "path": ".vscode/extensions.json",
+      "present": true,
+      "recommendation_count": 11,
+      "note": "ms-python.autopep8 installed in container but not declared in devcontainer.json or extensions.json \u2014 undeclared extension"
+    },
+    "tasks_json": {
+      "path": ".vscode/tasks.json",
+      "present": true,
+      "task_count": 7,
+      "tasks": [
+        "AP: Run Full Pipeline",
+        "AP: Simulation Only",
+        "AP: Resume Crawl",
+        "AP: Run Audit Suite",
+        "AP: Run Governance Audit",
+        "AP: Run Tests",
+        "AP: Lint (ruff)"
+      ]
+    }
+  },
+  "phase_4_codespaces_runtime_inventory": {
+    "status": "PASS_WITH_NOTES",
+    "container": {
+      "base_image": "mcr.microsoft.com/devcontainers/python:3.12",
+      "os": "Debian GNU/Linux 13 (trixie)",
+      "user": "vscode",
+      "uid": 1000,
+      "shell": "/bin/bash",
+      "home": "/home/vscode"
+    },
+    "python": {
+      "version": "3.12.12",
+      "path": "/usr/local/bin/python",
+      "python3_path": "/usr/local/bin/python3",
+      "site_packages": "system"
+    },
+    "tools": {
+      "ruff": {
+        "version": "0.15.5",
+        "path": "/home/vscode/.local/bin/ruff",
+        "path_scope": "user-local",
+        "drift_flag": true,
+        "drift_note": "ruff binary is at user-local path /home/vscode/.local/bin/ruff, not /usr/local/bin/. May not be available to all users/shells."
+      },
+      "black": {
+        "version": "26.1.0",
+        "path": "/usr/local/py-utils/bin/black",
+        "path_scope": "system"
+      },
+      "mypy": {
+        "version": "1.19.1",
+        "path": "/usr/local/py-utils/bin/mypy",
+        "path_scope": "system"
+      },
+      "pytest": {
+        "version": "9.0.2",
+        "path": "/usr/local/py-utils/bin/pytest",
+        "path_scope": "system"
+      },
+      "bandit": {
+        "version": "1.9.3",
+        "path": "/usr/local/py-utils/bin/bandit",
+        "path_scope": "system"
+      },
+      "pip": {
+        "version": "25.0.1",
+        "path_scope": "system"
+      }
+    },
+    "pip_packages_installed": 33,
+    "requirements_satisfied": true
+  },
+  "phase_5_repository_structural_inventory": {
+    "status": "PASS_WITH_NOTES",
+    "tracked_file_count": 237,
+    "top_level_directories": [
+      ".devcontainer",
+      ".github",
+      ".vscode",
+      "AP_SYSTEM_AUDIT",
+      "AP_SYSTEM_CONFIG",
+      "AUDIT_LOGS",
+      "AUDIT_SYSTEM",
+      "Designs_and_Guides",
+      "config",
+      "configs",
+      "controllers",
+      "crawler",
+      "logos_analysis",
+      "logs",
+      "orchestration",
+      "registry",
+      "repair",
+      "schemas",
+      "simulation",
+      "targets",
+      "tools",
+      "utils"
+    ],
+    "expected_ap_directories": {
+      "orchestration": "PRESENT",
+      "crawler": "PRESENT",
+      "simulation": "PRESENT",
+      "repair": "PRESENT",
+      "tools": "PRESENT",
+      "tests": "MISSING",
+      "configs": "PRESENT",
+      "schemas": "PRESENT",
+      "registry": "PRESENT",
+      "targets": "PRESENT",
+      "logs": "PRESENT"
+    },
+    "missing_directories": [
+      "tests"
+    ],
+    "design_documentation": {
+      "ap_primary_docs": [
+        "Designs_and_Guides/AP/AP_Design_Spec_SPEC001_v1.docx",
+        "Designs_and_Guides/AP/AP_Implementation_Guide_IMPL001_v1.docx",
+        "Designs_and_Guides/AP/AP_ENV_CONFIG_OPS002_v1.docx",
+        "Designs_and_Guides/AP/SPEC-003_AP_Repair_Validation_Layer_v1.md",
+        "Designs_and_Guides/AP/IMPL-002_AP_Repair_Validation_Layer_v1.md"
+      ],
+      "all_authoritative_docs_present": true
+    },
+    "pycache_files_tracked_in_git": {
+      "present": true,
+      "examples": [
+        "controllers/__pycache__/",
+        "simulation/dependency_simulator/__pycache__/",
+        "tools/audit_tools/__pycache__/",
+        "repair/operators/__pycache__/"
+      ],
+      "drift_flag": true,
+      "drift_note": "__pycache__ directories and .pyc files are tracked in git. .gitignore rule for __pycache__/ is present but these files were committed before the .gitignore was created. They should be removed from git tracking with 'git rm -r --cached **/__pycache__/'."
+    },
+    "staging_artifacts": {
+      "STAGING_ARTIFACTS_dir": "PRESENT",
+      "note": "Directory present but not listed in .gitignore \u2014 review if contents should be excluded"
+    }
+  },
+  "phase_6_drift_and_freeze_readiness": {
+    "environment_status": "CONFIGURATION_NORMALIZED",
+    "freeze_readiness": false,
+    "drift_findings": [
+      {
+        "id": "DRIFT-001",
+        "severity": "MEDIUM",
+        "category": "tool_path",
+        "description": "ruff binary at user-local path /home/vscode/.local/bin/ruff instead of system path /usr/local/bin/",
+        "impact": "May not be available in non-interactive shells or to other users. CI workflows invoking ruff directly may resolve a different version.",
+        "remediation": "Install ruff system-wide: 'pip install ruff' as part of postCreateCommand, or pin in requirements.txt and verify path."
+      },
+      {
+        "id": "DRIFT-002",
+        "severity": "MEDIUM",
+        "category": "git_hygiene",
+        "description": "__pycache__ directories and .pyc compiled files are tracked in git",
+        "impact": "Bloats repository, causes spurious diffs across Python versions, undermines deterministic builds.",
+        "remediation": "Run: git rm -r --cached '**/__pycache__' && git commit -m 'chore: remove tracked pycache files'"
+      },
+      {
+        "id": "DRIFT-003",
+        "severity": "LOW",
+        "category": "extension_hygiene",
+        "description": "ms-python.autopep8 is installed in the container but is not declared in devcontainer.json customizations or .vscode/extensions.json",
+        "impact": "Non-reproducible across fresh rebuilds. Undeclared tooling creates environment inconsistency.",
+        "remediation": "Either add ms-python.autopep8 to devcontainer.json extensions list, or uninstall it if autopep8 formatting is not desired (black is declared and sufficient)."
+      },
+      {
+        "id": "DRIFT-004",
+        "severity": "LOW",
+        "category": "deprecated_config",
+        "description": "python.formatting.provider: 'black' in devcontainer.json is a deprecated setting",
+        "impact": "Deprecated but harmless on current VS Code. May produce warnings in future releases.",
+        "remediation": "Remove from devcontainer.json; black formatting is governed by pyproject.toml and editor.formatOnSave."
+      },
+      {
+        "id": "DRIFT-005",
+        "severity": "LOW",
+        "category": "directory_structure",
+        "description": "tests/ directory is missing from the repository",
+        "impact": "pytest task (AP: Run Tests) and test.yml CI workflow target 'tests/' \u2014 both will fail to discover tests. .vscode/settings.json pytestArgs points to 'tests/'.",
+        "remediation": "Create tests/ directory with at minimum a placeholder (tests/__init__.py or tests/test_placeholder.py) and commit."
+      },
+      {
+        "id": "DRIFT-006",
+        "severity": "INFO",
+        "category": "accessibility",
+        "description": "terminal.integrated.accessibleViewFocusOnCommandExecution redirects terminal output to Accessible View in VS Code",
+        "impact": "Terminal output appears in Accessible View instead of inline. Cosmetic/UX issue only.",
+        "remediation": "Set terminal.integrated.accessibleViewFocusOnCommandExecution=false in client-side VS Code user settings (not container-settable)."
+      }
+    ],
+    "freeze_blockers": [
+      "DRIFT-002: .pyc/__pycache__ files tracked in git",
+      "DRIFT-005: tests/ directory missing \u2014 CI and pytest tasks will fail"
+    ],
+    "passing_checks": [
+      "Git working tree is clean",
+      "Branch is in sync with origin/main",
+      "Python interpreter path aligned between devcontainer.json and settings.json",
+      ".gitignore created and committed",
+      "pyproject.toml created with deterministic black/ruff/mypy config",
+      "All requirements.txt packages satisfied",
+      "All 4 CI workflows have required dependency files present",
+      "All authoritative AP design documents present",
+      "No detached HEAD, merge, rebase, or stash state",
+      "venv/ removed and excluded from tracking"
+    ]
+  },
+  "summary": {
+    "overall_verdict": "NORMALIZED_NOT_FROZEN",
+    "git_clean": true,
+    "environment_aligned": true,
+    "freeze_ready": false,
+    "total_drift_findings": 6,
+    "critical": 0,
+    "medium": 2,
+    "low": 3,
+    "info": 1,
+    "recommended_next_actions": [
+      "1. Remove tracked __pycache__ files: git rm -r --cached '**/__pycache__' && git commit",
+      "2. Create tests/ directory with placeholder: mkdir tests && touch tests/__init__.py && git add && git commit",
+      "3. Resolve ruff path drift: add ruff to requirements.txt pip install or move to system path",
+      "4. Optionally clean up ms-python.autopep8 extension declaration",
+      "5. Remove deprecated python.formatting.provider from devcontainer.json",
+      "6. (Client-side) Set terminal.integrated.accessibleViewFocusOnCommandExecution=false in VS Code user settings"
+    ]
+  }
+}
