@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-03-09T00:00:00Z",
+  "source_artifact": "/workspaces/ARCHON_PRIME/Designs_and_Guides/AP_REMEDIATION_SOURCES/phase1_remediation_plan.json",
+  "governance_policy": "NON_DELETION_ENFORCED",
+  "authority": "ARCHON_PRIME_ARCHITECT",
+  "review_required": true,
+  "summary": {
+    "total_non_spec_modules": 50,
+    "classification_breakdown": {
+      "ENHANCEMENT_MODULE": 26,
+      "ANALOG_IMPLEMENTATION": 19,
+      "LEGACY_MODULE": 3,
+      "UNKNOWN_MODULE": 2
+    },
+    "deletion_permitted": false,
+    "architect_approval_required_for_deletion": true
+  },
+  "modules": [
+    {
+      "module_name": "audit_utils.py",
+      "path": "tools/audit_tools/audit_utils.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Shared utilities for audit tools; provides helpers not defined in spec"
+    },
+    {
+      "module_name": "circular_dependency_audit.py",
+      "path": "tools/audit_tools/circular_dependency_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M22 (circular_dependency_detector.py)",
+      "review_reason": "Functional analog to M22 but at wrong path and different naming; provides circular dep detection"
+    },
+    {
+      "module_name": "cross_package_dependency_audit.py",
+      "path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Cross-package dependency analysis not defined in spec; additional audit coverage"
+    },
+    {
+      "module_name": "duplicate_module_audit.py",
+      "path": "tools/audit_tools/duplicate_module_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Detects duplicate module definitions; not in spec; enhancement capability"
+    },
+    {
+      "module_name": "facade_bypass_audit.py",
+      "path": "tools/audit_tools/facade_bypass_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M25 (canonical_import_registry_builder.py)",
+      "review_reason": "Detects facade bypass violations; overlaps with M25 intent but is a standalone audit tool"
+    },
+    {
+      "module_name": "file_size_audit.py",
+      "path": "tools/audit_tools/file_size_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "File size analysis; not in spec; supplementary audit capability"
+    },
+    {
+      "module_name": "governance_contract_audit.py",
+      "path": "tools/audit_tools/governance_contract_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15 (governance_contract_scanner.py)",
+      "review_reason": "Performs governance contract scanning; functional analog to M15 at wrong path"
+    },
+    {
+      "module_name": "governance_coverage_map.py",
+      "path": "tools/audit_tools/governance_coverage_map.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M15 (governance_contract_scanner.py)",
+      "review_reason": "Maps governance coverage; supplementary to M15 scope"
+    },
+    {
+      "module_name": "governance_module_audit.py",
+      "path": "tools/audit_tools/governance_module_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15 (governance_contract_scanner.py)",
+      "review_reason": "Audits module-level governance compliance; analog to M15"
+    },
+    {
+      "module_name": "header_schema_audit.py",
+      "path": "tools/audit_tools/header_schema_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M14 (header_schema_scanner.py)",
+      "review_reason": "Scans header schema compliance; analog to M14 at wrong path"
+    },
+    {
+      "module_name": "import_surface_audit.py",
+      "path": "tools/audit_tools/import_surface_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M25 (canonical_import_registry_builder.py)",
+      "review_reason": "Audits import surface; analog to M25 intent"
+    },
+    {
+      "module_name": "module_path_ambiguity_audit.py",
+      "path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Detects path ambiguity conflicts; not in spec"
+    },
+    {
+      "module_name": "namespace_shadow_audit.py",
+      "path": "tools/audit_tools/namespace_shadow_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Detects namespace shadowing; not in spec; supplementary audit"
+    },
+    {
+      "module_name": "orphan_module_audit.py",
+      "path": "tools/audit_tools/orphan_module_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M17 (concept_spec_gap_detector.py)",
+      "review_reason": "Detects orphaned modules; complements M17 scope"
+    },
+    {
+      "module_name": "run_audit_suite.py",
+      "path": "tools/audit_tools/run_audit_suite.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Orchestrates full audit suite execution; not in spec; operational tooling"
+    },
+    {
+      "module_name": "run_governance_audit.py",
+      "path": "tools/audit_tools/run_governance_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Orchestrates governance audit; not in spec; operational tooling"
+    },
+    {
+      "module_name": "runtime_entry_audit.py",
+      "path": "tools/audit_tools/runtime_entry_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M23 (runtime_phase_mapper.py)",
+      "review_reason": "Audits runtime entry points; supplements M23/M24 scope"
+    },
+    {
+      "module_name": "symbol_collision_audit.py",
+      "path": "tools/audit_tools/symbol_collision_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Detects symbol collision issues; not in spec"
+    },
+    {
+      "module_name": "unused_import_audit.py",
+      "path": "tools/audit_tools/unused_import_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M12 (import_extractor.py)",
+      "review_reason": "Audits unused imports; supplements M12 scope"
+    },
+    {
+      "module_name": "governance_scanner.py",
+      "path": "tools/governance_analysis/governance_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15 (governance_contract_scanner.py)",
+      "review_reason": "Functional analog to M15; scans governance contracts; wrong subsystem path"
+    },
+    {
+      "module_name": "import_scanner.py",
+      "path": "tools/import_analysis/import_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M12 (import_extractor.py)",
+      "review_reason": "Functional analog to M12; extracts imports; present at partially correct path"
+    },
+    {
+      "module_name": "header_validator.py",
+      "path": "tools/normalization_tools/header_validator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M14 (header_schema_scanner.py)",
+      "review_reason": "Functional analog to M14; validates headers; present in correct directory"
+    },
+    {
+      "module_name": "repo_scanner.py",
+      "path": "tools/repo_mapping/repo_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M10 (repo_directory_scanner.py)",
+      "review_reason": "Functional analog to M10; scans repo directory structure"
+    },
+    {
+      "module_name": "dependency_graph.py",
+      "path": "tools/runtime_analysis/dependency_graph.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M21 (dependency_graph_builder.py)",
+      "review_reason": "Functional analog to M21; builds dependency graph"
+    },
+    {
+      "module_name": "analysis_controller.py",
+      "path": "controllers/analysis_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M95 (task_router.py)",
+      "review_reason": "Analysis subsystem controller; analog to orchestration layer; wrong path"
+    },
+    {
+      "module_name": "audit_controller.py",
+      "path": "controllers/audit_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M95 (task_router.py)",
+      "review_reason": "Audit subsystem controller; analog to orchestration stage gate"
+    },
+    {
+      "module_name": "config_loader.py",
+      "path": "controllers/config_loader.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M01 (routing_table_loader.py) / M02 (repair_registry_loader.py)",
+      "review_reason": "Config loader; analog to M01/M02 foundation modules at wrong path"
+    },
+    {
+      "module_name": "crawler_controller.py",
+      "path": "controllers/crawler_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M60 (crawl_executor.py)",
+      "review_reason": "Crawler controller; analog to M60 main crawl loop"
+    },
+    {
+      "module_name": "pipeline_controller.py",
+      "path": "controllers/pipeline_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M96 (controller_main.py)",
+      "review_reason": "Pipeline controller; analog to M96 top-level controller"
+    },
+    {
+      "module_name": "repair_controller.py",
+      "path": "controllers/repair_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M71 (repair_router.py) / M72 (repair_executor.py)",
+      "review_reason": "Repair controller; analog to M71/M72 error repair subsystem"
+    },
+    {
+      "module_name": "simulation_controller.py",
+      "path": "controllers/simulation_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "S3_SIMULATION (M30/M31/M32)",
+      "review_reason": "Simulation controller; orchestrates simulation subsystem; no direct spec equivalent"
+    },
+    {
+      "module_name": "dependency_normalizer.py",
+      "path": "repair/operators/dependency_normalizer.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Dependency normalization operator; not in spec; enhancement capability"
+    },
+    {
+      "module_name": "header_injection_operator.py",
+      "path": "repair/operators/header_injection_operator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M50 (header_injector.py)",
+      "review_reason": "Functional analog to M50; performs header injection; at wrong path (repair/operators/ vs crawler/mutation/)"
+    },
+    {
+      "module_name": "import_rewrite_operator.py",
+      "path": "repair/operators/import_rewrite_operator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M51 (import_rewriter.py)",
+      "review_reason": "Functional analog to M51; performs import rewrite; at wrong path (repair/operators/ vs crawler/mutation/)"
+    },
+    {
+      "module_name": "module_relocation_operator.py",
+      "path": "repair/operators/module_relocation_operator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Module relocation operator; not explicitly in spec; supports remediation workflow"
+    },
+    {
+      "module_name": "namespace_disambiguator.py",
+      "path": "repair/operators/namespace_disambiguator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Namespace disambiguation; not in spec; enhancement capability"
+    },
+    {
+      "module_name": "dependency_simulator.py",
+      "path": "simulation/dependency_simulator/dependency_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Simulates dependency mutations; not in spec; extends S3 simulation capabilities"
+    },
+    {
+      "module_name": "namespace_simulator.py",
+      "path": "simulation/namespace_simulator/namespace_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Simulates namespace mutations; not in spec; extends S3 simulation capabilities"
+    },
+    {
+      "module_name": "crawl_engine.py (crawler/core/)",
+      "path": "crawler/core/crawl_engine.py",
+      "classification": "LEGACY_MODULE",
+      "possible_spec_mapping": "M60 (crawl_executor.py)",
+      "review_reason": "Duplicate crawl engine in crawler/core/; not at spec path; possible legacy or in-progress skeleton"
+    },
+    {
+      "module_name": "crawl_monitor.py (crawler/core/)",
+      "path": "crawler/core/crawl_monitor.py",
+      "classification": "LEGACY_MODULE",
+      "possible_spec_mapping": "M65 (crawl_monitor.py)",
+      "review_reason": "Duplicate crawl monitor; M65 is PRESENT_CORRECT at crawler/monitor/; this copy is redundant"
+    },
+    {
+      "module_name": "crawl_engine.py (crawler/engine/)",
+      "path": "crawler/engine/crawl_engine.py",
+      "classification": "LEGACY_MODULE",
+      "possible_spec_mapping": "M60 (crawl_executor.py)",
+      "review_reason": "Crawl engine skeleton at partially correct path; not the spec module name; possible early draft"
+    },
+    {
+      "module_name": "file_scanner.py",
+      "path": "crawler/utils/file_scanner.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M11 (python_file_collector.py)",
+      "review_reason": "File scanning utility; supplements M11 scope; not at spec path"
+    },
+    {
+      "module_name": "logger.py",
+      "path": "utils/logger.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Shared logging utility; not in spec; foundational support module"
+    },
+    {
+      "module_name": "test_placeholder.py",
+      "path": "tests/test_placeholder.py",
+      "classification": "UNKNOWN_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Test scaffold placeholder; no functional role yet; preserve for test framework scaffolding"
+    },
+    {
+      "module_name": "ap_artifact_collection_p1.py",
+      "path": "tools/ap_artifact_collection_p1.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Phase-1 artifact collection script; operational tooling not defined in spec"
+    },
+    {
+      "module_name": "repo_mapper.py",
+      "path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M10 (repo_directory_scanner.py)",
+      "review_reason": "Misnamed analog to M10; in correct directory but wrong filename; may contain reusable logic"
+    },
+    {
+      "module_name": "_run_audit.py",
+      "path": "AP_SYSTEM_AUDIT/Complettion_Audit/_run_audit.py",
+      "classification": "UNKNOWN_MODULE",
+      "possible_spec_mapping": "None",
+      "review_reason": "Mechanical audit runner generated during Phase-1 audit; preserve as audit record"
+    },
+    {
+      "module_name": "generate_deep_import_violations.py",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M25 (canonical_import_registry_builder.py)",
+      "review_reason": "Design tooling for generating deep import violation test cases; supports M25 development"
+    },
+    {
+      "module_name": "generate_symbol_import_index.py",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M13 (symbol_import_extractor.py)",
+      "review_reason": "Design tooling for symbol import indexing; supports M13 development"
+    },
+    {
+      "module_name": "repo_structure_export.py",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "M10 (repo_directory_scanner.py)",
+      "review_reason": "Design tooling for repo structure export; supports M10 development context"
+    }
+  ]
+}

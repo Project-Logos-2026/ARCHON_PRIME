@@ -1,0 +1,320 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-03-09T20:00:00Z",
+  "audit_id": "ARCHON_PRIME_FUNCTIONALITY_AUDIT_V2",
+  "data_source": "AP_ARTIFACT_INDEX.json + AP_DIRECTORY_TREE_CURRENT.json (Phase-1 control dataset)",
+  "spec_source": "MODULE_INVENTORY.md v1.0.0",
+  "invalidation_notice": {
+    "previous_audit_claim": "4 modules present out of 39",
+    "this_audit_finding": "4 spec modules present at correct paths out of 39. The previous audit was NOT incorrect. The discrepancy between 4 spec modules and 54 total Python files is explained by the existence of 50 non-spec Python files that are real and functional but do not match the MODULE_INVENTORY.md spec-defined module names and paths.",
+    "verdict": "PREVIOUS_AUDIT_CONFIRMED_WITH_CONTEXT"
+  },
+  "global_stats": {
+    "total_python_files_in_repo": 54,
+    "spec_defined_modules": 39,
+    "spec_present_correct": 4,
+    "spec_present_misplaced": 0,
+    "spec_missing": 35,
+    "spec_blocking_missing": 33,
+    "non_spec_python_files": 50,
+    "completion_score_pct": 10.3,
+    "completion_grade": "F"
+  },
+  "subsystem_results": {
+    "S0_FOUNDATION": {
+      "subsystem_id": "S0_FOUNDATION",
+      "name": "Foundation / Schema Layer",
+      "required": 3,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 3,
+      "blocking_missing": 3,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S1_AUDIT_REGEN": {
+      "subsystem_id": "S1_AUDIT_REGEN",
+      "name": "Pre-Crawl Audit Regeneration",
+      "required": 8,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 8,
+      "blocking_missing": 6,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S2_REPO_ANALYSIS": {
+      "subsystem_id": "S2_REPO_ANALYSIS",
+      "name": "Repo Analysis Tools",
+      "required": 6,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 6,
+      "blocking_missing": 6,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S3_SIMULATION": {
+      "subsystem_id": "S3_SIMULATION",
+      "name": "Simulation Layer",
+      "required": 3,
+      "present_correct": 3,
+      "present_misplaced": 0,
+      "missing": 0,
+      "blocking_missing": 0,
+      "completion_pct": 100.0,
+      "validation_gate_passable": true
+    },
+    "S4_CRAWL_PLANNING": {
+      "subsystem_id": "S4_CRAWL_PLANNING",
+      "name": "Crawl Planning",
+      "required": 2,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 2,
+      "blocking_missing": 2,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S5_MUTATION": {
+      "subsystem_id": "S5_MUTATION",
+      "name": "Mutation Operators",
+      "required": 2,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 2,
+      "blocking_missing": 2,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S6_CRAWL_EXECUTION": {
+      "subsystem_id": "S6_CRAWL_EXECUTION",
+      "name": "Crawl Execution + Pipeline",
+      "required": 6,
+      "present_correct": 1,
+      "present_misplaced": 0,
+      "missing": 5,
+      "blocking_missing": 5,
+      "completion_pct": 16.7,
+      "validation_gate_passable": false
+    },
+    "S7_ERROR_REPAIR": {
+      "subsystem_id": "S7_ERROR_REPAIR",
+      "name": "Error Classification + Repair",
+      "required": 3,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 3,
+      "blocking_missing": 3,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S8_QUARANTINE": {
+      "subsystem_id": "S8_QUARANTINE",
+      "name": "Quarantine Management",
+      "required": 1,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 1,
+      "blocking_missing": 1,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S9_ARTIFACT_REPORTING": {
+      "subsystem_id": "S9_ARTIFACT_REPORTING",
+      "name": "Artifact Routing + Reporting + Commit",
+      "required": 3,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 3,
+      "blocking_missing": 3,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    },
+    "S10_ORCHESTRATION": {
+      "subsystem_id": "S10_ORCHESTRATION",
+      "name": "Orchestration + Controller",
+      "required": 2,
+      "present_correct": 0,
+      "present_misplaced": 0,
+      "missing": 2,
+      "blocking_missing": 2,
+      "completion_pct": 0.0,
+      "validation_gate_passable": false
+    }
+  },
+  "non_spec_functional_layers": {
+    "AUDIT_TOOLING": {
+      "description": "19 structural audit tools in tools/audit_tools/. Functional. Not part of spec-defined M00-M96 pipeline.",
+      "module_count": 19,
+      "paths": [
+        "tools/audit_tools/audit_utils.py",
+        "tools/audit_tools/circular_dependency_audit.py",
+        "tools/audit_tools/cross_package_dependency_audit.py",
+        "tools/audit_tools/duplicate_module_audit.py",
+        "tools/audit_tools/facade_bypass_audit.py",
+        "tools/audit_tools/file_size_audit.py",
+        "tools/audit_tools/governance_contract_audit.py",
+        "tools/audit_tools/governance_coverage_map.py",
+        "tools/audit_tools/governance_module_audit.py",
+        "tools/audit_tools/header_schema_audit.py",
+        "tools/audit_tools/import_surface_audit.py",
+        "tools/audit_tools/module_path_ambiguity_audit.py",
+        "tools/audit_tools/namespace_shadow_audit.py",
+        "tools/audit_tools/orphan_module_audit.py",
+        "tools/audit_tools/run_audit_suite.py",
+        "tools/audit_tools/run_governance_audit.py",
+        "tools/audit_tools/runtime_entry_audit.py",
+        "tools/audit_tools/symbol_collision_audit.py",
+        "tools/audit_tools/unused_import_audit.py"
+      ]
+    },
+    "ANALYSIS_TOOLS": {
+      "description": "5 analysis tools that are functional analogs to spec modules but at wrong paths or with different names.",
+      "module_count": 5,
+      "paths": [
+        "tools/governance_analysis/governance_scanner.py",
+        "tools/import_analysis/import_scanner.py",
+        "tools/normalization_tools/header_validator.py",
+        "tools/repo_mapping/repo_scanner.py",
+        "tools/runtime_analysis/dependency_graph.py"
+      ]
+    },
+    "CONTROLLERS": {
+      "description": "7 controller files at root-level controllers/ directory. Functional analogs to M95/M96 and subsystem orchestrators but at wrong path and with different naming convention.",
+      "module_count": 7,
+      "paths": [
+        "controllers/analysis_controller.py",
+        "controllers/audit_controller.py",
+        "controllers/config_loader.py",
+        "controllers/crawler_controller.py",
+        "controllers/pipeline_controller.py",
+        "controllers/repair_controller.py",
+        "controllers/simulation_controller.py"
+      ]
+    },
+    "REPAIR_OPERATORS": {
+      "description": "5 repair operator modules at repair/operators/. header_injection_operator.py and import_rewrite_operator.py are functional analogs to M50/M51 but at wrong path.",
+      "module_count": 5,
+      "paths": [
+        "repair/operators/dependency_normalizer.py",
+        "repair/operators/header_injection_operator.py",
+        "repair/operators/import_rewrite_operator.py",
+        "repair/operators/module_relocation_operator.py",
+        "repair/operators/namespace_disambiguator.py"
+      ]
+    },
+    "SIMULATION_EXTRAS": {
+      "description": "2 extra simulation modules not in spec: dependency_simulator.py and namespace_simulator.py.",
+      "module_count": 2,
+      "paths": [
+        "simulation/dependency_simulator/dependency_simulator.py",
+        "simulation/namespace_simulator/namespace_simulator.py"
+      ]
+    },
+    "UTILITIES_AND_MISC": {
+      "description": "Shared utilities, test scaffolding, design tooling, and audit runners.",
+      "module_count": 8,
+      "paths": [
+        "utils/logger.py",
+        "tests/test_placeholder.py",
+        "tools/ap_artifact_collection_p1.py",
+        "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+        "AP_SYSTEM_AUDIT/Complettion_Audit/_run_audit.py",
+        "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+        "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+        "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py"
+      ]
+    },
+    "CRAWLER_EXTRAS": {
+      "description": "3 crawler files not in spec (duplicates and a utility).",
+      "module_count": 3,
+      "paths": [
+        "crawler/core/crawl_engine.py",
+        "crawler/engine/crawl_engine.py",
+        "crawler/utils/file_scanner.py"
+      ]
+    }
+  },
+  "config_file_status": {
+    "configs/crawl_configs/crawl_config.json": {
+      "spec_path": "configs/crawl_configs/crawl_config.json",
+      "exists": false,
+      "actual_path": "config/crawl_config.json",
+      "note": "File exists but at wrong path: config/ not configs/crawl_configs/",
+      "blocking": true
+    },
+    "configs/crawl_configs/routing_table.json": {
+      "spec_path": "configs/crawl_configs/routing_table.json",
+      "exists": false,
+      "actual_path": null,
+      "note": "Not found at any path",
+      "blocking": true
+    },
+    "AP_SYSTEM_CONFIG/logos_targets.yaml": {
+      "spec_path": "AP_SYSTEM_CONFIG/logos_targets.yaml",
+      "exists": false,
+      "actual_path": "targets/logos_targets.yaml",
+      "note": "File exists but at wrong path: targets/ not AP_SYSTEM_CONFIG/",
+      "blocking": true
+    },
+    "AP_SYSTEM_CONFIG/ap_config.yaml": {
+      "spec_path": "AP_SYSTEM_CONFIG/ap_config.yaml",
+      "exists": false,
+      "actual_path": null,
+      "note": "Not found at any path",
+      "blocking": true
+    },
+    "tools/normalization_tools/header_schema.json": {
+      "spec_path": "tools/normalization_tools/header_schema.json",
+      "exists": false,
+      "actual_path": null,
+      "note": "Not found at any path",
+      "blocking": true
+    },
+    "configs/repair_registry/repair_registry.json": {
+      "spec_path": "configs/repair_registry/repair_registry.json",
+      "exists": false,
+      "actual_path": "registry/repair_registry.json",
+      "note": "File exists but at wrong path: registry/ not configs/repair_registry/",
+      "blocking": true
+    }
+  },
+  "empty_subsystem_directories": [
+    "crawler/pipeline/",
+    "crawler/repair/",
+    "crawler/mutation/",
+    "crawler/quarantine/",
+    "crawler/commit/",
+    "orchestration/controllers/",
+    "orchestration/task_router/",
+    "orchestration/execution_graphs/",
+    "AUDIT_SYSTEM/scripts/import_scanners/",
+    "AUDIT_SYSTEM/scripts/header_scanners/",
+    "AUDIT_SYSTEM/scripts/governance_scanners/",
+    "AUDIT_SYSTEM/scripts/runtime_scanners/",
+    "AUDIT_SYSTEM/analysis/dependency_graphs/",
+    "AUDIT_SYSTEM/analysis/runtime_maps/",
+    "AUDIT_SYSTEM/analysis/protocol_maps/",
+    "AUDIT_SYSTEM/reports/concept_reports/",
+    "AUDIT_SYSTEM/reports/governance_reports/",
+    "AUDIT_SYSTEM/reports/import_reports/",
+    "AUDIT_SYSTEM/reports/runtime_reports/",
+    "AUDIT_SYSTEM/reports/structural_reports/",
+    "AUDIT_SYSTEM/baselines/initial_repo_snapshot/",
+    "AUDIT_SYSTEM/baselines/post_normalization_snapshot/",
+    "AUDIT_SYSTEM/diagnostics/error_catalogs/",
+    "AUDIT_SYSTEM/diagnostics/repair_recommendations/",
+    "AUDIT_SYSTEM/diagnostics/violation_logs/",
+    "AUDIT_SYSTEM/runtime_monitor/live_status/",
+    "AUDIT_SYSTEM/runtime_monitor/progress_tracking/",
+    "AUDIT_LOGS/",
+    "logs/",
+    "logos_analysis/reports/",
+    "logos_analysis/sandbox/",
+    "logos_analysis/source_snapshot/",
+    "STAGING_ARTIFACTS/incoming/",
+    "STAGING_ARTIFACTS/sorted/",
+    "repair/utils/"
+  ]
+}

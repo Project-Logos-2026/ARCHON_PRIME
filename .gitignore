@@ -1,3 +1,7 @@
+# Phase-1 control dataset snapshot (temporary, not for version control)
+ALL_ARTIFACTS_P1/
+AP_PHASE1_REPO_SNAPSHOT.zip
+
 # Virtual environments
 venv/
 .venv/
