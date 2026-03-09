@@ -14,5 +14,8 @@
   },
   "python.testing.pytestEnabled": true,
   "python.testing.pytestArgs": ["tests/"],
-  "coverage-gutters.coverageFileNames": ["coverage.xml"]
+  "coverage-gutters.coverageFileNames": ["coverage.xml"],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
+  }
 }
