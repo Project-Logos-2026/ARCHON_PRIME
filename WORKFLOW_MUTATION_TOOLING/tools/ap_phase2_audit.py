@@ -14,18 +14,21 @@ Governance: NON-DELETION enforced. No file mutations permitted.
 import ast
 import json
 import os
-import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Set, Tuple
 
 # ─── Paths ────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
-PLAN_PATH = REPO_ROOT / "Designs_and_Guides/AP_REMEDIATION_SOURCES/phase1_remediation_plan.json"
+PLAN_PATH = (
+    REPO_ROOT / "Designs_and_Guides/AP_REMEDIATION_SOURCES/phase1_remediation_plan.json"
+)
 OUTPUT_PATH = REPO_ROOT / "AP_SYSTEM_AUDIT/phase2_audit_snapshot.json"
 
-EXCLUDE_DIRS: Set[str] = {".git", "__pycache__", "node_modules", "venv", ".env", ".venv"}
+EXCLUDE_DIRS: Set[str] = {
+    ".git", "__pycache__", "node_modules", "venv", ".env", ".venv"
+}
 
 # ─── Subsystem → expected modules (from Phase-1 plan, by module_id prefix) ───
 SUBSYSTEM_MAP = {
@@ -36,8 +39,14 @@ SUBSYSTEM_MAP = {
     "C5_RUNTIME":         ["M16", "M23", "M24"],
     "C6_REPAIR":          ["M70", "M71", "M72"],
     "C7_SIMULATION":      ["M30", "M31", "M32"],
-    "C8_PIPELINE":        ["M38", "M39", "M50", "M51", "M60", "M61", "M62", "M64", "M65", "M80", "M90", "M91", "M92"],
-    "C9_AUDIT":           ["M00", "M01", "M02", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17"],
+    "C8_PIPELINE": [
+        "M38", "M39", "M50", "M51", "M60", "M61", "M62",
+        "M64", "M65", "M80", "M90", "M91", "M92",
+    ],
+    "C9_AUDIT": [
+        "M00", "M01", "M02", "M10", "M11", "M12",
+        "M13", "M14", "M15", "M16", "M17",
+    ],
     "C10_CONTROLLER":     ["M95", "M96"],
     "C11_UTILITIES":      [],  # non-spec / enhancement modules
 }
@@ -100,11 +109,17 @@ def extract_imports(source: str, file_path: Path) -> List[Dict[str, str]]:
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             for alias in node.names:
-                imports.append({"type": "import", "module": alias.name, "name": alias.asname or alias.name})
+                imports.append({
+                    "type": "import",
+                    "module": alias.name,
+                    "name": alias.asname or alias.name,
+                })
         elif isinstance(node, ast.ImportFrom):
             mod = node.module or ""
             for alias in node.names:
-                imports.append({"type": "from_import", "module": mod, "name": alias.name})
+                imports.append(
+                    {"type": "from_import", "module": mod, "name": alias.name}
+                )
     return imports
 
 
@@ -134,19 +149,32 @@ def classify_non_spec(stem: str, rel_path: str, imports: List[Dict]) -> str:
 
 def guess_subsystem(rel_path: str) -> str:
     p = rel_path.lower()
-    if "simulation" in p:                   return "C7_SIMULATION"
-    if "repair" in p:                       return "C6_REPAIR"
-    if "controller" in p:                   return "C10_CONTROLLER"
-    if "import_analysis" in p:              return "C2_IMPORT_ANALYSIS"
-    if "runtime_analysis" in p:             return "C5_RUNTIME"
-    if "repo_mapping" in p:                 return "C1_REPO_MAPPING"
-    if "normalization" in p:                return "C9_AUDIT"
-    if "audit_tools" in p:                  return "C9_AUDIT"
-    if "crawler" in p:                      return "C8_PIPELINE"
-    if "orchestration" in p:               return "C10_CONTROLLER"
-    if "governance" in p:                   return "C3_GOVERNANCE"
-    if "AUDIT_SYSTEM" in rel_path:          return "C9_AUDIT"
-    if "utils" in p:                        return "C11_UTILITIES"
+    if "simulation" in p:
+        return "C7_SIMULATION"
+    if "repair" in p:
+        return "C6_REPAIR"
+    if "controller" in p:
+        return "C10_CONTROLLER"
+    if "import_analysis" in p:
+        return "C2_IMPORT_ANALYSIS"
+    if "runtime_analysis" in p:
+        return "C5_RUNTIME"
+    if "repo_mapping" in p:
+        return "C1_REPO_MAPPING"
+    if "normalization" in p:
+        return "C9_AUDIT"
+    if "audit_tools" in p:
+        return "C9_AUDIT"
+    if "crawler" in p:
+        return "C8_PIPELINE"
+    if "orchestration" in p:
+        return "C10_CONTROLLER"
+    if "governance" in p:
+        return "C3_GOVERNANCE"
+    if "AUDIT_SYSTEM" in rel_path:
+        return "C9_AUDIT"
+    if "utils" in p:
+        return "C11_UTILITIES"
     return "C11_UTILITIES"
 
 
@@ -176,7 +204,9 @@ def build_surface_map(py_files: List[Path]) -> List[Dict[str, Any]]:
     return surface
 
 
-def compare_targets(surface: List[Dict], targets: List[Dict]) -> Tuple[List, List, List]:
+def compare_targets(
+    surface: List[Dict], targets: List[Dict]
+) -> Tuple[List, List, List]:
     """Return (present, missing, misplaced) target classifications."""
     # Build lookup: filename → list of surface entries
     by_name: Dict[str, List[Dict]] = defaultdict(list)
@@ -322,7 +352,9 @@ def main() -> None:
     # ── Step 1: Validate Phase-1 plan ─────────────────────────────────────────
     plan = load_plan()
     assert plan["phase"] == "PHASE_1_REMEDIATION", "HALT: phase mismatch"
-    assert plan["exit_condition"]["phase1_status"] == "COMPLETE", "HALT: phase1 not COMPLETE"
+    assert (
+        plan["exit_condition"]["phase1_status"] == "COMPLETE"
+    ), "HALT: phase1 not COMPLETE"
     targets: List[Dict] = plan["remediation_targets"]
     assert len(targets) == 35, f"HALT: expected 35 targets, got {len(targets)}"
     print(f"[STEP 1] Phase-1 plan validated. Targets: {len(targets)}")
@@ -335,7 +367,10 @@ def main() -> None:
 
     # ── Step 5: Target comparison ─────────────────────────────────────────────
     present, missing, misplaced = compare_targets(surface, targets)
-    print(f"[STEP 5] Present: {len(present)}, Missing: {len(missing)}, Misplaced: {len(misplaced)}")
+    print(
+        f"[STEP 5] Present: {len(present)}, "
+        f"Missing: {len(missing)}, Misplaced: {len(misplaced)}"
+    )
 
     # ── Step 6: Non-spec discovery ────────────────────────────────────────────
     non_spec = discover_non_spec(surface, targets)
@@ -343,11 +378,15 @@ def main() -> None:
 
     # ── Step 7: Dependency graph ──────────────────────────────────────────────
     dep_graph = build_dependency_graph(surface)
-    print(f"[STEP 7] Dependency graph: nodes={dep_graph['nodes']}, edges={dep_graph['edges']}")
+    nodes = dep_graph['nodes']
+    edges = dep_graph['edges']
+    print(f"[STEP 7] Dependency graph: nodes={nodes}, edges={edges}")
 
     # ── Step 8: Subsystem completion ──────────────────────────────────────────
     sub_completion = compute_subsystem_completion(present, missing, misplaced, targets)
-    print(f"[STEP 8] Subsystem completion computed for {len(sub_completion)} subsystems")
+    print(
+        f"[STEP 8] Subsystem completion computed for {len(sub_completion)} subsystems"
+    )
 
     # ── Step 9: Write artifact ────────────────────────────────────────────────
     artifact = {

@@ -1,5 +1,5 @@
-import os
 import json
+import os
 from pathlib import Path
 
 ROOT = Path(".")
@@ -7,7 +7,7 @@ OUT = Path("logs/repo_scan.json")
 
 def scan_repo():
     result = []
-    for root,dirs,files in os.walk(ROOT):
+    for root, _dirs, files in os.walk(ROOT):
         for f in files:
             result.append(str(Path(root)/f))
     return result

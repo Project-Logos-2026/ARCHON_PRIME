@@ -1,6 +1,8 @@
 import ast
 from pathlib import Path
-from audit_utils import write_log,generate_id
+
+from audit_utils import generate_id, write_log
+
 
 def run(target):
 
@@ -22,7 +24,7 @@ def run(target):
                             "issue":"deep_import"
                         })
 
-        except:
+        except Exception:
             pass
 
     write_log("import_surface_audit",target,"deep_import",issues)

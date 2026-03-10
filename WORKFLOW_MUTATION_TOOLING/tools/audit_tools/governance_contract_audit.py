@@ -1,6 +1,6 @@
-import re
 from pathlib import Path
-from audit_utils import write_log,generate_id
+
+from audit_utils import generate_id, write_log
 
 GOV_TERMS = [
     "governance",
@@ -38,7 +38,7 @@ def run(target):
 
                         break
 
-            except:
+            except Exception:
                 pass
 
     write_log(

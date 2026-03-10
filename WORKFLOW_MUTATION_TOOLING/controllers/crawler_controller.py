@@ -17,14 +17,12 @@ import json
 import os
 import sys
 import traceback
-from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from controllers.config_loader import ConfigLoader
 from crawler.core.crawl_engine import CrawlEngine
 from crawler.core.crawl_monitor import CrawlMonitor
 from crawler.utils.file_scanner import scan_directory, summarize_index
-
 
 ARTIFACT_OUTPUT_DIR = "AP_SYSTEM_AUDIT"
 IMPORT_ERROR_ARTIFACT = "AP_SYSTEM_AUDIT/CRAWLER_IMPORT_ERRORS.json"

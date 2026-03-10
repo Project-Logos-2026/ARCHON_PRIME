@@ -12,8 +12,7 @@ Responsibilities:
 
 import os
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Set
-
+from typing import Any, Dict, List, Optional, Set
 
 SUPPORTED_EXTENSIONS: Set[str] = {".py", ".json", ".yaml", ".yml", ".md"}
 

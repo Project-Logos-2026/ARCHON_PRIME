@@ -1,6 +1,7 @@
 import ast
 from pathlib import Path
-from audit_utils import write_log,generate_id
+
+from audit_utils import generate_id, write_log
 
 FACADE="imports"
 
@@ -27,7 +28,7 @@ def run(target):
                             "issue":"facade_bypass"
                         })
 
-        except:
+        except Exception:
             pass
 
     write_log("facade_bypass_audit",target,"facade_bypass",issues)

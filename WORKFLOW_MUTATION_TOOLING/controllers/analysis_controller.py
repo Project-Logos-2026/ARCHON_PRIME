@@ -16,10 +16,8 @@ import json
 import os
 import sys
 import traceback
-from pathlib import Path
 
 from controllers.config_loader import ConfigLoader
-
 
 ARTIFACT_OUTPUT_DIR = "AP_SYSTEM_AUDIT"
 IMPORT_ERROR_ARTIFACT = "AP_SYSTEM_AUDIT/ANALYSIS_IMPORT_ERRORS.json"

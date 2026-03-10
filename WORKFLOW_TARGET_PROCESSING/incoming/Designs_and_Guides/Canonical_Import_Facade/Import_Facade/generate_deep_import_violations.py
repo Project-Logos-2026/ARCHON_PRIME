@@ -18,7 +18,7 @@ Exit codes:
 import json
 import os
 import sys
-from datetime import timezone, datetime
+from datetime import datetime, timezone
 
 # ---------------------------------------------------------------------------
 # Configuration (matches Blueprint §5.5 exactly)

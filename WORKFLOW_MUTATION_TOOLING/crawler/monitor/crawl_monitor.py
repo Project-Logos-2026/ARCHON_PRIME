@@ -1,5 +1,6 @@
 import time
 
+
 def monitor():
     while True:
         print("Crawler running...")

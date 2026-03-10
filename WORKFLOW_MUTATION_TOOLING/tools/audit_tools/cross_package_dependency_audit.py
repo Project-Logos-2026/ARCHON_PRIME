@@ -1,6 +1,8 @@
 import ast
 from pathlib import Path
-from audit_utils import write_log,generate_id
+
+from audit_utils import generate_id, write_log
+
 
 def run(target):
 
@@ -27,7 +29,7 @@ def run(target):
                             "issue":"cross_package_dependency"
                         })
 
-        except:
+        except Exception:
             pass
 
     write_log("cross_package_dependency_audit",target,"cross_package_dependency",issues)

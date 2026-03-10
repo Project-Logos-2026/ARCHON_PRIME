@@ -12,13 +12,13 @@ load_repair_registry() from this module.
 """
 
 import json
-import os
 from pathlib import Path
 from typing import Any, Dict
 
-
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-_DEFAULT_REGISTRY_PATH = _REPO_ROOT / "configs" / "repair_registry" / "repair_registry.json"
+_DEFAULT_REGISTRY_PATH = (
+    _REPO_ROOT / "configs" / "repair_registry" / "repair_registry.json"
+)
 
 _registry_cache: Dict[str, Any] = {}
 

@@ -11,12 +11,12 @@ validation authority referenced by all other modules (M00).
 """
 
 import json
-import os
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-
-_SCHEMA_DIR = Path(__file__).resolve().parent.parent.parent / "orchestration" / "json_drivers"
+_SCHEMA_DIR = (
+    Path(__file__).resolve().parent.parent.parent / "orchestration" / "json_drivers"
+)
 _schema_cache: Dict[str, Dict[str, Any]] = {}
 
 
@@ -85,7 +85,11 @@ def validate(artifact: Any, schema_name: str) -> Dict[str, Any]:
     schema = get_schema(schema_name)
 
     if schema is None:
-        return {"valid": True, "errors": [], "warning": f"Schema '{schema_name}' not found; validation skipped"}
+        return {
+            "valid": True,
+            "errors": [],
+            "warning": f"Schema '{schema_name}' not found; validation skipped",
+        }
 
     required_keys = schema.get("required", [])
     if isinstance(artifact, dict):

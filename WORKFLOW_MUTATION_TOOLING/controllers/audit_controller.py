@@ -1,7 +1,7 @@
-import sys
-import json
-import importlib.util
 import datetime
+import importlib.util
+import json
+import sys
 from pathlib import Path
 
 # Ensure the tools/audit_tools directory is importable
@@ -10,7 +10,7 @@ sys.path.insert(0, str(_REPO_ROOT / "tools" / "audit_tools"))
 
 # Stage-0 config loader
 sys.path.insert(0, str(_REPO_ROOT / "controllers"))
-from config_loader import ConfigLoader
+from config_loader import ConfigLoader  # noqa: E402
 
 
 class AuditController:
@@ -83,7 +83,11 @@ class AuditController:
         Respects dry_run: logs intent without executing when True.
         """
         if self.dry_run:
-            return {"module": entry["module"], "status": "skipped_dry_run", "target": target}
+            return {
+                "module": entry["module"],
+                "status": "skipped_dry_run",
+                "target": target,
+            }
 
         if entry.get("role") in ("utility", "runner"):
             return {"module": entry["module"], "status": "skipped_non_executable_role"}
@@ -95,7 +99,11 @@ class AuditController:
         fn_name = entry.get("entry_function", "run")
         fn = getattr(mod, fn_name, None)
         if fn is None:
-            return {"module": entry["module"], "status": "entry_function_not_found", "fn": fn_name}
+            return {
+                "module": entry["module"],
+                "status": "entry_function_not_found",
+                "fn": fn_name,
+            }
 
         try:
             fn(target)

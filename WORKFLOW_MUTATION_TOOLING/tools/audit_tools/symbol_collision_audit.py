@@ -1,6 +1,8 @@
 import ast
 from pathlib import Path
-from audit_utils import write_log,generate_id
+
+from audit_utils import generate_id, write_log
+
 
 def run(target):
 
@@ -31,7 +33,7 @@ def run(target):
                     else:
                         symbols[name]=str(p)
 
-        except:
+        except Exception:
             pass
 
     write_log("symbol_collision_audit",target,"symbol_collision",issues)

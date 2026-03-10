@@ -8,7 +8,6 @@ Read-only — no mutations performed.
 """
 
 import json
-import os
 from pathlib import Path
 
 ARTIFACT_INPUT = "AP_SYSTEM_AUDIT/module_topology.json"

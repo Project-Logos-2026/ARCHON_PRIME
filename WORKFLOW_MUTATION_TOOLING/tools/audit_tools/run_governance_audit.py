@@ -1,8 +1,9 @@
 import sys
 
 import governance_contract_audit
-import governance_module_audit
 import governance_coverage_map
+import governance_module_audit
+
 
 def run(target):
 

@@ -1,6 +1,8 @@
 import ast
 from pathlib import Path
-from audit_utils import write_log,generate_id
+
+from audit_utils import generate_id, write_log
+
 
 def run(target):
 
@@ -22,7 +24,7 @@ def run(target):
                     for n in node.names:
                         imports.add(n.name.split(".")[0])
 
-        except:
+        except Exception:
             pass
 
     for f in files:

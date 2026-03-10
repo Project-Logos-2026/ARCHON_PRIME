@@ -2,6 +2,7 @@ import ast
 import json
 from pathlib import Path
 
+
 def extract_imports(file):
     imports=[]
     try:
@@ -12,7 +13,7 @@ def extract_imports(file):
                     imports.append(n.name)
             if isinstance(node,ast.ImportFrom):
                 imports.append(node.module)
-    except:
+    except Exception:
         pass
     return imports
 

@@ -15,7 +15,6 @@ import json
 from pathlib import Path
 from typing import Any, Dict
 
-
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _DEFAULT_ROUTING_TABLE_PATH = (
     _REPO_ROOT / "orchestration" / "task_router" / "routing_table.json"
@@ -78,7 +77,9 @@ def resolve_destination(artifact_type: str) -> str | None:
     return table.get(artifact_type)
 
 
-def reload_routing_table(routing_table_path: str | Path | None = None) -> Dict[str, Any]:
+def reload_routing_table(
+    routing_table_path: str | Path | None = None,
+) -> Dict[str, Any]:
     """
     Force a fresh load of the routing table, bypassing the cache.
 

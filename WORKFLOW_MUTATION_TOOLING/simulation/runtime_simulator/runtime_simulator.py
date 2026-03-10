@@ -8,7 +8,6 @@ Read-only — no mutations performed.
 """
 
 import json
-import os
 from pathlib import Path
 
 ARTIFACT_INPUT_GRAPH = "AP_SYSTEM_AUDIT/dependency_graph.json"
@@ -69,7 +68,7 @@ def _load_json(path: Path):
 def _topological_sort(graph: dict) -> list:
     """Kahn's algorithm — returns modules in dependency resolution order."""
     in_degree = {n: 0 for n in graph}
-    for node, deps in graph.items():
+    for _node, deps in graph.items():
         for d in (deps or []):
             if d in in_degree:
                 in_degree[d] = in_degree.get(d, 0) + 1

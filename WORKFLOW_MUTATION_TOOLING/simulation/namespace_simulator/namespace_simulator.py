@@ -31,7 +31,10 @@ def simulate(root: str = ".") -> dict:
         elif isinstance(raw, dict):
             conflicts = raw.get("issues", raw.get("conflicts", []))
 
-    high_risk = [c for c in conflicts if isinstance(c, dict) and c.get("issue") == "namespace_shadow"]
+    high_risk = [
+        c for c in conflicts
+        if isinstance(c, dict) and c.get("issue") == "namespace_shadow"
+    ]
 
     report = {
         "simulation": "NamespaceConflictSimulator",

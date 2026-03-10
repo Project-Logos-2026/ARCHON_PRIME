@@ -21,11 +21,9 @@ import os
 import sys
 import traceback
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from controllers.config_loader import ConfigLoader
-
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -144,14 +142,19 @@ class PipelineController:
             "dry_run": self.dry_run,
             "started_at": self._ts(),
             "completed_at": None,
-            "stages": {s: {"status": "pending", "completed_at": None} for s in PIPELINE_STAGE_ORDER},
+            "stages": {
+                s: {"status": "pending", "completed_at": None}
+                for s in PIPELINE_STAGE_ORDER
+            },
             "halted": False,
             "halt_reason": None,
         }
         self._write_json(MANIFEST_ARTIFACT, manifest)
         return manifest
 
-    def _update_manifest(self, manifest: Dict[str, Any], stage: str, status: str, detail: str = ""):
+    def _update_manifest(
+        self, manifest: Dict[str, Any], stage: str, status: str, detail: str = ""
+    ):
         manifest["stages"][stage]["status"] = status
         manifest["stages"][stage]["completed_at"] = self._ts()
         if detail:
@@ -229,7 +232,9 @@ class PipelineController:
         }
 
         # imports_normalized: import simulation report exists and completed
-        imp_path = os.path.join(self.root, "AP_SYSTEM_AUDIT/import_simulation_report.json")
+        imp_path = os.path.join(
+            self.root, "AP_SYSTEM_AUDIT/import_simulation_report.json"
+        )
         if os.path.exists(imp_path):
             try:
                 data = json.load(open(imp_path))
@@ -238,7 +243,9 @@ class PipelineController:
                 pass
 
         # dependencies_resolved: dependency simulation report exists
-        dep_path = os.path.join(self.root, "AP_SYSTEM_AUDIT/dependency_simulation_report.json")
+        dep_path = os.path.join(
+            self.root, "AP_SYSTEM_AUDIT/dependency_simulation_report.json"
+        )
         if os.path.exists(dep_path):
             try:
                 data = json.load(open(dep_path))
@@ -247,7 +254,9 @@ class PipelineController:
                 pass
 
         # namespaces_clean: namespace simulation report exists
-        ns_path = os.path.join(self.root, "AP_SYSTEM_AUDIT/namespace_simulation_report.json")
+        ns_path = os.path.join(
+            self.root, "AP_SYSTEM_AUDIT/namespace_simulation_report.json"
+        )
         if os.path.exists(ns_path):
             try:
                 data = json.load(open(ns_path))
@@ -260,7 +269,9 @@ class PipelineController:
         checks["governance_enforced"] = os.path.exists(gov_path)
 
         # runtime_boot_valid: runtime boot simulation exists
-        rb_path = os.path.join(self.root, "AP_SYSTEM_AUDIT/runtime_boot_simulation.json")
+        rb_path = os.path.join(
+            self.root, "AP_SYSTEM_AUDIT/runtime_boot_simulation.json"
+        )
         if os.path.exists(rb_path):
             try:
                 data = json.load(open(rb_path))

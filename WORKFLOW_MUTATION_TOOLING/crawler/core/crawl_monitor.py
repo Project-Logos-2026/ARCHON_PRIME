@@ -13,8 +13,7 @@ Responsibilities:
 import json
 import os
 import time
-from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 
 class CrawlMonitor:
@@ -74,7 +73,9 @@ class CrawlMonitor:
     def log_orphan(self, module_path: str):
         """Record a detected orphan module."""
         self.orphans_detected += 1
-        self.log_anomaly("orphan_module", module_path, "Module has no package __init__.py")
+        self.log_anomaly(
+            "orphan_module", module_path, "Module has no package __init__.py"
+        )
 
     def log_anomaly(self, anomaly_type: str, path: str, detail: str = ""):
         """Record a traversal anomaly."""
@@ -99,7 +100,9 @@ class CrawlMonitor:
         for orphan in plan.get("orphan_modules", []):
             path = orphan.get("path", "")
             if path not in [a["path"] for a in self.anomalies]:
-                self.log_anomaly("orphan_module", path, "No package __init__.py in parent dir")
+                self.log_anomaly(
+                    "orphan_module", path, "No package __init__.py in parent dir"
+                )
 
     # ------------------------------------------------------------------
     # Summary generation

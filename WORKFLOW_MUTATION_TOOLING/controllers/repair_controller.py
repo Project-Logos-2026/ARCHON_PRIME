@@ -22,7 +22,6 @@ from typing import Any, Dict, List, Optional
 
 from controllers.config_loader import ConfigLoader
 
-
 ARTIFACT_OUTPUT_DIR = "AP_SYSTEM_AUDIT"
 IMPORT_ERROR_ARTIFACT = "AP_SYSTEM_AUDIT/REPAIR_IMPORT_ERRORS.json"
 REPAIR_PLAN_ARTIFACT = "AP_SYSTEM_AUDIT/repair_plan.json"
@@ -38,11 +37,26 @@ UPSTREAM_ARTIFACTS = {
 
 # Map audit issue types to operator module + class names
 ISSUE_TYPE_OPERATOR_MAP = {
-    "import_error": ("repair.operators.import_rewrite_operator", "ImportRewriteOperator"),
-    "header_violation": ("repair.operators.header_injection_operator", "HeaderInjectionOperator"),
-    "dependency_inconsistency": ("repair.operators.dependency_normalizer", "DependencyNormalizerOperator"),
-    "module_misplacement": ("repair.operators.module_relocation_operator", "ModuleRelocationOperator"),
-    "namespace_collision": ("repair.operators.namespace_disambiguator", "NamespaceDisambiguatorOperator"),
+    "import_error": (
+        "repair.operators.import_rewrite_operator",
+        "ImportRewriteOperator",
+    ),
+    "header_violation": (
+        "repair.operators.header_injection_operator",
+        "HeaderInjectionOperator",
+    ),
+    "dependency_inconsistency": (
+        "repair.operators.dependency_normalizer",
+        "DependencyNormalizerOperator",
+    ),
+    "module_misplacement": (
+        "repair.operators.module_relocation_operator",
+        "ModuleRelocationOperator",
+    ),
+    "namespace_collision": (
+        "repair.operators.namespace_disambiguator",
+        "NamespaceDisambiguatorOperator",
+    ),
 }
 
 
@@ -328,9 +342,9 @@ class RepairController:
                     "dry_run": self.dry_run,
                     "mutation_allowed": self.mutation_allowed,
                     "message": (
-                        "Repairs not applied: mutation_allowed=false or dry_run active. "
-                        "Set crawl_mode != dry_run, mutation_allowed = true, "
-                        "and repair_enabled = true to enable."
+                        "Repairs not applied: mutation_allowed=false or "
+                        "dry_run active. Set crawl_mode != dry_run, "
+                        "mutation_allowed = true, and repair_enabled = true to enable."
                     ),
                 }
             ]
@@ -347,7 +361,10 @@ class RepairController:
             module_path, class_name = operator_spec
             operator = self._load_operator(module_path, class_name)
             if operator is None:
-                results.append({"status": "operator_load_failed", "module": module_path})
+                results.append({
+                    "status": "operator_load_failed",
+                    "module": module_path,
+                })
                 continue
 
             # Authorize mutation for this single call

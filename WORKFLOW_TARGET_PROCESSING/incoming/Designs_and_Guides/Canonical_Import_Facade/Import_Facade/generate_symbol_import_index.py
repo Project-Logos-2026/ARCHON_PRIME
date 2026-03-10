@@ -14,14 +14,18 @@ No other repository files are modified.
 import ast
 import json
 import os
-import sys
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 PYTHON_FILES_INDEX = os.path.join(REPO_ROOT, "repo_python_files.json")
-OUTPUT_FILE = os.path.join(REPO_ROOT, "_Reports", "Canonical_Import_Facade", "repo_symbol_imports.json")
+OUTPUT_FILE = os.path.join(
+    REPO_ROOT, "_Reports", "Canonical_Import_Facade", "repo_symbol_imports.json"
+)
 
-IGNORE_DIRS = {".git", ".venv", "venv", "__pycache__", "node_modules", ".mypy_cache", ".pytest_cache"}
+IGNORE_DIRS = {
+    ".git", ".venv", "venv", "__pycache__",
+    "node_modules", ".mypy_cache", ".pytest_cache",
+}
 
 
 def should_skip(rel_path: str) -> bool:
@@ -30,7 +34,8 @@ def should_skip(rel_path: str) -> bool:
 
 
 def discover_python_files() -> list[str]:
-    """Walk the repo and return relative paths of all .py files, refreshing the index."""
+    """Walk the repo and return relative paths of all .py files,
+    refreshing the index."""
     files = []
     for dirpath, dirnames, filenames in os.walk(REPO_ROOT):
         dirnames[:] = [d for d in dirnames if d not in IGNORE_DIRS]
@@ -76,7 +81,11 @@ def parse_imports(rel_path: str, source_lines: list[str]) -> list[dict]:
         if isinstance(node, ast.Import):
             # import module.submodule [as alias]
             for alias in node.names:
-                line_text = source_lines[node.lineno - 1].rstrip() if node.lineno <= len(source_lines) else ""
+                line_text = (
+                    source_lines[node.lineno - 1].rstrip()
+                    if node.lineno <= len(source_lines)
+                    else ""
+                )
                 records.append({
                     "symbol": alias.name.split(".")[0],
                     "source_module": alias.name,
@@ -93,7 +102,11 @@ def parse_imports(rel_path: str, source_lines: list[str]) -> list[dict]:
             module_str = ("." * level) + module if level else module
 
             for alias in node.names:
-                line_text = source_lines[node.lineno - 1].rstrip() if node.lineno <= len(source_lines) else ""
+                line_text = (
+                    source_lines[node.lineno - 1].rstrip()
+                    if node.lineno <= len(source_lines)
+                    else ""
+                )
                 records.append({
                     "symbol": alias.name,
                     "source_module": module_str,

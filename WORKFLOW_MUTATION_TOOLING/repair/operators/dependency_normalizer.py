@@ -11,7 +11,7 @@ SAFETY CONTRACT:
     or crawl_mode = dry_run. The RepairController enforces this gate.
 """
 
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 
 class DependencyNormalizerOperator:
@@ -111,6 +111,8 @@ class DependencyNormalizerOperator:
         # All other dependency normalization actions require manual review
         return {
             "status": "deferred",
-            "reason": f"Action '{action}' requires manual review before automated apply",
+            "reason": (
+                f"Action '{action}' requires manual review before automated apply"
+            ),
             "file_path": file_path,
         }

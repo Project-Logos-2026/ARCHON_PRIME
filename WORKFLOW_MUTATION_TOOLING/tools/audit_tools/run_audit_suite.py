@@ -1,18 +1,19 @@
 import sys
 
-import import_surface_audit
 import circular_dependency_audit
-import header_schema_audit
-import unused_import_audit
-import duplicate_module_audit
-import file_size_audit
-import runtime_entry_audit
-import orphan_module_audit
-import symbol_collision_audit
 import cross_package_dependency_audit
-import namespace_shadow_audit
-import module_path_ambiguity_audit
+import duplicate_module_audit
 import facade_bypass_audit
+import file_size_audit
+import header_schema_audit
+import import_surface_audit
+import module_path_ambiguity_audit
+import namespace_shadow_audit
+import orphan_module_audit
+import runtime_entry_audit
+import symbol_collision_audit
+import unused_import_audit
+
 
 def run(target):
 
