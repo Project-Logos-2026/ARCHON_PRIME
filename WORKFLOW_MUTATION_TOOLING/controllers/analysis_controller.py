@@ -148,7 +148,9 @@ class AnalysisController:
             func = getattr(mod, entry_function, None)
             if func is None:
                 result["status"] = "failed"
-                result["error"] = f"Entry function '{entry_function}' not found in {module_path}"
+                result["error"] = (
+                    f"Entry function '{entry_function}' not found in {module_path}"
+                )
                 return result
 
             # Route artifact output to AP_SYSTEM_AUDIT/ if the module

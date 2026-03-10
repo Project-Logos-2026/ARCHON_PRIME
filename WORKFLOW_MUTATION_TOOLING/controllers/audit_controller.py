@@ -66,7 +66,11 @@ class AuditController:
         for entry in self.registry["audits"]:
             mod, err = self.import_module(entry)
             if err:
-                errors.append({"module": entry["module"], "file": entry["file_path"], "error": err})
+                errors.append({
+                    "module": entry["module"],
+                    "file": entry["file_path"],
+                    "error": err,
+                })
             else:
                 ok.append(entry["module"])
         return ok, errors
@@ -97,7 +101,11 @@ class AuditController:
             fn(target)
             return {"module": entry["module"], "status": "ok", "target": target}
         except Exception as exc:
-            return {"module": entry["module"], "status": "runtime_error", "error": str(exc)}
+            return {
+                "module": entry["module"],
+                "status": "runtime_error",
+                "error": str(exc),
+            }
 
     def run_all_audits(self, target):
         """

@@ -187,7 +187,9 @@ class SimulationController:
             func = getattr(mod, entry_function, None)
             if func is None:
                 result["status"] = "failed"
-                result["error"] = f"Entry function '{entry_function}' not found in {module_path}"
+                result["error"] = (
+                    f"Entry function '{entry_function}' not found in {module_path}"
+                )
                 return result
 
             # Pass root path so simulators can locate analysis artifacts

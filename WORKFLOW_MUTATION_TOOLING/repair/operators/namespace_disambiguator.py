@@ -85,7 +85,10 @@ class NamespaceDisambiguatorOperator:
         suggested_rename_b = issue.get("suggested_rename_b", "")
 
         if not file_b or not suggested_rename_b:
-            return {"status": "failed", "reason": "file_b or suggested_rename_b missing"}
+            return {
+                "status": "failed",
+                "reason": "file_b or suggested_rename_b missing",
+            }
 
         if not os.path.exists(file_b):
             return {"status": "failed", "reason": f"Source not found: {file_b}"}

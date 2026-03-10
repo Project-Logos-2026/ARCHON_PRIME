@@ -79,7 +79,10 @@ class ModuleRelocationOperator:
         canonical_path = issue.get("canonical_path", "")
 
         if not current_path or not canonical_path:
-            return {"status": "failed", "reason": "current_path or canonical_path missing"}
+            return {
+                "status": "failed",
+                "reason": "current_path or canonical_path missing",
+            }
 
         if not os.path.exists(current_path):
             return {"status": "failed", "reason": f"Source not found: {current_path}"}
