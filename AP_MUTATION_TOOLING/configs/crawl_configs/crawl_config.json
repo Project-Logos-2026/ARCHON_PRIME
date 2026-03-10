@@ -12,3 +12,4 @@
     "routing_table": "orchestration/task_router/routing_table.json",
     "repair_registry": "configs/repair_registry/repair_registry.json"
 }
+
