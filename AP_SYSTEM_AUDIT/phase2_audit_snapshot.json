@@ -1,0 +1,1846 @@
+{
+  "phase": "PHASE_2_AUDIT",
+  "generated_at": "2026-03-09T21:01:08.778233Z",
+  "repo_root": "/workspaces/ARCHON_PRIME",
+  "source_plan": "Designs_and_Guides/AP_REMEDIATION_SOURCES/phase1_remediation_plan.json",
+  "scan_stats": {
+    "total_python_files_scanned": 112,
+    "excluded_dirs": [
+      ".env",
+      ".git",
+      ".venv",
+      "__pycache__",
+      "node_modules",
+      "venv"
+    ]
+  },
+  "targets_summary": {
+    "total_targets": 35,
+    "present": 3,
+    "missing": 32,
+    "misplaced": 0
+  },
+  "present_modules": [
+    {
+      "module_id": "M00",
+      "module_name": "schema_registry.py",
+      "expected_path": "tools/normalization_tools/schema_registry.py",
+      "actual_path": "tools/normalization_tools/schema_registry.py",
+      "subsystem": "S0_FOUNDATION",
+      "status": "SPEC_PRESENT"
+    },
+    {
+      "module_id": "M01",
+      "module_name": "routing_table_loader.py",
+      "expected_path": "orchestration/task_router/routing_table_loader.py",
+      "actual_path": "orchestration/task_router/routing_table_loader.py",
+      "subsystem": "S0_FOUNDATION",
+      "status": "SPEC_PRESENT"
+    },
+    {
+      "module_id": "M02",
+      "module_name": "repair_registry_loader.py",
+      "expected_path": "tools/audit_tools/repair_registry_loader.py",
+      "actual_path": "tools/audit_tools/repair_registry_loader.py",
+      "subsystem": "S0_FOUNDATION",
+      "status": "SPEC_PRESENT"
+    }
+  ],
+  "missing_modules": [
+    {
+      "module_id": "M10",
+      "module_name": "repo_directory_scanner.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_directory_scanner.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M11",
+      "module_name": "python_file_collector.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/repo_scanners/python_file_collector.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M12",
+      "module_name": "import_extractor.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/import_scanners/import_extractor.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M14",
+      "module_name": "header_schema_scanner.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/header_scanners/header_schema_scanner.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M15",
+      "module_name": "governance_contract_scanner.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/governance_scanners/governance_contract_scanner.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M16",
+      "module_name": "runtime_phase_scanner.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/runtime_scanners/runtime_phase_scanner.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M13",
+      "module_name": "symbol_import_extractor.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/import_scanners/symbol_import_extractor.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": false,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M17",
+      "module_name": "concept_spec_gap_detector.py",
+      "expected_path": "AUDIT_SYSTEM/scripts/repo_scanners/concept_spec_gap_detector.py",
+      "subsystem": "S1_AUDIT_REGEN",
+      "blocking": false,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M20",
+      "module_name": "module_index_builder.py",
+      "expected_path": "tools/repo_mapping/module_index_builder.py",
+      "subsystem": "S2_REPO_ANALYSIS",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M21",
+      "module_name": "dependency_graph_builder.py",
+      "expected_path": "tools/import_analysis/dependency_graph_builder.py",
+      "subsystem": "S2_REPO_ANALYSIS",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M23",
+      "module_name": "runtime_phase_mapper.py",
+      "expected_path": "tools/runtime_analysis/runtime_phase_mapper.py",
+      "subsystem": "S2_REPO_ANALYSIS",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M22",
+      "module_name": "circular_dependency_detector.py",
+      "expected_path": "tools/import_analysis/circular_dependency_detector.py",
+      "subsystem": "S2_REPO_ANALYSIS",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M24",
+      "module_name": "runtime_boot_sequencer.py",
+      "expected_path": "tools/runtime_analysis/runtime_boot_sequencer.py",
+      "subsystem": "S2_REPO_ANALYSIS",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M25",
+      "module_name": "canonical_import_registry_builder.py",
+      "expected_path": "tools/import_analysis/canonical_import_registry_builder.py",
+      "subsystem": "S2_REPO_ANALYSIS",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M50",
+      "module_name": "header_injector.py",
+      "expected_path": "crawler/mutation/header_injector.py",
+      "subsystem": "S5_MUTATION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M51",
+      "module_name": "import_rewriter.py",
+      "expected_path": "crawler/mutation/import_rewriter.py",
+      "subsystem": "S5_MUTATION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M62",
+      "module_name": "syntax_validator.py",
+      "expected_path": "crawler/pipeline/syntax_validator.py",
+      "subsystem": "S6_CRAWL_EXECUTION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M63",
+      "module_name": "governance_validator.py",
+      "expected_path": "crawler/pipeline/governance_validator.py",
+      "subsystem": "S6_CRAWL_EXECUTION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M64",
+      "module_name": "phase_validator.py",
+      "expected_path": "crawler/pipeline/phase_validator.py",
+      "subsystem": "S6_CRAWL_EXECUTION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M38",
+      "module_name": "crawl_planner.py",
+      "expected_path": "crawler/engine/crawl_planner.py",
+      "subsystem": "S4_CRAWL_PLANNING",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M39",
+      "module_name": "execution_graph_builder.py",
+      "expected_path": "orchestration/execution_graphs/execution_graph_builder.py",
+      "subsystem": "S4_CRAWL_PLANNING",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M61",
+      "module_name": "module_processor.py",
+      "expected_path": "crawler/pipeline/module_processor.py",
+      "subsystem": "S6_CRAWL_EXECUTION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M60",
+      "module_name": "crawl_executor.py",
+      "expected_path": "crawler/engine/crawl_executor.py",
+      "subsystem": "S6_CRAWL_EXECUTION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M70",
+      "module_name": "error_classifier.py",
+      "expected_path": "crawler/repair/error_classifier.py",
+      "subsystem": "S7_ERROR_REPAIR",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M71",
+      "module_name": "repair_router.py",
+      "expected_path": "crawler/repair/repair_router.py",
+      "subsystem": "S7_ERROR_REPAIR",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M72",
+      "module_name": "repair_executor.py",
+      "expected_path": "crawler/repair/repair_executor.py",
+      "subsystem": "S7_ERROR_REPAIR",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M80",
+      "module_name": "quarantine_manager.py",
+      "expected_path": "crawler/quarantine/quarantine_manager.py",
+      "subsystem": "S8_QUARANTINE",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M90",
+      "module_name": "artifact_router.py",
+      "expected_path": "crawler/commit/artifact_router.py",
+      "subsystem": "S9_ARTIFACT_REPORTING",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M91",
+      "module_name": "report_generator.py",
+      "expected_path": "crawler/commit/report_generator.py",
+      "subsystem": "S9_ARTIFACT_REPORTING",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M92",
+      "module_name": "commit_finalizer.py",
+      "expected_path": "crawler/commit/commit_finalizer.py",
+      "subsystem": "S9_ARTIFACT_REPORTING",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M95",
+      "module_name": "task_router.py",
+      "expected_path": "orchestration/task_router/task_router.py",
+      "subsystem": "S10_ORCHESTRATION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    },
+    {
+      "module_id": "M96",
+      "module_name": "controller_main.py",
+      "expected_path": "orchestration/controllers/controller_main.py",
+      "subsystem": "S10_ORCHESTRATION",
+      "blocking": true,
+      "status": "SPEC_MISSING"
+    }
+  ],
+  "misplaced_modules": [],
+  "non_spec_modules": [
+    {
+      "module_name": "crawl_engine.py",
+      "path": "crawler/engine/crawl_engine.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M60",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 9,
+      "file_size": 146
+    },
+    {
+      "module_name": "crawl_monitor.py",
+      "path": "crawler/core/crawl_monitor.py",
+      "classification": "LEGACY_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 143,
+      "file_size": 4851
+    },
+    {
+      "module_name": "crawl_engine.py",
+      "path": "crawler/core/crawl_engine.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M60",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 272,
+      "file_size": 9567
+    },
+    {
+      "module_name": "file_scanner.py",
+      "path": "crawler/utils/file_scanner.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 158,
+      "file_size": 4541
+    },
+    {
+      "module_name": "crawl_monitor.py",
+      "path": "crawler/monitor/crawl_monitor.py",
+      "classification": "LEGACY_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 10,
+      "file_size": 142
+    },
+    {
+      "module_name": "module_relocation_operator.py",
+      "path": "repair/operators/module_relocation_operator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 103,
+      "file_size": 3448
+    },
+    {
+      "module_name": "header_injection_operator.py",
+      "path": "repair/operators/header_injection_operator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M50",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 110,
+      "file_size": 3377
+    },
+    {
+      "module_name": "import_rewrite_operator.py",
+      "path": "repair/operators/import_rewrite_operator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M51",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 101,
+      "file_size": 3355
+    },
+    {
+      "module_name": "dependency_normalizer.py",
+      "path": "repair/operators/dependency_normalizer.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M21",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 117,
+      "file_size": 3996
+    },
+    {
+      "module_name": "namespace_disambiguator.py",
+      "path": "repair/operators/namespace_disambiguator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 120,
+      "file_size": 4161
+    },
+    {
+      "module_name": "dependency_simulator.py",
+      "path": "simulation/dependency_simulator/dependency_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 85,
+      "file_size": 2545
+    },
+    {
+      "module_name": "namespace_simulator.py",
+      "path": "simulation/namespace_simulator/namespace_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 56,
+      "file_size": 1623
+    },
+    {
+      "module_name": "repo_simulator.py",
+      "path": "simulation/repo_simulator/repo_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 9,
+      "file_size": 166
+    },
+    {
+      "module_name": "import_simulator.py",
+      "path": "simulation/import_simulator/import_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 66,
+      "file_size": 1933
+    },
+    {
+      "module_name": "runtime_simulator.py",
+      "path": "simulation/runtime_simulator/runtime_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 93,
+      "file_size": 2668
+    },
+    {
+      "module_name": "test_placeholder.py",
+      "path": "tests/test_placeholder.py",
+      "classification": "UNKNOWN_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 2,
+      "file_size": 36
+    },
+    {
+      "module_name": "repo_mapper.py",
+      "path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M10",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 89,
+      "file_size": 2447
+    },
+    {
+      "module_name": "crawler_controller.py",
+      "path": "controllers/crawler_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M60",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 264,
+      "file_size": 9292
+    },
+    {
+      "module_name": "repair_controller.py",
+      "path": "controllers/repair_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M71",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 414,
+      "file_size": 16068
+    },
+    {
+      "module_name": "pipeline_controller.py",
+      "path": "controllers/pipeline_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M96",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 539,
+      "file_size": 20909
+    },
+    {
+      "module_name": "config_loader.py",
+      "path": "controllers/config_loader.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M01",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 45,
+      "file_size": 1423
+    },
+    {
+      "module_name": "simulation_controller.py",
+      "path": "controllers/simulation_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 280,
+      "file_size": 9932
+    },
+    {
+      "module_name": "audit_controller.py",
+      "path": "controllers/audit_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M95",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 173,
+      "file_size": 7401
+    },
+    {
+      "module_name": "analysis_controller.py",
+      "path": "controllers/analysis_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M95",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 274,
+      "file_size": 9555
+    },
+    {
+      "module_name": "_run_audit.py",
+      "path": "AP_SYSTEM_AUDIT/Complettion_Audit/_run_audit.py",
+      "classification": "UNKNOWN_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 1306,
+      "file_size": 52449
+    },
+    {
+      "module_name": "ap_artifact_collection_p1.py",
+      "path": "tools/ap_artifact_collection_p1.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 582,
+      "file_size": 23210
+    },
+    {
+      "module_name": "ap_phase2_audit.py",
+      "path": "tools/ap_phase2_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 405,
+      "file_size": 16720
+    },
+    {
+      "module_name": "repo_scanner.py",
+      "path": "tools/repo_mapping/repo_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M10",
+      "subsystem_guess": "C1_REPO_MAPPING",
+      "line_count": 20,
+      "file_size": 443
+    },
+    {
+      "module_name": "header_validator.py",
+      "path": "tools/normalization_tools/header_validator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M14",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 14,
+      "file_size": 338
+    },
+    {
+      "module_name": "governance_scanner.py",
+      "path": "tools/governance_analysis/governance_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15",
+      "subsystem_guess": "C3_GOVERNANCE",
+      "line_count": 12,
+      "file_size": 243
+    },
+    {
+      "module_name": "import_surface_audit.py",
+      "path": "tools/audit_tools/import_surface_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M25",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 29,
+      "file_size": 791
+    },
+    {
+      "module_name": "run_governance_audit.py",
+      "path": "tools/audit_tools/run_governance_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 20,
+      "file_size": 317
+    },
+    {
+      "module_name": "unused_import_audit.py",
+      "path": "tools/audit_tools/unused_import_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M12",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 40,
+      "file_size": 951
+    },
+    {
+      "module_name": "cross_package_dependency_audit.py",
+      "path": "tools/audit_tools/cross_package_dependency_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 34,
+      "file_size": 824
+    },
+    {
+      "module_name": "header_schema_audit.py",
+      "path": "tools/audit_tools/header_schema_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M14",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 21,
+      "file_size": 442
+    },
+    {
+      "module_name": "governance_module_audit.py",
+      "path": "tools/audit_tools/governance_module_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 47,
+      "file_size": 817
+    },
+    {
+      "module_name": "runtime_entry_audit.py",
+      "path": "tools/audit_tools/runtime_entry_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M23",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 21,
+      "file_size": 442
+    },
+    {
+      "module_name": "governance_contract_audit.py",
+      "path": "tools/audit_tools/governance_contract_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 50,
+      "file_size": 979
+    },
+    {
+      "module_name": "facade_bypass_audit.py",
+      "path": "tools/audit_tools/facade_bypass_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M25",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 34,
+      "file_size": 784
+    },
+    {
+      "module_name": "symbol_collision_audit.py",
+      "path": "tools/audit_tools/symbol_collision_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 38,
+      "file_size": 936
+    },
+    {
+      "module_name": "circular_dependency_audit.py",
+      "path": "tools/audit_tools/circular_dependency_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M22",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 45,
+      "file_size": 1058
+    },
+    {
+      "module_name": "namespace_shadow_audit.py",
+      "path": "tools/audit_tools/namespace_shadow_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 27,
+      "file_size": 556
+    },
+    {
+      "module_name": "file_size_audit.py",
+      "path": "tools/audit_tools/file_size_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 22,
+      "file_size": 463
+    },
+    {
+      "module_name": "governance_coverage_map.py",
+      "path": "tools/audit_tools/governance_coverage_map.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 50,
+      "file_size": 1229
+    },
+    {
+      "module_name": "duplicate_module_audit.py",
+      "path": "tools/audit_tools/duplicate_module_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 26,
+      "file_size": 525
+    },
+    {
+      "module_name": "run_audit_suite.py",
+      "path": "tools/audit_tools/run_audit_suite.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 38,
+      "file_size": 979
+    },
+    {
+      "module_name": "orphan_module_audit.py",
+      "path": "tools/audit_tools/orphan_module_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 38,
+      "file_size": 766
+    },
+    {
+      "module_name": "module_path_ambiguity_audit.py",
+      "path": "tools/audit_tools/module_path_ambiguity_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 29,
+      "file_size": 619
+    },
+    {
+      "module_name": "audit_utils.py",
+      "path": "tools/audit_tools/audit_utils.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C9_AUDIT",
+      "line_count": 37,
+      "file_size": 853
+    },
+    {
+      "module_name": "dependency_graph.py",
+      "path": "tools/runtime_analysis/dependency_graph.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M21",
+      "subsystem_guess": "C5_RUNTIME",
+      "line_count": 15,
+      "file_size": 327
+    },
+    {
+      "module_name": "import_scanner.py",
+      "path": "tools/import_analysis/import_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M12",
+      "subsystem_guess": "C2_IMPORT_ANALYSIS",
+      "line_count": 27,
+      "file_size": 646
+    },
+    {
+      "module_name": "logger.py",
+      "path": "utils/logger.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 16,
+      "file_size": 362
+    },
+    {
+      "module_name": "repo_structure_export.py",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 55,
+      "file_size": 2070
+    },
+    {
+      "module_name": "generate_symbol_import_index.py",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 139,
+      "file_size": 4803
+    },
+    {
+      "module_name": "generate_deep_import_violations.py",
+      "path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 141,
+      "file_size": 4891
+    },
+    {
+      "module_name": "ap_artifact_collection_p1.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/ap_artifact_collection_p1.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 582,
+      "file_size": 23210
+    },
+    {
+      "module_name": "dependency_simulator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/dependency_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 85,
+      "file_size": 2545
+    },
+    {
+      "module_name": "import_simulator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 66,
+      "file_size": 1933
+    },
+    {
+      "module_name": "module_relocation_operator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_relocation_operator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 103,
+      "file_size": 3448
+    },
+    {
+      "module_name": "test_placeholder.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/test_placeholder.py",
+      "classification": "UNKNOWN_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 2,
+      "file_size": 36
+    },
+    {
+      "module_name": "import_surface_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_surface_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M25",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 29,
+      "file_size": 791
+    },
+    {
+      "module_name": "run_governance_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_governance_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C3_GOVERNANCE",
+      "line_count": 20,
+      "file_size": 317
+    },
+    {
+      "module_name": "unused_import_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/unused_import_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M12",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 40,
+      "file_size": 951
+    },
+    {
+      "module_name": "cross_package_dependency_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/cross_package_dependency_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 34,
+      "file_size": 824
+    },
+    {
+      "module_name": "crawler_core_crawl_monitor.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_core_crawl_monitor.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 143,
+      "file_size": 4851
+    },
+    {
+      "module_name": "namespace_simulator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 56,
+      "file_size": 1623
+    },
+    {
+      "module_name": "crawler_core_crawl_engine.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_core_crawl_engine.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 272,
+      "file_size": 9567
+    },
+    {
+      "module_name": "dependency_graph.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/dependency_graph.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M21",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 15,
+      "file_size": 327
+    },
+    {
+      "module_name": "crawler_controller.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M60",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 264,
+      "file_size": 9292
+    },
+    {
+      "module_name": "header_schema_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_schema_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M14",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 21,
+      "file_size": 442
+    },
+    {
+      "module_name": "repo_mapper.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_mapper.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M10",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 89,
+      "file_size": 2447
+    },
+    {
+      "module_name": "file_scanner.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_scanner.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 158,
+      "file_size": 4541
+    },
+    {
+      "module_name": "governance_scanner.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15",
+      "subsystem_guess": "C3_GOVERNANCE",
+      "line_count": 12,
+      "file_size": 243
+    },
+    {
+      "module_name": "crawler_engine_crawl_engine.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_engine_crawl_engine.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 9,
+      "file_size": 146
+    },
+    {
+      "module_name": "repair_controller.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repair_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M71",
+      "subsystem_guess": "C6_REPAIR",
+      "line_count": 414,
+      "file_size": 16068
+    },
+    {
+      "module_name": "logger.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/logger.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 16,
+      "file_size": 362
+    },
+    {
+      "module_name": "pipeline_controller.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M96",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 539,
+      "file_size": 20909
+    },
+    {
+      "module_name": "repo_scanner.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M10",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 20,
+      "file_size": 443
+    },
+    {
+      "module_name": "governance_module_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_module_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15",
+      "subsystem_guess": "C3_GOVERNANCE",
+      "line_count": 47,
+      "file_size": 817
+    },
+    {
+      "module_name": "repo_simulator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 9,
+      "file_size": 166
+    },
+    {
+      "module_name": "config_loader.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M01",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 45,
+      "file_size": 1423
+    },
+    {
+      "module_name": "runtime_entry_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_entry_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M23",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 21,
+      "file_size": 442
+    },
+    {
+      "module_name": "governance_contract_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_contract_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M15",
+      "subsystem_guess": "C3_GOVERNANCE",
+      "line_count": 50,
+      "file_size": 979
+    },
+    {
+      "module_name": "header_injection_operator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_injection_operator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M50",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 110,
+      "file_size": 3377
+    },
+    {
+      "module_name": "runtime_simulator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_simulator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 93,
+      "file_size": 2668
+    },
+    {
+      "module_name": "header_validator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_validator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M14",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 14,
+      "file_size": 338
+    },
+    {
+      "module_name": "facade_bypass_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/facade_bypass_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M25",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 34,
+      "file_size": 784
+    },
+    {
+      "module_name": "_run_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/_run_audit.py",
+      "classification": "UNKNOWN_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 1306,
+      "file_size": 52449
+    },
+    {
+      "module_name": "repo_structure_export.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_structure_export.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 55,
+      "file_size": 2070
+    },
+    {
+      "module_name": "symbol_collision_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/symbol_collision_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 38,
+      "file_size": 936
+    },
+    {
+      "module_name": "circular_dependency_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/circular_dependency_audit.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M22",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 45,
+      "file_size": 1058
+    },
+    {
+      "module_name": "namespace_shadow_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_shadow_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 27,
+      "file_size": 556
+    },
+    {
+      "module_name": "simulation_controller.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/simulation_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C7_SIMULATION",
+      "line_count": 280,
+      "file_size": 9932
+    },
+    {
+      "module_name": "generate_symbol_import_index.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/generate_symbol_import_index.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 139,
+      "file_size": 4803
+    },
+    {
+      "module_name": "file_size_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_size_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 22,
+      "file_size": 463
+    },
+    {
+      "module_name": "import_rewrite_operator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_rewrite_operator.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M51",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 101,
+      "file_size": 3355
+    },
+    {
+      "module_name": "governance_coverage_map.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_coverage_map.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C3_GOVERNANCE",
+      "line_count": 50,
+      "file_size": 1229
+    },
+    {
+      "module_name": "dependency_normalizer.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/dependency_normalizer.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M21",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 117,
+      "file_size": 3996
+    },
+    {
+      "module_name": "duplicate_module_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/duplicate_module_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 26,
+      "file_size": 525
+    },
+    {
+      "module_name": "run_audit_suite.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 38,
+      "file_size": 979
+    },
+    {
+      "module_name": "import_scanner.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_scanner.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M12",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 27,
+      "file_size": 646
+    },
+    {
+      "module_name": "crawler_monitor_crawl_monitor.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_monitor_crawl_monitor.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C8_PIPELINE",
+      "line_count": 10,
+      "file_size": 142
+    },
+    {
+      "module_name": "audit_controller.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M95",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 173,
+      "file_size": 7401
+    },
+    {
+      "module_name": "analysis_controller.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/analysis_controller.py",
+      "classification": "ANALOG_IMPLEMENTATION",
+      "possible_spec_mapping": "M95",
+      "subsystem_guess": "C10_CONTROLLER",
+      "line_count": 274,
+      "file_size": 9555
+    },
+    {
+      "module_name": "orphan_module_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/orphan_module_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 38,
+      "file_size": 766
+    },
+    {
+      "module_name": "module_path_ambiguity_audit.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_path_ambiguity_audit.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 29,
+      "file_size": 619
+    },
+    {
+      "module_name": "namespace_disambiguator.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_disambiguator.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 120,
+      "file_size": 4161
+    },
+    {
+      "module_name": "generate_deep_import_violations.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/generate_deep_import_violations.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 141,
+      "file_size": 4891
+    },
+    {
+      "module_name": "audit_utils.py",
+      "path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+      "classification": "ENHANCEMENT_MODULE",
+      "possible_spec_mapping": "None",
+      "subsystem_guess": "C11_UTILITIES",
+      "line_count": 37,
+      "file_size": 853
+    }
+  ],
+  "dependency_graph": {
+    "nodes": 112,
+    "edges": 92,
+    "edge_list": [
+      {
+        "source_module": "controllers/crawler_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/crawler_controller.py",
+        "target_module": "crawler/core/crawl_engine.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/crawler_controller.py",
+        "target_module": "crawler/monitor/crawl_monitor.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/crawler_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_scanner.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/repair_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/analysis_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/simulation_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repair_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/simulation_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/audit_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "controllers/analysis_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/import_surface_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_governance_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_contract_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_governance_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_module_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_governance_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_coverage_map.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/unused_import_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/cross_package_dependency_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/header_schema_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/governance_module_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/runtime_entry_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/governance_contract_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/facade_bypass_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/symbol_collision_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/circular_dependency_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/namespace_shadow_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/file_size_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/governance_coverage_map.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/duplicate_module_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_surface_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/circular_dependency_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_schema_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/unused_import_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/duplicate_module_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_size_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_entry_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/orphan_module_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/symbol_collision_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/cross_package_dependency_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_shadow_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_path_ambiguity_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/facade_bypass_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "tools/audit_tools/orphan_module_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "tools/audit_tools/module_path_ambiguity_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_surface_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_governance_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_contract_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_governance_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_module_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_governance_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_coverage_map.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/unused_import_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/cross_package_dependency_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+        "target_module": "crawler/core/crawl_engine.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+        "target_module": "crawler/monitor/crawl_monitor.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_scanner.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_schema_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repair_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/analysis_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/simulation_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repair_controller.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_module_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_entry_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_contract_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/facade_bypass_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/symbol_collision_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/circular_dependency_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_shadow_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/simulation_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_size_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_coverage_map.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/duplicate_module_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_surface_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/circular_dependency_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_schema_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/unused_import_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/duplicate_module_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_size_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_entry_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/orphan_module_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/symbol_collision_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/cross_package_dependency_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_shadow_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_path_ambiguity_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/facade_bypass_audit.py",
+        "edge_type": "import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/analysis_controller.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/orphan_module_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      },
+      {
+        "source_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_path_ambiguity_audit.py",
+        "target_module": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+        "edge_type": "from_import"
+      }
+    ]
+  },
+  "subsystem_completion": {
+    "C1_REPO_MAPPING": {
+      "expected_modules": 3,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 3,
+      "completion_pct": 0.0
+    },
+    "C2_IMPORT_ANALYSIS": {
+      "expected_modules": 5,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 5,
+      "completion_pct": 0.0
+    },
+    "C3_GOVERNANCE": {
+      "expected_modules": 3,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 3,
+      "completion_pct": 0.0
+    },
+    "C4_DEPENDENCY": {
+      "expected_modules": 2,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 2,
+      "completion_pct": 0.0
+    },
+    "C5_RUNTIME": {
+      "expected_modules": 3,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 3,
+      "completion_pct": 0.0
+    },
+    "C6_REPAIR": {
+      "expected_modules": 3,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 3,
+      "completion_pct": 0.0
+    },
+    "C7_SIMULATION": {
+      "expected_modules": 3,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 3,
+      "completion_pct": 0.0
+    },
+    "C8_PIPELINE": {
+      "expected_modules": 13,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 13,
+      "completion_pct": 0.0
+    },
+    "C9_AUDIT": {
+      "expected_modules": 11,
+      "present_modules": 3,
+      "misplaced_modules": 0,
+      "missing_modules": 8,
+      "completion_pct": 27.3
+    },
+    "C10_CONTROLLER": {
+      "expected_modules": 2,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 2,
+      "completion_pct": 0.0
+    },
+    "C11_UTILITIES": {
+      "expected_modules": 0,
+      "present_modules": 0,
+      "misplaced_modules": 0,
+      "missing_modules": 0,
+      "completion_pct": 100.0,
+      "note": "non-spec / utility subsystem"
+    }
+  },
+  "governance": {
+    "non_deletion_policy": true,
+    "auto_removal_allowed": false,
+    "mutation_policy": "NON-DELETION_ENFORCED",
+    "scan_mode": "READ_ONLY"
+  },
+  "exit_condition": {
+    "audit_complete": true
+  }
+}

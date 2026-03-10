@@ -1,0 +1,4196 @@
+{
+  "schema": "ARCHON_PRIME_DIRECTORY_TREE_V2",
+  "generated_at": "2026-03-10T00:11:30.080995Z",
+  "repo_root": "/workspaces/ARCHON_PRIME",
+  "generated_by": "AP_SYSTEM_CONFIG/CLAUDE/V2_Overview \u2014 read-only scan",
+  "stats": {
+    "total_files": 455,
+    "extension_breakdown": {
+      ".json": 179,
+      ".md": 135,
+      ".py": 112,
+      ".yml": 8,
+      ".docx": 6,
+      "none": 4,
+      ".txt": 4,
+      ".yaml": 4,
+      ".toml": 2,
+      ".zip": 1
+    }
+  },
+  "tree": {
+    "name": "ARCHON_PRIME",
+    "rel_path": "/",
+    "type": "directory",
+    "children": [
+      {
+        "name": ".devcontainer",
+        "rel_path": ".devcontainer",
+        "type": "directory",
+        "children": [
+          {
+            "name": "devcontainer.json",
+            "rel_path": ".devcontainer/devcontainer.json",
+            "type": "file",
+            "size_bytes": 893,
+            "extension": ".json"
+          }
+        ],
+        "child_count": 1
+      },
+      {
+        "name": ".github",
+        "rel_path": ".github",
+        "type": "directory",
+        "children": [
+          {
+            "name": "ISSUE_TEMPLATE",
+            "rel_path": ".github/ISSUE_TEMPLATE",
+            "type": "directory",
+            "children": [
+              {
+                "name": "bug_report.md",
+                "rel_path": ".github/ISSUE_TEMPLATE/bug_report.md",
+                "type": "file",
+                "size_bytes": 254,
+                "extension": ".md"
+              },
+              {
+                "name": "feature_request.md",
+                "rel_path": ".github/ISSUE_TEMPLATE/feature_request.md",
+                "type": "file",
+                "size_bytes": 242,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "workflows",
+            "rel_path": ".github/workflows",
+            "type": "directory",
+            "children": [
+              {
+                "name": "ap_validation.yml",
+                "rel_path": ".github/workflows/ap_validation.yml",
+                "type": "file",
+                "size_bytes": 544,
+                "extension": ".yml"
+              },
+              {
+                "name": "lint.yml",
+                "rel_path": ".github/workflows/lint.yml",
+                "type": "file",
+                "size_bytes": 460,
+                "extension": ".yml"
+              },
+              {
+                "name": "packet_validation.yml",
+                "rel_path": ".github/workflows/packet_validation.yml",
+                "type": "file",
+                "size_bytes": 1028,
+                "extension": ".yml"
+              },
+              {
+                "name": "test.yml",
+                "rel_path": ".github/workflows/test.yml",
+                "type": "file",
+                "size_bytes": 549,
+                "extension": ".yml"
+              }
+            ],
+            "child_count": 4
+          },
+          {
+            "name": "CODEOWNERS",
+            "rel_path": ".github/CODEOWNERS",
+            "type": "file",
+            "size_bytes": 57,
+            "extension": ""
+          },
+          {
+            "name": "pull_request_template.md",
+            "rel_path": ".github/pull_request_template.md",
+            "type": "file",
+            "size_bytes": 352,
+            "extension": ".md"
+          }
+        ],
+        "child_count": 4
+      },
+      {
+        "name": ".vscode",
+        "rel_path": ".vscode",
+        "type": "directory",
+        "children": [
+          {
+            "name": "extensions.json",
+            "rel_path": ".vscode/extensions.json",
+            "type": "file",
+            "size_bytes": 351,
+            "extension": ".json"
+          },
+          {
+            "name": "settings.json",
+            "rel_path": ".vscode/settings.json",
+            "type": "file",
+            "size_bytes": 631,
+            "extension": ".json"
+          },
+          {
+            "name": "tasks.json",
+            "rel_path": ".vscode/tasks.json",
+            "type": "file",
+            "size_bytes": 1955,
+            "extension": ".json"
+          }
+        ],
+        "child_count": 3
+      },
+      {
+        "name": "ALL_ARTIFACTS_P1",
+        "rel_path": "ALL_ARTIFACTS_P1",
+        "type": "directory",
+        "children": [
+          {
+            "name": "AP_RUNTIME",
+            "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME",
+            "type": "directory",
+            "children": [
+              {
+                "name": "json",
+                "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ANALYSIS_IMPORT_ERRORS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/ANALYSIS_IMPORT_ERRORS.json",
+                    "type": "file",
+                    "size_bytes": 87,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_ARTIFACT_FLOW.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_ARTIFACT_FLOW.json",
+                    "type": "file",
+                    "size_bytes": 3155,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_AUDIT_TOOLS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_AUDIT_TOOLS.json",
+                    "type": "file",
+                    "size_bytes": 6855,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_CRAWLER_SYSTEM.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_CRAWLER_SYSTEM.json",
+                    "type": "file",
+                    "size_bytes": 2655,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_DEPENDENCY_GRAPH.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_DEPENDENCY_GRAPH.json",
+                    "type": "file",
+                    "size_bytes": 22949,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_DIRECTORY_TREE.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_DIRECTORY_TREE.json",
+                    "type": "file",
+                    "size_bytes": 19227,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_FILE_INDEX.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_FILE_INDEX.json",
+                    "type": "file",
+                    "size_bytes": 24166,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_GAPS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_GAPS.json",
+                    "type": "file",
+                    "size_bytes": 4150,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_HEADER_METADATA.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_HEADER_METADATA.json",
+                    "type": "file",
+                    "size_bytes": 31556,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_MODULE_FUNCTIONALITY.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_MODULE_FUNCTIONALITY.json",
+                    "type": "file",
+                    "size_bytes": 20019,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_PIPELINE_WIRING.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_PIPELINE_WIRING.json",
+                    "type": "file",
+                    "size_bytes": 3439,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_AUDIT_SIMULATION_SYSTEM.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_AUDIT_SIMULATION_SYSTEM.json",
+                    "type": "file",
+                    "size_bytes": 1818,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENVIRONMENT_GIT_AUDIT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENVIRONMENT_GIT_AUDIT.json",
+                    "type": "file",
+                    "size_bytes": 14034,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENVIRONMENT_SPEC_COMPLIANCE.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENVIRONMENT_SPEC_COMPLIANCE.json",
+                    "type": "file",
+                    "size_bytes": 8872,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_AP_ARTIFACT_AUDIT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_AP_ARTIFACT_AUDIT.json",
+                    "type": "file",
+                    "size_bytes": 4941,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_DIRECTORY_TREE.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_DIRECTORY_TREE.json",
+                    "type": "file",
+                    "size_bytes": 18864,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_ENVIRONMENT_CONFIG.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_ENVIRONMENT_CONFIG.json",
+                    "type": "file",
+                    "size_bytes": 4624,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+                    "type": "file",
+                    "size_bytes": 2770,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_FILETYPE_INDEX.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_FILETYPE_INDEX.json",
+                    "type": "file",
+                    "size_bytes": 11479,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_FILE_INDEX.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_FILE_INDEX.json",
+                    "type": "file",
+                    "size_bytes": 32040,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_ENV_FUNCTIONALITY_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_ENV_FUNCTIONALITY_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 9312,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE0_FOUNDATION_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE0_FOUNDATION_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 2256,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 1479,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 3367,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 3988,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 3176,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 3021,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+                    "type": "file",
+                    "size_bytes": 3366,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AUDIT_SYSTEM_analysis_repo_maps_repo_directory_tree.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AUDIT_SYSTEM_analysis_repo_maps_repo_directory_tree.json",
+                    "type": "file",
+                    "size_bytes": 6524,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AUDIT_SYSTEM_analysis_repo_maps_repo_python_files.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/AUDIT_SYSTEM_analysis_repo_maps_repo_python_files.json",
+                    "type": "file",
+                    "size_bytes": 173,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "CRAWLER_IMPORT_ERRORS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/CRAWLER_IMPORT_ERRORS.json",
+                    "type": "file",
+                    "size_bytes": 90,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "CrawlMutationRecord.schema.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/CrawlMutationRecord.schema.json",
+                    "type": "file",
+                    "size_bytes": 496,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "Deep_Import_Violations.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/Deep_Import_Violations.json",
+                    "type": "file",
+                    "size_bytes": 86408,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "Designs_and_Guides_COMPLIANCE_REPORTS_P1_P4_Compliance_Audit_Report.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/Designs_and_Guides_COMPLIANCE_REPORTS_P1_P4_Compliance_Audit_Report.json",
+                    "type": "file",
+                    "size_bytes": 32607,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "Designs_and_Guides_Canonical_Import_Facade_repo_directory_tree.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/Designs_and_Guides_Canonical_Import_Facade_repo_directory_tree.json",
+                    "type": "file",
+                    "size_bytes": 71162,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "Designs_and_Guides_Canonical_Import_Facade_repo_python_files.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/Designs_and_Guides_Canonical_Import_Facade_repo_python_files.json",
+                    "type": "file",
+                    "size_bytes": 290002,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "Designs_and_Guides_P1-5_Audits_P1_P4_Compliance_Audit_Report.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/Designs_and_Guides_P1-5_Audits_P1_P4_Compliance_Audit_Report.json",
+                    "type": "file",
+                    "size_bytes": 32607,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "PIPELINE_IMPORT_ERRORS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/PIPELINE_IMPORT_ERRORS.json",
+                    "type": "file",
+                    "size_bytes": 95,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "PhaseGate.schema.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/PhaseGate.schema.json",
+                    "type": "file",
+                    "size_bytes": 306,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "QuarantineRecord.schema.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/QuarantineRecord.schema.json",
+                    "type": "file",
+                    "size_bytes": 324,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "REPAIR_IMPORT_ERRORS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/REPAIR_IMPORT_ERRORS.json",
+                    "type": "file",
+                    "size_bytes": 89,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "SIMULATION_IMPORT_ERRORS.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/SIMULATION_IMPORT_ERRORS.json",
+                    "type": "file",
+                    "size_bytes": 89,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "ValidationManifest.schema.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/ValidationManifest.schema.json",
+                    "type": "file",
+                    "size_bytes": 292,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "ap_environment_audit.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/ap_environment_audit.json",
+                    "type": "file",
+                    "size_bytes": 22484,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "audit_registry.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/audit_registry.json",
+                    "type": "file",
+                    "size_bytes": 7755,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "config_file_presence.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/config_file_presence.json",
+                    "type": "file",
+                    "size_bytes": 1304,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "crawl_config.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/crawl_config.json",
+                    "type": "file",
+                    "size_bytes": 160,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "crawler_crawl_summary.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/crawler_crawl_summary.json",
+                    "type": "file",
+                    "size_bytes": 9762,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "crawler_file_index.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/crawler_file_index.json",
+                    "type": "file",
+                    "size_bytes": 45389,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "crawler_orphan_report.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/crawler_orphan_report.json",
+                    "type": "file",
+                    "size_bytes": 14429,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "crawler_traversal_plan.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/crawler_traversal_plan.json",
+                    "type": "file",
+                    "size_bytes": 14673,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "module_implementation_depth.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/module_implementation_depth.json",
+                    "type": "file",
+                    "size_bytes": 1441,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "module_index.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/module_index.json",
+                    "type": "file",
+                    "size_bytes": 235,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "module_presence_matrix.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/module_presence_matrix.json",
+                    "type": "file",
+                    "size_bytes": 8462,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "module_registry.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/module_registry.json",
+                    "type": "file",
+                    "size_bytes": 1920,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "phase1_remediation_report.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/phase1_remediation_report.json",
+                    "type": "file",
+                    "size_bytes": 6795,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "pipeline_execution_manifest.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/pipeline_execution_manifest.json",
+                    "type": "file",
+                    "size_bytes": 889,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "pipeline_stage_readiness.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/pipeline_stage_readiness.json",
+                    "type": "file",
+                    "size_bytes": 4991,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "pipeline_validation_manifest.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/pipeline_validation_manifest.json",
+                    "type": "file",
+                    "size_bytes": 226,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "prior_audit_verification.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/prior_audit_verification.json",
+                    "type": "file",
+                    "size_bytes": 4186,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repair_config.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repair_config.json",
+                    "type": "file",
+                    "size_bytes": 131,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repair_plan.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repair_plan.json",
+                    "type": "file",
+                    "size_bytes": 28953,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repair_registry.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repair_registry.json",
+                    "type": "file",
+                    "size_bytes": 1888,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repo_completion_score.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repo_completion_score.json",
+                    "type": "file",
+                    "size_bytes": 378,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repo_file_inventory.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repo_file_inventory.json",
+                    "type": "file",
+                    "size_bytes": 58477,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repo_imports.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repo_imports.json",
+                    "type": "file",
+                    "size_bytes": 1525279,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repo_symbol_imports.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/repo_symbol_imports.json",
+                    "type": "file",
+                    "size_bytes": 3179212,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "runtime_surface_audit.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/runtime_surface_audit.json",
+                    "type": "file",
+                    "size_bytes": 732827,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "simulation_config.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/simulation_config.json",
+                    "type": "file",
+                    "size_bytes": 160,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "simulation_registry.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/simulation_registry.json",
+                    "type": "file",
+                    "size_bytes": 1818,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "source_control_changes_report.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/source_control_changes_report.json",
+                    "type": "file",
+                    "size_bytes": 245803,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "spec_module_inventory.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/spec_module_inventory.json",
+                    "type": "file",
+                    "size_bytes": 13110,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "step_failures.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/step_failures.json",
+                    "type": "file",
+                    "size_bytes": 2,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "subsystem_completion_metrics.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/json/subsystem_completion_metrics.json",
+                    "type": "file",
+                    "size_bytes": 3906,
+                    "extension": ".json"
+                  }
+                ],
+                "child_count": 74
+              },
+              {
+                "name": "markdown",
+                "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "AP_VSCODE_PIPELINE_INTEGRATION.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/AP_VSCODE_PIPELINE_INTEGRATION.md",
+                    "type": "file",
+                    "size_bytes": 1712,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "AP_WORKFLOW_CONTEXT.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/AP_WORKFLOW_CONTEXT.md",
+                    "type": "file",
+                    "size_bytes": 33816,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "AP_WORKFLOW_OVERVIEW.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/AP_WORKFLOW_OVERVIEW.md",
+                    "type": "file",
+                    "size_bytes": 13291,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "ARP_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/ARP_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 37606,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "ARP_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/ARP_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 52796,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "ARTIFACT_SCHEMAS.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/ARTIFACT_SCHEMAS.md",
+                    "type": "file",
+                    "size_bytes": 19663,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CSP_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/CSP_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 17832,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CSP_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/CSP_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 19781,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "Canonical_Import_Facade_Blueprint.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/Canonical_Import_Facade_Blueprint.md",
+                    "type": "file",
+                    "size_bytes": 51203,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "Canonical_Import_Facade_Integration_Plan.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/Canonical_Import_Facade_Integration_Plan.md",
+                    "type": "file",
+                    "size_bytes": 17644,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "DRAC_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/DRAC_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 16788,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "DRAC_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/DRAC_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 25062,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "EA_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/EA_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 30550,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "EA_System_Design_Spec_V1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/EA_System_Design_Spec_V1.md",
+                    "type": "file",
+                    "size_bytes": 44882,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "EMP_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/EMP_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 18977,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "EMP_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/EMP_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 34523,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "EXECUTION_AGENT_ROLE.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/EXECUTION_AGENT_ROLE.md",
+                    "type": "file",
+                    "size_bytes": 13548,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "FAILURE_TAXONOMY.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/FAILURE_TAXONOMY.md",
+                    "type": "file",
+                    "size_bytes": 14793,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "I2_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/I2_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 38754,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "I2_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/I2_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 54518,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "IMPL-002_AP_Repair_Validation_Layer_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/IMPL-002_AP_Repair_Validation_Layer_v1.md",
+                    "type": "file",
+                    "size_bytes": 46305,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "IMPLEMENTATION_SEQUENCE.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/IMPLEMENTATION_SEQUENCE.md",
+                    "type": "file",
+                    "size_bytes": 17742,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "LOGOS_V1_Operational_Readiness_Blueprint.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/LOGOS_V1_Operational_Readiness_Blueprint.md",
+                    "type": "file",
+                    "size_bytes": 28277,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "LOGOS_V1_P1_Runtime_Activation_Spec.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/LOGOS_V1_P1_Runtime_Activation_Spec.md",
+                    "type": "file",
+                    "size_bytes": 46296,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+                    "type": "file",
+                    "size_bytes": 41949,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "LOGOS_V1_P3_Integration_Wiring_Spec.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/LOGOS_V1_P3_Integration_Wiring_Spec.md",
+                    "type": "file",
+                    "size_bytes": 36661,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "LOGOS_V1_P4_Hardening_Validation_Spec.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/LOGOS_V1_P4_Hardening_Validation_Spec.md",
+                    "type": "file",
+                    "size_bytes": 36118,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "LOGOS_V1_P5_Documentation_Closure_Spec.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/LOGOS_V1_P5_Documentation_Closure_Spec.md",
+                    "type": "file",
+                    "size_bytes": 25534,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "Logos_Core_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/Logos_Core_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 38850,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "Logos_Core_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/Logos_Core_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 25075,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "M6_Implementation_Blueprint.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/M6_Implementation_Blueprint.md",
+                    "type": "file",
+                    "size_bytes": 28159,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MASTER_SYSTEM_DESIGN_SPEC.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/MASTER_SYSTEM_DESIGN_SPEC.md",
+                    "type": "file",
+                    "size_bytes": 23017,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MODULE_INVENTORY.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/MODULE_INVENTORY.md",
+                    "type": "file",
+                    "size_bytes": 24221,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MSPC_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/MSPC_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 19398,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MSPC_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/MSPC_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 36625,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MTP_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/MTP_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 23741,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MTP_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/MTP_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 34390,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "OUTPUT_ROUTING_TABLE.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/OUTPUT_ROUTING_TABLE.md",
+                    "type": "file",
+                    "size_bytes": 16713,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "PRE_CRAWL_CHECKLIST.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/PRE_CRAWL_CHECKLIST.md",
+                    "type": "file",
+                    "size_bytes": 9001,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "README.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/README.md",
+                    "type": "file",
+                    "size_bytes": 14,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "RGE_Design_Spec.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/RGE_Design_Spec.md",
+                    "type": "file",
+                    "size_bytes": 59166,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "RGE_Implentation_Guide.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/RGE_Implentation_Guide.md",
+                    "type": "file",
+                    "size_bytes": 44001,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "SCP_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/SCP_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 21042,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "SCP_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/SCP_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 37644,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "SOP_Design_Specification_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/SOP_Design_Specification_v1.md",
+                    "type": "file",
+                    "size_bytes": 26214,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "SOP_Implementation_Guide_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/SOP_Implementation_Guide_v1.md",
+                    "type": "file",
+                    "size_bytes": 26650,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "SPEC-003_AP_Repair_Validation_Layer_v1.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/SPEC-003_AP_Repair_Validation_Layer_v1.md",
+                    "type": "file",
+                    "size_bytes": 33625,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "ap_repo_mechanical_audit_report.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/ap_repo_mechanical_audit_report.md",
+                    "type": "file",
+                    "size_bytes": 10939,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "p1-4_audit_vs_code.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/p1-4_audit_vs_code.md",
+                    "type": "file",
+                    "size_bytes": 79737,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "source_control_changes_report.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/markdown/source_control_changes_report.md",
+                    "type": "file",
+                    "size_bytes": 7699,
+                    "extension": ".md"
+                  }
+                ],
+                "child_count": 50
+              },
+              {
+                "name": "other",
+                "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/other",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "AP_Design_Spec_SPEC001_v1.docx",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/other/AP_Design_Spec_SPEC001_v1.docx",
+                    "type": "file",
+                    "size_bytes": 29770,
+                    "extension": ".docx"
+                  },
+                  {
+                    "name": "AP_ENV_CONFIG_OPS002_v1.docx",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/other/AP_ENV_CONFIG_OPS002_v1.docx",
+                    "type": "file",
+                    "size_bytes": 16542,
+                    "extension": ".docx"
+                  },
+                  {
+                    "name": "AP_Implementation_Guide_IMPL001_v1.docx",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/other/AP_Implementation_Guide_IMPL001_v1.docx",
+                    "type": "file",
+                    "size_bytes": 26107,
+                    "extension": ".docx"
+                  },
+                  {
+                    "name": "MSPC_Promotion.txt",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/other/MSPC_Promotion.txt",
+                    "type": "file",
+                    "size_bytes": 11545,
+                    "extension": ".txt"
+                  }
+                ],
+                "child_count": 4
+              },
+              {
+                "name": "py",
+                "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "_run_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/_run_audit.py",
+                    "type": "file",
+                    "size_bytes": 52449,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "analysis_controller.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/analysis_controller.py",
+                    "type": "file",
+                    "size_bytes": 9555,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "ap_artifact_collection_p1.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/ap_artifact_collection_p1.py",
+                    "type": "file",
+                    "size_bytes": 23210,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "audit_controller.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_controller.py",
+                    "type": "file",
+                    "size_bytes": 7401,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "audit_utils.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/audit_utils.py",
+                    "type": "file",
+                    "size_bytes": 853,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "circular_dependency_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/circular_dependency_audit.py",
+                    "type": "file",
+                    "size_bytes": 1058,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "config_loader.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/config_loader.py",
+                    "type": "file",
+                    "size_bytes": 1423,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "crawler_controller.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_controller.py",
+                    "type": "file",
+                    "size_bytes": 9292,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "crawler_core_crawl_engine.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_core_crawl_engine.py",
+                    "type": "file",
+                    "size_bytes": 9567,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "crawler_core_crawl_monitor.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_core_crawl_monitor.py",
+                    "type": "file",
+                    "size_bytes": 4851,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "crawler_engine_crawl_engine.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_engine_crawl_engine.py",
+                    "type": "file",
+                    "size_bytes": 146,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "crawler_monitor_crawl_monitor.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/crawler_monitor_crawl_monitor.py",
+                    "type": "file",
+                    "size_bytes": 142,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "cross_package_dependency_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/cross_package_dependency_audit.py",
+                    "type": "file",
+                    "size_bytes": 824,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "dependency_graph.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/dependency_graph.py",
+                    "type": "file",
+                    "size_bytes": 327,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "dependency_normalizer.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/dependency_normalizer.py",
+                    "type": "file",
+                    "size_bytes": 3996,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "dependency_simulator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/dependency_simulator.py",
+                    "type": "file",
+                    "size_bytes": 2545,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "duplicate_module_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/duplicate_module_audit.py",
+                    "type": "file",
+                    "size_bytes": 525,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "facade_bypass_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/facade_bypass_audit.py",
+                    "type": "file",
+                    "size_bytes": 784,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "file_scanner.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_scanner.py",
+                    "type": "file",
+                    "size_bytes": 4541,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "file_size_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/file_size_audit.py",
+                    "type": "file",
+                    "size_bytes": 463,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "generate_deep_import_violations.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/generate_deep_import_violations.py",
+                    "type": "file",
+                    "size_bytes": 4891,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "generate_symbol_import_index.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/generate_symbol_import_index.py",
+                    "type": "file",
+                    "size_bytes": 4803,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "governance_contract_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_contract_audit.py",
+                    "type": "file",
+                    "size_bytes": 979,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "governance_coverage_map.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_coverage_map.py",
+                    "type": "file",
+                    "size_bytes": 1229,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "governance_module_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_module_audit.py",
+                    "type": "file",
+                    "size_bytes": 817,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "governance_scanner.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/governance_scanner.py",
+                    "type": "file",
+                    "size_bytes": 243,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "header_injection_operator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_injection_operator.py",
+                    "type": "file",
+                    "size_bytes": 3377,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "header_schema_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_schema_audit.py",
+                    "type": "file",
+                    "size_bytes": 442,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "header_validator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/header_validator.py",
+                    "type": "file",
+                    "size_bytes": 338,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "import_rewrite_operator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_rewrite_operator.py",
+                    "type": "file",
+                    "size_bytes": 3355,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "import_scanner.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_scanner.py",
+                    "type": "file",
+                    "size_bytes": 646,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "import_simulator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_simulator.py",
+                    "type": "file",
+                    "size_bytes": 1933,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "import_surface_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/import_surface_audit.py",
+                    "type": "file",
+                    "size_bytes": 791,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "logger.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/logger.py",
+                    "type": "file",
+                    "size_bytes": 362,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "module_path_ambiguity_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_path_ambiguity_audit.py",
+                    "type": "file",
+                    "size_bytes": 619,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "module_relocation_operator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/module_relocation_operator.py",
+                    "type": "file",
+                    "size_bytes": 3448,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "namespace_disambiguator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_disambiguator.py",
+                    "type": "file",
+                    "size_bytes": 4161,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "namespace_shadow_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_shadow_audit.py",
+                    "type": "file",
+                    "size_bytes": 556,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "namespace_simulator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/namespace_simulator.py",
+                    "type": "file",
+                    "size_bytes": 1623,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "orphan_module_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/orphan_module_audit.py",
+                    "type": "file",
+                    "size_bytes": 766,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "pipeline_controller.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/pipeline_controller.py",
+                    "type": "file",
+                    "size_bytes": 20909,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "repair_controller.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repair_controller.py",
+                    "type": "file",
+                    "size_bytes": 16068,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "repo_mapper.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_mapper.py",
+                    "type": "file",
+                    "size_bytes": 2447,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "repo_scanner.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_scanner.py",
+                    "type": "file",
+                    "size_bytes": 443,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "repo_simulator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_simulator.py",
+                    "type": "file",
+                    "size_bytes": 166,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "repo_structure_export.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/repo_structure_export.py",
+                    "type": "file",
+                    "size_bytes": 2070,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "run_audit_suite.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_audit_suite.py",
+                    "type": "file",
+                    "size_bytes": 979,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "run_governance_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/run_governance_audit.py",
+                    "type": "file",
+                    "size_bytes": 317,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "runtime_entry_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_entry_audit.py",
+                    "type": "file",
+                    "size_bytes": 442,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "runtime_simulator.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/runtime_simulator.py",
+                    "type": "file",
+                    "size_bytes": 2668,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "simulation_controller.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/simulation_controller.py",
+                    "type": "file",
+                    "size_bytes": 9932,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "symbol_collision_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/symbol_collision_audit.py",
+                    "type": "file",
+                    "size_bytes": 936,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "test_placeholder.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/test_placeholder.py",
+                    "type": "file",
+                    "size_bytes": 36,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "unused_import_audit.py",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/py/unused_import_audit.py",
+                    "type": "file",
+                    "size_bytes": 951,
+                    "extension": ".py"
+                  }
+                ],
+                "child_count": 54
+              },
+              {
+                "name": "yaml_yml",
+                "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/yaml_yml",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "logos_targets.yaml",
+                    "rel_path": "ALL_ARTIFACTS_P1/AP_RUNTIME/yaml_yml/logos_targets.yaml",
+                    "type": "file",
+                    "size_bytes": 160,
+                    "extension": ".yaml"
+                  }
+                ],
+                "child_count": 1
+              }
+            ],
+            "child_count": 5
+          },
+          {
+            "name": "ENV_CONFIG",
+            "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG",
+            "type": "directory",
+            "children": [
+              {
+                "name": "json",
+                "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/json",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "devcontainer.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/json/devcontainer.json",
+                    "type": "file",
+                    "size_bytes": 893,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "extensions.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/json/extensions.json",
+                    "type": "file",
+                    "size_bytes": 351,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "settings.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/json/settings.json",
+                    "type": "file",
+                    "size_bytes": 631,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "tasks.json",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/json/tasks.json",
+                    "type": "file",
+                    "size_bytes": 1955,
+                    "extension": ".json"
+                  }
+                ],
+                "child_count": 4
+              },
+              {
+                "name": "markdown",
+                "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/markdown",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "bug_report.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/markdown/bug_report.md",
+                    "type": "file",
+                    "size_bytes": 254,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "feature_request.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/markdown/feature_request.md",
+                    "type": "file",
+                    "size_bytes": 242,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "pull_request_template.md",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/markdown/pull_request_template.md",
+                    "type": "file",
+                    "size_bytes": 352,
+                    "extension": ".md"
+                  }
+                ],
+                "child_count": 3
+              },
+              {
+                "name": "other",
+                "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/other",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": ".gitignore",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/other/.gitignore",
+                    "type": "file",
+                    "size_bytes": 283,
+                    "extension": ""
+                  },
+                  {
+                    "name": "CODEOWNERS",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/other/CODEOWNERS",
+                    "type": "file",
+                    "size_bytes": 57,
+                    "extension": ""
+                  },
+                  {
+                    "name": "pyproject.toml",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/other/pyproject.toml",
+                    "type": "file",
+                    "size_bytes": 322,
+                    "extension": ".toml"
+                  },
+                  {
+                    "name": "requirements.txt",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/other/requirements.txt",
+                    "type": "file",
+                    "size_bytes": 115,
+                    "extension": ".txt"
+                  }
+                ],
+                "child_count": 4
+              },
+              {
+                "name": "py",
+                "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/py",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "yaml_yml",
+                "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/yaml_yml",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ap_validation.yml",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/yaml_yml/ap_validation.yml",
+                    "type": "file",
+                    "size_bytes": 544,
+                    "extension": ".yml"
+                  },
+                  {
+                    "name": "lint.yml",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/yaml_yml/lint.yml",
+                    "type": "file",
+                    "size_bytes": 460,
+                    "extension": ".yml"
+                  },
+                  {
+                    "name": "packet_validation.yml",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/yaml_yml/packet_validation.yml",
+                    "type": "file",
+                    "size_bytes": 1028,
+                    "extension": ".yml"
+                  },
+                  {
+                    "name": "test.yml",
+                    "rel_path": "ALL_ARTIFACTS_P1/ENV_CONFIG/yaml_yml/test.yml",
+                    "type": "file",
+                    "size_bytes": 549,
+                    "extension": ".yml"
+                  }
+                ],
+                "child_count": 4
+              }
+            ],
+            "child_count": 5
+          },
+          {
+            "name": "AP_ARTIFACT_INDEX.json",
+            "rel_path": "ALL_ARTIFACTS_P1/AP_ARTIFACT_INDEX.json",
+            "type": "file",
+            "size_bytes": 105415,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_DIRECTORY_TREE_CURRENT.json",
+            "rel_path": "ALL_ARTIFACTS_P1/AP_DIRECTORY_TREE_CURRENT.json",
+            "type": "file",
+            "size_bytes": 36018,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_EMPTY_DIRECTORIES.json",
+            "rel_path": "ALL_ARTIFACTS_P1/AP_EMPTY_DIRECTORIES.json",
+            "type": "file",
+            "size_bytes": 1492,
+            "extension": ".json"
+          },
+          {
+            "name": "step_failures.json",
+            "rel_path": "ALL_ARTIFACTS_P1/step_failures.json",
+            "type": "file",
+            "size_bytes": 2,
+            "extension": ".json"
+          }
+        ],
+        "child_count": 6
+      },
+      {
+        "name": "AP_SYSTEM_AUDIT",
+        "rel_path": "AP_SYSTEM_AUDIT",
+        "type": "directory",
+        "children": [
+          {
+            "name": "Complettion_Audit",
+            "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit",
+            "type": "directory",
+            "children": [
+              {
+                "name": "_run_audit.py",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/_run_audit.py",
+                "type": "file",
+                "size_bytes": 52449,
+                "extension": ".py"
+              },
+              {
+                "name": "ap_repo_mechanical_audit_report.md",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/ap_repo_mechanical_audit_report.md",
+                "type": "file",
+                "size_bytes": 10939,
+                "extension": ".md"
+              },
+              {
+                "name": "config_file_presence.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/config_file_presence.json",
+                "type": "file",
+                "size_bytes": 1304,
+                "extension": ".json"
+              },
+              {
+                "name": "module_implementation_depth.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/module_implementation_depth.json",
+                "type": "file",
+                "size_bytes": 1441,
+                "extension": ".json"
+              },
+              {
+                "name": "module_presence_matrix.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/module_presence_matrix.json",
+                "type": "file",
+                "size_bytes": 8462,
+                "extension": ".json"
+              },
+              {
+                "name": "pipeline_stage_readiness.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/pipeline_stage_readiness.json",
+                "type": "file",
+                "size_bytes": 4991,
+                "extension": ".json"
+              },
+              {
+                "name": "prior_audit_verification.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/prior_audit_verification.json",
+                "type": "file",
+                "size_bytes": 4186,
+                "extension": ".json"
+              },
+              {
+                "name": "repo_completion_score.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/repo_completion_score.json",
+                "type": "file",
+                "size_bytes": 378,
+                "extension": ".json"
+              },
+              {
+                "name": "repo_file_inventory.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/repo_file_inventory.json",
+                "type": "file",
+                "size_bytes": 58477,
+                "extension": ".json"
+              },
+              {
+                "name": "spec_module_inventory.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/spec_module_inventory.json",
+                "type": "file",
+                "size_bytes": 13110,
+                "extension": ".json"
+              },
+              {
+                "name": "step_failures.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/step_failures.json",
+                "type": "file",
+                "size_bytes": 2,
+                "extension": ".json"
+              },
+              {
+                "name": "subsystem_completion_metrics.json",
+                "rel_path": "AP_SYSTEM_AUDIT/Complettion_Audit/subsystem_completion_metrics.json",
+                "type": "file",
+                "size_bytes": 3906,
+                "extension": ".json"
+              }
+            ],
+            "child_count": 12
+          },
+          {
+            "name": "ANALYSIS_IMPORT_ERRORS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/ANALYSIS_IMPORT_ERRORS.json",
+            "type": "file",
+            "size_bytes": 87,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_ARTIFACT_FLOW.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_ARTIFACT_FLOW.json",
+            "type": "file",
+            "size_bytes": 3155,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_AUDIT_TOOLS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_AUDIT_TOOLS.json",
+            "type": "file",
+            "size_bytes": 6855,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_CRAWLER_SYSTEM.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_CRAWLER_SYSTEM.json",
+            "type": "file",
+            "size_bytes": 2655,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_DEPENDENCY_GRAPH.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_DEPENDENCY_GRAPH.json",
+            "type": "file",
+            "size_bytes": 22949,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_DIRECTORY_TREE.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_DIRECTORY_TREE.json",
+            "type": "file",
+            "size_bytes": 19227,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_FILE_INDEX.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_FILE_INDEX.json",
+            "type": "file",
+            "size_bytes": 24166,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_GAPS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_GAPS.json",
+            "type": "file",
+            "size_bytes": 4150,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_HEADER_METADATA.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_HEADER_METADATA.json",
+            "type": "file",
+            "size_bytes": 31556,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_MODULE_FUNCTIONALITY.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_MODULE_FUNCTIONALITY.json",
+            "type": "file",
+            "size_bytes": 20019,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_PIPELINE_WIRING.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_PIPELINE_WIRING.json",
+            "type": "file",
+            "size_bytes": 3439,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_AUDIT_SIMULATION_SYSTEM.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_AUDIT_SIMULATION_SYSTEM.json",
+            "type": "file",
+            "size_bytes": 1818,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_ENVIRONMENT_GIT_AUDIT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_ENVIRONMENT_GIT_AUDIT.json",
+            "type": "file",
+            "size_bytes": 14034,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_ENVIRONMENT_SPEC_COMPLIANCE.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_ENVIRONMENT_SPEC_COMPLIANCE.json",
+            "type": "file",
+            "size_bytes": 8872,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE0_FOUNDATION_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE0_FOUNDATION_REPORT.json",
+            "type": "file",
+            "size_bytes": 2256,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE1_AUDIT_SYSTEM_REPORT.json",
+            "type": "file",
+            "size_bytes": 1479,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE2_ANALYSIS_SYSTEM_REPORT.json",
+            "type": "file",
+            "size_bytes": 3367,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE3_SIMULATION_SYSTEM_REPORT.json",
+            "type": "file",
+            "size_bytes": 3988,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE4_CRAWLER_SYSTEM_REPORT.json",
+            "type": "file",
+            "size_bytes": 3176,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE5_REPAIR_SYSTEM_REPORT.json",
+            "type": "file",
+            "size_bytes": 3021,
+            "extension": ".json"
+          },
+          {
+            "name": "AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+            "rel_path": "AP_SYSTEM_AUDIT/AP_STAGE6_PIPELINE_CONTROLLER_REPORT.json",
+            "type": "file",
+            "size_bytes": 3366,
+            "extension": ".json"
+          },
+          {
+            "name": "CRAWLER_IMPORT_ERRORS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/CRAWLER_IMPORT_ERRORS.json",
+            "type": "file",
+            "size_bytes": 90,
+            "extension": ".json"
+          },
+          {
+            "name": "PIPELINE_IMPORT_ERRORS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/PIPELINE_IMPORT_ERRORS.json",
+            "type": "file",
+            "size_bytes": 95,
+            "extension": ".json"
+          },
+          {
+            "name": "REPAIR_IMPORT_ERRORS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/REPAIR_IMPORT_ERRORS.json",
+            "type": "file",
+            "size_bytes": 89,
+            "extension": ".json"
+          },
+          {
+            "name": "SIMULATION_IMPORT_ERRORS.json",
+            "rel_path": "AP_SYSTEM_AUDIT/SIMULATION_IMPORT_ERRORS.json",
+            "type": "file",
+            "size_bytes": 89,
+            "extension": ".json"
+          },
+          {
+            "name": "ap_environment_audit.json",
+            "rel_path": "AP_SYSTEM_AUDIT/ap_environment_audit.json",
+            "type": "file",
+            "size_bytes": 22484,
+            "extension": ".json"
+          },
+          {
+            "name": "crawler_crawl_summary.json",
+            "rel_path": "AP_SYSTEM_AUDIT/crawler_crawl_summary.json",
+            "type": "file",
+            "size_bytes": 9762,
+            "extension": ".json"
+          },
+          {
+            "name": "crawler_file_index.json",
+            "rel_path": "AP_SYSTEM_AUDIT/crawler_file_index.json",
+            "type": "file",
+            "size_bytes": 45389,
+            "extension": ".json"
+          },
+          {
+            "name": "crawler_orphan_report.json",
+            "rel_path": "AP_SYSTEM_AUDIT/crawler_orphan_report.json",
+            "type": "file",
+            "size_bytes": 14429,
+            "extension": ".json"
+          },
+          {
+            "name": "crawler_traversal_plan.json",
+            "rel_path": "AP_SYSTEM_AUDIT/crawler_traversal_plan.json",
+            "type": "file",
+            "size_bytes": 14673,
+            "extension": ".json"
+          },
+          {
+            "name": "manual_review_candidates.json",
+            "rel_path": "AP_SYSTEM_AUDIT/manual_review_candidates.json",
+            "type": "file",
+            "size_bytes": 16660,
+            "extension": ".json"
+          },
+          {
+            "name": "phase1_remediation_report.json",
+            "rel_path": "AP_SYSTEM_AUDIT/phase1_remediation_report.json",
+            "type": "file",
+            "size_bytes": 6795,
+            "extension": ".json"
+          },
+          {
+            "name": "phase2_audit_snapshot.json",
+            "rel_path": "AP_SYSTEM_AUDIT/phase2_audit_snapshot.json",
+            "type": "file",
+            "size_bytes": 63247,
+            "extension": ".json"
+          },
+          {
+            "name": "pipeline_execution_manifest.json",
+            "rel_path": "AP_SYSTEM_AUDIT/pipeline_execution_manifest.json",
+            "type": "file",
+            "size_bytes": 889,
+            "extension": ".json"
+          },
+          {
+            "name": "pipeline_validation_manifest.json",
+            "rel_path": "AP_SYSTEM_AUDIT/pipeline_validation_manifest.json",
+            "type": "file",
+            "size_bytes": 226,
+            "extension": ".json"
+          },
+          {
+            "name": "repair_plan.json",
+            "rel_path": "AP_SYSTEM_AUDIT/repair_plan.json",
+            "type": "file",
+            "size_bytes": 28953,
+            "extension": ".json"
+          },
+          {
+            "name": "source_control_changes_report.json",
+            "rel_path": "AP_SYSTEM_AUDIT/source_control_changes_report.json",
+            "type": "file",
+            "size_bytes": 245803,
+            "extension": ".json"
+          },
+          {
+            "name": "source_control_changes_report.md",
+            "rel_path": "AP_SYSTEM_AUDIT/source_control_changes_report.md",
+            "type": "file",
+            "size_bytes": 7699,
+            "extension": ".md"
+          }
+        ],
+        "child_count": 39
+      },
+      {
+        "name": "AP_SYSTEM_CONFIG",
+        "rel_path": "AP_SYSTEM_CONFIG",
+        "type": "directory",
+        "children": [
+          {
+            "name": "CLAUDE",
+            "rel_path": "AP_SYSTEM_CONFIG/CLAUDE",
+            "type": "directory",
+            "children": [
+              {
+                "name": "V2",
+                "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ALGORITHM_MODEL_TEMPLATE.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/ALGORITHM_MODEL_TEMPLATE.md",
+                    "type": "file",
+                    "size_bytes": 3795,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "ANALOG_DISCOVERY_SCHEMA.json",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/ANALOG_DISCOVERY_SCHEMA.json",
+                    "type": "file",
+                    "size_bytes": 2608,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_DESIGN_SPEC_SCHEMA.json",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/AP_DESIGN_SPEC_SCHEMA.json",
+                    "type": "file",
+                    "size_bytes": 35349,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_IMPLEMENTATION_GUIDE_SCHEMA.json",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/AP_IMPLEMENTATION_GUIDE_SCHEMA.json",
+                    "type": "file",
+                    "size_bytes": 27373,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "ARCHON_PRIME_SESSION_HANDOFF.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/ARCHON_PRIME_SESSION_HANDOFF.md",
+                    "type": "file",
+                    "size_bytes": 5414,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "ARTIFACT_SCHEMA.json",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/ARTIFACT_SCHEMA.json",
+                    "type": "file",
+                    "size_bytes": 3275,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "CLAUDE_CONCEPT_AUDIT_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_CONCEPT_AUDIT_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 6526,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_CONCEPT_HANDOFF_FORMAT.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_CONCEPT_HANDOFF_FORMAT.md",
+                    "type": "file",
+                    "size_bytes": 3620,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_CONCEPT_REFINEMENT_WORKFLOW.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_CONCEPT_REFINEMENT_WORKFLOW.md",
+                    "type": "file",
+                    "size_bytes": 4042,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_DRIFT_TRIAGE_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_DRIFT_TRIAGE_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 13070,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_FEEDBACK_REPORT_FORMAT.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_FEEDBACK_REPORT_FORMAT.md",
+                    "type": "file",
+                    "size_bytes": 3941,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_FORMALIZATION_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_FORMALIZATION_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 12712,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_GOVERNANCE_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_GOVERNANCE_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 6713,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_MODULE_HEADER_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_MODULE_HEADER_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 8817,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_OPERATIONAL_CONSTRAINTS.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_OPERATIONAL_CONSTRAINTS.md",
+                    "type": "file",
+                    "size_bytes": 5119,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_OUTPUT_PREFLIGHT_CHECKLIST.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_OUTPUT_PREFLIGHT_CHECKLIST.md",
+                    "type": "file",
+                    "size_bytes": 9906,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_PHASE_PARTICIPATION.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_PHASE_PARTICIPATION.md",
+                    "type": "file",
+                    "size_bytes": 4586,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_RESEARCH_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_RESEARCH_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 4853,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_RESPONSE_STYLE_GUIDE.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_RESPONSE_STYLE_GUIDE.md",
+                    "type": "file",
+                    "size_bytes": 3950,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_ROLE_DEFINITION.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_ROLE_DEFINITION.md",
+                    "type": "file",
+                    "size_bytes": 7206,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_SESSION_INITIALIZATION.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_SESSION_INITIALIZATION.md",
+                    "type": "file",
+                    "size_bytes": 11871,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_SPEC_TO_GPT_HANDOFF_FORMAT.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_SPEC_TO_GPT_HANDOFF_FORMAT.md",
+                    "type": "file",
+                    "size_bytes": 11380,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_SYSTEM_PROMPT.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_SYSTEM_PROMPT.md",
+                    "type": "file",
+                    "size_bytes": 8442,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CLAUDE_VALIDATION_REPORT_PROTOCOL.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CLAUDE_VALIDATION_REPORT_PROTOCOL.md",
+                    "type": "file",
+                    "size_bytes": 12225,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "CONCEPT_ARTIFACT_SCHEMA.json",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/CONCEPT_ARTIFACT_SCHEMA.json",
+                    "type": "file",
+                    "size_bytes": 2525,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "DESIGN_SPEC_TEMPLATE.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/DESIGN_SPEC_TEMPLATE.md",
+                    "type": "file",
+                    "size_bytes": 19376,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "FORMAL_MODEL_TEMPLATE.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/FORMAL_MODEL_TEMPLATE.md",
+                    "type": "file",
+                    "size_bytes": 3297,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "IMPLEMENTATION_GUIDE_TEMPLATE.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/IMPLEMENTATION_GUIDE_TEMPLATE.md",
+                    "type": "file",
+                    "size_bytes": 16674,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "SPEC-004_Architecture_Validator_v1.md",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/SPEC-004_Architecture_Validator_v1.md",
+                    "type": "file",
+                    "size_bytes": 26338,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "TOOL_ENFORCEMENT_SCHEMA.json",
+                    "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2/TOOL_ENFORCEMENT_SCHEMA.json",
+                    "type": "file",
+                    "size_bytes": 3832,
+                    "extension": ".json"
+                  }
+                ],
+                "child_count": 30
+              },
+              {
+                "name": "V2_Overview",
+                "rel_path": "AP_SYSTEM_CONFIG/CLAUDE/V2_Overview",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "GPT",
+            "rel_path": "AP_SYSTEM_CONFIG/GPT",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "reports",
+            "rel_path": "AP_SYSTEM_CONFIG/reports",
+            "type": "directory",
+            "children": [
+              {
+                "name": "AP_ENV_AP_ARTIFACT_AUDIT.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_AP_ARTIFACT_AUDIT.json",
+                "type": "file",
+                "size_bytes": 4941,
+                "extension": ".json"
+              },
+              {
+                "name": "AP_ENV_DIRECTORY_TREE.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_DIRECTORY_TREE.json",
+                "type": "file",
+                "size_bytes": 18864,
+                "extension": ".json"
+              },
+              {
+                "name": "AP_ENV_ENVIRONMENT_CONFIG.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_ENVIRONMENT_CONFIG.json",
+                "type": "file",
+                "size_bytes": 4624,
+                "extension": ".json"
+              },
+              {
+                "name": "AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_EXTENSION_RECOMMENDATIONS.json",
+                "type": "file",
+                "size_bytes": 2770,
+                "extension": ".json"
+              },
+              {
+                "name": "AP_ENV_FILETYPE_INDEX.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_FILETYPE_INDEX.json",
+                "type": "file",
+                "size_bytes": 11479,
+                "extension": ".json"
+              },
+              {
+                "name": "AP_ENV_FILE_INDEX.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_FILE_INDEX.json",
+                "type": "file",
+                "size_bytes": 32040,
+                "extension": ".json"
+              },
+              {
+                "name": "AP_ENV_FUNCTIONALITY_REPORT.json",
+                "rel_path": "AP_SYSTEM_CONFIG/reports/AP_ENV_FUNCTIONALITY_REPORT.json",
+                "type": "file",
+                "size_bytes": 9312,
+                "extension": ".json"
+              }
+            ],
+            "child_count": 7
+          },
+          {
+            "name": "AP_VSCODE_PIPELINE_INTEGRATION.md",
+            "rel_path": "AP_SYSTEM_CONFIG/AP_VSCODE_PIPELINE_INTEGRATION.md",
+            "type": "file",
+            "size_bytes": 1712,
+            "extension": ".md"
+          },
+          {
+            "name": "AP_WORKFLOW_CONTEXT.md",
+            "rel_path": "AP_SYSTEM_CONFIG/AP_WORKFLOW_CONTEXT.md",
+            "type": "file",
+            "size_bytes": 33816,
+            "extension": ".md"
+          },
+          {
+            "name": "AP_WORKFLOW_OVERVIEW.md",
+            "rel_path": "AP_SYSTEM_CONFIG/AP_WORKFLOW_OVERVIEW.md",
+            "type": "file",
+            "size_bytes": 13291,
+            "extension": ".md"
+          },
+          {
+            "name": "EXECUTION_AGENT_ROLE.md",
+            "rel_path": "AP_SYSTEM_CONFIG/EXECUTION_AGENT_ROLE.md",
+            "type": "file",
+            "size_bytes": 13548,
+            "extension": ".md"
+          }
+        ],
+        "child_count": 7
+      },
+      {
+        "name": "AUDIT_LOGS",
+        "rel_path": "AUDIT_LOGS",
+        "type": "directory",
+        "children": [],
+        "child_count": 0
+      },
+      {
+        "name": "AUDIT_SYSTEM",
+        "rel_path": "AUDIT_SYSTEM",
+        "type": "directory",
+        "children": [
+          {
+            "name": "analysis",
+            "rel_path": "AUDIT_SYSTEM/analysis",
+            "type": "directory",
+            "children": [
+              {
+                "name": "dependency_graphs",
+                "rel_path": "AUDIT_SYSTEM/analysis/dependency_graphs",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "protocol_maps",
+                "rel_path": "AUDIT_SYSTEM/analysis/protocol_maps",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "repo_maps",
+                "rel_path": "AUDIT_SYSTEM/analysis/repo_maps",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "module_index.json",
+                    "rel_path": "AUDIT_SYSTEM/analysis/repo_maps/module_index.json",
+                    "type": "file",
+                    "size_bytes": 235,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repo_directory_tree.json",
+                    "rel_path": "AUDIT_SYSTEM/analysis/repo_maps/repo_directory_tree.json",
+                    "type": "file",
+                    "size_bytes": 6524,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "repo_python_files.json",
+                    "rel_path": "AUDIT_SYSTEM/analysis/repo_maps/repo_python_files.json",
+                    "type": "file",
+                    "size_bytes": 173,
+                    "extension": ".json"
+                  }
+                ],
+                "child_count": 3
+              },
+              {
+                "name": "runtime_maps",
+                "rel_path": "AUDIT_SYSTEM/analysis/runtime_maps",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 4
+          },
+          {
+            "name": "baselines",
+            "rel_path": "AUDIT_SYSTEM/baselines",
+            "type": "directory",
+            "children": [
+              {
+                "name": "initial_repo_snapshot",
+                "rel_path": "AUDIT_SYSTEM/baselines/initial_repo_snapshot",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "post_normalization_snapshot",
+                "rel_path": "AUDIT_SYSTEM/baselines/post_normalization_snapshot",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "diagnostics",
+            "rel_path": "AUDIT_SYSTEM/diagnostics",
+            "type": "directory",
+            "children": [
+              {
+                "name": "error_catalogs",
+                "rel_path": "AUDIT_SYSTEM/diagnostics/error_catalogs",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "repair_recommendations",
+                "rel_path": "AUDIT_SYSTEM/diagnostics/repair_recommendations",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "violation_logs",
+                "rel_path": "AUDIT_SYSTEM/diagnostics/violation_logs",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 3
+          },
+          {
+            "name": "reports",
+            "rel_path": "AUDIT_SYSTEM/reports",
+            "type": "directory",
+            "children": [
+              {
+                "name": "concept_reports",
+                "rel_path": "AUDIT_SYSTEM/reports/concept_reports",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "governance_reports",
+                "rel_path": "AUDIT_SYSTEM/reports/governance_reports",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "import_reports",
+                "rel_path": "AUDIT_SYSTEM/reports/import_reports",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "runtime_reports",
+                "rel_path": "AUDIT_SYSTEM/reports/runtime_reports",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "structural_reports",
+                "rel_path": "AUDIT_SYSTEM/reports/structural_reports",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 5
+          },
+          {
+            "name": "runtime_monitor",
+            "rel_path": "AUDIT_SYSTEM/runtime_monitor",
+            "type": "directory",
+            "children": [
+              {
+                "name": "live_status",
+                "rel_path": "AUDIT_SYSTEM/runtime_monitor/live_status",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "progress_tracking",
+                "rel_path": "AUDIT_SYSTEM/runtime_monitor/progress_tracking",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "scripts",
+            "rel_path": "AUDIT_SYSTEM/scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "dependency_scanners",
+                "rel_path": "AUDIT_SYSTEM/scripts/dependency_scanners",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "governance_scanners",
+                "rel_path": "AUDIT_SYSTEM/scripts/governance_scanners",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "header_scanners",
+                "rel_path": "AUDIT_SYSTEM/scripts/header_scanners",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "import_scanners",
+                "rel_path": "AUDIT_SYSTEM/scripts/import_scanners",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              },
+              {
+                "name": "repo_scanners",
+                "rel_path": "AUDIT_SYSTEM/scripts/repo_scanners",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "repo_mapper.py",
+                    "rel_path": "AUDIT_SYSTEM/scripts/repo_scanners/repo_mapper.py",
+                    "type": "file",
+                    "size_bytes": 2447,
+                    "extension": ".py"
+                  }
+                ],
+                "child_count": 1
+              },
+              {
+                "name": "runtime_scanners",
+                "rel_path": "AUDIT_SYSTEM/scripts/runtime_scanners",
+                "type": "directory",
+                "children": [],
+                "child_count": 0
+              }
+            ],
+            "child_count": 6
+          }
+        ],
+        "child_count": 6
+      },
+      {
+        "name": "Designs_and_Guides",
+        "rel_path": "Designs_and_Guides",
+        "type": "directory",
+        "children": [
+          {
+            "name": "AP",
+            "rel_path": "Designs_and_Guides/AP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "AP_Design_Spec_SPEC001_v1.docx",
+                "rel_path": "Designs_and_Guides/AP/AP_Design_Spec_SPEC001_v1.docx",
+                "type": "file",
+                "size_bytes": 29770,
+                "extension": ".docx"
+              },
+              {
+                "name": "AP_ENV_CONFIG_OPS002_v1.docx",
+                "rel_path": "Designs_and_Guides/AP/AP_ENV_CONFIG_OPS002_v1.docx",
+                "type": "file",
+                "size_bytes": 16542,
+                "extension": ".docx"
+              },
+              {
+                "name": "AP_Implementation_Guide_IMPL001_v1.docx",
+                "rel_path": "Designs_and_Guides/AP/AP_Implementation_Guide_IMPL001_v1.docx",
+                "type": "file",
+                "size_bytes": 26107,
+                "extension": ".docx"
+              },
+              {
+                "name": "IMPL-002_AP_Repair_Validation_Layer_v1.md",
+                "rel_path": "Designs_and_Guides/AP/IMPL-002_AP_Repair_Validation_Layer_v1.md",
+                "type": "file",
+                "size_bytes": 46305,
+                "extension": ".md"
+              },
+              {
+                "name": "SPEC-003_AP_Repair_Validation_Layer_v1.md",
+                "rel_path": "Designs_and_Guides/AP/SPEC-003_AP_Repair_Validation_Layer_v1.md",
+                "type": "file",
+                "size_bytes": 33625,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 5
+          },
+          {
+            "name": "AP_REMEDIATION_SOURCES",
+            "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES",
+            "type": "directory",
+            "children": [
+              {
+                "name": "Architecture_Spec",
+                "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Architecture_Spec",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "IMPLEMENTATION_SEQUENCE.md",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Architecture_Spec/IMPLEMENTATION_SEQUENCE.md",
+                    "type": "file",
+                    "size_bytes": 17742,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MASTER_SYSTEM_DESIGN_SPEC.md",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Architecture_Spec/MASTER_SYSTEM_DESIGN_SPEC.md",
+                    "type": "file",
+                    "size_bytes": 23017,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "MODULE_INVENTORY.md",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Architecture_Spec/MODULE_INVENTORY.md",
+                    "type": "file",
+                    "size_bytes": 24221,
+                    "extension": ".md"
+                  }
+                ],
+                "child_count": 3
+              },
+              {
+                "name": "Audit_Artifacts",
+                "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Audit_Artifacts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ARCHON_PRIME_FUNCTIONALITY_AUDIT_V2.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Audit_Artifacts/ARCHON_PRIME_FUNCTIONALITY_AUDIT_V2.json",
+                    "type": "file",
+                    "size_bytes": 11756,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "ARCHON_PRIME_MODULE_INVENTORY.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Audit_Artifacts/ARCHON_PRIME_MODULE_INVENTORY.json",
+                    "type": "file",
+                    "size_bytes": 16568,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "ARCHON_PRIME_SUBSYSTEM_MAP.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Audit_Artifacts/ARCHON_PRIME_SUBSYSTEM_MAP.json",
+                    "type": "file",
+                    "size_bytes": 11453,
+                    "extension": ".json"
+                  }
+                ],
+                "child_count": 3
+              },
+              {
+                "name": "Control_Dataset",
+                "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Control_Dataset",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "AP_ARTIFACT_INDEX.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Control_Dataset/AP_ARTIFACT_INDEX.json",
+                    "type": "file",
+                    "size_bytes": 105415,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_DIRECTORY_TREE_CURRENT.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Control_Dataset/AP_DIRECTORY_TREE_CURRENT.json",
+                    "type": "file",
+                    "size_bytes": 36018,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "AP_EMPTY_DIRECTORIES.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Control_Dataset/AP_EMPTY_DIRECTORIES.json",
+                    "type": "file",
+                    "size_bytes": 1492,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "step_failures.json",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Control_Dataset/step_failures.json",
+                    "type": "file",
+                    "size_bytes": 2,
+                    "extension": ".json"
+                  }
+                ],
+                "child_count": 4
+              },
+              {
+                "name": "Workflow_Context",
+                "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Workflow_Context",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "AP_WORKFLOW_CONTEXT.md",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Workflow_Context/AP_WORKFLOW_CONTEXT.md",
+                    "type": "file",
+                    "size_bytes": 33816,
+                    "extension": ".md"
+                  },
+                  {
+                    "name": "AP_WORKFLOW_OVERVIEW.md",
+                    "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/Workflow_Context/AP_WORKFLOW_OVERVIEW.md",
+                    "type": "file",
+                    "size_bytes": 13291,
+                    "extension": ".md"
+                  }
+                ],
+                "child_count": 2
+              },
+              {
+                "name": "phase1_remediation_plan.json",
+                "rel_path": "Designs_and_Guides/AP_REMEDIATION_SOURCES/phase1_remediation_plan.json",
+                "type": "file",
+                "size_bytes": 26103,
+                "extension": ".json"
+              }
+            ],
+            "child_count": 5
+          },
+          {
+            "name": "ARP",
+            "rel_path": "Designs_and_Guides/ARP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "ARP_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/ARP/ARP_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 37606,
+                "extension": ".md"
+              },
+              {
+                "name": "ARP_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/ARP/ARP_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 52796,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "COMPLIANCE_REPORTS",
+            "rel_path": "Designs_and_Guides/COMPLIANCE_REPORTS",
+            "type": "directory",
+            "children": [
+              {
+                "name": "P1_P4_Compliance_Audit_Report.json",
+                "rel_path": "Designs_and_Guides/COMPLIANCE_REPORTS/P1_P4_Compliance_Audit_Report.json",
+                "type": "file",
+                "size_bytes": 32607,
+                "extension": ".json"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "CSP",
+            "rel_path": "Designs_and_Guides/CSP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "CSP_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/CSP/CSP_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 17832,
+                "extension": ".md"
+              },
+              {
+                "name": "CSP_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/CSP/CSP_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 19781,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "Canonical_Import_Facade",
+            "rel_path": "Designs_and_Guides/Canonical_Import_Facade",
+            "type": "directory",
+            "children": [
+              {
+                "name": "Import_Facade",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "generate_deep_import_violations.py",
+                    "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_deep_import_violations.py",
+                    "type": "file",
+                    "size_bytes": 4891,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "generate_symbol_import_index.py",
+                    "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/generate_symbol_import_index.py",
+                    "type": "file",
+                    "size_bytes": 4803,
+                    "extension": ".py"
+                  },
+                  {
+                    "name": "repo_structure_export.py",
+                    "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Import_Facade/repo_structure_export.py",
+                    "type": "file",
+                    "size_bytes": 2070,
+                    "extension": ".py"
+                  }
+                ],
+                "child_count": 3
+              },
+              {
+                "name": "Canonical_Import_Facade_Blueprint.md",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Blueprint.md",
+                "type": "file",
+                "size_bytes": 51203,
+                "extension": ".md"
+              },
+              {
+                "name": "Canonical_Import_Facade_Integration_Plan.md",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Canonical_Import_Facade_Integration_Plan.md",
+                "type": "file",
+                "size_bytes": 17644,
+                "extension": ".md"
+              },
+              {
+                "name": "Deep_Import_Violations.json",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/Deep_Import_Violations.json",
+                "type": "file",
+                "size_bytes": 86408,
+                "extension": ".json"
+              },
+              {
+                "name": "repo_directory_tree.json",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/repo_directory_tree.json",
+                "type": "file",
+                "size_bytes": 71162,
+                "extension": ".json"
+              },
+              {
+                "name": "repo_imports.json",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/repo_imports.json",
+                "type": "file",
+                "size_bytes": 1525279,
+                "extension": ".json"
+              },
+              {
+                "name": "repo_python_files.json",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/repo_python_files.json",
+                "type": "file",
+                "size_bytes": 290002,
+                "extension": ".json"
+              },
+              {
+                "name": "repo_symbol_imports.json",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/repo_symbol_imports.json",
+                "type": "file",
+                "size_bytes": 3179212,
+                "extension": ".json"
+              },
+              {
+                "name": "runtime_surface_audit.json",
+                "rel_path": "Designs_and_Guides/Canonical_Import_Facade/runtime_surface_audit.json",
+                "type": "file",
+                "size_bytes": 732827,
+                "extension": ".json"
+              }
+            ],
+            "child_count": 9
+          },
+          {
+            "name": "DRAC",
+            "rel_path": "Designs_and_Guides/DRAC",
+            "type": "directory",
+            "children": [
+              {
+                "name": "DRAC_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/DRAC/DRAC_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 16788,
+                "extension": ".md"
+              },
+              {
+                "name": "DRAC_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/DRAC/DRAC_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 25062,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "EMP",
+            "rel_path": "Designs_and_Guides/EMP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "EMP_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/EMP/EMP_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 18977,
+                "extension": ".md"
+              },
+              {
+                "name": "EMP_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/EMP/EMP_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 34523,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "Epistemic_Artifacts",
+            "rel_path": "Designs_and_Guides/Epistemic_Artifacts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "EA_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/Epistemic_Artifacts/EA_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 30550,
+                "extension": ".md"
+              },
+              {
+                "name": "EA_System_Design_Spec_V1.md",
+                "rel_path": "Designs_and_Guides/Epistemic_Artifacts/EA_System_Design_Spec_V1.md",
+                "type": "file",
+                "size_bytes": 44882,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "I2",
+            "rel_path": "Designs_and_Guides/I2",
+            "type": "directory",
+            "children": [
+              {
+                "name": "I2_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/I2/I2_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 38754,
+                "extension": ".md"
+              },
+              {
+                "name": "I2_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/I2/I2_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 54518,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "Logos_Core",
+            "rel_path": "Designs_and_Guides/Logos_Core",
+            "type": "directory",
+            "children": [
+              {
+                "name": "Logos_Core_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/Logos_Core/Logos_Core_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 38850,
+                "extension": ".md"
+              },
+              {
+                "name": "Logos_Core_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/Logos_Core/Logos_Core_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 25075,
+                "extension": ".md"
+              },
+              {
+                "name": "MSPC_Promotion.txt",
+                "rel_path": "Designs_and_Guides/Logos_Core/MSPC_Promotion.txt",
+                "type": "file",
+                "size_bytes": 11545,
+                "extension": ".txt"
+              }
+            ],
+            "child_count": 3
+          },
+          {
+            "name": "MSPC",
+            "rel_path": "Designs_and_Guides/MSPC",
+            "type": "directory",
+            "children": [
+              {
+                "name": "MSPC_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/MSPC/MSPC_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 19398,
+                "extension": ".md"
+              },
+              {
+                "name": "MSPC_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/MSPC/MSPC_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 36625,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "MTP",
+            "rel_path": "Designs_and_Guides/MTP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "MTP_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/MTP/MTP_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 23741,
+                "extension": ".md"
+              },
+              {
+                "name": "MTP_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/MTP/MTP_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 34390,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "P1-5",
+            "rel_path": "Designs_and_Guides/P1-5",
+            "type": "directory",
+            "children": [
+              {
+                "name": "Audits",
+                "rel_path": "Designs_and_Guides/P1-5/Audits",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "P1_P4_Compliance_Audit_Report.json",
+                    "rel_path": "Designs_and_Guides/P1-5/Audits/P1_P4_Compliance_Audit_Report.json",
+                    "type": "file",
+                    "size_bytes": 32607,
+                    "extension": ".json"
+                  },
+                  {
+                    "name": "p1-4_audit_vs_code.md",
+                    "rel_path": "Designs_and_Guides/P1-5/Audits/p1-4_audit_vs_code.md",
+                    "type": "file",
+                    "size_bytes": 79737,
+                    "extension": ".md"
+                  }
+                ],
+                "child_count": 2
+              },
+              {
+                "name": "LOGOS_V1_Operational_Readiness_Blueprint.md",
+                "rel_path": "Designs_and_Guides/P1-5/LOGOS_V1_Operational_Readiness_Blueprint.md",
+                "type": "file",
+                "size_bytes": 28277,
+                "extension": ".md"
+              },
+              {
+                "name": "LOGOS_V1_P1_Runtime_Activation_Spec.md",
+                "rel_path": "Designs_and_Guides/P1-5/LOGOS_V1_P1_Runtime_Activation_Spec.md",
+                "type": "file",
+                "size_bytes": 46296,
+                "extension": ".md"
+              },
+              {
+                "name": "LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+                "rel_path": "Designs_and_Guides/P1-5/LOGOS_V1_P2_Subsystem_Completion_Spec.md",
+                "type": "file",
+                "size_bytes": 41949,
+                "extension": ".md"
+              },
+              {
+                "name": "LOGOS_V1_P3_Integration_Wiring_Spec.md",
+                "rel_path": "Designs_and_Guides/P1-5/LOGOS_V1_P3_Integration_Wiring_Spec.md",
+                "type": "file",
+                "size_bytes": 36661,
+                "extension": ".md"
+              },
+              {
+                "name": "LOGOS_V1_P4_Hardening_Validation_Spec.md",
+                "rel_path": "Designs_and_Guides/P1-5/LOGOS_V1_P4_Hardening_Validation_Spec.md",
+                "type": "file",
+                "size_bytes": 36118,
+                "extension": ".md"
+              },
+              {
+                "name": "LOGOS_V1_P5_Documentation_Closure_Spec.md",
+                "rel_path": "Designs_and_Guides/P1-5/LOGOS_V1_P5_Documentation_Closure_Spec.md",
+                "type": "file",
+                "size_bytes": 25534,
+                "extension": ".md"
+              },
+              {
+                "name": "M6_Implementation_Blueprint.md",
+                "rel_path": "Designs_and_Guides/P1-5/M6_Implementation_Blueprint.md",
+                "type": "file",
+                "size_bytes": 28159,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 8
+          },
+          {
+            "name": "RGE",
+            "rel_path": "Designs_and_Guides/RGE",
+            "type": "directory",
+            "children": [
+              {
+                "name": "RGE_Design_Spec.md",
+                "rel_path": "Designs_and_Guides/RGE/RGE_Design_Spec.md",
+                "type": "file",
+                "size_bytes": 59166,
+                "extension": ".md"
+              },
+              {
+                "name": "RGE_Implentation_Guide.md",
+                "rel_path": "Designs_and_Guides/RGE/RGE_Implentation_Guide.md",
+                "type": "file",
+                "size_bytes": 44001,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "SCP",
+            "rel_path": "Designs_and_Guides/SCP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SCP_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/SCP/SCP_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 21042,
+                "extension": ".md"
+              },
+              {
+                "name": "SCP_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/SCP/SCP_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 37644,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "SOP",
+            "rel_path": "Designs_and_Guides/SOP",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SOP_Design_Specification_v1.md",
+                "rel_path": "Designs_and_Guides/SOP/SOP_Design_Specification_v1.md",
+                "type": "file",
+                "size_bytes": 26214,
+                "extension": ".md"
+              },
+              {
+                "name": "SOP_Implementation_Guide_v1.md",
+                "rel_path": "Designs_and_Guides/SOP/SOP_Implementation_Guide_v1.md",
+                "type": "file",
+                "size_bytes": 26650,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 2
+          }
+        ],
+        "child_count": 17
+      },
+      {
+        "name": "STAGING_ARTIFACTS",
+        "rel_path": "STAGING_ARTIFACTS",
+        "type": "directory",
+        "children": [
+          {
+            "name": "incoming",
+            "rel_path": "STAGING_ARTIFACTS/incoming",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "sorted",
+            "rel_path": "STAGING_ARTIFACTS/sorted",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          }
+        ],
+        "child_count": 2
+      },
+      {
+        "name": "config",
+        "rel_path": "config",
+        "type": "directory",
+        "children": [
+          {
+            "name": "crawl_config.json",
+            "rel_path": "config/crawl_config.json",
+            "type": "file",
+            "size_bytes": 160,
+            "extension": ".json"
+          },
+          {
+            "name": "repair_config.json",
+            "rel_path": "config/repair_config.json",
+            "type": "file",
+            "size_bytes": 131,
+            "extension": ".json"
+          },
+          {
+            "name": "simulation_config.json",
+            "rel_path": "config/simulation_config.json",
+            "type": "file",
+            "size_bytes": 160,
+            "extension": ".json"
+          }
+        ],
+        "child_count": 3
+      },
+      {
+        "name": "configs",
+        "rel_path": "configs",
+        "type": "directory",
+        "children": [
+          {
+            "name": "audit_configs",
+            "rel_path": "configs/audit_configs",
+            "type": "directory",
+            "children": [
+              {
+                "name": "PRE_CRAWL_CHECKLIST.md",
+                "rel_path": "configs/audit_configs/PRE_CRAWL_CHECKLIST.md",
+                "type": "file",
+                "size_bytes": 9001,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "crawl_configs",
+            "rel_path": "configs/crawl_configs",
+            "type": "directory",
+            "children": [
+              {
+                "name": "ap_config.yaml",
+                "rel_path": "configs/crawl_configs/ap_config.yaml",
+                "type": "file",
+                "size_bytes": 70,
+                "extension": ".yaml"
+              },
+              {
+                "name": "crawl_config.json",
+                "rel_path": "configs/crawl_configs/crawl_config.json",
+                "type": "file",
+                "size_bytes": 387,
+                "extension": ".json"
+              },
+              {
+                "name": "logos_targets.yaml",
+                "rel_path": "configs/crawl_configs/logos_targets.yaml",
+                "type": "file",
+                "size_bytes": 234,
+                "extension": ".yaml"
+              }
+            ],
+            "child_count": 3
+          },
+          {
+            "name": "phase_maps",
+            "rel_path": "configs/phase_maps",
+            "type": "directory",
+            "children": [
+              {
+                "name": "IMPLEMENTATION_SEQUENCE.md",
+                "rel_path": "configs/phase_maps/IMPLEMENTATION_SEQUENCE.md",
+                "type": "file",
+                "size_bytes": 17742,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "repair_registry",
+            "rel_path": "configs/repair_registry",
+            "type": "directory",
+            "children": [
+              {
+                "name": "FAILURE_TAXONOMY.md",
+                "rel_path": "configs/repair_registry/FAILURE_TAXONOMY.md",
+                "type": "file",
+                "size_bytes": 14793,
+                "extension": ".md"
+              },
+              {
+                "name": "repair_registry.json",
+                "rel_path": "configs/repair_registry/repair_registry.json",
+                "type": "file",
+                "size_bytes": 183,
+                "extension": ".json"
+              }
+            ],
+            "child_count": 2
+          }
+        ],
+        "child_count": 4
+      },
+      {
+        "name": "controllers",
+        "rel_path": "controllers",
+        "type": "directory",
+        "children": [
+          {
+            "name": "analysis_controller.py",
+            "rel_path": "controllers/analysis_controller.py",
+            "type": "file",
+            "size_bytes": 9555,
+            "extension": ".py"
+          },
+          {
+            "name": "audit_controller.py",
+            "rel_path": "controllers/audit_controller.py",
+            "type": "file",
+            "size_bytes": 7401,
+            "extension": ".py"
+          },
+          {
+            "name": "config_loader.py",
+            "rel_path": "controllers/config_loader.py",
+            "type": "file",
+            "size_bytes": 1423,
+            "extension": ".py"
+          },
+          {
+            "name": "crawler_controller.py",
+            "rel_path": "controllers/crawler_controller.py",
+            "type": "file",
+            "size_bytes": 9292,
+            "extension": ".py"
+          },
+          {
+            "name": "pipeline_controller.py",
+            "rel_path": "controllers/pipeline_controller.py",
+            "type": "file",
+            "size_bytes": 20909,
+            "extension": ".py"
+          },
+          {
+            "name": "repair_controller.py",
+            "rel_path": "controllers/repair_controller.py",
+            "type": "file",
+            "size_bytes": 16068,
+            "extension": ".py"
+          },
+          {
+            "name": "simulation_controller.py",
+            "rel_path": "controllers/simulation_controller.py",
+            "type": "file",
+            "size_bytes": 9932,
+            "extension": ".py"
+          }
+        ],
+        "child_count": 7
+      },
+      {
+        "name": "crawler",
+        "rel_path": "crawler",
+        "type": "directory",
+        "children": [
+          {
+            "name": "core",
+            "rel_path": "crawler/core",
+            "type": "directory",
+            "children": [
+              {
+                "name": "crawl_engine.py",
+                "rel_path": "crawler/core/crawl_engine.py",
+                "type": "file",
+                "size_bytes": 9567,
+                "extension": ".py"
+              },
+              {
+                "name": "crawl_monitor.py",
+                "rel_path": "crawler/core/crawl_monitor.py",
+                "type": "file",
+                "size_bytes": 4851,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "engine",
+            "rel_path": "crawler/engine",
+            "type": "directory",
+            "children": [
+              {
+                "name": "crawl_engine.py",
+                "rel_path": "crawler/engine/crawl_engine.py",
+                "type": "file",
+                "size_bytes": 146,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "monitor",
+            "rel_path": "crawler/monitor",
+            "type": "directory",
+            "children": [
+              {
+                "name": "crawl_monitor.py",
+                "rel_path": "crawler/monitor/crawl_monitor.py",
+                "type": "file",
+                "size_bytes": 142,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "pipeline",
+            "rel_path": "crawler/pipeline",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "repair",
+            "rel_path": "crawler/repair",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "utils",
+            "rel_path": "crawler/utils",
+            "type": "directory",
+            "children": [
+              {
+                "name": "file_scanner.py",
+                "rel_path": "crawler/utils/file_scanner.py",
+                "type": "file",
+                "size_bytes": 4541,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          }
+        ],
+        "child_count": 6
+      },
+      {
+        "name": "logos_analysis",
+        "rel_path": "logos_analysis",
+        "type": "directory",
+        "children": [
+          {
+            "name": "reports",
+            "rel_path": "logos_analysis/reports",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "sandbox",
+            "rel_path": "logos_analysis/sandbox",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "source_snapshot",
+            "rel_path": "logos_analysis/source_snapshot",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          }
+        ],
+        "child_count": 3
+      },
+      {
+        "name": "logs",
+        "rel_path": "logs",
+        "type": "directory",
+        "children": [],
+        "child_count": 0
+      },
+      {
+        "name": "orchestration",
+        "rel_path": "orchestration",
+        "type": "directory",
+        "children": [
+          {
+            "name": "controllers",
+            "rel_path": "orchestration/controllers",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          },
+          {
+            "name": "json_drivers",
+            "rel_path": "orchestration/json_drivers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "ARTIFACT_SCHEMAS.md",
+                "rel_path": "orchestration/json_drivers/ARTIFACT_SCHEMAS.md",
+                "type": "file",
+                "size_bytes": 19663,
+                "extension": ".md"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "task_router",
+            "rel_path": "orchestration/task_router",
+            "type": "directory",
+            "children": [
+              {
+                "name": "routing_table.json",
+                "rel_path": "orchestration/task_router/routing_table.json",
+                "type": "file",
+                "size_bytes": 314,
+                "extension": ".json"
+              },
+              {
+                "name": "routing_table_loader.py",
+                "rel_path": "orchestration/task_router/routing_table_loader.py",
+                "type": "file",
+                "size_bytes": 2657,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "OUTPUT_ROUTING_TABLE.md",
+            "rel_path": "orchestration/OUTPUT_ROUTING_TABLE.md",
+            "type": "file",
+            "size_bytes": 16713,
+            "extension": ".md"
+          }
+        ],
+        "child_count": 4
+      },
+      {
+        "name": "registry",
+        "rel_path": "registry",
+        "type": "directory",
+        "children": [
+          {
+            "name": "audit_registry.json",
+            "rel_path": "registry/audit_registry.json",
+            "type": "file",
+            "size_bytes": 7755,
+            "extension": ".json"
+          },
+          {
+            "name": "module_registry.json",
+            "rel_path": "registry/module_registry.json",
+            "type": "file",
+            "size_bytes": 1920,
+            "extension": ".json"
+          },
+          {
+            "name": "repair_registry.json",
+            "rel_path": "registry/repair_registry.json",
+            "type": "file",
+            "size_bytes": 1888,
+            "extension": ".json"
+          },
+          {
+            "name": "simulation_registry.json",
+            "rel_path": "registry/simulation_registry.json",
+            "type": "file",
+            "size_bytes": 1818,
+            "extension": ".json"
+          }
+        ],
+        "child_count": 4
+      },
+      {
+        "name": "repair",
+        "rel_path": "repair",
+        "type": "directory",
+        "children": [
+          {
+            "name": "operators",
+            "rel_path": "repair/operators",
+            "type": "directory",
+            "children": [
+              {
+                "name": "dependency_normalizer.py",
+                "rel_path": "repair/operators/dependency_normalizer.py",
+                "type": "file",
+                "size_bytes": 3996,
+                "extension": ".py"
+              },
+              {
+                "name": "header_injection_operator.py",
+                "rel_path": "repair/operators/header_injection_operator.py",
+                "type": "file",
+                "size_bytes": 3377,
+                "extension": ".py"
+              },
+              {
+                "name": "import_rewrite_operator.py",
+                "rel_path": "repair/operators/import_rewrite_operator.py",
+                "type": "file",
+                "size_bytes": 3355,
+                "extension": ".py"
+              },
+              {
+                "name": "module_relocation_operator.py",
+                "rel_path": "repair/operators/module_relocation_operator.py",
+                "type": "file",
+                "size_bytes": 3448,
+                "extension": ".py"
+              },
+              {
+                "name": "namespace_disambiguator.py",
+                "rel_path": "repair/operators/namespace_disambiguator.py",
+                "type": "file",
+                "size_bytes": 4161,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 5
+          },
+          {
+            "name": "utils",
+            "rel_path": "repair/utils",
+            "type": "directory",
+            "children": [],
+            "child_count": 0
+          }
+        ],
+        "child_count": 2
+      },
+      {
+        "name": "schemas",
+        "rel_path": "schemas",
+        "type": "directory",
+        "children": [
+          {
+            "name": "CrawlMutationRecord.schema.json",
+            "rel_path": "schemas/CrawlMutationRecord.schema.json",
+            "type": "file",
+            "size_bytes": 496,
+            "extension": ".json"
+          },
+          {
+            "name": "PhaseGate.schema.json",
+            "rel_path": "schemas/PhaseGate.schema.json",
+            "type": "file",
+            "size_bytes": 306,
+            "extension": ".json"
+          },
+          {
+            "name": "QuarantineRecord.schema.json",
+            "rel_path": "schemas/QuarantineRecord.schema.json",
+            "type": "file",
+            "size_bytes": 324,
+            "extension": ".json"
+          },
+          {
+            "name": "ValidationManifest.schema.json",
+            "rel_path": "schemas/ValidationManifest.schema.json",
+            "type": "file",
+            "size_bytes": 292,
+            "extension": ".json"
+          }
+        ],
+        "child_count": 4
+      },
+      {
+        "name": "simulation",
+        "rel_path": "simulation",
+        "type": "directory",
+        "children": [
+          {
+            "name": "dependency_simulator",
+            "rel_path": "simulation/dependency_simulator",
+            "type": "directory",
+            "children": [
+              {
+                "name": "dependency_simulator.py",
+                "rel_path": "simulation/dependency_simulator/dependency_simulator.py",
+                "type": "file",
+                "size_bytes": 2545,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "import_simulator",
+            "rel_path": "simulation/import_simulator",
+            "type": "directory",
+            "children": [
+              {
+                "name": "import_simulator.py",
+                "rel_path": "simulation/import_simulator/import_simulator.py",
+                "type": "file",
+                "size_bytes": 1933,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "namespace_simulator",
+            "rel_path": "simulation/namespace_simulator",
+            "type": "directory",
+            "children": [
+              {
+                "name": "namespace_simulator.py",
+                "rel_path": "simulation/namespace_simulator/namespace_simulator.py",
+                "type": "file",
+                "size_bytes": 1623,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "repo_simulator",
+            "rel_path": "simulation/repo_simulator",
+            "type": "directory",
+            "children": [
+              {
+                "name": "repo_simulator.py",
+                "rel_path": "simulation/repo_simulator/repo_simulator.py",
+                "type": "file",
+                "size_bytes": 166,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "runtime_simulator",
+            "rel_path": "simulation/runtime_simulator",
+            "type": "directory",
+            "children": [
+              {
+                "name": "runtime_simulator.py",
+                "rel_path": "simulation/runtime_simulator/runtime_simulator.py",
+                "type": "file",
+                "size_bytes": 2668,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          }
+        ],
+        "child_count": 5
+      },
+      {
+        "name": "targets",
+        "rel_path": "targets",
+        "type": "directory",
+        "children": [
+          {
+            "name": "logos_targets.yaml",
+            "rel_path": "targets/logos_targets.yaml",
+            "type": "file",
+            "size_bytes": 160,
+            "extension": ".yaml"
+          }
+        ],
+        "child_count": 1
+      },
+      {
+        "name": "tests",
+        "rel_path": "tests",
+        "type": "directory",
+        "children": [
+          {
+            "name": "test_placeholder.py",
+            "rel_path": "tests/test_placeholder.py",
+            "type": "file",
+            "size_bytes": 36,
+            "extension": ".py"
+          }
+        ],
+        "child_count": 1
+      },
+      {
+        "name": "tools",
+        "rel_path": "tools",
+        "type": "directory",
+        "children": [
+          {
+            "name": "audit_tools",
+            "rel_path": "tools/audit_tools",
+            "type": "directory",
+            "children": [
+              {
+                "name": "audit_utils.py",
+                "rel_path": "tools/audit_tools/audit_utils.py",
+                "type": "file",
+                "size_bytes": 853,
+                "extension": ".py"
+              },
+              {
+                "name": "circular_dependency_audit.py",
+                "rel_path": "tools/audit_tools/circular_dependency_audit.py",
+                "type": "file",
+                "size_bytes": 1058,
+                "extension": ".py"
+              },
+              {
+                "name": "cross_package_dependency_audit.py",
+                "rel_path": "tools/audit_tools/cross_package_dependency_audit.py",
+                "type": "file",
+                "size_bytes": 824,
+                "extension": ".py"
+              },
+              {
+                "name": "duplicate_module_audit.py",
+                "rel_path": "tools/audit_tools/duplicate_module_audit.py",
+                "type": "file",
+                "size_bytes": 525,
+                "extension": ".py"
+              },
+              {
+                "name": "facade_bypass_audit.py",
+                "rel_path": "tools/audit_tools/facade_bypass_audit.py",
+                "type": "file",
+                "size_bytes": 784,
+                "extension": ".py"
+              },
+              {
+                "name": "file_size_audit.py",
+                "rel_path": "tools/audit_tools/file_size_audit.py",
+                "type": "file",
+                "size_bytes": 463,
+                "extension": ".py"
+              },
+              {
+                "name": "governance_contract_audit.py",
+                "rel_path": "tools/audit_tools/governance_contract_audit.py",
+                "type": "file",
+                "size_bytes": 979,
+                "extension": ".py"
+              },
+              {
+                "name": "governance_coverage_map.py",
+                "rel_path": "tools/audit_tools/governance_coverage_map.py",
+                "type": "file",
+                "size_bytes": 1229,
+                "extension": ".py"
+              },
+              {
+                "name": "governance_module_audit.py",
+                "rel_path": "tools/audit_tools/governance_module_audit.py",
+                "type": "file",
+                "size_bytes": 817,
+                "extension": ".py"
+              },
+              {
+                "name": "header_schema_audit.py",
+                "rel_path": "tools/audit_tools/header_schema_audit.py",
+                "type": "file",
+                "size_bytes": 442,
+                "extension": ".py"
+              },
+              {
+                "name": "import_surface_audit.py",
+                "rel_path": "tools/audit_tools/import_surface_audit.py",
+                "type": "file",
+                "size_bytes": 791,
+                "extension": ".py"
+              },
+              {
+                "name": "module_path_ambiguity_audit.py",
+                "rel_path": "tools/audit_tools/module_path_ambiguity_audit.py",
+                "type": "file",
+                "size_bytes": 619,
+                "extension": ".py"
+              },
+              {
+                "name": "namespace_shadow_audit.py",
+                "rel_path": "tools/audit_tools/namespace_shadow_audit.py",
+                "type": "file",
+                "size_bytes": 556,
+                "extension": ".py"
+              },
+              {
+                "name": "orphan_module_audit.py",
+                "rel_path": "tools/audit_tools/orphan_module_audit.py",
+                "type": "file",
+                "size_bytes": 766,
+                "extension": ".py"
+              },
+              {
+                "name": "repair_registry_loader.py",
+                "rel_path": "tools/audit_tools/repair_registry_loader.py",
+                "type": "file",
+                "size_bytes": 2512,
+                "extension": ".py"
+              },
+              {
+                "name": "run_audit_suite.py",
+                "rel_path": "tools/audit_tools/run_audit_suite.py",
+                "type": "file",
+                "size_bytes": 979,
+                "extension": ".py"
+              },
+              {
+                "name": "run_governance_audit.py",
+                "rel_path": "tools/audit_tools/run_governance_audit.py",
+                "type": "file",
+                "size_bytes": 317,
+                "extension": ".py"
+              },
+              {
+                "name": "runtime_entry_audit.py",
+                "rel_path": "tools/audit_tools/runtime_entry_audit.py",
+                "type": "file",
+                "size_bytes": 442,
+                "extension": ".py"
+              },
+              {
+                "name": "symbol_collision_audit.py",
+                "rel_path": "tools/audit_tools/symbol_collision_audit.py",
+                "type": "file",
+                "size_bytes": 936,
+                "extension": ".py"
+              },
+              {
+                "name": "unused_import_audit.py",
+                "rel_path": "tools/audit_tools/unused_import_audit.py",
+                "type": "file",
+                "size_bytes": 951,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 20
+          },
+          {
+            "name": "governance_analysis",
+            "rel_path": "tools/governance_analysis",
+            "type": "directory",
+            "children": [
+              {
+                "name": "governance_scanner.py",
+                "rel_path": "tools/governance_analysis/governance_scanner.py",
+                "type": "file",
+                "size_bytes": 243,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "import_analysis",
+            "rel_path": "tools/import_analysis",
+            "type": "directory",
+            "children": [
+              {
+                "name": "import_scanner.py",
+                "rel_path": "tools/import_analysis/import_scanner.py",
+                "type": "file",
+                "size_bytes": 646,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "normalization_tools",
+            "rel_path": "tools/normalization_tools",
+            "type": "directory",
+            "children": [
+              {
+                "name": "header_validator.py",
+                "rel_path": "tools/normalization_tools/header_validator.py",
+                "type": "file",
+                "size_bytes": 338,
+                "extension": ".py"
+              },
+              {
+                "name": "schema_registry.py",
+                "rel_path": "tools/normalization_tools/schema_registry.py",
+                "type": "file",
+                "size_bytes": 3142,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 2
+          },
+          {
+            "name": "repo_mapping",
+            "rel_path": "tools/repo_mapping",
+            "type": "directory",
+            "children": [
+              {
+                "name": "repo_scanner.py",
+                "rel_path": "tools/repo_mapping/repo_scanner.py",
+                "type": "file",
+                "size_bytes": 443,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "runtime_analysis",
+            "rel_path": "tools/runtime_analysis",
+            "type": "directory",
+            "children": [
+              {
+                "name": "dependency_graph.py",
+                "rel_path": "tools/runtime_analysis/dependency_graph.py",
+                "type": "file",
+                "size_bytes": 327,
+                "extension": ".py"
+              }
+            ],
+            "child_count": 1
+          },
+          {
+            "name": "MODULE_INVENTORY.md",
+            "rel_path": "tools/MODULE_INVENTORY.md",
+            "type": "file",
+            "size_bytes": 24221,
+            "extension": ".md"
+          },
+          {
+            "name": "ap_artifact_collection_p1.py",
+            "rel_path": "tools/ap_artifact_collection_p1.py",
+            "type": "file",
+            "size_bytes": 23210,
+            "extension": ".py"
+          },
+          {
+            "name": "ap_phase2_audit.py",
+            "rel_path": "tools/ap_phase2_audit.py",
+            "type": "file",
+            "size_bytes": 16720,
+            "extension": ".py"
+          }
+        ],
+        "child_count": 9
+      },
+      {
+        "name": "utils",
+        "rel_path": "utils",
+        "type": "directory",
+        "children": [
+          {
+            "name": "logger.py",
+            "rel_path": "utils/logger.py",
+            "type": "file",
+            "size_bytes": 362,
+            "extension": ".py"
+          }
+        ],
+        "child_count": 1
+      },
+      {
+        "name": ".gitignore",
+        "rel_path": ".gitignore",
+        "type": "file",
+        "size_bytes": 402,
+        "extension": ""
+      },
+      {
+        "name": "AP_PHASE1_REPO_SNAPSHOT.zip",
+        "rel_path": "AP_PHASE1_REPO_SNAPSHOT.zip",
+        "type": "file",
+        "size_bytes": 982254,
+        "extension": ".zip"
+      },
+      {
+        "name": "MASTER_SYSTEM_DESIGN_SPEC.md",
+        "rel_path": "MASTER_SYSTEM_DESIGN_SPEC.md",
+        "type": "file",
+        "size_bytes": 23017,
+        "extension": ".md"
+      },
+      {
+        "name": "README.md",
+        "rel_path": "README.md",
+        "type": "file",
+        "size_bytes": 14,
+        "extension": ".md"
+      },
+      {
+        "name": "pyproject.toml",
+        "rel_path": "pyproject.toml",
+        "type": "file",
+        "size_bytes": 322,
+        "extension": ".toml"
+      },
+      {
+        "name": "requirements.txt",
+        "rel_path": "requirements.txt",
+        "type": "file",
+        "size_bytes": 115,
+        "extension": ".txt"
+      }
+    ],
+    "child_count": 31
+  }
+}
