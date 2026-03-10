@@ -220,25 +220,29 @@ class RepairController:
         circ = self.upstream_artifacts.get("circular_dependency_report")
         if isinstance(circ, dict):
             for item in circ.get("cycles_detected", []):
-                issues.append({
-                    **item,
-                    "issue_type": "dependency_inconsistency",
-                    "inconsistency_type": "circular",
-                    "file_path": item.get("cycle_at", ""),
-                    "offending_import": item.get("back_edge", ""),
-                })
+                issues.append(
+                    {
+                        **item,
+                        "issue_type": "dependency_inconsistency",
+                        "inconsistency_type": "circular",
+                        "file_path": item.get("cycle_at", ""),
+                        "offending_import": item.get("back_edge", ""),
+                    }
+                )
 
         # Crawler orphan report → module_misplacement issues
         orphan_data = self.upstream_artifacts.get("crawler_orphan_report")
         if isinstance(orphan_data, dict):
             for item in orphan_data.get("orphan_modules", []):
-                issues.append({
-                    "module": item.get("import_path", item.get("path", "unknown")),
-                    "current_path": item.get("absolute_path", item.get("path", "")),
-                    "canonical_path": "",  # Requires human review to determine
-                    "reason": "orphan_detected_by_crawler",
-                    "issue_type": "module_misplacement",
-                })
+                issues.append(
+                    {
+                        "module": item.get("import_path", item.get("path", "unknown")),
+                        "current_path": item.get("absolute_path", item.get("path", "")),
+                        "canonical_path": "",  # Requires human review to determine
+                        "reason": "orphan_detected_by_crawler",
+                        "issue_type": "module_misplacement",
+                    }
+                )
 
         # Import integrity → import_error issues
         integrity = self.upstream_artifacts.get("import_integrity")
@@ -361,10 +365,12 @@ class RepairController:
             module_path, class_name = operator_spec
             operator = self._load_operator(module_path, class_name)
             if operator is None:
-                results.append({
-                    "status": "operator_load_failed",
-                    "module": module_path,
-                })
+                results.append(
+                    {
+                        "status": "operator_load_failed",
+                        "module": module_path,
+                    }
+                )
                 continue
 
             # Authorize mutation for this single call
@@ -424,7 +430,9 @@ if __name__ == "__main__":
     controller = RepairController(root)
     results = controller.run()
     plan = results.get("repair_plan", {})
-    print(json.dumps(
-        {k: v for k, v in plan.items() if k != "planned_repairs"},
-        indent=2,
-    ))
+    print(
+        json.dumps(
+            {k: v for k, v in plan.items() if k != "planned_repairs"},
+            indent=2,
+        )
+    )

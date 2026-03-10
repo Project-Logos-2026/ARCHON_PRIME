@@ -6,36 +6,38 @@ from audit_utils import generate_id, write_log
 
 def run(target):
 
-    issues=[]
+    issues = []
 
     for p in Path(target).rglob("*.py"):
 
         try:
-            tree=ast.parse(open(p).read())
+            tree = ast.parse(open(p).read())
 
-            imports=[]
-            names=set()
+            imports = []
+            names = set()
 
             for node in ast.walk(tree):
 
-                if isinstance(node,ast.Import):
+                if isinstance(node, ast.Import):
                     for n in node.names:
                         imports.append(n.name)
 
-                if isinstance(node,ast.Name):
+                if isinstance(node, ast.Name):
                     names.add(node.id)
 
             for imp in imports:
                 if imp.split(".")[0] not in names:
 
-                    issues.append({
-                        "id":generate_id(str(p)+imp),
-                        "file":str(p),
-                        "import":imp,
-                        "issue":"unused_import"
-                    })
+                    issues.append(
+                        {
+                            "id": generate_id(str(p) + imp),
+                            "file": str(p),
+                            "import": imp,
+                            "issue": "unused_import",
+                        }
+                    )
 
         except Exception:
             pass
 
-    write_log("unused_import_audit",target,"unused_import",issues)
+    write_log("unused_import_audit", target, "unused_import", issues)

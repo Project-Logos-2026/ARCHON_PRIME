@@ -69,7 +69,7 @@ def _topological_sort(graph: dict) -> list:
     """Kahn's algorithm — returns modules in dependency resolution order."""
     in_degree = {n: 0 for n in graph}
     for _node, deps in graph.items():
-        for d in (deps or []):
+        for d in deps or []:
             if d in in_degree:
                 in_degree[d] = in_degree.get(d, 0) + 1
 
@@ -78,7 +78,7 @@ def _topological_sort(graph: dict) -> list:
     while queue:
         node = queue.pop(0)
         order.append(node)
-        for dep in (graph.get(node) or []):
+        for dep in graph.get(node) or []:
             if dep in in_degree:
                 in_degree[dep] -= 1
                 if in_degree[dep] == 0:

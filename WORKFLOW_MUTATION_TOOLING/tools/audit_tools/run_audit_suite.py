@@ -31,8 +31,9 @@ def run(target):
     module_path_ambiguity_audit.run(target)
     facade_bypass_audit.run(target)
 
-if __name__=="__main__":
 
-    target=sys.argv[1]
+if __name__ == "__main__":
+
+    target = sys.argv[1]
 
     run(target)

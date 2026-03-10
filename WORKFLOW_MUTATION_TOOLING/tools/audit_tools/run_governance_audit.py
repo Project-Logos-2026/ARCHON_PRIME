@@ -13,8 +13,9 @@ def run(target):
 
     governance_coverage_map.run(target)
 
-if __name__=="__main__":
 
-    target=sys.argv[1]
+if __name__ == "__main__":
+
+    target = sys.argv[1]
 
     run(target)

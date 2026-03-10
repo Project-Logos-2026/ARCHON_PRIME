@@ -17,9 +17,20 @@ from typing import Any, Dict, List, Optional, Set
 SUPPORTED_EXTENSIONS: Set[str] = {".py", ".json", ".yaml", ".yml", ".md"}
 
 IGNORED_DIRS: Set[str] = {
-    ".git", "__pycache__", ".tox", ".mypy_cache", ".pytest_cache",
-    "node_modules", "dist", "build", ".venv", "venv", ".eggs",
-    ".idea", ".vscode", "*.egg-info",
+    ".git",
+    "__pycache__",
+    ".tox",
+    ".mypy_cache",
+    ".pytest_cache",
+    "node_modules",
+    "dist",
+    "build",
+    ".venv",
+    "venv",
+    ".eggs",
+    ".idea",
+    ".vscode",
+    "*.egg-info",
 }
 
 
@@ -66,9 +77,7 @@ def scan_directory(
 
         # Prune hidden and ignored directories in-place
         dirnames[:] = sorted(
-            d for d in dirnames
-            if d not in ignored_dirs
-            and not d.startswith(".")
+            d for d in dirnames if d not in ignored_dirs and not d.startswith(".")
         )
 
         for filename in sorted(filenames):

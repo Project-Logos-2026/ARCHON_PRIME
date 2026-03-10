@@ -18,6 +18,7 @@ from typing import Any, Dict, List
 
 try:
     import yaml
+
     _YAML_AVAILABLE = True
 except ImportError:
     _YAML_AVAILABLE = False
@@ -25,8 +26,17 @@ except ImportError:
 
 SUPPORTED_EXTENSIONS = {".py", ".json", ".yaml", ".yml", ".md"}
 IGNORED_DIRS = {
-    ".git", "__pycache__", ".tox", ".mypy_cache", ".pytest_cache",
-    "node_modules", "dist", "build", ".venv", "venv", ".eggs",
+    ".git",
+    "__pycache__",
+    ".tox",
+    ".mypy_cache",
+    ".pytest_cache",
+    "node_modules",
+    "dist",
+    "build",
+    ".venv",
+    "venv",
+    ".eggs",
 }
 
 
@@ -117,8 +127,7 @@ class CrawlEngine:
 
             # Prune ignored directories in-place to prevent descent
             dirnames[:] = sorted(
-                d for d in dirnames
-                if d not in IGNORED_DIRS and not d.startswith(".")
+                d for d in dirnames if d not in IGNORED_DIRS and not d.startswith(".")
             )
 
             for filename in sorted(filenames):
@@ -135,9 +144,9 @@ class CrawlEngine:
                         "extension": ext,
                         "type": self._classify_file(ext, filename),
                         "depth": current_depth,
-                        "size_bytes": file_path.stat().st_size
-                        if file_path.exists()
-                        else 0,
+                        "size_bytes": (
+                            file_path.stat().st_size if file_path.exists() else 0
+                        ),
                     }
                 )
 
@@ -168,9 +177,7 @@ class CrawlEngine:
                 continue
             rel = f["path"]
             # Derive dotted import path from relative file path
-            import_path = (
-                rel.replace(os.sep, ".").replace("/", ".").removesuffix(".py")
-            )
+            import_path = rel.replace(os.sep, ".").replace("/", ".").removesuffix(".py")
             is_package = rel.endswith("__init__.py")
             modules.append(
                 {
@@ -211,12 +218,11 @@ class CrawlEngine:
 
         # Identify orphan modules (depth > 0, not inside a package)
         package_dirs = {
-            os.path.dirname(m["path"])
-            for m in modules
-            if m["is_package_init"]
+            os.path.dirname(m["path"]) for m in modules if m["is_package_init"]
         }
         orphans = [
-            m for m in ordered
+            m
+            for m in ordered
             if not m["is_package_init"]
             and os.path.dirname(m["path"]) not in package_dirs
             and m["depth"] > 0
@@ -261,11 +267,14 @@ class CrawlEngine:
 
 if __name__ == "__main__":
     import sys
+
     root = sys.argv[1] if len(sys.argv) > 1 else "/workspaces/ARCHON_PRIME"
     engine = CrawlEngine(root)
     engine.load_targets()
     plan = engine.run()
-    print(json.dumps(
-        {k: v for k, v in plan.items() if k != "traversal_order"},
-        indent=2,
-    ))
+    print(
+        json.dumps(
+            {k: v for k, v in plan.items() if k != "traversal_order"},
+            indent=2,
+        )
+    )

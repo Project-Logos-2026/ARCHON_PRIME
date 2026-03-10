@@ -6,27 +6,27 @@ from audit_utils import generate_id, write_log
 
 def run(target):
 
-    imports={}
-    issues=[]
+    imports = {}
+    issues = []
 
     for p in Path(target).rglob("*.py"):
 
         try:
-            tree=ast.parse(open(p).read())
+            tree = ast.parse(open(p).read())
 
-            deps=[]
+            deps = []
 
             for node in ast.walk(tree):
 
-                if isinstance(node,ast.Import):
+                if isinstance(node, ast.Import):
                     for n in node.names:
                         deps.append(n.name)
 
-                if isinstance(node,ast.ImportFrom):
+                if isinstance(node, ast.ImportFrom):
                     if node.module:
                         deps.append(node.module)
 
-            imports[str(p)]=deps
+            imports[str(p)] = deps
 
         except Exception:
             pass
@@ -36,11 +36,13 @@ def run(target):
             if b in imports:
                 if a in imports[b]:
 
-                    issues.append({
-                        "id":generate_id(a+b),
-                        "file_a":a,
-                        "file_b":b,
-                        "issue":"circular_dependency"
-                    })
+                    issues.append(
+                        {
+                            "id": generate_id(a + b),
+                            "file_a": a,
+                            "file_b": b,
+                            "issue": "circular_dependency",
+                        }
+                    )
 
-    write_log("circular_dependency_audit",target,"dependency_cycle",issues)
+    write_log("circular_dependency_audit", target, "dependency_cycle", issues)

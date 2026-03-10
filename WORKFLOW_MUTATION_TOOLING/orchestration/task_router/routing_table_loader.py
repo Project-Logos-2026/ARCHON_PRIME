@@ -47,9 +47,7 @@ def load_routing_table(routing_table_path: str | Path | None = None) -> Dict[str
         return _routing_cache
 
     path = (
-        Path(routing_table_path)
-        if routing_table_path
-        else _DEFAULT_ROUTING_TABLE_PATH
+        Path(routing_table_path) if routing_table_path else _DEFAULT_ROUTING_TABLE_PATH
     )
 
     if not path.is_file():

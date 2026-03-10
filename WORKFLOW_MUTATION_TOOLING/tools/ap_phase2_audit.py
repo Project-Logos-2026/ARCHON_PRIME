@@ -27,59 +27,84 @@ PLAN_PATH = (
 OUTPUT_PATH = REPO_ROOT / "AP_SYSTEM_AUDIT/phase2_audit_snapshot.json"
 
 EXCLUDE_DIRS: Set[str] = {
-    ".git", "__pycache__", "node_modules", "venv", ".env", ".venv"
+    ".git",
+    "__pycache__",
+    "node_modules",
+    "venv",
+    ".env",
+    ".venv",
 }
 
 # ─── Subsystem → expected modules (from Phase-1 plan, by module_id prefix) ───
 SUBSYSTEM_MAP = {
-    "C1_REPO_MAPPING":    ["M10", "M11", "M20"],
+    "C1_REPO_MAPPING": ["M10", "M11", "M20"],
     "C2_IMPORT_ANALYSIS": ["M12", "M13", "M21", "M22", "M25"],
-    "C3_GOVERNANCE":      ["M14", "M15", "M63"],
-    "C4_DEPENDENCY":      ["M21", "M22"],
-    "C5_RUNTIME":         ["M16", "M23", "M24"],
-    "C6_REPAIR":          ["M70", "M71", "M72"],
-    "C7_SIMULATION":      ["M30", "M31", "M32"],
+    "C3_GOVERNANCE": ["M14", "M15", "M63"],
+    "C4_DEPENDENCY": ["M21", "M22"],
+    "C5_RUNTIME": ["M16", "M23", "M24"],
+    "C6_REPAIR": ["M70", "M71", "M72"],
+    "C7_SIMULATION": ["M30", "M31", "M32"],
     "C8_PIPELINE": [
-        "M38", "M39", "M50", "M51", "M60", "M61", "M62",
-        "M64", "M65", "M80", "M90", "M91", "M92",
+        "M38",
+        "M39",
+        "M50",
+        "M51",
+        "M60",
+        "M61",
+        "M62",
+        "M64",
+        "M65",
+        "M80",
+        "M90",
+        "M91",
+        "M92",
     ],
     "C9_AUDIT": [
-        "M00", "M01", "M02", "M10", "M11", "M12",
-        "M13", "M14", "M15", "M16", "M17",
+        "M00",
+        "M01",
+        "M02",
+        "M10",
+        "M11",
+        "M12",
+        "M13",
+        "M14",
+        "M15",
+        "M16",
+        "M17",
     ],
-    "C10_CONTROLLER":     ["M95", "M96"],
-    "C11_UTILITIES":      [],  # non-spec / enhancement modules
+    "C10_CONTROLLER": ["M95", "M96"],
+    "C11_UTILITIES": [],  # non-spec / enhancement modules
 }
 
 # ─── Heuristic name → spec module mapping for non-spec classification ─────────
 ANALOG_HINTS: Dict[str, str] = {
-    "repo_mapper":                  "M10",
-    "repo_scanner":                 "M10",
-    "import_scanner":               "M12",
-    "header_validator":             "M14",
-    "governance_scanner":           "M15",
-    "governance_contract_audit":    "M15",
-    "governance_module_audit":      "M15",
-    "circular_dependency_audit":    "M22",
-    "dependency_graph":             "M21",
-    "dependency_normalizer":        "M21",
-    "header_injection_operator":    "M50",
-    "import_rewrite_operator":      "M51",
-    "crawl_engine":                 "M60",
-    "pipeline_controller":          "M96",
-    "config_loader":                "M01",
-    "audit_controller":             "M95",
-    "analysis_controller":          "M95",
-    "crawler_controller":           "M60",
-    "repair_controller":            "M71",
-    "import_surface_audit":         "M25",
-    "facade_bypass_audit":          "M25",
-    "header_schema_audit":          "M14",
-    "runtime_entry_audit":          "M23",
-    "unused_import_audit":          "M12",
+    "repo_mapper": "M10",
+    "repo_scanner": "M10",
+    "import_scanner": "M12",
+    "header_validator": "M14",
+    "governance_scanner": "M15",
+    "governance_contract_audit": "M15",
+    "governance_module_audit": "M15",
+    "circular_dependency_audit": "M22",
+    "dependency_graph": "M21",
+    "dependency_normalizer": "M21",
+    "header_injection_operator": "M50",
+    "import_rewrite_operator": "M51",
+    "crawl_engine": "M60",
+    "pipeline_controller": "M96",
+    "config_loader": "M01",
+    "audit_controller": "M95",
+    "analysis_controller": "M95",
+    "crawler_controller": "M60",
+    "repair_controller": "M71",
+    "import_surface_audit": "M25",
+    "facade_bypass_audit": "M25",
+    "header_schema_audit": "M14",
+    "runtime_entry_audit": "M23",
+    "unused_import_audit": "M12",
 }
 
-LEGACY_HINTS = {"crawl_monitor"}   # duplicates of existing spec modules
+LEGACY_HINTS = {"crawl_monitor"}  # duplicates of existing spec modules
 
 
 def load_plan() -> Dict[str, Any]:
@@ -109,11 +134,13 @@ def extract_imports(source: str, file_path: Path) -> List[Dict[str, str]]:
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             for alias in node.names:
-                imports.append({
-                    "type": "import",
-                    "module": alias.name,
-                    "name": alias.asname or alias.name,
-                })
+                imports.append(
+                    {
+                        "type": "import",
+                        "module": alias.name,
+                        "name": alias.asname or alias.name,
+                    }
+                )
         elif isinstance(node, ast.ImportFrom):
             mod = node.module or ""
             for alias in node.names:
@@ -190,17 +217,19 @@ def build_surface_map(py_files: List[Path]) -> List[Dict[str, Any]]:
         except Exception:
             lines, size, imports = 0, 0, []
 
-        surface.append({
-            "module_name": fpath.name,
-            "stem": fpath.stem,
-            "absolute_path": str(fpath),
-            "relative_path": str(rel),
-            "directory": str(rel.parent),
-            "imports": imports,
-            "file_size": size,
-            "line_count": lines,
-            "subsystem_guess": guess_subsystem(str(rel)),
-        })
+        surface.append(
+            {
+                "module_name": fpath.name,
+                "stem": fpath.stem,
+                "absolute_path": str(fpath),
+                "relative_path": str(rel),
+                "directory": str(rel.parent),
+                "imports": imports,
+                "file_size": size,
+                "line_count": lines,
+                "subsystem_guess": guess_subsystem(str(rel)),
+            }
+        )
     return surface
 
 
@@ -222,33 +251,39 @@ def compare_targets(
         module_name = t["module_name"]
 
         if expected_rel in by_rel:
-            present.append({
-                "module_id": t["module_id"],
-                "module_name": module_name,
-                "expected_path": expected_rel,
-                "actual_path": expected_rel,
-                "subsystem": t["subsystem"],
-                "status": "SPEC_PRESENT",
-            })
+            present.append(
+                {
+                    "module_id": t["module_id"],
+                    "module_name": module_name,
+                    "expected_path": expected_rel,
+                    "actual_path": expected_rel,
+                    "subsystem": t["subsystem"],
+                    "status": "SPEC_PRESENT",
+                }
+            )
         elif module_name in by_name:
             actual = by_name[module_name][0]
-            misplaced.append({
-                "module_id": t["module_id"],
-                "module_name": module_name,
-                "expected_path": expected_rel,
-                "actual_path": actual["relative_path"],
-                "subsystem": t["subsystem"],
-                "status": "MISPLACED_MODULE",
-            })
+            misplaced.append(
+                {
+                    "module_id": t["module_id"],
+                    "module_name": module_name,
+                    "expected_path": expected_rel,
+                    "actual_path": actual["relative_path"],
+                    "subsystem": t["subsystem"],
+                    "status": "MISPLACED_MODULE",
+                }
+            )
         else:
-            missing.append({
-                "module_id": t["module_id"],
-                "module_name": module_name,
-                "expected_path": expected_rel,
-                "subsystem": t["subsystem"],
-                "blocking": t.get("blocking", False),
-                "status": "SPEC_MISSING",
-            })
+            missing.append(
+                {
+                    "module_id": t["module_id"],
+                    "module_name": module_name,
+                    "expected_path": expected_rel,
+                    "subsystem": t["subsystem"],
+                    "blocking": t.get("blocking", False),
+                    "status": "SPEC_MISSING",
+                }
+            )
 
     return present, missing, misplaced
 
@@ -265,15 +300,17 @@ def discover_non_spec(surface: List[Dict], targets: List[Dict]) -> List[Dict]:
             entry["stem"], entry["relative_path"], entry["imports"]
         )
         analog_hint = ANALOG_HINTS.get(entry["stem"], None)
-        results.append({
-            "module_name": entry["module_name"],
-            "path": entry["relative_path"],
-            "classification": classification,
-            "possible_spec_mapping": analog_hint or "None",
-            "subsystem_guess": entry["subsystem_guess"],
-            "line_count": entry["line_count"],
-            "file_size": entry["file_size"],
-        })
+        results.append(
+            {
+                "module_name": entry["module_name"],
+                "path": entry["relative_path"],
+                "classification": classification,
+                "possible_spec_mapping": analog_hint or "None",
+                "subsystem_guess": entry["subsystem_guess"],
+                "line_count": entry["line_count"],
+                "file_size": entry["file_size"],
+            }
+        )
     return results
 
 
@@ -291,11 +328,13 @@ def build_dependency_graph(surface: List[Dict]) -> Dict[str, Any]:
                 if part in stem_to_rel:
                     tgt = stem_to_rel[part]
                     if tgt != src:
-                        edges.append({
-                            "source_module": src,
-                            "target_module": tgt,
-                            "edge_type": imp["type"],
-                        })
+                        edges.append(
+                            {
+                                "source_module": src,
+                                "target_module": tgt,
+                                "edge_type": imp["type"],
+                            }
+                        )
                     break
     # Deduplicate
     seen = set()
@@ -378,8 +417,8 @@ def main() -> None:
 
     # ── Step 7: Dependency graph ──────────────────────────────────────────────
     dep_graph = build_dependency_graph(surface)
-    nodes = dep_graph['nodes']
-    edges = dep_graph['edges']
+    nodes = dep_graph["nodes"]
+    edges = dep_graph["edges"]
     print(f"[STEP 7] Dependency graph: nodes={nodes}, edges={edges}")
 
     # ── Step 8: Subsystem completion ──────────────────────────────────────────

@@ -20,15 +20,15 @@ class AuditController:
     """
 
     AUDIT_OUTPUT_DIR = _REPO_ROOT / "AP_SYSTEM_AUDIT"
-    REGISTRY_PATH    = _REPO_ROOT / "registry" / "audit_registry.json"
+    REGISTRY_PATH = _REPO_ROOT / "registry" / "audit_registry.json"
 
     def __init__(self, root_path=None):
-        self.root       = Path(root_path) if root_path else _REPO_ROOT
+        self.root = Path(root_path) if root_path else _REPO_ROOT
         self.cfg_loader = ConfigLoader(str(self.root))
-        self.crawl_cfg  = self.cfg_loader.load_crawl_config()
-        self.sim_cfg    = self.cfg_loader.load_simulation_config()
-        self.dry_run    = self.crawl_cfg.get("crawl_mode") == "dry_run"
-        self.registry   = self.load_registry()
+        self.crawl_cfg = self.cfg_loader.load_crawl_config()
+        self.sim_cfg = self.cfg_loader.load_simulation_config()
+        self.dry_run = self.crawl_cfg.get("crawl_mode") == "dry_run"
+        self.registry = self.load_registry()
         self.AUDIT_OUTPUT_DIR.mkdir(exist_ok=True)
 
     # ── Registry ──────────────────────────────────────────────────────────────
@@ -66,11 +66,13 @@ class AuditController:
         for entry in self.registry["audits"]:
             mod, err = self.import_module(entry)
             if err:
-                errors.append({
-                    "module": entry["module"],
-                    "file": entry["file_path"],
-                    "error": err,
-                })
+                errors.append(
+                    {
+                        "module": entry["module"],
+                        "file": entry["file_path"],
+                        "error": err,
+                    }
+                )
             else:
                 ok.append(entry["module"])
         return ok, errors
@@ -131,37 +133,41 @@ class AuditController:
     def write_import_errors(self, errors):
         out = self.AUDIT_OUTPUT_DIR / "AUDIT_IMPORT_ERRORS.json"
         with open(out, "w") as f:
-            json.dump({
-                "generated": datetime.datetime.utcnow().isoformat() + "Z",
-                "total_errors": len(errors),
-                "errors": errors
-            }, f, indent=2)
+            json.dump(
+                {
+                    "generated": datetime.datetime.utcnow().isoformat() + "Z",
+                    "total_errors": len(errors),
+                    "errors": errors,
+                },
+                f,
+                indent=2,
+            )
         return str(out)
 
     def write_stage1_report(self, imported_ok, import_errors, validation_status):
-        audit_entries   = [e for e in self.registry["audits"] if e["role"] == "audit"]
-        runner_entries  = [e for e in self.registry["audits"] if e["role"] == "runner"]
+        audit_entries = [e for e in self.registry["audits"] if e["role"] == "audit"]
+        runner_entries = [e for e in self.registry["audits"] if e["role"] == "runner"]
         utility_entries = [e for e in self.registry["audits"] if e["role"] == "utility"]
 
         report = {
-            "stage":                       "Audit System Wiring",
-            "generated":                   datetime.datetime.utcnow().isoformat() + "Z",
-            "dry_run_mode":                self.dry_run,
-            "audit_modules_detected":      len(self.registry["audits"]),
-            "audit_modules_registered":    len(self.registry["audits"]),
-            "audit_modules_imported":      len(imported_ok),
+            "stage": "Audit System Wiring",
+            "generated": datetime.datetime.utcnow().isoformat() + "Z",
+            "dry_run_mode": self.dry_run,
+            "audit_modules_detected": len(self.registry["audits"]),
+            "audit_modules_registered": len(self.registry["audits"]),
+            "audit_modules_imported": len(imported_ok),
             "audit_modules_failed_import": len(import_errors),
             "audit_count_by_role": {
-                "audit":   len(audit_entries),
-                "runner":  len(runner_entries),
-                "utility": len(utility_entries)
+                "audit": len(audit_entries),
+                "runner": len(runner_entries),
+                "utility": len(utility_entries),
             },
-            "audit_registry_path":  str(self.REGISTRY_PATH.relative_to(self.root)),
-            "controller_created":   "controllers/audit_controller.py",
-            "artifact_output_dir":  str(self.AUDIT_OUTPUT_DIR),
-            "imported_modules":     imported_ok,
-            "import_errors":        import_errors,
-            "validation_status":    validation_status
+            "audit_registry_path": str(self.REGISTRY_PATH.relative_to(self.root)),
+            "controller_created": "controllers/audit_controller.py",
+            "artifact_output_dir": str(self.AUDIT_OUTPUT_DIR),
+            "imported_modules": imported_ok,
+            "import_errors": import_errors,
+            "validation_status": validation_status,
         }
 
         out = self.AUDIT_OUTPUT_DIR / "AP_STAGE1_AUDIT_SYSTEM_REPORT.json"

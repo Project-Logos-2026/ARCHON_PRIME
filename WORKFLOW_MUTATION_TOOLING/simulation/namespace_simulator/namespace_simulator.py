@@ -32,7 +32,8 @@ def simulate(root: str = ".") -> dict:
             conflicts = raw.get("issues", raw.get("conflicts", []))
 
     high_risk = [
-        c for c in conflicts
+        c
+        for c in conflicts
         if isinstance(c, dict) and c.get("issue") == "namespace_shadow"
     ]
 

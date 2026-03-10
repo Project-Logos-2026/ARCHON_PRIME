@@ -31,7 +31,7 @@ def simulate(root: str = ".") -> dict:
     unresolved = []
 
     for module, imports in topology.items() if isinstance(topology, dict) else []:
-        for imp in (imports or []):
+        for imp in imports or []:
             if imp and not _is_stdlib(imp):
                 # Flag imports that have no corresponding entry in topology
                 if imp not in topology:

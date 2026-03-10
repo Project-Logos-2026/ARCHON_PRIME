@@ -3,8 +3,13 @@ import os
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 IGNORE_DIRS = {
-    ".git", ".venv", "venv", "__pycache__",
-    "node_modules", ".mypy_cache", ".pytest_cache",
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "node_modules",
+    ".mypy_cache",
+    ".pytest_cache",
 }
 
 directories = []
@@ -29,15 +34,16 @@ for dirpath, dirnames, filenames in os.walk(REPO_ROOT):
                 with open(abs_file, "r", encoding="utf-8", errors="replace") as f:
                     for line_number, line in enumerate(f, start=1):
                         stripped = line.strip()
-                        if (
-                            stripped.startswith("import ")
-                            or stripped.startswith("from ")
+                        if stripped.startswith("import ") or stripped.startswith(
+                            "from "
                         ):
-                            imports.append({
-                                "file": rel_file,
-                                "line_number": line_number,
-                                "import_statement": stripped,
-                            })
+                            imports.append(
+                                {
+                                    "file": rel_file,
+                                    "line_number": line_number,
+                                    "import_statement": stripped,
+                                }
+                            )
             except OSError:
                 pass
 

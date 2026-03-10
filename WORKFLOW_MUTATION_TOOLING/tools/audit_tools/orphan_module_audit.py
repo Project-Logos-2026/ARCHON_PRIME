@@ -6,21 +6,21 @@ from audit_utils import generate_id, write_log
 
 def run(target):
 
-    imports=set()
-    files=set()
+    imports = set()
+    files = set()
 
-    issues=[]
+    issues = []
 
     for p in Path(target).rglob("*.py"):
 
         files.add(p.stem)
 
         try:
-            tree=ast.parse(open(p).read())
+            tree = ast.parse(open(p).read())
 
             for node in ast.walk(tree):
 
-                if isinstance(node,ast.Import):
+                if isinstance(node, ast.Import):
                     for n in node.names:
                         imports.add(n.name.split(".")[0])
 
@@ -30,10 +30,6 @@ def run(target):
     for f in files:
         if f not in imports:
 
-            issues.append({
-                "id":generate_id(f),
-                "module":f,
-                "issue":"orphan_module"
-            })
+            issues.append({"id": generate_id(f), "module": f, "issue": "orphan_module"})
 
-    write_log("orphan_module_audit",target,"orphan_module",issues)
+    write_log("orphan_module_audit", target, "orphan_module", issues)

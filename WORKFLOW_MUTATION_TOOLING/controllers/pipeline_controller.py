@@ -69,6 +69,7 @@ PIPELINE_STAGE_ORDER = ["audit", "analysis", "simulation", "crawl", "repair"]
 # PipelineController
 # ---------------------------------------------------------------------------
 
+
 class PipelineController:
     """
     Deterministic pipeline orchestrator for Archon Prime.
@@ -117,8 +118,7 @@ class PipelineController:
     @property
     def mutation_allowed(self) -> bool:
         return (
-            bool(self.crawl_config.get("mutation_allowed", False))
-            and not self.dry_run
+            bool(self.crawl_config.get("mutation_allowed", False)) and not self.dry_run
         )
 
     # ------------------------------------------------------------------
@@ -290,6 +290,7 @@ class PipelineController:
         try:
             sys.path.insert(0, self.root)
             from controllers.audit_controller import AuditController
+
             ctrl = AuditController(root_path=self.root)
             # Run the import validation portion only (read-only)
             errors = ctrl.validate_imports()
@@ -312,6 +313,7 @@ class PipelineController:
         """Stage 2 — Analysis: load analysis modules and validate imports."""
         try:
             from controllers.analysis_controller import AnalysisController
+
             ctrl = AnalysisController(self.root)
             ctrl.load_registry()
             ctrl.load_configs()
@@ -334,6 +336,7 @@ class PipelineController:
         """Stage 3 — Simulation: load simulators, validate imports."""
         try:
             from controllers.simulation_controller import SimulationController
+
             ctrl = SimulationController(self.root)
             ctrl.load_registry()
             ctrl.load_configs()
@@ -360,6 +363,7 @@ class PipelineController:
         """Stage 4 — Crawl: load config, targets, validate imports, run crawl."""
         try:
             from controllers.crawler_controller import CrawlerController
+
             ctrl = CrawlerController(self.root)
             ctrl.load_configs()
             ctrl.load_targets()
@@ -386,6 +390,7 @@ class PipelineController:
         """Stage 5 — Repair: load registry, validate imports, generate plan."""
         try:
             from controllers.repair_controller import RepairController
+
             ctrl = RepairController(self.root)
             ctrl.load_configs()
             ctrl.load_registry()
@@ -427,11 +432,11 @@ class PipelineController:
         manifest = self._init_manifest()
 
         stage_runners = {
-            "audit":      self.run_audit_stage,
-            "analysis":   self.run_analysis_stage,
+            "audit": self.run_audit_stage,
+            "analysis": self.run_analysis_stage,
             "simulation": self.run_simulation_stage,
-            "crawl":      self.run_crawl_stage,
-            "repair":     self.run_repair_stage,
+            "crawl": self.run_crawl_stage,
+            "repair": self.run_repair_stage,
         }
 
         for stage in PIPELINE_STAGE_ORDER:
@@ -504,6 +509,7 @@ class PipelineController:
 # Import validation helper (used by Stage 6 report)
 # ---------------------------------------------------------------------------
 
+
 def validate_pipeline_import(root_path: str) -> List[Dict[str, Any]]:
     """
     Attempt to import PipelineController.
@@ -515,10 +521,12 @@ def validate_pipeline_import(root_path: str) -> List[Dict[str, Any]]:
             sys.path.insert(0, root_path)
         importlib.import_module("controllers.pipeline_controller")
     except Exception:
-        errors.append({
-            "module": "controllers.pipeline_controller",
-            "error": traceback.format_exc().strip(),
-        })
+        errors.append(
+            {
+                "module": "controllers.pipeline_controller",
+                "error": traceback.format_exc().strip(),
+            }
+        )
 
     error_path = os.path.join(root_path, IMPORT_ERROR_ARTIFACT)
     os.makedirs(os.path.dirname(error_path), exist_ok=True)
@@ -543,7 +551,9 @@ if __name__ == "__main__":
     root = sys.argv[1] if len(sys.argv) > 1 else "/workspaces/ARCHON_PRIME"
     controller = PipelineController(root)
     result = controller.run_pipeline()
-    print(json.dumps(
-        {k: v for k, v in result.items() if k != "stage_results"},
-        indent=2,
-    ))
+    print(
+        json.dumps(
+            {k: v for k, v in result.items() if k != "stage_results"},
+            indent=2,
+        )
+    )

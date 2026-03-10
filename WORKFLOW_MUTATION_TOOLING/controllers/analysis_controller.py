@@ -41,9 +41,7 @@ class AnalysisController:
         """Load analysis modules from module_registry.json."""
         module_registry = self.config_loader.load_module_registry()
         all_modules = module_registry.get("modules", [])
-        self.registry = [
-            m for m in all_modules if m.get("category") == "analysis"
-        ]
+        self.registry = [m for m in all_modules if m.get("category") == "analysis"]
         return self.registry
 
     def load_configs(self):

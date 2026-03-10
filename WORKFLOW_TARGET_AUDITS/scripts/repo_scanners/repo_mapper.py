@@ -9,21 +9,21 @@ REPO_ROOT = Path(".").resolve()
 OUTPUT_DIR = REPO_ROOT / "AUDIT_SYSTEM" / "analysis" / "repo_maps"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+
 def hash_file(path):
     h = hashlib.sha256()
-    with open(path,"rb") as f:
+    with open(path, "rb") as f:
         h.update(f.read())
     return h.hexdigest()
+
 
 def build_directory_tree():
     tree = {}
     for root, dirs, files in os.walk(REPO_ROOT):
         rel = os.path.relpath(root, REPO_ROOT)
-        tree[rel] = {
-            "dirs": sorted(dirs),
-            "files": sorted(files)
-        }
+        tree[rel] = {"dirs": sorted(dirs), "files": sorted(files)}
     return tree
+
 
 def collect_python_files():
     py_files = []
@@ -32,17 +32,16 @@ def collect_python_files():
             if f.endswith(".py"):
                 p = Path(root) / f
                 rel = os.path.relpath(p, REPO_ROOT)
-                py_files.append({
-                    "path": rel,
-                    "size": p.stat().st_size,
-                    "hash": hash_file(p)
-                })
+                py_files.append(
+                    {"path": rel, "size": p.stat().st_size, "hash": hash_file(p)}
+                )
     return py_files
+
 
 def extract_imports(file_path):
     imports = []
     try:
-        with open(file_path,"r",encoding="utf-8") as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             tree = ast.parse(f.read())
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
@@ -55,19 +54,17 @@ def extract_imports(file_path):
         pass
     return sorted(set(imports))
 
+
 def build_module_index(py_files):
     modules = []
     for f in py_files:
         full = REPO_ROOT / f["path"]
-        name = f["path"].replace("/",".").replace(".py","")
+        name = f["path"].replace("/", ".").replace(".py", "")
         imports = extract_imports(full)
 
-        modules.append({
-            "module": name,
-            "file": f["path"],
-            "imports": imports
-        })
+        modules.append({"module": name, "file": f["path"], "imports": imports})
     return modules
+
 
 print("ARCHON_PRIME AUDIT START")
 
@@ -75,14 +72,14 @@ directory_tree = build_directory_tree()
 python_files = collect_python_files()
 module_index = build_module_index(python_files)
 
-with open(OUTPUT_DIR/"repo_directory_tree.json","w") as f:
-    json.dump(directory_tree,f,indent=2)
+with open(OUTPUT_DIR / "repo_directory_tree.json", "w") as f:
+    json.dump(directory_tree, f, indent=2)
 
-with open(OUTPUT_DIR/"repo_python_files.json","w") as f:
-    json.dump(python_files,f,indent=2)
+with open(OUTPUT_DIR / "repo_python_files.json", "w") as f:
+    json.dump(python_files, f, indent=2)
 
-with open(OUTPUT_DIR/"module_index.json","w") as f:
-    json.dump(module_index,f,indent=2)
+with open(OUTPUT_DIR / "module_index.json", "w") as f:
+    json.dump(module_index, f, indent=2)
 
 print("ARCHON_PRIME AUDIT COMPLETE")
 print("Artifacts written to:", OUTPUT_DIR)

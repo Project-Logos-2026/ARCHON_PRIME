@@ -34,11 +34,11 @@ class ConfigLoader:
 
     def load_all(self):
         return {
-            "crawl_config":        self.load_crawl_config(),
-            "repair_config":       self.load_repair_config(),
-            "simulation_config":   self.load_simulation_config(),
-            "module_registry":     self.load_module_registry(),
-            "audit_registry":      self.load_audit_registry(),
-            "repair_registry":     self.load_repair_registry(),
+            "crawl_config": self.load_crawl_config(),
+            "repair_config": self.load_repair_config(),
+            "simulation_config": self.load_simulation_config(),
+            "module_registry": self.load_module_registry(),
+            "audit_registry": self.load_audit_registry(),
+            "repair_registry": self.load_repair_registry(),
             "simulation_registry": self.load_simulation_registry(),
         }

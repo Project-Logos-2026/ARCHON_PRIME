@@ -23,8 +23,13 @@ OUTPUT_FILE = os.path.join(
 )
 
 IGNORE_DIRS = {
-    ".git", ".venv", "venv", "__pycache__",
-    "node_modules", ".mypy_cache", ".pytest_cache",
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "node_modules",
+    ".mypy_cache",
+    ".pytest_cache",
 }
 
 
@@ -86,14 +91,16 @@ def parse_imports(rel_path: str, source_lines: list[str]) -> list[dict]:
                     if node.lineno <= len(source_lines)
                     else ""
                 )
-                records.append({
-                    "symbol": alias.name.split(".")[0],
-                    "source_module": alias.name,
-                    "imported_by_file": rel_path,
-                    "import_line_number": node.lineno,
-                    "import_statement": line_text,
-                    "alias": alias.asname,
-                })
+                records.append(
+                    {
+                        "symbol": alias.name.split(".")[0],
+                        "source_module": alias.name,
+                        "imported_by_file": rel_path,
+                        "import_line_number": node.lineno,
+                        "import_statement": line_text,
+                        "alias": alias.asname,
+                    }
+                )
 
         elif isinstance(node, ast.ImportFrom):
             # from module.submodule import Symbol [as Alias]
@@ -107,14 +114,16 @@ def parse_imports(rel_path: str, source_lines: list[str]) -> list[dict]:
                     if node.lineno <= len(source_lines)
                     else ""
                 )
-                records.append({
-                    "symbol": alias.name,
-                    "source_module": module_str,
-                    "imported_by_file": rel_path,
-                    "import_line_number": node.lineno,
-                    "import_statement": line_text,
-                    "alias": alias.asname,
-                })
+                records.append(
+                    {
+                        "symbol": alias.name,
+                        "source_module": module_str,
+                        "imported_by_file": rel_path,
+                        "import_line_number": node.lineno,
+                        "import_statement": line_text,
+                        "alias": alias.asname,
+                    }
+                )
 
     return records
 

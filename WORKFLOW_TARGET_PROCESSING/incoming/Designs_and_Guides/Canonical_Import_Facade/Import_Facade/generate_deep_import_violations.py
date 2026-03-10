@@ -48,6 +48,7 @@ OUTPUT_PATH = os.path.join(
 # Scanner
 # ---------------------------------------------------------------------------
 
+
 def is_import_line(stripped: str) -> bool:
     return stripped.startswith("import ") or stripped.startswith("from ")
 

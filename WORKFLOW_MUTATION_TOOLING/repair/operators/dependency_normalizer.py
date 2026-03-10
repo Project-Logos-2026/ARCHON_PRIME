@@ -90,10 +90,7 @@ class DependencyNormalizerOperator:
                 with open(file_path, "r") as f:
                     lines = f.readlines()
 
-                filtered = [
-                    line for line in lines
-                    if offending_import not in line
-                ]
+                filtered = [line for line in lines if offending_import not in line]
 
                 with open(file_path, "w") as f:
                     f.writelines(filtered)

@@ -1,13 +1,15 @@
 import json
 
-IMPORT_FILE="logs/import_map.json"
+IMPORT_FILE = "logs/import_map.json"
+
 
 def build_graph():
-    data=json.load(open(IMPORT_FILE))
-    graph={}
-    for module,imports in data.items():
-        graph[module]=imports
-    json.dump(graph,open("logs/dependency_graph.json","w"),indent=2)
+    data = json.load(open(IMPORT_FILE))
+    graph = {}
+    for module, imports in data.items():
+        graph[module] = imports
+    json.dump(graph, open("logs/dependency_graph.json", "w"), indent=2)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     build_graph()

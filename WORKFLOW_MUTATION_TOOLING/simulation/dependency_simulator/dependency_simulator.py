@@ -33,7 +33,7 @@ def simulate(root: str = ".") -> dict:
     if isinstance(graph, dict):
         known = set(graph.keys())
         for module, deps in graph.items():
-            for dep in (deps or []):
+            for dep in deps or []:
                 if dep and dep not in known:
                     missing_deps.append({"module": module, "missing_dependency": dep})
 
@@ -44,7 +44,7 @@ def simulate(root: str = ".") -> dict:
         def _has_cycle(node):
             visited.add(node)
             rec_stack.add(node)
-            for dep in (graph.get(node) or []):
+            for dep in graph.get(node) or []:
                 if dep not in graph:
                     continue
                 if dep not in visited:
