@@ -213,7 +213,7 @@ class RepairController:
             for item in ns:
                 issues.append({**item, "issue_type": "namespace_collision"})
         elif isinstance(ns, dict):
-            for item in ns.get("issues", ns.get("conflicts", [])):
+            for item in ns.get("issues", ns.get("conflicts", [])) or []:
                 issues.append({**item, "issue_type": "namespace_collision"})
 
         # Circular dependency report → dependency_inconsistency issues

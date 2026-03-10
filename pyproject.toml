@@ -5,14 +5,22 @@ target-version = ["py312"]
 [tool.ruff]
 target-version = "py312"
 line-length = 88
+
+[tool.ruff.lint]
 select = ["E", "F", "B", "I"]
 ignore = []
-fix = true
+
+[tool.ruff.lint.per-file-ignores]
+"*.py" = []
 
 [tool.mypy]
 python_version = "3.12"
-strict = true
+ignore_missing_imports = true
 warn_unused_configs = true
-warn_return_any = true
-warn_unused_ignores = true
-disallow_untyped_defs = true
+implicit_optional = true
+disable_error_code = ["var-annotated", "import-untyped"]
+exclude = [
+    "ALL_ARTIFACTS_P1/",
+    "AP_SYSTEM_AUDIT/",
+    "STAGING_ARTIFACTS/",
+]

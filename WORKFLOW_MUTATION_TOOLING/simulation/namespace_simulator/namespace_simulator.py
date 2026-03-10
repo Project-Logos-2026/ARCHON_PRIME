@@ -29,7 +29,7 @@ def simulate(root: str = ".") -> dict:
         if isinstance(raw, list):
             conflicts = raw
         elif isinstance(raw, dict):
-            conflicts = raw.get("issues", raw.get("conflicts", []))
+            conflicts = list(raw.get("issues", raw.get("conflicts", [])) or [])
 
     high_risk = [
         c

@@ -49,7 +49,7 @@ class CrawlEngine:
     def __init__(self, root_path: str):
         self.root = Path(root_path)
         self.targets: List[Dict[str, Any]] = []
-        self.traversal_plan: List[Dict[str, Any]] = []
+        self.traversal_plan: Dict[str, Any] = {}
         self.discovered_modules: List[Dict[str, Any]] = []
         self.max_depth: int = 1000
         self.mutation_allowed: bool = False
