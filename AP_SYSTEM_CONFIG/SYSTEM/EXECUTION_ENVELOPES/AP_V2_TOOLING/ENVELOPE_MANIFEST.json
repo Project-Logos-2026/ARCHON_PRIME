@@ -1,0 +1,52 @@
+{
+    "system": "ARCHON_PRIME",
+    "artifact_type": "Execution_Envelope_Manifest",
+    "envelope_name": "AP_V2_TOOLING",
+    "version": "1.0.0",
+    "status": "active",
+    "artifact_bundle": {
+        "design_specification": {
+            "artifact": "DESIGN_SPEC/AP_V2_TOOLING_DS.md",
+            "hash": "TBD"
+        },
+        "implementation_guide": {
+            "artifact": "IMPLEMENTATION_GUIDE/AP_V2_TOOLING_IG.md",
+            "hash": "TBD"
+        },
+        "execution_plan": {
+            "artifact": "EXECUTION_PLAN/AP_V2_TOOLING_EP.md",
+            "hash": "TBD"
+        }
+    },
+    "addenda": [
+        "ADDENDA/EA-001_ENVELOPE_TARGET_INTEGRITY.md",
+        "ADDENDA/EA-002_ARTIFACT_ROUTER_ENFORCEMENT.md",
+        "ADDENDA/EA-003_DETERMINISTIC_EXECUTION_ORDERING.md",
+        "ADDENDA/EA-004_SIMULATION_FIRST_RULE.md",
+        "ADDENDA/EA-005_GOVERNANCE_CONSISTENCY_CHECK.md",
+        "ADDENDA/EA-006_EXECUTION_LOGGING_REQUIREMENTS.md",
+        "ADDENDA/EA-007_ARTIFACT_METADATA_SCHEMA_ENFORCEMENT.md",
+        "ADDENDA/EA-008_ENVELOPE_MANIFEST_CONTRACT.md",
+        "ADDENDA/EA-009_PROMPT_COMPILER_INTEGRATION.md",
+        "ADDENDA/EA-010_FAILURE_ROLLBACK_PROTOCOL.md"
+    ],
+    "execution_phases": [
+        "environment_verification",
+        "artifact_discovery",
+        "static_analysis",
+        "simulation_pass",
+        "controlled_mutation",
+        "validation",
+        "reporting"
+    ],
+    "validation_layer": {
+        "schema_enforcement": true,
+        "metadata_validation": true,
+        "artifact_identity_check": true
+    },
+    "execution_context": {
+        "artifact_router_required": true,
+        "simulation_required": true,
+        "rollback_enabled": true
+    }
+}
