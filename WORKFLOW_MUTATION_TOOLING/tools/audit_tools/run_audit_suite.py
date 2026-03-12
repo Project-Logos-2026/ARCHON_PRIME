@@ -1,3 +1,30 @@
+# ============================================================
+# ARCHON PRIME MODULE HEADER
+# module_id:            M-041
+# module_name:          run_audit_suite
+# subsystem:            mutation_tooling
+# module_role:          inspection
+# canonical_path:       WORKFLOW_MUTATION_TOOLING/tools/audit_tools/run_audit_suite.py
+# responsibility:       Inspection module: run audit suite
+# runtime_stage:        audit
+# execution_entry:      run
+# allowed_targets:      []
+# forbidden_targets:    ["SYSTEM", "WORKFLOW_NEXUS"]
+# allowed_imports:      []
+# forbidden_imports:    []
+# spec_reference:       [SPEC-AP-V2.1]
+# implementation_phase: PHASE_2
+# authoring_authority:  ARCHON_PRIME
+# version:              1.0
+# status:               canonical
+# ============================================================
+from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+enforce_runtime_gate()
+
+# ------------------------------------------------------------
+# END ARCHON PRIME MODULE HEADER
+# ------------------------------------------------------------
+
 import sys
 
 import circular_dependency_audit

@@ -1,3 +1,30 @@
+# ============================================================
+# ARCHON PRIME MODULE HEADER
+# module_id:            M-008
+# module_name:          crawl_engine
+# subsystem:            mutation_tooling
+# module_role:          utility
+# canonical_path:       WORKFLOW_MUTATION_TOOLING/crawler/core/crawl_engine.py
+# responsibility:       Utility module: crawl engine
+# runtime_stage:        utility
+# execution_entry:      run
+# allowed_targets:      []
+# forbidden_targets:    ["SYSTEM", "WORKFLOW_NEXUS"]
+# allowed_imports:      []
+# forbidden_imports:    []
+# spec_reference:       [SPEC-AP-V2.1]
+# implementation_phase: PHASE_2
+# authoring_authority:  ARCHON_PRIME
+# version:              1.0
+# status:               canonical
+# ============================================================
+from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+enforce_runtime_gate()
+
+# ------------------------------------------------------------
+# END ARCHON PRIME MODULE HEADER
+# ------------------------------------------------------------
+
 """
 ARCHON PRIME — Crawl Engine
 Stage 4: Crawler System Implementation

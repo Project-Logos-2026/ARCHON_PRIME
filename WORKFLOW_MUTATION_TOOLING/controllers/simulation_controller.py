@@ -1,3 +1,30 @@
+# ============================================================
+# ARCHON PRIME MODULE HEADER
+# module_id:            M-007
+# module_name:          simulation_controller
+# subsystem:            mutation_tooling
+# module_role:          orchestration
+# canonical_path:       WORKFLOW_MUTATION_TOOLING/controllers/simulation_controller.py
+# responsibility:       Orchestration module: simulation controller
+# runtime_stage:        orchestration
+# execution_entry:      None
+# allowed_targets:      []
+# forbidden_targets:    ["SYSTEM", "WORKFLOW_NEXUS"]
+# allowed_imports:      []
+# forbidden_imports:    []
+# spec_reference:       [SPEC-AP-V2.1]
+# implementation_phase: PHASE_2
+# authoring_authority:  ARCHON_PRIME
+# version:              1.0
+# status:               canonical
+# ============================================================
+from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+enforce_runtime_gate()
+
+# ------------------------------------------------------------
+# END ARCHON PRIME MODULE HEADER
+# ------------------------------------------------------------
+
 """
 ARCHON PRIME — Simulation Controller
 Stage 3: Simulation System Activation

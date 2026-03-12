@@ -1,3 +1,30 @@
+# ============================================================
+# ARCHON PRIME MODULE HEADER
+# module_id:            M-021
+# module_name:          ap_phase2_audit
+# subsystem:            mutation_tooling
+# module_role:          utility
+# canonical_path:       WORKFLOW_MUTATION_TOOLING/tools/ap_phase2_audit.py
+# responsibility:       Utility module: ap phase2 audit
+# runtime_stage:        utility
+# execution_entry:      main
+# allowed_targets:      []
+# forbidden_targets:    ["SYSTEM", "WORKFLOW_NEXUS"]
+# allowed_imports:      []
+# forbidden_imports:    []
+# spec_reference:       [SPEC-AP-V2.1]
+# implementation_phase: PHASE_2
+# authoring_authority:  ARCHON_PRIME
+# version:              1.0
+# status:               canonical
+# ============================================================
+from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+enforce_runtime_gate()
+
+# ------------------------------------------------------------
+# END ARCHON PRIME MODULE HEADER
+# ------------------------------------------------------------
+
 # ARCHON_PRIME MODULE
 # Created by remediation stage AP-REM-002
 # Purpose: Phase-2 pre-crawl audit snapshot generator

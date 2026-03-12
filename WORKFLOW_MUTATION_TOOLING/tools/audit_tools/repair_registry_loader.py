@@ -1,3 +1,30 @@
+# ============================================================
+# ARCHON PRIME MODULE HEADER
+# module_id:            M-040
+# module_name:          repair_registry_loader
+# subsystem:            mutation_tooling
+# module_role:          inspection
+# canonical_path:       WORKFLOW_MUTATION_TOOLING/tools/audit_tools/repair_registry_loader.py
+# responsibility:       Inspection module: repair registry loader
+# runtime_stage:        audit
+# execution_entry:      None
+# allowed_targets:      []
+# forbidden_targets:    ["SYSTEM", "WORKFLOW_NEXUS"]
+# allowed_imports:      []
+# forbidden_imports:    []
+# spec_reference:       [SPEC-AP-V2.1]
+# implementation_phase: PHASE_2
+# authoring_authority:  ARCHON_PRIME
+# version:              1.0
+# status:               canonical
+# ============================================================
+from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+enforce_runtime_gate()
+
+# ------------------------------------------------------------
+# END ARCHON PRIME MODULE HEADER
+# ------------------------------------------------------------
+
 # ARCHON_PRIME MODULE
 # Created by remediation stage AP-REM-001
 # Purpose: Foundation configuration loader
