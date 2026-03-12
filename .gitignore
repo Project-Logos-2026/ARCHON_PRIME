@@ -5,6 +5,9 @@ AP_PHASE1_REPO_SNAPSHOT.zip
 # V1 artifacts
 AP_V1_ARTIFACTS/
 
+# Audit and report outputs
+SYSTEM_AUDITS_AND_REPORTS/
+
 # Virtual environments
 venv/
 .venv/
