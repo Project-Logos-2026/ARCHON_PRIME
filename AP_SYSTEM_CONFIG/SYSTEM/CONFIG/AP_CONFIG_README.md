@@ -1,3 +1,13 @@
+SYSTEM: ARCHON_PRIME
+ARTIFACT_TYPE: Configuration_Reference
+ARTIFACT_NAME: AP_CONFIG_README
+VERSION: 1.0
+DATE: 2026-03-11
+AUTHORITY: Architect
+SUBSYSTEM: Configuration
+
+---------------------------------------------------------------------
+
 # AP_SYSTEM_CONFIG — ARCHON_PRIME Platform Configuration
 
 Status: Authoritative Configuration Layer  

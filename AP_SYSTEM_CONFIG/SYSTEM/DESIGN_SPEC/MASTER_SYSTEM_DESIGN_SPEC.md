@@ -1,3 +1,13 @@
+SYSTEM: ARCHON_PRIME
+ARTIFACT_TYPE: Design_Specification
+ARTIFACT_NAME: MASTER_SYSTEM_DESIGN_SPEC
+VERSION: 1.0.0
+DATE: 2026-03-08
+AUTHORITY: Architect
+SUBSYSTEM: Design_Specification
+
+---------------------------------------------------------------------
+
 # ARCHON_PRIME — MASTER SYSTEM DESIGN SPECIFICATION
 **Version:** 1.0.0 | **Date:** 2026-03-08 | **Status:** AUTHORITATIVE — DO NOT MODIFY WITHOUT ARCHITECT APPROVAL
 
