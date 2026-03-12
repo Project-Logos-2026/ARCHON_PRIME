@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
+import argparse
 import ast
 import json
-import argparse
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -135,7 +138,8 @@ def main() -> None:
         raise SystemExit(1)
 
     py_files = [
-        f for f in sorted(core_root.rglob("*.py"))
+        f
+        for f in sorted(core_root.rglob("*.py"))
         if not any(exc in str(f) for exc in args.exclude)
     ]
     print(f"Auditing {len(py_files)} modules in: {args.include_root}")
@@ -144,7 +148,11 @@ def main() -> None:
     clean = []
     for fpath in py_files:
         imports = get_imports(fpath)
-        bad = [imp for imp in imports if any(imp.startswith(prefix) for prefix in args.forbidden_prefixes)]
+        bad = [
+            imp
+            for imp in imports
+            if any(imp.startswith(prefix) for prefix in args.forbidden_prefixes)
+        ]
         record = {
             "path": str(fpath.relative_to(repo_root)),
             "all_imports": imports,

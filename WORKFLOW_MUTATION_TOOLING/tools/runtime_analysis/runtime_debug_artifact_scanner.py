@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,13 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
-import ast
-import json
 import argparse
+import json
 import re
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -88,7 +90,11 @@ def scan_file(filepath: Path, repo_root: Path) -> dict:
     try:
         lines = filepath.read_text(encoding="utf-8", errors="replace").splitlines()
     except OSError:
-        return {"path": str(filepath.relative_to(repo_root)), "error": "unreadable", **{k: [] for k in PATTERNS}}
+        return {
+            "path": str(filepath.relative_to(repo_root)),
+            "error": "unreadable",
+            **{k: [] for k in PATTERNS},
+        }
 
     for i, line in enumerate(lines, start=1):
         for artifact, pattern in PATTERNS.items():
@@ -163,7 +169,7 @@ def main() -> None:
                 "resolved_files": sorted(prev_paths - curr_paths),
             }
         except Exception as exc:
-            delta = {"error": str(exc)}
+            delta = {"error": str(exc)}  # type: ignore[dict-item]
 
     total_artifacts = sum(r.get("total_artifacts", 0) for r in results)
     report = {
@@ -175,7 +181,9 @@ def main() -> None:
         "findings": results,
     }
     write_report("debug_artifact_scan.json", report)
-    print(f"Files with artifacts: {len(results)} | Total artifact instances: {total_artifacts}")
+    print(
+        f"Files with artifacts: {len(results)} | Total artifact instances: {total_artifacts}"
+    )
 
 
 if __name__ == "__main__":

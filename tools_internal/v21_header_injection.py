@@ -196,7 +196,7 @@ def simulate_module(entry: dict) -> dict:
     syntax_ok = True
     try:
         ast.parse(source)
-    except SyntaxError as exc:
+    except SyntaxError:
         syntax_ok = False
 
     return {
@@ -412,7 +412,7 @@ def main():
     print(f"  Already compliant : {len(already_compliant)}")
     print(f"  Need injection    : {len(needs_injection)}")
     print(f"  Malformed headers : {len(malformed)}")
-    print(f"  Syntax conflicts  : 0 (cleared for injection)")
+    print("  Syntax conflicts  : 0 (cleared for injection)")
 
     sim_report_path = (
         REPO_ROOT

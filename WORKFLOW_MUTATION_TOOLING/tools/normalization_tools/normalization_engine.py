@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -44,7 +45,6 @@ Entry point: run_normalization_pass()
 """
 
 import ast
-import importlib.util
 import json
 import re
 import shutil

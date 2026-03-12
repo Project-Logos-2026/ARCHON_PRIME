@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -41,14 +42,23 @@ No other repository files are modified.
 import ast
 import json
 import os
-import sys
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 PYTHON_FILES_INDEX = os.path.join(REPO_ROOT, "repo_python_files.json")
-OUTPUT_FILE = os.path.join(REPO_ROOT, "_Reports", "Canonical_Import_Facade", "repo_symbol_imports.json")
+OUTPUT_FILE = os.path.join(
+    REPO_ROOT, "_Reports", "Canonical_Import_Facade", "repo_symbol_imports.json"
+)
 
-IGNORE_DIRS = {".git", ".venv", "venv", "__pycache__", "node_modules", ".mypy_cache", ".pytest_cache"}
+IGNORE_DIRS = {
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "node_modules",
+    ".mypy_cache",
+    ".pytest_cache",
+}
 
 
 def should_skip(rel_path: str) -> bool:
@@ -103,15 +113,21 @@ def parse_imports(rel_path: str, source_lines: list[str]) -> list[dict]:
         if isinstance(node, ast.Import):
             # import module.submodule [as alias]
             for alias in node.names:
-                line_text = source_lines[node.lineno - 1].rstrip() if node.lineno <= len(source_lines) else ""
-                records.append({
-                    "symbol": alias.name.split(".")[0],
-                    "source_module": alias.name,
-                    "imported_by_file": rel_path,
-                    "import_line_number": node.lineno,
-                    "import_statement": line_text,
-                    "alias": alias.asname,
-                })
+                line_text = (
+                    source_lines[node.lineno - 1].rstrip()
+                    if node.lineno <= len(source_lines)
+                    else ""
+                )
+                records.append(
+                    {
+                        "symbol": alias.name.split(".")[0],
+                        "source_module": alias.name,
+                        "imported_by_file": rel_path,
+                        "import_line_number": node.lineno,
+                        "import_statement": line_text,
+                        "alias": alias.asname,
+                    }
+                )
 
         elif isinstance(node, ast.ImportFrom):
             # from module.submodule import Symbol [as Alias]
@@ -120,15 +136,21 @@ def parse_imports(rel_path: str, source_lines: list[str]) -> list[dict]:
             module_str = ("." * level) + module if level else module
 
             for alias in node.names:
-                line_text = source_lines[node.lineno - 1].rstrip() if node.lineno <= len(source_lines) else ""
-                records.append({
-                    "symbol": alias.name,
-                    "source_module": module_str,
-                    "imported_by_file": rel_path,
-                    "import_line_number": node.lineno,
-                    "import_statement": line_text,
-                    "alias": alias.asname,
-                })
+                line_text = (
+                    source_lines[node.lineno - 1].rstrip()
+                    if node.lineno <= len(source_lines)
+                    else ""
+                )
+                records.append(
+                    {
+                        "symbol": alias.name,
+                        "source_module": module_str,
+                        "imported_by_file": rel_path,
+                        "import_line_number": node.lineno,
+                        "import_statement": line_text,
+                        "alias": alias.asname,
+                    }
+                )
 
     return records
 

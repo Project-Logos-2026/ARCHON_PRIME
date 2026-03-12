@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -33,13 +34,13 @@ Phase 1 Control Dataset Generator for ARCHON_PRIME
 Copy-only operation. No repository files are modified.
 """
 
-import os
-import json
-import shutil
-import sys
 import datetime
-from pathlib import Path
+import json
+import os
+import shutil
 from collections import defaultdict
+from pathlib import Path
+from typing import Any
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CONFIGURATION
@@ -134,6 +135,7 @@ EXT_TO_BUCKET = {
 # STEP 0 — CREATE DIRECTORY STRUCTURE
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def step0_create_directories():
     print("\n[STEP 0] Creating directory structure...")
     for rel in DIR_STRUCTURE:
@@ -146,6 +148,7 @@ def step0_create_directories():
 # ─────────────────────────────────────────────────────────────────────────────
 # STEP 1 — SCAN REPOSITORY
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def is_excluded(path: Path) -> bool:
     """Return True if this path should be excluded from scanning."""
@@ -168,13 +171,15 @@ def step1_scan_repository():
         rel_path = abs_path.relative_to(REPO_ROOT)
         if is_excluded(rel_path):
             continue
-        files.append({
-            "relative_path": str(rel_path),
-            "absolute_path": str(abs_path),
-            "filename": abs_path.name,
-            "extension": abs_path.suffix.lower(),
-            "size_bytes": abs_path.stat().st_size,
-        })
+        files.append(
+            {
+                "relative_path": str(rel_path),
+                "absolute_path": str(abs_path),
+                "filename": abs_path.name,
+                "extension": abs_path.suffix.lower(),
+                "size_bytes": abs_path.stat().st_size,
+            }
+        )
     print(f"[STEP 1] Found {len(files)} files.")
     return files
 
@@ -182,6 +187,7 @@ def step1_scan_repository():
 # ─────────────────────────────────────────────────────────────────────────────
 # STEP 2 — CLASSIFY FILES
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def classify_file(file_info: dict) -> tuple:
     """Returns (role, type_bucket, unclassified)."""
@@ -228,9 +234,14 @@ def step2_classify(files: list) -> list:
 # STEP 3 — HANDLE FILENAME COLLISIONS
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def path_to_safe_name(relative_path: str) -> str:
     """Convert relative path to a flat safe filename."""
-    return relative_path.replace("/", "_").replace("\\", "_").replace(".", "_", relative_path.count(".") - 1)
+    return (
+        relative_path.replace("/", "_")
+        .replace("\\", "_")
+        .replace(".", "_", relative_path.count(".") - 1)
+    )
 
 
 def step3_handle_collisions(files: list) -> list:
@@ -243,7 +254,7 @@ def step3_handle_collisions(files: list) -> list:
         groups[key].append(f)
 
     collision_count = 0
-    for key, group in groups.items():
+    for _, group in groups.items():
         if len(group) > 1:
             collision_count += len(group)
             # Rename ALL using path-prefix rule
@@ -263,6 +274,7 @@ def step3_handle_collisions(files: list) -> list:
 # STEP 4 — COPY FILES
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def step4_copy_files(files: list, step_failures: list) -> list:
     print("\n[STEP 4] Copying files...")
     copied = 0
@@ -281,12 +293,14 @@ def step4_copy_files(files: list, step_failures: list) -> list:
             f["copy_status"] = "FAILED"
             f["destination_path"] = str(dest_path)
             failed += 1
-            step_failures.append({
-                "step": 4,
-                "file": f["relative_path"],
-                "destination": str(dest_path),
-                "error": str(e),
-            })
+            step_failures.append(
+                {
+                    "step": 4,
+                    "file": f["relative_path"],
+                    "destination": str(dest_path),
+                    "error": str(e),
+                }
+            )
             print(f"  [WARN] Copy failed: {f['relative_path']} → {e}")
 
     print(f"[STEP 4] Copied: {copied}, Failed: {failed}")
@@ -297,9 +311,10 @@ def step4_copy_files(files: list, step_failures: list) -> list:
 # STEP 5 — BUILD DIRECTORY TREE
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def build_tree(root: Path, exclusions: set, exclusion_suffixes: tuple) -> dict:
     """Recursively build a directory tree dict."""
-    node = {
+    node: dict[str, Any] = {
         "_path": str(root.relative_to(REPO_ROOT)),
         "_files": [],
         "_subdirs": {},
@@ -326,7 +341,9 @@ def build_tree(root: Path, exclusions: set, exclusion_suffixes: tuple) -> dict:
             continue
 
         if entry.is_dir():
-            node["_subdirs"][entry.name] = build_tree(entry, exclusions, exclusion_suffixes)
+            node["_subdirs"][entry.name] = build_tree(
+                entry, exclusions, exclusion_suffixes
+            )
         elif entry.is_file():
             node["_files"].append(entry.name)
 
@@ -355,6 +372,7 @@ def step5_build_directory_tree():
 # STEP 5.1 — DETECT EMPTY DIRECTORIES
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def collect_empty_dirs(node: dict, parent_path: str = "") -> list:
     """Return list of paths that are completely empty (no files, no non-empty children)."""
     empty = []
@@ -369,8 +387,13 @@ def collect_empty_dirs(node: dict, parent_path: str = "") -> list:
             # has something — check if that something was itself empty
             # A dir is empty only if ALL descendants are empty
             if not all(
-                e == subdir_node.get("_path") or any(e.startswith(str(subdir_node.get("_path", ""))) for e in sub_empties)
-                for e in ([subdir_node.get("_path")] if not subdir_node.get("_files") else [])
+                e == subdir_node.get("_path")
+                or any(
+                    e.startswith(str(subdir_node.get("_path", ""))) for e in sub_empties
+                )
+                for e in (
+                    [subdir_node.get("_path")] if not subdir_node.get("_files") else []
+                )
             ):
                 child_empty = False
         else:
@@ -382,20 +405,25 @@ def collect_empty_dirs(node: dict, parent_path: str = "") -> list:
     return empty
 
 
-def find_truly_empty_dirs(root: Path, exclusions: set, exclusion_suffixes: tuple) -> list:
+def find_truly_empty_dirs(
+    root: Path, exclusions: set, exclusion_suffixes: tuple
+) -> list:
     """Walk filesystem to find directories with zero files in their entire subtree."""
     empty_dirs = []
-    for dirpath, dirnames, filenames in os.walk(root):
+    for dirpath, dirnames, _ in os.walk(root):
         # Filter excluded dirs in-place so os.walk skips them
         dirnames[:] = [
-            d for d in dirnames
-            if d not in exclusions and not any(d.endswith(s) for s in exclusion_suffixes)
+            d
+            for d in dirnames
+            if d not in exclusions
+            and not any(d.endswith(s) for s in exclusion_suffixes)
         ]
         # Count all files recursively under this dir, applying the same exclusions
         total_files = 0
-        for walk_root, walk_dirs, walk_files in os.walk(dirpath):
+        for _, walk_dirs, walk_files in os.walk(dirpath):
             walk_dirs[:] = [
-                d for d in walk_dirs
+                d
+                for d in walk_dirs
                 if d not in exclusions
                 and not any(d.endswith(s) for s in exclusion_suffixes)
             ]
@@ -423,22 +451,25 @@ def step51_detect_empty_directories():
 # STEP 6 — WRITE ARTIFACT INDEX
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def step6_write_artifact_index(files: list):
     print("\n[STEP 6] Writing artifact index...")
     index = []
     for f in files:
-        index.append({
-            "original_relative_path": f["relative_path"],
-            "original_absolute_path": f["absolute_path"],
-            "role": f["role"],
-            "type_bucket": f["type_bucket"],
-            "destination_filename": f.get("destination_filename", f["filename"]),
-            "destination_path": f.get("destination_path", ""),
-            "collision_renamed": f.get("collision_renamed", False),
-            "copy_status": f.get("copy_status", "NOT_ATTEMPTED"),
-            "size_bytes": f["size_bytes"],
-            "unclassified": f["unclassified"],
-        })
+        index.append(
+            {
+                "original_relative_path": f["relative_path"],
+                "original_absolute_path": f["absolute_path"],
+                "role": f["role"],
+                "type_bucket": f["type_bucket"],
+                "destination_filename": f.get("destination_filename", f["filename"]),
+                "destination_path": f.get("destination_path", ""),
+                "collision_renamed": f.get("collision_renamed", False),
+                "copy_status": f.get("copy_status", "NOT_ATTEMPTED"),
+                "size_bytes": f["size_bytes"],
+                "unclassified": f["unclassified"],
+            }
+        )
 
     out_path = OUTPUT_ROOT / "AP_ARTIFACT_INDEX.json"
     with open(out_path, "w", encoding="utf-8") as fh:
@@ -449,6 +480,7 @@ def step6_write_artifact_index(files: list):
 # ─────────────────────────────────────────────────────────────────────────────
 # STEP 7 — WRITE FAILURE LOG
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def step7_write_failure_log(step_failures: list):
     print("\n[STEP 7] Writing failure log...")
@@ -461,6 +493,7 @@ def step7_write_failure_log(step_failures: list):
 # ─────────────────────────────────────────────────────────────────────────────
 # STEP 8 — TERMINAL SUMMARY
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def step8_terminal_summary(files: list, step_failures: list):
     total = len(files)
@@ -508,6 +541,7 @@ def step8_terminal_summary(files: list, step_failures: list):
 # VALIDATION
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def validate_outputs(files: list):
     print("\n[VALIDATION] Checking output artifacts...")
     required_dirs = [
@@ -533,7 +567,7 @@ def validate_outputs(files: list):
         if fp.is_file():
             try:
                 with open(fp, "r", encoding="utf-8") as fh:
-                    data = json.load(fh)
+                    _ = json.load(fh)
                 print(f"  [OK] Valid JSON: {fp.name}")
             except json.JSONDecodeError as e:
                 print(f"  [FAIL] Invalid JSON: {fp.name} → {e}")
@@ -548,9 +582,13 @@ def validate_outputs(files: list):
         with open(index_path, "r", encoding="utf-8") as fh:
             index_data = json.load(fh)
         if len(index_data) == len(files):
-            print(f"  [OK] AP_ARTIFACT_INDEX.json has {len(index_data)} entries (matches scan count).")
+            print(
+                f"  [OK] AP_ARTIFACT_INDEX.json has {len(index_data)} entries (matches scan count)."
+            )
         else:
-            print(f"  [WARN] Index has {len(index_data)} entries but scan found {len(files)} files.")
+            print(
+                f"  [WARN] Index has {len(index_data)} entries but scan found {len(files)} files."
+            )
 
     if all_ok:
         print("[VALIDATION] PASSED — all required artifacts present and valid.")
@@ -561,6 +599,7 @@ def validate_outputs(files: list):
 # ─────────────────────────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def main():
     print("=" * 60)
@@ -586,7 +625,7 @@ def main():
     files = step4_copy_files(files, step_failures)
 
     # Step 5: Build directory tree
-    tree = step5_build_directory_tree()
+    _tree = step5_build_directory_tree()
 
     # Step 5.1: Detect empty directories
     step51_detect_empty_directories()

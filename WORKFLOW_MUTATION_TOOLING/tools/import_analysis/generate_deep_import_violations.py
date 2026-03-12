@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -45,7 +46,7 @@ Exit codes:
 import json
 import os
 import sys
-from datetime import timezone, datetime
+from datetime import datetime, timezone
 
 # ---------------------------------------------------------------------------
 # Configuration (matches Blueprint §5.5 exactly)
@@ -74,6 +75,7 @@ OUTPUT_PATH = os.path.join(
 # ---------------------------------------------------------------------------
 # Scanner
 # ---------------------------------------------------------------------------
+
 
 def is_import_line(stripped: str) -> bool:
     return stripped.startswith("import ") or stripped.startswith("from ")

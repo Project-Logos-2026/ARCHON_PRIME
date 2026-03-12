@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -65,7 +66,9 @@ import ast
 from pathlib import Path
 from typing import Any
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -73,9 +76,9 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
-
 
 
 def _imports_from_tree(tree: ast.Module) -> list[str]:
@@ -91,7 +94,7 @@ def _imports_from_tree(tree: ast.Module) -> list[str]:
     return sorted(set(imports))
 
 
-def _build_signature(node: ast.FunctionDef) -> str:
+def _build_signature(node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
     args = []
     func_args = node.args
     for arg in func_args.args:
@@ -105,7 +108,7 @@ def _build_signature(node: ast.FunctionDef) -> str:
     return f"{node.name}({', '.join(args)})"
 
 
-def _body_summary(node: ast.FunctionDef) -> str:
+def _body_summary(node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
     """Return a compact summary of what the function body does."""
     calls: list[str] = []
     for child in ast.walk(node):
@@ -127,7 +130,7 @@ def parse_file(path: Path) -> list[dict[str, Any]]:
     Returns an empty list on syntax error.
     """
     try:
-        src  = path.read_text(errors="replace")
+        src = path.read_text(errors="replace")
         tree = ast.parse(src, filename=str(path))
     except SyntaxError:
         return []
@@ -141,15 +144,17 @@ def parse_file(path: Path) -> list[dict[str, Any]]:
         # Skip private/dunder helpers
         if node.name.startswith("__") and node.name.endswith("__"):
             continue
-        doc  = ast.get_docstring(node) or ""
-        records.append({
-            "name":       node.name,
-            "docstring":  doc[:500],
-            "signature":  _build_signature(node),
-            "imports":    imports,
-            "body_calls": _body_summary(node),
-            "file_path":  str(path),
-            "lineno":     node.lineno,
-        })
+        doc = ast.get_docstring(node) or ""
+        records.append(
+            {
+                "name": node.name,
+                "docstring": doc[:500],
+                "signature": _build_signature(node),
+                "imports": imports,
+                "body_calls": _body_summary(node),
+                "file_path": str(path),
+                "lineno": node.lineno,
+            }
+        )
 
     return records

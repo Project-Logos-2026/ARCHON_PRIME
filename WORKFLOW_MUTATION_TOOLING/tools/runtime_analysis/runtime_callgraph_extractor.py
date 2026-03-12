@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
+import argparse
 import ast
 import json
-import argparse
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 

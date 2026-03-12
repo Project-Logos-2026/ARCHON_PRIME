@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,11 +59,13 @@ safety_classification:
 READ_ONLY
 """
 
-import json
 import argparse
+import json
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -73,7 +76,9 @@ def write_report(name: str, data: dict) -> None:
     print(f"  Report written: {path}")
 
 
-def discover_namespaces(targets: list[str], repo_root: Path, exclude: list[str]) -> dict:
+def discover_namespaces(
+    targets: list[str], repo_root: Path, exclude: list[str]
+) -> dict:
     """Find all directories matching each target name under repo_root."""
     results: dict[str, list[dict]] = {t: [] for t in targets}
 
@@ -86,11 +91,13 @@ def discover_namespaces(targets: list[str], repo_root: Path, exclude: list[str])
             rel = dirpath.relative_to(repo_root)
             depth = len(rel.parts)
             has_init = (dirpath / "__init__.py").exists()
-            results[dirpath.name].append({
-                "path": str(rel),
-                "depth": depth,
-                "has_init": has_init,
-            })
+            results[dirpath.name].append(
+                {
+                    "path": str(rel),
+                    "depth": depth,
+                    "has_init": has_init,
+                }
+            )
 
     return results
 

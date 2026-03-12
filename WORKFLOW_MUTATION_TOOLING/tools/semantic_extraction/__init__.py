@@ -5,7 +5,7 @@
 # subsystem:            mutation_tooling
 # module_role:          analysis
 # canonical_path:       WORKFLOW_MUTATION_TOOLING/tools/semantic_extraction/__init__.py
-# responsibility:       Analysis module:   init  
+# responsibility:       Analysis module:   init
 # runtime_stage:        analysis
 # execution_entry:      None
 # allowed_targets:      []
@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------

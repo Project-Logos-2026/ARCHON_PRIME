@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -77,20 +78,20 @@ from pathlib import Path
 # Ensure tools directory is importable
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from Tools.Scripts.scanner          import collect
-from drac_af_extractor.ast_parser       import parse_file # type: ignore
-from Tools.Scripts.classifier       import classify_record
+from drac_af_extractor.ast_parser import parse_file  # type: ignore
+from Tools.Scripts.classifier import classify_record
+from Tools.Scripts.registry_writer import build_entry, write_registry
+from Tools.Scripts.scanner import collect
 from Tools.Scripts.semantic_extractor import extract_record
-from Tools.Scripts.registry_writer  import build_entry, write_registry
 
-REPO_ROOT       = Path("/workspaces/ARCHON_PRIME")
-PASS_NAME       = "PASS_1"
+REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
+PASS_NAME = "PASS_1"
 CATEGORY_FILTER = "AGENT_CONTROL"
 
 
 def run_pass(
-    repo_root:       Path,
-    pass_name:       str,
+    repo_root: Path,
+    pass_name: str,
     category_filter: str,
 ) -> None:
     print("=" * 60)
@@ -103,7 +104,7 @@ def run_pass(
     print(f"  Python files discovered: {len(all_files)}")
 
     # ── Step 2: AST parse ─────────────────────────────────────────────────────
-    print(f"\n=== STEP 2: AST FUNCTION EXTRACTION ===")
+    print("\n=== STEP 2: AST FUNCTION EXTRACTION ===")
     all_records: list[dict] = []
     parse_errors = 0
     for py_file in all_files:
@@ -118,7 +119,7 @@ def run_pass(
     print(f"  Functions extracted: {len(all_records)}")
 
     # ── Step 3: Classify ──────────────────────────────────────────────────────
-    print(f"\n=== STEP 3: CLASSIFICATION ===")
+    print("\n=== STEP 3: CLASSIFICATION ===")
     classified: dict[str, list[dict]] = defaultdict(list)
     unclassified = 0
 
@@ -143,15 +144,15 @@ def run_pass(
         sys.exit(0)
 
     # ── Step 5: Semantic modifier extraction ──────────────────────────────────
-    print(f"\n=== STEP 5: SEMANTIC MODIFIER EXTRACTION ===")
+    print("\n=== STEP 5: SEMANTIC MODIFIER EXTRACTION ===")
     entries: list[dict] = []
     for i, rec in enumerate(target_records, start=1):
         modifier = extract_record(rec)
-        entry    = build_entry(
-            counter           = i,
-            record            = rec,
-            category          = category_filter,
-            semantic_modifier = modifier,
+        entry = build_entry(
+            counter=i,
+            record=rec,
+            category=category_filter,
+            semantic_modifier=modifier,
         )
         entries.append(entry)
         # Show first 10 as sample
@@ -161,7 +162,7 @@ def run_pass(
         print(f"  … {len(entries) - 10} more entries omitted from console")
 
     # ── Step 6: Validate source files unchanged ───────────────────────────────
-    print(f"\n=== STEP 6: SOURCE INTEGRITY CHECK ===")
+    print("\n=== STEP 6: SOURCE INTEGRITY CHECK ===")
     # Spot check: all registered file_paths must still exist
     missing = [e for e in entries if not Path(e["file_path"]).exists()]
     if missing:
@@ -172,11 +173,11 @@ def run_pass(
         print(f"  All {len(entries)} source files intact. ✓")
 
     # ── Step 7: Write registry ────────────────────────────────────────────────
-    print(f"\n=== STEP 7: WRITE REGISTRY ===")
+    print("\n=== STEP 7: WRITE REGISTRY ===")
     out_path = write_registry(
-        entries         = entries,
-        pass_name       = pass_name,
-        category_filter = category_filter,
+        entries=entries,
+        pass_name=pass_name,
+        category_filter=category_filter,
     )
     size_kb = out_path.stat().st_size / 1024
     print(f"  Written: {out_path.relative_to(REPO_ROOT)}  ({size_kb:.1f} KB)")
@@ -184,12 +185,12 @@ def run_pass(
     # ── Summary ───────────────────────────────────────────────────────────────
     print()
     print("=" * 60)
-    print(f"PASS COMPLETE")
+    print("PASS COMPLETE")
     print(f"  Files scanned:      {len(all_files)}")
     print(f"  Functions parsed:   {len(all_records)}")
     print(f"  AFs extracted:      {len(entries)}")
     print(f"  Category filter:    {category_filter}")
-    print(f"  Cluster distribution:")
+    print("  Cluster distribution:")
     for cat, recs in sorted(classified.items()):
         marker = "  ◀ (this pass)" if cat == category_filter else ""
         print(f"    {cat:25s}: {len(recs)}{marker}")
@@ -201,9 +202,13 @@ if __name__ == "__main__":
         run_pass(REPO_ROOT, PASS_NAME, CATEGORY_FILTER)
     except Exception as e:
         print(f"\n  PIPELINE ERROR: {e}")
-        import traceback; traceback.print_exc()
+        import traceback
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+        traceback.print_exc()
+
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -211,7 +216,9 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
+
 
 # [AP-NORM-REPAIR] syntax error removed:         sys.exit(1)

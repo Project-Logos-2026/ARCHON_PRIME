@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -71,20 +72,19 @@ READ_ONLY
 """
 
 import ast
-import collections
 import difflib
 import json
 import re
 import sys
-import textwrap
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-REPO_ROOT   = Path("/workspaces/ARCHON_PRIME")
-SYNTHESIS   = REPO_ROOT / "Runtime_Facade_Synthesis"
-OUTPUT_DIR  = REPO_ROOT / "Reports" / "Facade_Rewrite_Pass"
-ARCHON      = REPO_ROOT / "ARCHON_RUNTIME_ANALYSIS"
+REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
+SYNTHESIS = REPO_ROOT / "Runtime_Facade_Synthesis"
+OUTPUT_DIR = REPO_ROOT / "Reports" / "Facade_Rewrite_Pass"
+ARCHON = REPO_ROOT / "ARCHON_RUNTIME_ANALYSIS"
 
 # ── Runtime dirs (constrain scanning to runtime surface) ──────────────────────
 RUNTIME_DIRS = [
@@ -94,10 +94,20 @@ RUNTIME_DIRS = [
     REPO_ROOT / "_Governance",
 ]
 
-EXCLUDED_SEGMENTS = frozenset({
-    "__pycache__", ".git", "node_modules", "venv", ".venv",
-    "build", "dist", "ARCHIVE", "ARCHIVES", "HISTORY",
-})
+EXCLUDED_SEGMENTS = frozenset(
+    {
+        "__pycache__",
+        ".git",
+        "node_modules",
+        "venv",
+        ".venv",
+        "build",
+        "dist",
+        "ARCHIVE",
+        "ARCHIVES",
+        "HISTORY",
+    }
+)
 
 NOW = datetime.now(timezone.utc).isoformat()
 
@@ -105,23 +115,29 @@ NOW = datetime.now(timezone.utc).isoformat()
 # Helpers
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def should_skip(path: Path) -> bool:
-    return any(p.upper() in EXCLUDED_SEGMENTS or p in EXCLUDED_SEGMENTS
-               for p in path.parts)
+    return any(
+        p.upper() in EXCLUDED_SEGMENTS or p in EXCLUDED_SEGMENTS for p in path.parts
+    )
+
 
 def write_json(path: Path, data) -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
+
 def write_text(path: Path, text: str) -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
-def load_json(path: Path) -> object:
+
+def load_json(path: Path) -> Any:
     if not path.exists():
         return None
     with path.open(encoding="utf-8") as fh:
         return json.load(fh)
+
 
 def module_to_file(module_path: str) -> Path | None:
     """Convert a dotted module path to an absolute .py file path."""
@@ -135,6 +151,7 @@ def module_to_file(module_path: str) -> Path | None:
         return p2
     return None
 
+
 def check_syntax(source: str, label: str) -> list[str]:
     """Return list of syntax error descriptions, empty if clean."""
     try:
@@ -143,9 +160,11 @@ def check_syntax(source: str, label: str) -> list[str]:
     except SyntaxError as e:
         return [f"{label}: SyntaxError: {e}"]
 
+
 # ══════════════════════════════════════════════════════════════════════════════
 # ABORT — write failure report and exit
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def abort(reason: str, details: dict | None = None) -> None:
     print(f"\n[ABORT] {reason}")
@@ -157,25 +176,33 @@ def abort(reason: str, details: dict | None = None) -> None:
     }
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     write_json(OUTPUT_DIR / "facade_rewrite_failure.json", report)
-    print(f"  [✓] Failure report → Reports/Facade_Rewrite_Pass/facade_rewrite_failure.json")
+    print(
+        "  [✓] Failure report → Reports/Facade_Rewrite_Pass/facade_rewrite_failure.json"
+    )
     sys.exit(1)
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 1 — Load Input Artifacts
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def step1_load() -> tuple:
     print("\n[STEP 1] Loading synthesis artifacts …")
-    rewrite_table  = load_json(SYNTHESIS / "import_rewrite_table.json")
-    feasibility    = load_json(SYNTHESIS / "repair_feasibility.json")
+    rewrite_table = load_json(SYNTHESIS / "import_rewrite_table.json")
+    feasibility = load_json(SYNTHESIS / "repair_feasibility.json")
     facade_map_raw = load_json(SYNTHESIS / "facade_map.json")
-    surface_spec   = load_json(SYNTHESIS / "facade_surface_spec.json")
+    surface_spec = load_json(SYNTHESIS / "facade_surface_spec.json")
 
     missing = []
-    if rewrite_table  is None: missing.append("import_rewrite_table.json")
-    if feasibility    is None: missing.append("repair_feasibility.json")
-    if facade_map_raw is None: missing.append("facade_map.json")
-    if surface_spec   is None: missing.append("facade_surface_spec.json")
+    if rewrite_table is None:
+        missing.append("import_rewrite_table.json")
+    if feasibility is None:
+        missing.append("repair_feasibility.json")
+    if facade_map_raw is None:
+        missing.append("facade_map.json")
+    if surface_spec is None:
+        missing.append("facade_surface_spec.json")
     if missing:
         abort("Required artifacts missing", {"missing": missing})
 
@@ -186,17 +213,22 @@ def step1_load() -> tuple:
         feas_lookup[key] = f
 
     # Extract AUTO_REPAIRABLE rules only
-    auto_rules = [r for r in rewrite_table
-                  if feas_lookup.get((r["source_module"], r["illegal_import"]), {})
-                     .get("status") == "AUTO_REPAIRABLE"]
+    auto_rules = [
+        r
+        for r in rewrite_table
+        if feas_lookup.get((r["source_module"], r["illegal_import"]), {}).get("status")
+        == "AUTO_REPAIRABLE"
+    ]
 
     print(f"  [i] Total rewrite rules  : {len(rewrite_table)}")
     print(f"  [i] AUTO_REPAIRABLE      : {len(auto_rules)}")
     return auto_rules, feasibility, facade_map_raw, surface_spec
 
+
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 2 — Precondition Gate
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def step2_preconditions(auto_rules: list[dict]) -> dict[str, dict]:
     """
@@ -215,8 +247,8 @@ def step2_preconditions(auto_rules: list[dict]) -> dict[str, dict]:
     replacement_nss = {r["replacement_import"] for r in auto_rules}
     missing_facades: list[str] = []
     for ns in sorted(replacement_nss):
-        ns_path  = REPO_ROOT / (ns.replace(".", "/") + ".py")
-        ns_init  = REPO_ROOT / ns.replace(".", "/") / "__init__.py"
+        ns_path = REPO_ROOT / (ns.replace(".", "/") + ".py")
+        ns_init = REPO_ROOT / ns.replace(".", "/") / "__init__.py"
         if not ns_path.exists() and not ns_init.exists():
             missing_facades.append(ns)
 
@@ -266,36 +298,40 @@ def step2_preconditions(auto_rules: list[dict]) -> dict[str, dict]:
     if missing_sources:
         abort(
             "PRECONDITION FAILED — Source module files not found on disk",
-            {"precondition": "P1_source_files_must_exist",
-             "missing_source_modules": missing_sources},
+            {
+                "precondition": "P1_source_files_must_exist",
+                "missing_source_modules": missing_sources,
+            },
         )
 
     print(f"  [✓] P1: All {len(file_rule_map)} source files present")
     print(f"  [✓] P2: All {len(replacement_nss)} facade namespaces present")
     return file_rule_map
 
+
 # ══════════════════════════════════════════════════════════════════════════════
 # Import-line rewriting helpers
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def build_import_pattern(target_module: str) -> re.Pattern:
     """
-    Build a regex that matches:
-        from <target_module> import ...
-        import <target_module> [as ...]
+        Build a regex that matches:
+            from <target_module> import ...
+            import <target_module> [as ...]
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
-OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
+    OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
-def write_report(name: str, data) -> None:
-    path = OUTPUT_ROOT / name
-    with open(path, "w", encoding="utf-8") as f:
-        import json as _json
-        _json.dump(data, f, indent=2)
-    print(f"  Report written: {path}")
+    def write_report(name: str, data) -> None:
+        path = OUTPUT_ROOT / name
+        with open(path, "w", encoding="utf-8") as f:
+            import json as _json
+            _json.dump(data, f, indent=2)
+        print(f"  Report written: {path}")
 
-    anchored to line-start, respecting indentation.
+        anchored to line-start, respecting indentation.
     """
     escaped = re.escape(target_module)
     # Match 'from TARGET import ...'  OR  'import TARGET' / 'import TARGET as X'
@@ -308,8 +344,9 @@ def write_report(name: str, data) -> None:
     return re.compile(pat, re.MULTILINE)
 
 
-def rewrite_import_lines(source_text: str, target_module: str,
-                          replacement_ns: str) -> tuple[str, list[str]]:
+def rewrite_import_lines(
+    source_text: str, target_module: str, replacement_ns: str
+) -> tuple[str, list[str]]:
     """
     Replace every import line whose module is exactly `target_module` with one
     using `replacement_ns`.
@@ -329,16 +366,17 @@ def rewrite_import_lines(source_text: str, target_module: str,
 
         # ── Check for 'from TARGET import ...' (possibly multi-line) ─────────
         from_match = re.match(
-            r"^(?P<indent>[ \t]*)from\s+" + re.escape(target_module) + r"\s+import\s+(?P<rest>.*)",
+            r"^(?P<indent>[ \t]*)from\s+"
+            + re.escape(target_module)
+            + r"\s+import\s+(?P<rest>.*)",
             stripped,
         )
         if from_match:
-            indent  = from_match.group("indent")
-            rest    = from_match.group("rest")
+            indent = from_match.group("indent")
+            rest = from_match.group("rest")
 
             # Collect continued lines if the import opens a parenthesis
             full_block = [stripped]
-            eol = "\n" if line.endswith("\n") else ""
             j = i + 1
             if "(" in rest and ")" not in rest:
                 while j < len(lines):
@@ -377,20 +415,21 @@ def rewrite_import_lines(source_text: str, target_module: str,
 
         # ── Check for 'import TARGET' or 'import TARGET as X' ────────────────
         bare_match = re.match(
-            r"^(?P<indent>[ \t]*)import\s+" + re.escape(target_module) + r"(?:\s+as\s+(?P<alias>\S+))?\s*$",
+            r"^(?P<indent>[ \t]*)import\s+"
+            + re.escape(target_module)
+            + r"(?:\s+as\s+(?P<alias>\S+))?\s*$",
             stripped,
         )
         if bare_match:
             indent = bare_match.group("indent")
-            alias  = bare_match.group("alias")
+            alias = bare_match.group("alias")
             if alias:
                 new_line = f"{indent}import {replacement_ns} as {alias}\n"
             else:
                 new_line = f"{indent}import {replacement_ns}\n"
             result.append(new_line)
             changes.append(
-                f"L{i+1}: 'import {target_module}' → "
-                f"'import {replacement_ns}'"
+                f"L{i+1}: 'import {target_module}' → " f"'import {replacement_ns}'"
             )
             i += 1
             continue
@@ -405,6 +444,7 @@ def rewrite_import_lines(source_text: str, target_module: str,
 # STEP 3 — Dry-Run Pass
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def step3_dry_run(file_rule_map: dict) -> dict[str, dict]:
     """
     Simulate every rewrite: apply to in-memory copy, verify syntax.
@@ -414,14 +454,14 @@ def step3_dry_run(file_rule_map: dict) -> dict[str, dict]:
     print(f"\n[STEP 3] Dry-run simulation ({len(file_rule_map)} files) …")
 
     dry_run_results: dict[str, dict] = {}
-    total_changes  = 0
-    syntax_errors  = []
+    total_changes = 0
+    syntax_errors = []
 
     for src_mod, info in sorted(file_rule_map.items()):
-        fpath   = info["file"]
-        rules   = info["rules"]
+        fpath = info["file"]
+        rules = info["rules"]
         original = fpath.read_text(encoding="utf-8", errors="replace")
-        working  = original
+        working = original
         file_changes: list[str] = []
 
         for rule in rules:
@@ -436,12 +476,12 @@ def step3_dry_run(file_rule_map: dict) -> dict[str, dict]:
             syntax_errors.extend(errs)
 
         dry_run_results[src_mod] = {
-            "file":          str(fpath.relative_to(REPO_ROOT)),
+            "file": str(fpath.relative_to(REPO_ROOT)),
             "original_text": original,
             "rewritten_text": working,
-            "changes":       file_changes,
+            "changes": file_changes,
             "syntax_errors": errs,
-            "changed":       working != original,
+            "changed": working != original,
         }
         if file_changes:
             total_changes += len(file_changes)
@@ -453,17 +493,19 @@ def step3_dry_run(file_rule_map: dict) -> dict[str, dict]:
             print(f"      [!] {e}")
     return dry_run_results
 
+
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 4 — Apply Live Rewrites
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def step4_apply(dry_run_results: dict) -> tuple[int, int, list[str]]:
     """
     Write rewritten files to disk only for changed, syntax-clean files.
     Returns (files_modified, rewrites_applied, errors).
     """
-    print(f"\n[STEP 4] Applying rewrites …")
-    files_modified  = 0
+    print("\n[STEP 4] Applying rewrites …")
+    files_modified = 0
     rewrites_applied = 0
     errors: list[str] = []
 
@@ -476,7 +518,7 @@ def step4_apply(dry_run_results: dict) -> tuple[int, int, list[str]]:
 
         fpath = REPO_ROOT / info["file"]
         fpath.write_text(info["rewritten_text"], encoding="utf-8")
-        files_modified  += 1
+        files_modified += 1
         rewrites_applied += len(info["changes"])
         print(f"  [✓] {info['file']}  ({len(info['changes'])} rewrite(s))")
 
@@ -486,9 +528,11 @@ def step4_apply(dry_run_results: dict) -> tuple[int, int, list[str]]:
         print(f"  [!] Errors           : {len(errors)}")
     return files_modified, rewrites_applied, errors
 
+
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 5 — Post-Rewrite Validation
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def step5_validate(auto_rules: list[dict]) -> dict:
     """
@@ -525,12 +569,14 @@ def step5_validate(auto_rules: list[dict]) -> dict:
             for line_no, line in enumerate(txt.splitlines(), 1):
                 for src_m, ill_imp in fixed_pairs:
                     if src_m == mod_path and ill_imp in line:
-                        remaining_violations.append({
-                            "source_module": src_m,
-                            "illegal_import": ill_imp,
-                            "line": line_no,
-                            "content": line.strip(),
-                        })
+                        remaining_violations.append(
+                            {
+                                "source_module": src_m,
+                                "illegal_import": ill_imp,
+                                "line": line_no,
+                                "content": line.strip(),
+                            }
+                        )
 
     cross_remaining = len(remaining_violations)
     print(f"  [i] Files scanned             : {files_scanned}")
@@ -545,79 +591,97 @@ def step5_validate(auto_rules: list[dict]) -> dict:
         "syntax_errors": syntax_errors,
     }
 
+
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 6 — Write Artifacts
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def step6_write_artifacts(
-    auto_rules:       list[dict],
-    dry_run_results:  dict,
-    files_modified:   int,
+    auto_rules: list[dict],
+    dry_run_results: dict,
+    files_modified: int,
     rewrites_applied: int,
-    apply_errors:     list[str],
-    validation:       dict,
-    feasibility:      list[dict],
+    apply_errors: list[str],
+    validation: dict,
+    feasibility: list[dict],
     total_files_scanned: int,
 ) -> None:
     print("\n[STEP 6] Writing output artifacts …")
 
     # ── facade_rewrite_summary.json ──────────────────────────────────────────
-    auto_count    = len(auto_rules)
-    optional_count = sum(1 for f in feasibility if f["status"] == "OPTIONAL_INTRA_CLUSTER")
-    manual_count   = sum(1 for f in feasibility if f["status"] == "MANUAL_REVIEW_REQUIRED")
+    auto_count = len(auto_rules)
+    optional_count = sum(
+        1 for f in feasibility if f["status"] == "OPTIONAL_INTRA_CLUSTER"
+    )
+    manual_count = sum(
+        1 for f in feasibility if f["status"] == "MANUAL_REVIEW_REQUIRED"
+    )
 
     summary = {
         "generated_utc": NOW,
-        "status": "SUCCESS" if (
-            validation["cross_cluster_violations_remaining"] == 0
-            and validation["syntax_errors_detected"] == 0
-        ) else "PARTIAL",
-        "total_files_scanned":   validation["files_scanned"],
-        "files_modified":        files_modified,
-        "rewrites_applied":      rewrites_applied,
+        "status": (
+            "SUCCESS"
+            if (
+                validation["cross_cluster_violations_remaining"] == 0
+                and validation["syntax_errors_detected"] == 0
+            )
+            else "PARTIAL"
+        ),
+        "total_files_scanned": validation["files_scanned"],
+        "files_modified": files_modified,
+        "rewrites_applied": rewrites_applied,
         "auto_repairable_rules": auto_count,
         "optional_intra_cluster": optional_count,
         "manual_review_required": manual_count,
-        "cross_cluster_violations_remaining": validation["cross_cluster_violations_remaining"],
+        "cross_cluster_violations_remaining": validation[
+            "cross_cluster_violations_remaining"
+        ],
         "syntax_errors_detected": validation["syntax_errors_detected"],
         "apply_errors": apply_errors,
     }
     write_json(OUTPUT_DIR / "facade_rewrite_summary.json", summary)
-    print(f"  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_summary.json")
+    print("  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_summary.json")
 
     # ── facade_rewrite_changes.json ──────────────────────────────────────────
     changes_list: list[dict] = []
     for src_mod, info in sorted(dry_run_results.items()):
         if info["changes"]:
-            changes_list.append({
-                "source_module": src_mod,
-                "file":         info["file"],
-                "changes":      info["changes"],
-                "changed":      info["changed"],
-                "syntax_errors": info["syntax_errors"],
-            })
+            changes_list.append(
+                {
+                    "source_module": src_mod,
+                    "file": info["file"],
+                    "changes": info["changes"],
+                    "changed": info["changed"],
+                    "syntax_errors": info["syntax_errors"],
+                }
+            )
     write_json(OUTPUT_DIR / "facade_rewrite_changes.json", changes_list)
-    print(f"  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_changes.json")
+    print("  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_changes.json")
 
     # ── facade_rewrite_diff.patch ────────────────────────────────────────────
     diff_lines: list[str] = []
-    for src_mod, info in sorted(dry_run_results.items()):
+    for _, info in sorted(dry_run_results.items()):
         if not info["changed"]:
             continue
         orig_lines = info["original_text"].splitlines(keepends=True)
-        new_lines  = info["rewritten_text"].splitlines(keepends=True)
-        fname      = info["file"]
-        diff = list(difflib.unified_diff(
-            orig_lines, new_lines,
-            fromfile=f"a/{fname}", tofile=f"b/{fname}",
-        ))
+        new_lines = info["rewritten_text"].splitlines(keepends=True)
+        fname = info["file"]
+        diff = list(
+            difflib.unified_diff(
+                orig_lines,
+                new_lines,
+                fromfile=f"a/{fname}",
+                tofile=f"b/{fname}",
+            )
+        )
         diff_lines.extend(diff)
     write_text(OUTPUT_DIR / "facade_rewrite_diff.patch", "".join(diff_lines))
-    print(f"  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_diff.patch")
+    print("  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_diff.patch")
 
     # ── facade_rewrite_validation.json ───────────────────────────────────────
     write_json(OUTPUT_DIR / "facade_rewrite_validation.json", validation)
-    print(f"  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_validation.json")
+    print("  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_validation.json")
 
     # ── facade_rewrite_report.md ─────────────────────────────────────────────
     status_str = summary["status"]
@@ -716,11 +780,13 @@ def step6_write_artifacts(
         "",
     ]
     write_text(OUTPUT_DIR / "facade_rewrite_report.md", "\n".join(lines))
-    print(f"  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_report.md")
+    print("  [✓] Reports/Facade_Rewrite_Pass/facade_rewrite_report.md")
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # MAIN
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def main():
     print("=" * 70)
@@ -752,7 +818,9 @@ def main():
     files_modified, rewrites_applied, apply_errors = step4_apply(dry_run_results)
 
     if apply_errors:
-        print(f"\n[!] {len(apply_errors)} apply errors (non-fatal, partial rewrite executed):")
+        print(
+            f"\n[!] {len(apply_errors)} apply errors (non-fatal, partial rewrite executed):"
+        )
         for e in apply_errors:
             print(f"    {e}")
 
@@ -761,8 +829,13 @@ def main():
 
     # STEP 6 — Artifacts
     step6_write_artifacts(
-        auto_rules, dry_run_results, files_modified, rewrites_applied,
-        apply_errors, validation, feasibility,
+        auto_rules,
+        dry_run_results,
+        files_modified,
+        rewrites_applied,
+        apply_errors,
+        validation,
+        feasibility,
         total_files_scanned=validation["files_scanned"],
     )
 
@@ -772,8 +845,12 @@ def main():
     print("=" * 70)
     print(f"  Files modified                    : {files_modified}")
     print(f"  Rewrites applied                  : {rewrites_applied}")
-    print(f"  Cross-cluster violations remaining: {validation['cross_cluster_violations_remaining']}")
-    print(f"  Syntax errors post-rewrite        : {validation['syntax_errors_detected']}")
+    print(
+        f"  Cross-cluster violations remaining: {validation['cross_cluster_violations_remaining']}"
+    )
+    print(
+        f"  Syntax errors post-rewrite        : {validation['syntax_errors_detected']}"
+    )
     print("=" * 70)
 
     success = (

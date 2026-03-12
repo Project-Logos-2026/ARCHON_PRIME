@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -423,7 +424,7 @@ def run() -> None:
     with open(AF_INVAR / "af_master_index.json") as f:
         af_master = json.load(f)
     total_af = af_master["total_af_modules"]
-    af_modules_index = af_master["modules_index"]
+    _af_modules_index = af_master["modules_index"]
 
     print(f"\n  AF modules from index : {total_af}")
     print(f"  AF clusters loaded    : {len(af_clusters)}")
@@ -466,7 +467,7 @@ def run() -> None:
     fbc_counter = 0
     taxonomy_dist: dict[str, int] = defaultdict(int)
 
-    for dir_name, py_file, src_dir_name in candidates:
+    for _, py_file, src_dir_name in candidates:
         fbc_counter += 1
         fbc_id = f"FBC_{fbc_counter:04d}"
         stem = py_file.stem
@@ -570,7 +571,7 @@ def run() -> None:
         cluster_to_af_ids[cl["cluster_name"]] = cl["modules"]
 
     # cluster_id → cluster_name lookup
-    cluster_id_to_name: dict[str, str] = {
+    _cluster_id_to_name: dict[str, str] = {
         cl["cluster_id"]: cl["cluster_name"] for cl in af_clusters
     }
 

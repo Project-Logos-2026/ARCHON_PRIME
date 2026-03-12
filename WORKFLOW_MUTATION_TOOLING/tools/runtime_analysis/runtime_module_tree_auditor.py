@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
+import argparse
 import ast
 import json
-import argparse
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -131,7 +134,9 @@ def main() -> None:
         raise SystemExit(1)
 
     py_files = sorted(module_root.rglob("*.py"))
-    print(f"Auditing {len(py_files)} Python files under: {module_root.relative_to(repo_root)}")
+    print(
+        f"Auditing {len(py_files)} Python files under: {module_root.relative_to(repo_root)}"
+    )
 
     modules = [audit_module(f, repo_root) for f in py_files]
 
@@ -154,7 +159,9 @@ def main() -> None:
         "modules": modules,
     }
     write_report("module_tree_audit.json", report)
-    print(f"Modules: {len(modules)} | LOC: {total_loc} | Classes: {total_classes} | Functions: {total_functions}")
+    print(
+        f"Modules: {len(modules)} | LOC: {total_loc} | Classes: {total_classes} | Functions: {total_functions}"
+    )
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -67,7 +68,9 @@ READ_ONLY
 import re
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -75,25 +78,65 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
 
 # Ordered semantic verb vocabulary
 SEMANTIC_VERBS = [
-    "infer", "deduce", "prove", "validate", "reason", "compute",
-    "execute", "dispatch", "orchestrate", "parse", "interpret",
-    "translate", "embed", "sanitize", "verify", "guard", "enforce",
-    "load", "save", "convert", "serialize", "format", "score",
-    "activate", "boot", "register", "route", "schedule",
+    "infer",
+    "deduce",
+    "prove",
+    "validate",
+    "reason",
+    "compute",
+    "execute",
+    "dispatch",
+    "orchestrate",
+    "parse",
+    "interpret",
+    "translate",
+    "embed",
+    "sanitize",
+    "verify",
+    "guard",
+    "enforce",
+    "load",
+    "save",
+    "convert",
+    "serialize",
+    "format",
+    "score",
+    "activate",
+    "boot",
+    "register",
+    "route",
+    "schedule",
 ]
 
 # Domain modifier vocabulary
 DOMAIN_MODIFIERS = [
-    "symbolic", "probabilistic", "semantic", "logical", "agent",
-    "runtime", "temporal", "epistemic", "causal", "modal",
-    "axiomatic", "numeric", "vector", "recursive", "bijective",
-    "trinitarian", "governance", "safety", "memory", "planning",
+    "symbolic",
+    "probabilistic",
+    "semantic",
+    "logical",
+    "agent",
+    "runtime",
+    "temporal",
+    "epistemic",
+    "causal",
+    "modal",
+    "axiomatic",
+    "numeric",
+    "vector",
+    "recursive",
+    "bijective",
+    "trinitarian",
+    "governance",
+    "safety",
+    "memory",
+    "planning",
 ]
 
 
@@ -109,9 +152,9 @@ def extract(function_name: str, docstring: str = "") -> str:
     Return the smallest semantic modifier expression for a function.
     Format: verb(modifier)  or  verb()  if no modifier found.
     """
-    name_tokens  = _tokenize(function_name)
-    doc_tokens   = _tokenize(docstring.split(".")[0]) if docstring else []
-    all_tokens   = name_tokens + doc_tokens
+    name_tokens = _tokenize(function_name)
+    doc_tokens = _tokenize(docstring.split(".")[0]) if docstring else []
+    all_tokens = name_tokens + doc_tokens
 
     # Find primary verb
     verb = None
@@ -141,6 +184,6 @@ def extract(function_name: str, docstring: str = "") -> str:
 def extract_record(record: dict) -> str:
     """Convenience wrapper that accepts an ast_parser record dict."""
     return extract(
-        function_name = record.get("name", ""),
-        docstring     = record.get("docstring", ""),
+        function_name=record.get("name", ""),
+        docstring=record.get("docstring", ""),
     )

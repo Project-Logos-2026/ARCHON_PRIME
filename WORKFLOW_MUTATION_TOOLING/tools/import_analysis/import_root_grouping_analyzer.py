@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -57,12 +58,14 @@ safety_classification:
 READ_ONLY
 """
 
-import json
 import argparse
-from pathlib import Path
+import json
 from collections import defaultdict
+from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -75,10 +78,14 @@ def write_report(name: str, data: dict) -> None:
 
 def group_by_root(violations: list[dict]) -> dict:
     """Group violations by the root (first segment) of the imported module."""
-    groups: dict[str, dict] = defaultdict(lambda: {"count": 0, "files": set(), "samples": []})
+    groups: dict[str, dict] = defaultdict(
+        lambda: {"count": 0, "files": set(), "samples": []}
+    )
 
     for v in violations:
-        module = v.get("module", "") or v.get("imported", "") or v.get("import", "") or ""
+        module = (
+            v.get("module", "") or v.get("imported", "") or v.get("import", "") or ""
+        )
         file_ = v.get("file", "") or v.get("source_file", "") or ""
         root = module.split(".")[0] if module else "unknown"
 
@@ -116,7 +123,9 @@ def main() -> None:
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    input_path = Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    input_path = (
+        Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    )
 
     if not input_path.exists():
         print(f"ERROR: Input file not found: {input_path}")
@@ -140,7 +149,9 @@ def main() -> None:
     write_report("import_root_grouping.json", report)
     print(f"Distinct root prefixes: {len(groups)}")
     for root, info in list(groups.items())[:10]:
-        print(f"  {root}: {info['count']} violations across {info['unique_files']} files")
+        print(
+            f"  {root}: {info['count']} violations across {info['unique_files']} files"
+        )
 
 
 if __name__ == "__main__":

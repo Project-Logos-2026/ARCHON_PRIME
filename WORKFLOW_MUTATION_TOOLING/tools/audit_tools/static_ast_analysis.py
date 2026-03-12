@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -61,7 +62,6 @@ READ_ONLY
 """
 
 import ast
-import os
 import json
 from pathlib import Path
 
@@ -85,10 +85,13 @@ REPORTS_DIR.mkdir(exist_ok=True)
 # Load the list of all user Python files (already filtered)
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent))
 from python_file_list import PYTHON_FILE_LIST
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -96,6 +99,7 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
@@ -110,6 +114,7 @@ def file_to_module_path(file_path: Path) -> str:
         parts[-1] = parts[-1][:-3]  # strip .py
     return ".".join(parts)
 
+
 # Helper: classify by layer
 def classify_layer(file_path: Path) -> str:
     rel_path = str(file_path.relative_to(REPO_ROOT))
@@ -117,6 +122,7 @@ def classify_layer(file_path: Path) -> str:
         if rel_path.startswith(prefix):
             return layer
     return "other"
+
 
 # Helper: extract static imports from a Python file
 def extract_imports(file_path: Path):
@@ -135,6 +141,7 @@ def extract_imports(file_path: Path):
         imports.add(f"__ERROR__:{e}")
     return sorted(imports)
 
+
 # Main analysis
 def main():
     full_graph = []
@@ -143,25 +150,25 @@ def main():
         module_path = file_to_module_path(file_path)
         rel_path = str(file_path.relative_to(REPO_ROOT))
         imports = extract_imports(file_path)
-        full_graph.append({
-            "module_path": module_path,
-            "file_path": rel_path,
-            "imports": imports
-        })
+        full_graph.append(
+            {"module_path": module_path, "file_path": rel_path, "imports": imports}
+        )
     # Write full static import graph
-    with open(REPORTS_DIR / "FULL_STATIC_IMPORT_GRAPH.json", "w", encoding="utf-8") as f:
+    with open(
+        REPORTS_DIR / "FULL_STATIC_IMPORT_GRAPH.json", "w", encoding="utf-8"
+    ) as f:
         json.dump(full_graph, f, indent=2)
     # Layer classification
     layer_graph = []
     for entry in full_graph:
         layer = classify_layer(REPO_ROOT / entry["file_path"])
-        layer_graph.append({
-            **entry,
-            "layer": layer
-        })
+        layer_graph.append({**entry, "layer": layer})
     with open(REPORTS_DIR / "LAYER_CLASSIFIED_GRAPH.json", "w", encoding="utf-8") as f:
         json.dump(layer_graph, f, indent=2)
-    print(f"Static analysis complete. Modules: {len(full_graph)}. Output written to _Reports/.")
+    print(
+        f"Static analysis complete. Modules: {len(full_graph)}. Output written to _Reports/."
+    )
+
 
 if __name__ == "__main__":
     main()

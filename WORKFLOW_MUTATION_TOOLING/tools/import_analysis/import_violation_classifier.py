@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
-import json
 import argparse
-from pathlib import Path
+import json
 from collections import defaultdict
+from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -116,7 +119,9 @@ def main() -> None:
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    input_path = Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    input_path = (
+        Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    )
 
     if not input_path.exists():
         print(f"ERROR: Input file not found: {input_path}")

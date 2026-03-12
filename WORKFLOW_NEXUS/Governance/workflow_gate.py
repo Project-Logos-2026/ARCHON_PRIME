@@ -51,9 +51,8 @@ The gate enforces four conditions:
 Failure of any condition immediately halts execution.
 """
 
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 ARCHON_ROOT = Path("/workspaces/ARCHON_PRIME")
 

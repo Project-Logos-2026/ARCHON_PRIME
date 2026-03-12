@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -67,7 +68,9 @@ import shutil
 import sys
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -75,15 +78,16 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
 
 # ── Constants ────────────────────────────────────────────────────────────────
-REPO_ROOT       = Path("/workspaces/ARCHON_PRIME")
-TOOLS_DIR       = REPO_ROOT / "Tools"
-APP_FUNC_DIR    = REPO_ROOT / "_Dev_Resources/STAGING/APPLICATION_FUNCTIONS"
-BLUEPRINTS_DIR  = REPO_ROOT / "Blueprints"
+REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
+TOOLS_DIR = REPO_ROOT / "Tools"
+APP_FUNC_DIR = REPO_ROOT / "_Dev_Resources/STAGING/APPLICATION_FUNCTIONS"
+BLUEPRINTS_DIR = REPO_ROOT / "Blueprints"
 
 CATEGORIES = ["reasoning", "agent", "utility", "semantic", "safety", "math"]
 
@@ -113,7 +117,9 @@ stem_to_recorded_paths: dict[str, list[str]] = {}
 
 for pkt in packets:
     cls = pkt["classification"]
-    for stem, fpath in zip(pkt.get("modules", []), pkt.get("file_paths", [])):
+    for stem, fpath in zip(
+        pkt.get("modules", []), pkt.get("file_paths", []), strict=False
+    ):
         stem_to_category[stem] = cls
         stem_to_recorded_paths.setdefault(stem, []).append(fpath)
 
@@ -145,7 +151,8 @@ print("=== STEP 5: CLASSIFY AND MOVE MODULES ===")
 moves_performed: list[dict] = []
 skipped_already_correct: int = 0
 skipped_no_classification: list[str] = []
-rollback_log: list[tuple[Path, Path]] = []   # (new_path, original_path)
+rollback_log: list[tuple[Path, Path]] = []  # (new_path, original_path)
+
 
 def rollback_all() -> None:
     print("  ROLLBACK: restoring moved files …")
@@ -156,6 +163,7 @@ def rollback_all() -> None:
             print(f"    Restored: {orig_p.relative_to(REPO_ROOT)}")
         except Exception as rb_err:
             print(f"    ROLLBACK FAILED for {new_p}: {rb_err}")
+
 
 for py_file in all_py_files:
     stem = py_file.stem
@@ -174,7 +182,7 @@ for py_file in all_py_files:
         skipped_already_correct += 1
         continue
     except ValueError:
-        pass   # not inside target_dir — needs moving
+        pass  # not inside target_dir — needs moving
 
     # Ensure no collision at destination
     if target_path.exists() and target_path.resolve() != py_file.resolve():
@@ -186,11 +194,13 @@ for py_file in all_py_files:
         original_path = py_file
         shutil.move(str(py_file), str(target_path))
         rollback_log.append((target_path, original_path))
-        moves_performed.append({
-            "module": py_file.name,
-            "from": str(original_path.relative_to(REPO_ROOT)),
-            "to":   str(target_path.relative_to(REPO_ROOT)),
-        })
+        moves_performed.append(
+            {
+                "module": py_file.name,
+                "from": str(original_path.relative_to(REPO_ROOT)),
+                "to": str(target_path.relative_to(REPO_ROOT)),
+            }
+        )
         print(f"  MOVE: {py_file.name:45s} → {category}/")
     except Exception as e:
         print(f"  ERROR moving {py_file}: {e}")
@@ -236,12 +246,12 @@ print()
 print("=== STEP 8: WRITE REPORT ===")
 
 report = {
-    "modules_scanned":           len(all_py_files),
-    "moves_performed":           len(moves_performed),
-    "skipped_already_correct":   skipped_already_correct,
+    "modules_scanned": len(all_py_files),
+    "moves_performed": len(moves_performed),
+    "skipped_already_correct": skipped_already_correct,
     "skipped_no_classification": len(skipped_no_classification),
     "external_blueprint_modules": external_blueprint_count,
-    "category_counts":           category_counts,
+    "category_counts": category_counts,
     "moves": moves_performed,
     "no_classification": skipped_no_classification,
 }

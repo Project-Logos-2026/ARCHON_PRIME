@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,11 +59,13 @@ safety_classification:
 READ_ONLY
 """
 
-import json
 import argparse
+import json
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -131,7 +134,9 @@ def main() -> None:
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    input_path = Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    input_path = (
+        Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    )
 
     if not input_path.exists():
         print(f"ERROR: Input file not found: {input_path}")
@@ -144,7 +149,9 @@ def main() -> None:
     if not roots:
         print("WARNING: No root prefixes found in input file.")
 
-    print(f"Checking {len(roots)} root prefixes against {len(scan_dirs)} search dir(s)...")
+    print(
+        f"Checking {len(roots)} root prefixes against {len(scan_dirs)} search dir(s)..."
+    )
     results = [check_root(r, scan_dirs) for r in roots]
 
     present = [r for r in results if r["exists"]]

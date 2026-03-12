@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -71,7 +72,9 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -79,14 +82,15 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
 
 # ── Path constants ─────────────────────────────────────────────────────────────
-REPO_ROOT   = Path("/workspaces/ARCHON_PRIME")
-AF_ROOT     = REPO_ROOT / "_Dev_Resources/STAGING/APPLICATION_FUNCTIONS"
-TOOLS_DIR   = REPO_ROOT / "Tools"
+REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
+AF_ROOT = REPO_ROOT / "_Dev_Resources/STAGING/APPLICATION_FUNCTIONS"
+TOOLS_DIR = REPO_ROOT / "Tools"
 DRAC_AF_OUT = (
     REPO_ROOT
     / "LOGOS_SYSTEM/RUNTIME_CORES/RUNTIME_OPPERATIONS_CORE"
@@ -96,28 +100,68 @@ DRAC_AF_OUT = (
 
 # Only scan the new categorical subdirs (not legacy uppercase dirs)
 CATEGORY_DIRS = {
-    "agent":     "agent_control",
-    "semantic":  "semantic_processing",
+    "agent": "agent_control",
+    "semantic": "semantic_processing",
     "reasoning": "reasoning_engine",
-    "utility":   "utility_support",
-    "safety":    "safety_guard",
-    "math":      "math_operator",
+    "utility": "utility_support",
+    "safety": "safety_guard",
+    "math": "math_operator",
 }
 
 # ── Cluster detection patterns ─────────────────────────────────────────────────
 # Each cluster maps to a set of keyword signals (checked against function names,
 # class names, imports, docstrings — all lowercased).
 CLUSTER_SIGNALS: dict[str, list[str]] = {
-    "agent_runtime":          ["agent", "nexus", "dispatch", "start_agent", "boot", "lifecycle"],
-    "planning":               ["plan", "goal", "task", "packet", "schedule", "objective"],
-    "memory_access":          ["memory", "catalog", "store", "retriev", "cache", "knowledge"],
-    "learning":               ["learn", "train", "adapt", "gradient", "improve", "self_improv"],
-    "reasoning_inference":    ["infer", "syllog", "bayes", "probabilistic", "symbolic", "logic", "arp"],
-    "semantic_interpretation":["semantic", "ontol", "embed", "vector", "meaning", "interpret", "token"],
-    "tool_interface":         ["tool", "provider", "llm", "openai", "llama", "adapter", "api"],
-    "validation_guard":       ["valid", "guard", "safety", "attestat", "monitor", "audit", "hardening"],
-    "numerical_compute":      ["math", "numeric", "bijection", "tensor", "fractal", "modal", "vector"],
-    "support_services":       ["util", "hash", "time", "resource", "health", "maintenance", "log"],
+    "agent_runtime": ["agent", "nexus", "dispatch", "start_agent", "boot", "lifecycle"],
+    "planning": ["plan", "goal", "task", "packet", "schedule", "objective"],
+    "memory_access": ["memory", "catalog", "store", "retriev", "cache", "knowledge"],
+    "learning": ["learn", "train", "adapt", "gradient", "improve", "self_improv"],
+    "reasoning_inference": [
+        "infer",
+        "syllog",
+        "bayes",
+        "probabilistic",
+        "symbolic",
+        "logic",
+        "arp",
+    ],
+    "semantic_interpretation": [
+        "semantic",
+        "ontol",
+        "embed",
+        "vector",
+        "meaning",
+        "interpret",
+        "token",
+    ],
+    "tool_interface": ["tool", "provider", "llm", "openai", "llama", "adapter", "api"],
+    "validation_guard": [
+        "valid",
+        "guard",
+        "safety",
+        "attestat",
+        "monitor",
+        "audit",
+        "hardening",
+    ],
+    "numerical_compute": [
+        "math",
+        "numeric",
+        "bijection",
+        "tensor",
+        "fractal",
+        "modal",
+        "vector",
+    ],
+    "support_services": [
+        "util",
+        "hash",
+        "time",
+        "resource",
+        "health",
+        "maintenance",
+        "log",
+    ],
 }
 
 # Ordered for tie-breaking: first match wins
@@ -169,16 +213,40 @@ def _parse_module(path: Path) -> dict:
 
     # Derive keywords from identifiers and docstrings
     id_tokens = set(
-        re.findall(r"[a-z][a-z0-9_]*", " ".join(
-            result["functions"] + result["classes"] + result["imports"]
-        ).lower())
+        re.findall(
+            r"[a-z][a-z0-9_]*",
+            " ".join(
+                result["functions"] + result["classes"] + result["imports"]
+            ).lower(),
+        )
     )
     doc_tokens = set(
         re.findall(r"[a-z][a-z0-9_]*", " ".join(result["docstrings"]).lower())
     )
-    stop = {"self", "cls", "args", "kwargs", "none", "true", "false",
-            "return", "pass", "import", "from", "def", "class", "and",
-            "the", "for", "with", "not", "that", "this", "are", "used"}
+    stop = {
+        "self",
+        "cls",
+        "args",
+        "kwargs",
+        "none",
+        "true",
+        "false",
+        "return",
+        "pass",
+        "import",
+        "from",
+        "def",
+        "class",
+        "and",
+        "the",
+        "for",
+        "with",
+        "not",
+        "that",
+        "this",
+        "are",
+        "used",
+    }
     result["keywords"] = sorted((id_tokens | doc_tokens) - stop)[:40]
 
     return result
@@ -186,32 +254,35 @@ def _parse_module(path: Path) -> dict:
 
 # ── Cluster assignment ─────────────────────────────────────────────────────────
 def _assign_cluster(meta: dict, category: str, stem: str) -> str:
-    haystack = " ".join([
-        stem, category,
-        " ".join(meta["functions"]),
-        " ".join(meta["classes"]),
-        " ".join(meta["imports"]),
-        " ".join(meta["docstrings"]),
-    ]).lower()
+    haystack = " ".join(
+        [
+            stem,
+            category,
+            " ".join(meta["functions"]),
+            " ".join(meta["classes"]),
+            " ".join(meta["imports"]),
+            " ".join(meta["docstrings"]),
+        ]
+    ).lower()
 
     best_cluster = None
-    best_score   = 0
+    best_score = 0
     for cluster in CLUSTER_ORDER:
         signals = CLUSTER_SIGNALS[cluster]
-        score   = sum(1 for s in signals if s in haystack)
+        score = sum(1 for s in signals if s in haystack)
         if score > best_score:
-            best_score   = score
+            best_score = score
             best_cluster = cluster
 
     # Fallback: role-based default
     if best_cluster is None or best_score == 0:
         fallback = {
-            "agent":     "agent_runtime",
-            "semantic":  "semantic_interpretation",
+            "agent": "agent_runtime",
+            "semantic": "semantic_interpretation",
             "reasoning": "reasoning_inference",
-            "utility":   "support_services",
-            "safety":    "validation_guard",
-            "math":      "numerical_compute",
+            "utility": "support_services",
+            "safety": "validation_guard",
+            "math": "numerical_compute",
         }
         best_cluster = fallback.get(category, "support_services")
 
@@ -230,7 +301,7 @@ def _load_packet_data() -> dict[str, dict]:
     for pkt in packets:
         for stem in pkt.get("modules", []):
             stem_map[stem] = {
-                "packet_id":   pkt["packet_id"],
+                "packet_id": pkt["packet_id"],
                 "packet_class": pkt["classification"],
                 "external_deps": pkt.get("external_dependencies", []),
             }
@@ -240,12 +311,13 @@ def _load_packet_data() -> dict[str, dict]:
 # ── Compatibility tags ──────────────────────────────────────────────────────────
 _COMPAT_RULES = {
     "reasoning": ["symbolic", "probabilistic", "formal"],
-    "agent":     ["stateful", "orchestrated", "goal_driven"],
-    "semantic":  ["embedded", "tokenized", "ontological"],
-    "utility":   ["stateless", "reusable", "support"],
-    "safety":    ["constrained", "audited", "monitored"],
-    "math":      ["deterministic", "numeric", "algebraic"],
+    "agent": ["stateful", "orchestrated", "goal_driven"],
+    "semantic": ["embedded", "tokenized", "ontological"],
+    "utility": ["stateless", "reusable", "support"],
+    "safety": ["constrained", "audited", "monitored"],
+    "math": ["deterministic", "numeric", "algebraic"],
 }
+
 
 def _compat_tags(category: str, cluster: str, meta: dict) -> list[str]:
     tags = list(_COMPAT_RULES.get(category, []))
@@ -282,28 +354,28 @@ def run() -> None:
         print(f"  {category:12s}: {len(py_files)} modules")
         for py_file in py_files:
             af_counter += 1
-            af_id  = f"AF_{af_counter:04d}"
-            stem   = py_file.stem
-            meta   = _parse_module(py_file)
-            pkt    = packet_lookup.get(stem, {})
+            af_id = f"AF_{af_counter:04d}"
+            stem = py_file.stem
+            meta = _parse_module(py_file)
+            pkt = packet_lookup.get(stem, {})
             cluster = _assign_cluster(meta, category, stem)
-            compat  = _compat_tags(category, cluster, meta)
+            compat = _compat_tags(category, cluster, meta)
 
             entry = {
-                "af_id":              af_id,
-                "module_name":        py_file.name,
-                "stem":               stem,
-                "file_path":          str(py_file.relative_to(REPO_ROOT)),
-                "category":           category,
-                "runtime_role":       runtime_role,
-                "cluster":            cluster,
-                "packet_id":          pkt.get("packet_id", ""),
-                "packet_class":       pkt.get("packet_class", ""),
-                "imports":            meta["imports"],
-                "functions":          meta["functions"],
-                "classes":            meta["classes"],
-                "keywords":           meta["keywords"],
-                "dependencies":       pkt.get("external_deps", []),
+                "af_id": af_id,
+                "module_name": py_file.name,
+                "stem": stem,
+                "file_path": str(py_file.relative_to(REPO_ROOT)),
+                "category": category,
+                "runtime_role": runtime_role,
+                "cluster": cluster,
+                "packet_id": pkt.get("packet_id", ""),
+                "packet_class": pkt.get("packet_class", ""),
+                "imports": meta["imports"],
+                "functions": meta["functions"],
+                "classes": meta["classes"],
+                "keywords": meta["keywords"],
+                "dependencies": pkt.get("external_deps", []),
                 "compatibility_tags": compat,
             }
             af_entries.append(entry)
@@ -334,58 +406,73 @@ def run() -> None:
         role_votes: dict[str, int] = defaultdict(int)
         for m in members:
             role_votes[m["runtime_role"]] += 1
-        primary_role = max(role_votes, key=role_votes.get)
+        primary_role = max(role_votes, key=lambda k: role_votes[k])
 
         # Capability tags: union of all member compat tags
-        capability_tags = sorted(set(
-            tag for m in members for tag in m["compatibility_tags"]
-        ))
+        capability_tags = sorted(
+            set(tag for m in members for tag in m["compatibility_tags"])
+        )
 
         print(f"  {cluster_name:30s}: {len(members)} modules")
-        cluster_entries.append({
-            "cluster_id":        f"CLUSTER_{cluster_counter:03d}",
-            "cluster_name":      cluster_name,
-            "runtime_operation": cluster_name.replace("_", " "),
-            "primary_role":      primary_role,
-            "module_count":      len(members),
-            "modules":           [m["af_id"] for m in members],
-            "capability_tags":   capability_tags,
-        })
+        cluster_entries.append(
+            {
+                "cluster_id": f"CLUSTER_{cluster_counter:03d}",
+                "cluster_name": cluster_name,
+                "runtime_operation": cluster_name.replace("_", " "),
+                "primary_role": primary_role,
+                "module_count": len(members),
+                "modules": [m["af_id"] for m in members],
+                "capability_tags": capability_tags,
+            }
+        )
 
     # ── Step 4: Build master index ────────────────────────────────────────────
     print("\n=== STEP 4: MASTER INDEX ===")
 
     master_index = {
-        "schema_version":    "1.0.0",
-        "generated_at":      datetime.now(timezone.utc).isoformat(),
-        "source_directory":  str(AF_ROOT.relative_to(REPO_ROOT)),
-        "total_af_modules":  len(af_entries),
-        "total_clusters":    len(cluster_entries),
-        "runtime_roles":     {role: len(ids) for role, ids in sorted(runtime_roles_map.items())},
-        "clusters_index":    [
-            {"cluster_id": c["cluster_id"], "cluster_name": c["cluster_name"],
-             "module_count": c["module_count"]} for c in cluster_entries
+        "schema_version": "1.0.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_directory": str(AF_ROOT.relative_to(REPO_ROOT)),
+        "total_af_modules": len(af_entries),
+        "total_clusters": len(cluster_entries),
+        "runtime_roles": {
+            role: len(ids) for role, ids in sorted(runtime_roles_map.items())
+        },
+        "clusters_index": [
+            {
+                "cluster_id": c["cluster_id"],
+                "cluster_name": c["cluster_name"],
+                "module_count": c["module_count"],
+            }
+            for c in cluster_entries
         ],
-        "modules_index":     [
-            {"af_id": e["af_id"], "module_name": e["module_name"],
-             "category": e["category"], "runtime_role": e["runtime_role"],
-             "cluster": e["cluster"]} for e in af_entries
+        "modules_index": [
+            {
+                "af_id": e["af_id"],
+                "module_name": e["module_name"],
+                "category": e["category"],
+                "runtime_role": e["runtime_role"],
+                "cluster": e["cluster"],
+            }
+            for e in af_entries
         ],
     }
 
     af_runtime_roles_doc = {
         "schema_version": "1.0.0",
-        "generated_at":   datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "role_definitions": {
-            "agent_control":        "Modules that govern agent lifecycle, orchestration, and dispatch",
-            "semantic_processing":  "Modules for token encoding, ontology mapping, and meaning extraction",
-            "reasoning_engine":     "Modules implementing inference, logical deduction, and probabilistic reasoning",
-            "utility_support":      "Stateless helper modules providing shared services",
-            "safety_guard":         "Modules enforcing constraints, auditing, and integrity checks",
-            "math_operator":        "Modules performing deterministic numeric and algebraic computation",
+            "agent_control": "Modules that govern agent lifecycle, orchestration, and dispatch",
+            "semantic_processing": "Modules for token encoding, ontology mapping, and meaning extraction",
+            "reasoning_engine": "Modules implementing inference, logical deduction, and probabilistic reasoning",
+            "utility_support": "Stateless helper modules providing shared services",
+            "safety_guard": "Modules enforcing constraints, auditing, and integrity checks",
+            "math_operator": "Modules performing deterministic numeric and algebraic computation",
         },
         "assignment": {e["af_id"]: e["runtime_role"] for e in af_entries},
-        "role_counts": {role: len(ids) for role, ids in sorted(runtime_roles_map.items())},
+        "role_counts": {
+            role: len(ids) for role, ids in sorted(runtime_roles_map.items())
+        },
     }
 
     # ── Step 5: Validate ──────────────────────────────────────────────────────
@@ -404,9 +491,9 @@ def run() -> None:
     # ── Step 6: Write output files ────────────────────────────────────────────
     print("\n=== STEP 6: WRITE OUTPUT FILES ===")
 
-    out_master      = DRAC_AF_OUT / "af_master_index.json"
-    out_clusters    = DRAC_AF_OUT / "af_cluster_index.json"
-    out_roles       = DRAC_AF_OUT / "af_runtime_roles.json"
+    out_master = DRAC_AF_OUT / "af_master_index.json"
+    out_clusters = DRAC_AF_OUT / "af_cluster_index.json"
+    out_roles = DRAC_AF_OUT / "af_runtime_roles.json"
 
     with open(out_master, "w") as f:
         json.dump(master_index, f, indent=2)

@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -101,6 +102,7 @@ violations_by_rule = {f"Rule {i+1}": [] for i in range(4)}
 violation_records = []
 files_scanned = set()
 
+
 # Helper: check if path contains /mathematics/
 def is_mathematics_path(path):
     return "/mathematics/" in str(path).replace(os.sep, "/")
@@ -130,22 +132,30 @@ def scan_file(file_path):
                 if not mod.startswith(ALLOWED_ROOT):
                     # Rule 2: Forbidden roots
                     if any(mod.startswith(root) for root in FORBIDDEN_ROOTS):
-                        violations_by_rule["Rule 2"].append((rel_path, node.lineno, mod))
-                        violation_records.append({
-                            "rule": "Rule_2",
-                            "file": rel_path,
-                            "line": node.lineno,
-                            "import": mod
-                        })
+                        violations_by_rule["Rule 2"].append(
+                            (rel_path, node.lineno, mod)
+                        )
+                        violation_records.append(
+                            {
+                                "rule": "Rule_2",
+                                "file": rel_path,
+                                "line": node.lineno,
+                                "import": mod,
+                            }
+                        )
                     # Rule 3: Bare prefix
                     elif any(mod.startswith(prefix) for prefix in BARE_PREFIXES):
-                        violations_by_rule["Rule 3"].append((rel_path, node.lineno, mod))
-                        violation_records.append({
-                            "rule": "Rule_3",
-                            "file": rel_path,
-                            "line": node.lineno,
-                            "import": mod
-                        })
+                        violations_by_rule["Rule 3"].append(
+                            (rel_path, node.lineno, mod)
+                        )
+                        violation_records.append(
+                            {
+                                "rule": "Rule_3",
+                                "file": rel_path,
+                                "line": node.lineno,
+                                "import": mod,
+                            }
+                        )
         elif isinstance(node, ast.ImportFrom):
             mod = node.module or ""
             # Rule 1: Only LOGOS_SYSTEM allowed as internal root
@@ -153,30 +163,36 @@ def scan_file(file_path):
                 # Rule 2: Forbidden roots
                 if any(mod.startswith(root) for root in FORBIDDEN_ROOTS):
                     violations_by_rule["Rule 2"].append((rel_path, node.lineno, mod))
-                    violation_records.append({
-                        "rule": "Rule_2",
-                        "file": rel_path,
-                        "line": node.lineno,
-                        "import": mod
-                    })
+                    violation_records.append(
+                        {
+                            "rule": "Rule_2",
+                            "file": rel_path,
+                            "line": node.lineno,
+                            "import": mod,
+                        }
+                    )
                 # Rule 3: Bare prefix
                 elif any(mod.startswith(prefix) for prefix in BARE_PREFIXES):
                     violations_by_rule["Rule 3"].append((rel_path, node.lineno, mod))
-                    violation_records.append({
-                        "rule": "Rule_3",
-                        "file": rel_path,
-                        "line": node.lineno,
-                        "import": mod
-                    })
+                    violation_records.append(
+                        {
+                            "rule": "Rule_3",
+                            "file": rel_path,
+                            "line": node.lineno,
+                            "import": mod,
+                        }
+                    )
             # Rule 4: import *
             if node.names and any(alias.name == "*" for alias in node.names):
                 violations_by_rule["Rule 4"].append((rel_path, node.lineno, "import *"))
-                violation_records.append({
-                    "rule": "Rule_4",
-                    "file": rel_path,
-                    "line": node.lineno,
-                    "import": "import *"
-                })
+                violation_records.append(
+                    {
+                        "rule": "Rule_4",
+                        "file": rel_path,
+                        "line": node.lineno,
+                        "import": "import *",
+                    }
+                )
     # Rule 4: Prohibited patterns in source
     for pattern in PROHIBITED_PATTERNS:
         idx = source.find(pattern)
@@ -184,12 +200,14 @@ def scan_file(file_path):
             # Find line number
             line_num = source[:idx].count("\n") + 1
             violations_by_rule["Rule 4"].append((rel_path, line_num, pattern))
-            violation_records.append({
-                "rule": "Rule_4",
-                "file": rel_path,
-                "line": line_num,
-                "import": pattern
-            })
+            violation_records.append(
+                {
+                    "rule": "Rule_4",
+                    "file": rel_path,
+                    "line": line_num,
+                    "import": pattern,
+                }
+            )
     # Rule 4: Prohibited net modules in /mathematics/
     if is_mathematics_path(file_path):
         for netmod in PROHIBITED_NET_MODULES:
@@ -197,13 +215,17 @@ def scan_file(file_path):
                 idx = source.find(pattern)
                 if idx != -1:
                     line_num = source[:idx].count("\n") + 1
-                    violations_by_rule["Rule 4"].append((rel_path, line_num, f"network import: {netmod}"))
-                    violation_records.append({
-                        "rule": "Rule_4",
-                        "file": rel_path,
-                        "line": line_num,
-                        "import": f"network import: {netmod}"
-                    })
+                    violations_by_rule["Rule 4"].append(
+                        (rel_path, line_num, f"network import: {netmod}")
+                    )
+                    violation_records.append(
+                        {
+                            "rule": "Rule_4",
+                            "file": rel_path,
+                            "line": line_num,
+                            "import": f"network import: {netmod}",
+                        }
+                    )
 
 
 def main():
@@ -217,16 +239,18 @@ def main():
         scan_file(file_path)
 
     total_violations = len(violation_records)
-    violations_by_rule_count = {k.replace(" ", "_"): len(v) for k, v in violations_by_rule.items()}
+    violations_by_rule_count = {
+        k.replace(" ", "_"): len(v) for k, v in violations_by_rule.items()
+    }
 
     # Prepare JSON report
     report = {
         "summary": {
             "total_files_scanned": len(files_scanned),
             "total_violations": total_violations,
-            "violations_by_rule": violations_by_rule_count
+            "violations_by_rule": violations_by_rule_count,
         },
-        "violations": violation_records
+        "violations": violation_records,
     }
 
     # Write JSON report
@@ -234,17 +258,6 @@ def main():
     reports_dir.mkdir(exist_ok=True)
     report_path = reports_dir / "Import_Linter_Report.json"
     import json
-
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
-OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
-
-
-def write_report(name: str, data) -> None:
-    path = OUTPUT_ROOT / name
-    with open(path, "w", encoding="utf-8") as f:
-        import json as _json
-        _json.dump(data, f, indent=2)
-    print(f"  Report written: {path}")
 
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
@@ -259,6 +272,7 @@ def write_report(name: str, data) -> None:
     else:
         print("No import violations found.")
         sys.exit(0)
+
 
 if __name__ == "__main__":
     main()

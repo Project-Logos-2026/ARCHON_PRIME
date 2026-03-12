@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -64,13 +65,13 @@ READ_ONLY
 
 import ast
 import json
-import os
 import re
-import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -78,6 +79,7 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
@@ -86,26 +88,67 @@ def write_report(name: str, data) -> None:
 # CONFIG
 # ---------------------------------------------------------------------------
 
-TARGET_DIR = Path("/workspaces/ARCHON_PRIME/WORKFLOW_TARGET_PROCESSING/INCOMING_TARGETS/TARGETS")
+TARGET_DIR = Path(
+    "/workspaces/ARCHON_PRIME/WORKFLOW_TARGET_PROCESSING/INCOMING_TARGETS/TARGETS"
+)
 OUT_DIR = Path("/workspaces/ARCHON_PRIME/Application_Function_Extraction")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 EXCLUDE_STEMS = {"test", "audit", "nexus", "boot"}
 
 SEMANTIC_VERBS = {
-    "infer", "translate", "predict", "gate", "inject", "compose",
-    "reconstruct", "score", "select", "validate", "normalize",
-    "orchestrate", "bootstrap", "compile", "execute", "resolve",
-    "apply", "determine", "analyze", "evaluate", "dispatch",
-    "transform", "generate", "compute", "build", "derive",
-    "process", "parse", "encode", "decode", "route", "rank",
-    "classify", "detect", "extract", "map", "merge", "plan",
-    "optimize", "schedule", "emit", "filter", "check",
+    "infer",
+    "translate",
+    "predict",
+    "gate",
+    "inject",
+    "compose",
+    "reconstruct",
+    "score",
+    "select",
+    "validate",
+    "normalize",
+    "orchestrate",
+    "bootstrap",
+    "compile",
+    "execute",
+    "resolve",
+    "apply",
+    "determine",
+    "analyze",
+    "evaluate",
+    "dispatch",
+    "transform",
+    "generate",
+    "compute",
+    "build",
+    "derive",
+    "process",
+    "parse",
+    "encode",
+    "decode",
+    "route",
+    "rank",
+    "classify",
+    "detect",
+    "extract",
+    "map",
+    "merge",
+    "plan",
+    "optimize",
+    "schedule",
+    "emit",
+    "filter",
+    "check",
 }
 
 SUBSYSTEM_PATTERNS = {
-    "RUNTIME_EXECUTION_CORE": re.compile(r"RUNTIME_EXECUTION_CORE|ARP|MTP|SCP|LP_Core|Logos_Core", re.I),
-    "RUNTIME_OPPERATIONS_CORE": re.compile(r"RUNTIME_OPPERATIONS_CORE|CSP|CSP_Core", re.I),
+    "RUNTIME_EXECUTION_CORE": re.compile(
+        r"RUNTIME_EXECUTION_CORE|ARP|MTP|SCP|LP_Core|Logos_Core", re.I
+    ),
+    "RUNTIME_OPPERATIONS_CORE": re.compile(
+        r"RUNTIME_OPPERATIONS_CORE|CSP|CSP_Core", re.I
+    ),
     "RUNTIME_SHARED_UTILS": re.compile(r"RUNTIME_SHARED_UTILS|shared_utils", re.I),
     "MTP_Core": re.compile(r"\bMTP\b|MTP_Core|meaning_translation", re.I),
     "CSP_Core": re.compile(r"\bCSP\b|CSP_Core|cognitive_state", re.I),
@@ -121,36 +164,146 @@ SUBSYSTEM_PATTERNS = {
 }
 
 ROLE_SIGNALS = {
-    "semantic inference": ["infer", "inference", "bayesian", "belief", "abductive", "deductive", "inductive"],
-    "translation engine": ["translate", "translation", "mtp", "language", "encode", "decode"],
-    "runtime orchestration": ["orchestrate", "orchestration", "pipeline", "runner", "coordinator", "dispatch"],
+    "semantic inference": [
+        "infer",
+        "inference",
+        "bayesian",
+        "belief",
+        "abductive",
+        "deductive",
+        "inductive",
+    ],
+    "translation engine": [
+        "translate",
+        "translation",
+        "mtp",
+        "language",
+        "encode",
+        "decode",
+    ],
+    "runtime orchestration": [
+        "orchestrate",
+        "orchestration",
+        "pipeline",
+        "runner",
+        "coordinator",
+        "dispatch",
+    ],
     "state manager": ["state", "persist", "memory", "ledger", "cache", "session"],
     "prediction engine": ["predict", "predictor", "forecast", "temporal", "causal"],
-    "safety guard": ["gate", "safety", "validate", "validate", "guard", "constraint", "ethics", "policy"],
-    "analysis engine": ["analyze", "analysis", "analyzer", "score", "metric", "evaluate"],
-    "utility library": ["util", "helper", "wrapper", "adapter", "schema", "type", "constant"],
-    "reasoning engine": ["reason", "reasoning", "logic", "modal", "proof", "axiom", "coherence"],
+    "safety guard": [
+        "gate",
+        "safety",
+        "validate",
+        "validate",
+        "guard",
+        "constraint",
+        "ethics",
+        "policy",
+    ],
+    "analysis engine": [
+        "analyze",
+        "analysis",
+        "analyzer",
+        "score",
+        "metric",
+        "evaluate",
+    ],
+    "utility library": [
+        "util",
+        "helper",
+        "wrapper",
+        "adapter",
+        "schema",
+        "type",
+        "constant",
+    ],
+    "reasoning engine": [
+        "reason",
+        "reasoning",
+        "logic",
+        "modal",
+        "proof",
+        "axiom",
+        "coherence",
+    ],
     "identity/agent core": ["agent", "identity", "consciousness", "principal", "sign"],
 }
 
 SALVAGE_CRITERIA_VERBS = {
-    "infer", "translate", "predict", "gate", "inject", "compose",
-    "reconstruct", "score", "select", "validate", "normalize",
-    "orchestrate", "compile", "evaluate", "dispatch", "transform",
-    "compute", "derive", "rank", "classify", "optimize", "filter",
+    "infer",
+    "translate",
+    "predict",
+    "gate",
+    "inject",
+    "compose",
+    "reconstruct",
+    "score",
+    "select",
+    "validate",
+    "normalize",
+    "orchestrate",
+    "compile",
+    "evaluate",
+    "dispatch",
+    "transform",
+    "compute",
+    "derive",
+    "rank",
+    "classify",
+    "optimize",
+    "filter",
 }
 
 # Subsystem keywords for cluster assignment
 CLUSTER_KEYWORDS = {
-    "arp_reasoning": ["arp", "reasoning", "abductive", "deductive", "inductive", "bayesian", "meta_reason"],
-    "mtp_translation": ["mtp", "translation", "translate", "language", "encode", "decode", "semantic"],
+    "arp_reasoning": [
+        "arp",
+        "reasoning",
+        "abductive",
+        "deductive",
+        "inductive",
+        "bayesian",
+        "meta_reason",
+    ],
+    "mtp_translation": [
+        "mtp",
+        "translation",
+        "translate",
+        "language",
+        "encode",
+        "decode",
+        "semantic",
+    ],
     "csp_memory": ["csp", "memory", "state", "persist", "recall", "fractal_memory"],
-    "agent_identity": ["agent", "identity", "consciousness", "principal", "sign", "axiom_system"],
+    "agent_identity": [
+        "agent",
+        "identity",
+        "consciousness",
+        "principal",
+        "sign",
+        "axiom_system",
+    ],
     "pxl_privation": ["pxl", "privation", "gate", "filter", "privation_classifier"],
     "bdn_mvs": ["bdn", "banach", "mvs", "multi_modal", "fractal_orbit"],
     "tooling": ["tool", "adapter", "wrapper", "export", "introspection", "invention"],
-    "safety_validation": ["safety", "validate", "constraint", "ethics", "policy", "guard", "coherence"],
-    "orchestration": ["orchestrat", "pipeline", "runner", "coordinator", "dispatch", "scheduler"],
+    "safety_validation": [
+        "safety",
+        "validate",
+        "constraint",
+        "ethics",
+        "policy",
+        "guard",
+        "coherence",
+    ],
+    "orchestration": [
+        "orchestrat",
+        "pipeline",
+        "runner",
+        "coordinator",
+        "dispatch",
+        "scheduler",
+    ],
     "prediction_temporal": ["predict", "temporal", "causal", "time_model", "forecast"],
     "utility": ["util", "helper", "schema", "type", "constant", "loader", "registry"],
     "rge_genesis": ["rge", "genesis", "radial", "topology", "divergence"],
@@ -161,6 +314,7 @@ CLUSTER_KEYWORDS = {
 # ---------------------------------------------------------------------------
 # HELPER — exclusion
 # ---------------------------------------------------------------------------
+
 
 def should_exclude(path: Path) -> bool:
     stem = path.stem.lower()
@@ -174,12 +328,15 @@ def should_exclude(path: Path) -> bool:
 # STEP 1+2 — FILE DISCOVERY + AST PARSING
 # ---------------------------------------------------------------------------
 
+
 class ModuleAnalysis:
     def __init__(self, path: Path):
         self.path = path
         self.rel = str(path.relative_to(TARGET_DIR))
         self.module_name = path.stem
-        self.subsystem = path.parent.name  # Agents / Memory / Reasoning / Tooling / Utilities
+        self.subsystem = (
+            path.parent.name
+        )  # Agents / Memory / Reasoning / Tooling / Utilities
         self.parse_error = None
 
         # Extraction results
@@ -248,22 +405,26 @@ class ModuleAnalysis:
                         m_dec = [self._decorator_name(d) for d in item.decorator_list]
                         args = self._extract_args(item)
                         ret = self._annotation_str(item.returns)
-                        methods.append({
-                            "name": item.name,
-                            "docstring": m_doc,
-                            "args": args,
-                            "return_type": ret,
-                            "decorators": m_dec,
-                            "line": item.lineno,
-                        })
+                        methods.append(
+                            {
+                                "name": item.name,
+                                "docstring": m_doc,
+                                "args": args,
+                                "return_type": ret,
+                                "decorators": m_dec,
+                                "line": item.lineno,
+                            }
+                        )
                         self.decorators.extend(m_dec)
-                self.classes.append({
-                    "name": node.name,
-                    "docstring": cls_doc,
-                    "decorators": decs,
-                    "methods": methods,
-                    "line": node.lineno,
-                })
+                self.classes.append(
+                    {
+                        "name": node.name,
+                        "docstring": cls_doc,
+                        "decorators": decs,
+                        "methods": methods,
+                        "line": node.lineno,
+                    }
+                )
                 self.decorators.extend(decs)
 
             # Top-level functions
@@ -273,15 +434,17 @@ class ModuleAnalysis:
                 decs = [self._decorator_name(d) for d in node.decorator_list]
                 args = self._extract_args(node)
                 ret = self._annotation_str(node.returns)
-                self.functions.append({
-                    "name": node.name,
-                    "docstring": fn_doc,
-                    "args": args,
-                    "return_type": ret,
-                    "decorators": decs,
-                    "line": node.lineno,
-                    "is_async": isinstance(node, ast.AsyncFunctionDef),
-                })
+                self.functions.append(
+                    {
+                        "name": node.name,
+                        "docstring": fn_doc,
+                        "args": args,
+                        "return_type": ret,
+                        "decorators": decs,
+                        "line": node.lineno,
+                        "is_async": isinstance(node, ast.AsyncFunctionDef),
+                    }
+                )
                 self.decorators.extend(decs)
 
             # Constants (top-level assignments to ALL_CAPS or typed)
@@ -364,6 +527,7 @@ class ModuleAnalysis:
 # STEPS 3–6 — SEMANTIC ANALYSIS, DEPENDENCY, CALL GRAPH, PURPOSE INFERENCE
 # ---------------------------------------------------------------------------
 
+
 def extract_signal_keywords(analysis: ModuleAnalysis) -> dict:
     text_sources = [
         analysis.module_doc,
@@ -373,7 +537,7 @@ def extract_signal_keywords(analysis: ModuleAnalysis) -> dict:
         " ".join(analysis.comments[:50]),
     ]
     combined = " ".join(text_sources).lower()
-    words = re.findall(r'\b[a-z_][a-z0-9_]*\b', combined)
+    words = re.findall(r"\b[a-z_][a-z0-9_]*\b", combined)
 
     freq = Counter()
     for word in words:
@@ -398,9 +562,11 @@ def classify_subsystems(analysis: ModuleAnalysis) -> list:
 
 def infer_runtime_role(analysis: ModuleAnalysis, signals: dict) -> str:
     combined = (
-        analysis.module_name.lower() + " " +
-        analysis.module_doc.lower() + " " +
-        " ".join(signals.keys())
+        analysis.module_name.lower()
+        + " "
+        + analysis.module_doc.lower()
+        + " "
+        + " ".join(signals.keys())
     )
     best_role = "utility library"
     best_score = 0
@@ -451,6 +617,7 @@ def extract_exports(analysis: ModuleAnalysis) -> list:
 # STEP 7 — SALVAGEABLE FUNCTION DETECTION
 # ---------------------------------------------------------------------------
 
+
 def assess_salvageability(fn: dict, module_analysis: ModuleAnalysis) -> dict | None:
     name = fn["name"].lower()
     doc = fn.get("docstring", "").lower()
@@ -495,7 +662,9 @@ def assess_salvageability(fn: dict, module_analysis: ModuleAnalysis) -> dict | N
     }
 
 
-def assess_method_salvageability(method: dict, cls: dict, module_analysis: ModuleAnalysis) -> dict | None:
+def assess_method_salvageability(
+    method: dict, cls: dict, module_analysis: ModuleAnalysis
+) -> dict | None:
     # Same as function but qualified with class name
     fn_like = dict(method)
     fn_like["name"] = f"{cls['name']}.{method['name']}"
@@ -515,22 +684,50 @@ def assess_subsystem_compat(analysis: ModuleAnalysis) -> list:
 # ---------------------------------------------------------------------------
 
 CORE_PATTERNS = {
-    "RUNTIME_EXECUTION_CORE": ["arp", "reasoning", "mtp", "translate", "pxl", "modal", "mvs", "scp", "predict"],
+    "RUNTIME_EXECUTION_CORE": [
+        "arp",
+        "reasoning",
+        "mtp",
+        "translate",
+        "pxl",
+        "modal",
+        "mvs",
+        "scp",
+        "predict",
+    ],
     "RUNTIME_OPPERATIONS_CORE": ["csp", "memory", "state", "smp", "persist", "recall"],
-    "AGENT_SYSTEM": ["agent", "identity", "principal", "consciousness", "sign", "axiom"],
+    "AGENT_SYSTEM": [
+        "agent",
+        "identity",
+        "principal",
+        "consciousness",
+        "sign",
+        "axiom",
+    ],
     "DRAC": ["gate", "validate", "safety", "constraint", "policy", "ethics", "guard"],
     "RGE": ["rge", "genesis", "radial", "topology", "divergence", "commutation"],
     "IEL": ["iel", "epistemic", "knowledge", "catalog", "ontoprops"],
     "TOOLING": ["tool", "adapter", "wrapper", "export", "introspect", "invention"],
-    "UTILITY": ["util", "helper", "schema", "type", "constant", "loader", "registry", "config"],
+    "UTILITY": [
+        "util",
+        "helper",
+        "schema",
+        "type",
+        "constant",
+        "loader",
+        "registry",
+        "config",
+    ],
 }
 
 
 def core_compatibility(analysis: ModuleAnalysis, signals: dict) -> list:
     combined = (
-        analysis.module_name.lower() + " " +
-        " ".join(analysis.imports).lower() + " " +
-        " ".join(signals.keys())
+        analysis.module_name.lower()
+        + " "
+        + " ".join(analysis.imports).lower()
+        + " "
+        + " ".join(signals.keys())
     )
     compat = []
     for core, kws in CORE_PATTERNS.items():
@@ -542,6 +739,7 @@ def core_compatibility(analysis: ModuleAnalysis, signals: dict) -> list:
 # ---------------------------------------------------------------------------
 # MAIN PIPELINE
 # ---------------------------------------------------------------------------
+
 
 def run():
     print("=" * 60)
@@ -642,12 +840,14 @@ def run():
         for core in compat:
             if core not in compat_hints:
                 compat_hints[core] = []
-            compat_hints[core].append({
-                "module": ma.rel,
-                "module_name": ma.module_name,
-                "staging_group": ma.path.parent.name,
-                "signal_keywords": list(signals.keys())[:8],
-            })
+            compat_hints[core].append(
+                {
+                    "module": ma.rel,
+                    "module_name": ma.module_name,
+                    "staging_group": ma.path.parent.name,
+                    "signal_keywords": list(signals.keys())[:8],
+                }
+            )
 
     out_compat = OUT_DIR / "core_compatibility_hints.json"
     out_compat.write_text(json.dumps(compat_hints, indent=2, ensure_ascii=False))
@@ -656,7 +856,15 @@ def run():
 
     # Step 11 — Salvage report
     print("\n=== STEP 11: SALVAGE REPORT ===")
-    _generate_report(analyses, to_analyze, excluded, profiles, salvageable, compat_hints, parse_errors)
+    _generate_report(
+        analyses,
+        to_analyze,
+        excluded,
+        profiles,
+        salvageable,
+        compat_hints,
+        parse_errors,
+    )
 
     print("\n" + "=" * 60)
     print("EXTRACTION COMPLETE")
@@ -670,14 +878,21 @@ def run():
     return profiles, salvageable, compat_hints
 
 
-def _generate_report(analyses, analyzed_files, excluded_files, profiles, salvageable, compat_hints, parse_errors):
+def _generate_report(
+    analyses,
+    analyzed_files,
+    excluded_files,
+    profiles,
+    salvageable,
+    compat_hints,
+    parse_errors,
+):
     # Aggregate metrics
     total_analyzed = len(analyses)
     total_excluded = len(excluded_files)
     total_functions = sum(p["function_count"] for p in profiles)
     total_class_methods = sum(
-        sum(len(cls["methods"]) for cls in a.classes)
-        for a in analyses
+        sum(len(cls["methods"]) for cls in a.classes) for a in analyses
     )
     total_detected = total_functions + total_class_methods
     total_salvageable = len(salvageable)
@@ -714,7 +929,7 @@ def _generate_report(analyses, analyzed_files, excluded_files, profiles, salvage
         "# ARCHON PRIME — Legacy Application Function Salvage Report",
         "**Generated:** 2026-03-10  ",
         "**Mode:** Static Analysis — Read-Only  ",
-        f"**Target:** `_Dev_Resources/STAGING/APPLICATION_FUNCTIONS`  ",
+        "**Target:** `_Dev_Resources/STAGING/APPLICATION_FUNCTIONS`  ",
         "",
         "---",
         "",

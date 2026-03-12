@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
-import json
 import argparse
-from pathlib import Path
+import json
 from collections import defaultdict
+from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -76,10 +79,14 @@ def write_report(name: str, data: dict) -> None:
 
 def group_by_prefix_depth(violations: list[dict], depth: int) -> dict:
     """Group violations by a prefix of exactly `depth` dot-separated segments."""
-    groups: dict[str, dict] = defaultdict(lambda: {"count": 0, "unique_files": set(), "sample_modules": []})
+    groups: dict[str, dict] = defaultdict(
+        lambda: {"count": 0, "unique_files": set(), "sample_modules": []}
+    )
 
     for v in violations:
-        module = v.get("module", "") or v.get("imported", "") or v.get("import", "") or ""
+        module = (
+            v.get("module", "") or v.get("imported", "") or v.get("import", "") or ""
+        )
         file_ = v.get("file", "") or v.get("source_file", "") or ""
         parts = module.split(".")
         prefix = ".".join(parts[:depth]) if module else "unknown"
@@ -87,7 +94,10 @@ def group_by_prefix_depth(violations: list[dict], depth: int) -> dict:
         groups[prefix]["count"] += 1
         if file_:
             groups[prefix]["unique_files"].add(file_)
-        if len(groups[prefix]["sample_modules"]) < 3 and module not in groups[prefix]["sample_modules"]:
+        if (
+            len(groups[prefix]["sample_modules"]) < 3
+            and module not in groups[prefix]["sample_modules"]
+        ):
             groups[prefix]["sample_modules"].append(module)
 
     return {
@@ -128,7 +138,9 @@ def main() -> None:
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    input_path = Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    input_path = (
+        Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    )
 
     if not input_path.exists():
         print(f"ERROR: Input file not found: {input_path}")
@@ -139,7 +151,9 @@ def main() -> None:
     if not violations and isinstance(data, list):
         violations = data
 
-    print(f"Grouping {len(violations)} violations at prefix depth={args.prefix_depth}...")
+    print(
+        f"Grouping {len(violations)} violations at prefix depth={args.prefix_depth}..."
+    )
     groups = group_by_prefix_depth(violations, args.prefix_depth)
 
     report = {

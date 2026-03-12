@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
-import json
 import argparse
-from pathlib import Path
+import json
 from collections import Counter
+from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -81,7 +84,12 @@ def extract_prefix_distribution(violations: list[dict], max_segments: int) -> di
     for depth in range(1, max_segments + 1):
         counter: Counter = Counter()
         for v in violations:
-            module = v.get("module", "") or v.get("imported", "") or v.get("import", "") or ""
+            module = (
+                v.get("module", "")
+                or v.get("imported", "")
+                or v.get("import", "")
+                or ""
+            )
             parts = module.split(".")
             prefix = ".".join(parts[:depth]) if len(parts) >= depth else module
             if prefix:
@@ -114,7 +122,9 @@ def main() -> None:
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    input_path = Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    input_path = (
+        Path(args.input) if Path(args.input).is_absolute() else repo_root / args.input
+    )
 
     if not input_path.exists():
         print(f"ERROR: Input file not found: {input_path}")
@@ -125,7 +135,9 @@ def main() -> None:
     if not violations and isinstance(data, list):
         violations = data
 
-    print(f"Extracting prefixes (up to {args.max_segments} segments) from {len(violations)} violations...")
+    print(
+        f"Extracting prefixes (up to {args.max_segments} segments) from {len(violations)} violations..."
+    )
     distribution = extract_prefix_distribution(violations, args.max_segments)
 
     report = {

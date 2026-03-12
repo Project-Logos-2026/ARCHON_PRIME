@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,12 +59,14 @@ safety_classification:
 READ_ONLY
 """
 
+import argparse
 import ast
 import json
-import argparse
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -74,7 +77,14 @@ def write_report(name: str, data: dict) -> None:
     print(f"  Report written: {path}")
 
 
-EXECUTION_NEXUS_PATTERNS = ("Execution", "Runtime", "Engine", "Core", "Dispatch", "Orchestrator")
+EXECUTION_NEXUS_PATTERNS = (
+    "Execution",
+    "Runtime",
+    "Engine",
+    "Core",
+    "Dispatch",
+    "Orchestrator",
+)
 BINDING_NEXUS_PATTERNS = ("Nexus", "Bridge", "Binding", "Router", "Gateway", "Relay")
 
 
@@ -85,7 +95,12 @@ def classify_module(filepath: Path, repo_root: Path) -> dict:
         source = filepath.read_text(encoding="utf-8", errors="replace")
         tree = ast.parse(source, filename=str(filepath))
     except SyntaxError as exc:
-        return {"path": rel, "classification": "PARSE_ERROR", "classes": [], "error": str(exc)}
+        return {
+            "path": rel,
+            "classification": "PARSE_ERROR",
+            "classes": [],
+            "error": str(exc),
+        }
 
     top_classes = [n.name for n in ast.walk(tree) if isinstance(n, ast.ClassDef)]
 

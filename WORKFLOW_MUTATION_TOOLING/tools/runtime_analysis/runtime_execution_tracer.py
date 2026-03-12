@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -58,13 +59,15 @@ safety_classification:
 READ_ONLY
 """
 
-import sys
-import json
 import argparse
+import json
 import runpy
+import sys
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -85,7 +88,11 @@ class ExecutionTracer:
 
     def trace_calls(self, frame, event: str, _arg):
         filename = frame.f_code.co_filename
-        qualname = frame.f_code.co_qualname if hasattr(frame.f_code, "co_qualname") else frame.f_code.co_name
+        qualname = (
+            frame.f_code.co_qualname
+            if hasattr(frame.f_code, "co_qualname")
+            else frame.f_code.co_name
+        )
 
         if self.target_prefix and self.target_prefix not in filename:
             return self.trace_calls  # keep tracing but don't record

@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -74,10 +75,9 @@ READ_ONLY
 
 import collections
 import json
-import math
 import sys
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 
@@ -87,10 +87,10 @@ REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
 ARTIFACT_DIR = REPO_ROOT / "ARCHON_RUNTIME_ANALYSIS"
 
 SOURCES = {
-    "dependency_graph":    ARTIFACT_DIR / "runtime_dependency_graph.json",
-    "symbol_imports":      ARTIFACT_DIR / "runtime_symbol_imports.json",
-    "surface_modules":     ARTIFACT_DIR / "runtime_surface_modules.json",
-    "deep_violations":     ARTIFACT_DIR / "runtime_deep_import_violations.json",
+    "dependency_graph": ARTIFACT_DIR / "runtime_dependency_graph.json",
+    "symbol_imports": ARTIFACT_DIR / "runtime_symbol_imports.json",
+    "surface_modules": ARTIFACT_DIR / "runtime_surface_modules.json",
+    "deep_violations": ARTIFACT_DIR / "runtime_deep_import_violations.json",
 }
 
 OUTPUT_DIR = REPO_ROOT / "_Reports" / "Runtime_Cluster_Analysis"
@@ -107,6 +107,7 @@ except ImportError as exc:
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
+
 
 def load_json(path: Path, label: str) -> object:
     if not path.exists():
@@ -160,6 +161,7 @@ def guess_layer(module: str) -> str:
 # STEP 1 — Load Artifacts
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def load_artifacts():
     print("\n[STEP 1] Loading source artifacts …")
     data = {}
@@ -172,6 +174,7 @@ def load_artifacts():
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 2 — Build Directed Graph
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def build_graph(dep_graph: dict) -> nx.DiGraph:
     print("\n[STEP 2] Building directed graph …")
@@ -188,7 +191,8 @@ def build_graph(dep_graph: dict) -> nx.DiGraph:
 # STEP 3 — Louvain Community Detection
 # ══════════════════════════════════════════════════════════════════════════════
 
-def detect_communities(G: nx.DiGraph) -> dict[str, int]:
+
+def detect_communities(G: nx.DiGraph) -> tuple[dict[str, int], list]:
     """
     Louvain works on undirected graphs. Convert, detect, then map back to
     cluster IDs sorted deterministically by dominant layer label.
@@ -229,6 +233,7 @@ def detect_communities(G: nx.DiGraph) -> dict[str, int]:
 # STEP 4 — Strongly Connected Components
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def find_sccs(G: nx.DiGraph) -> list[list[str]]:
     print("\n[STEP 4] Finding strongly connected components (SCCs) …")
     sccs = list(nx.strongly_connected_components(G))
@@ -244,6 +249,7 @@ def find_sccs(G: nx.DiGraph) -> list[list[str]]:
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 5 — Betweenness Centrality (Bridge Modules)
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def compute_betweenness(G: nx.DiGraph) -> dict[str, float]:
     print("\n[STEP 5] Computing betweenness centrality …")
@@ -261,6 +267,7 @@ def compute_betweenness(G: nx.DiGraph) -> dict[str, float]:
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 6 — Cluster Boundary & Density Analysis
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def cluster_boundary_analysis(
     G: nx.DiGraph,
@@ -297,25 +304,29 @@ def cluster_boundary_analysis(
         density = internal / possible_internal
 
         # Dominant layer
-        layer_counts: dict[str, int] = collections.Counter(guess_layer(m) for m in mods)
+        layer_counts: collections.Counter[str] = collections.Counter(
+            guess_layer(m) for m in mods
+        )
         dominant = layer_counts.most_common(1)[0][0]
 
         # Top-level packages present
         top_pkgs = sorted({top_level_package(m) for m in mods})
 
-        summaries.append({
-            "cluster_id": cid,
-            "dominant_layer": dominant,
-            "module_count": n,
-            "internal_edges": internal,
-            "external_edges_out": external_out,
-            "external_edges_in": external_in,
-            "density": round(density, 6),
-            "top_level_packages": top_pkgs,
-            "layer_distribution": dict(layer_counts),
-        })
+        summaries.append(
+            {
+                "cluster_id": cid,
+                "dominant_layer": dominant,
+                "module_count": n,
+                "internal_edges": internal,
+                "external_edges_out": external_out,
+                "external_edges_in": external_in,
+                "density": round(density, 6),
+                "top_level_packages": top_pkgs,
+                "layer_distribution": dict(layer_counts),
+            }
+        )
 
-    summaries.sort(key=lambda s: -s["module_count"])
+    summaries.sort(key=lambda s: -s["module_count"])  # type: ignore[operator]
     print(f"  [i] Cluster summary computed for {len(summaries)} clusters")
     return summaries
 
@@ -323,6 +334,7 @@ def cluster_boundary_analysis(
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 7 — Cluster Dependency Graph (cluster→cluster)
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def cluster_dependency_graph(
     G: nx.DiGraph,
@@ -362,6 +374,7 @@ def cluster_dependency_graph(
 # STEP 8 — Cross-Cluster Boundary Violation Classification
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def classify_violations(
     violations: list[dict],
     membership: dict[str, int],
@@ -386,18 +399,22 @@ def classify_violations(
             if depth > 4:
                 classification = "deep-cross-cluster"
 
-        classified.append({
-            "source_module": src,
-            "illegal_import": tgt,
-            "depth": depth,
-            "source_cluster": src_c,
-            "target_cluster": tgt_c,
-            "classification": classification,
-        })
+        classified.append(
+            {
+                "source_module": src,
+                "illegal_import": tgt,
+                "depth": depth,
+                "source_cluster": src_c,
+                "target_cluster": tgt_c,
+                "classification": classification,
+            }
+        )
 
     classified.sort(key=lambda v: (v["classification"], -v["depth"]))
 
-    type_counts: dict[str, int] = collections.Counter(v["classification"] for v in classified)
+    type_counts: dict[str, int] = collections.Counter(
+        v["classification"] for v in classified
+    )
     print("  [i] Violation classification breakdown:")
     for t, cnt in sorted(type_counts.items()):
         print(f"      {t}: {cnt}")
@@ -408,6 +425,7 @@ def classify_violations(
 # ══════════════════════════════════════════════════════════════════════════════
 # STEP 9 — Facade Candidate Identification
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def identify_facade_candidates(
     G: nx.DiGraph,
@@ -437,8 +455,11 @@ def identify_facade_candidates(
     surface_lookup = {r["module"]: r for r in surface_records}
 
     # Collect violation target modules
-    violation_targets = {v["illegal_import"] for v in violations_classified
-                         if v["classification"] in ("cross-cluster", "deep-cross-cluster")}
+    violation_targets = {
+        v["illegal_import"]
+        for v in violations_classified
+        if v["classification"] in ("cross-cluster", "deep-cross-cluster")
+    }
 
     candidates = []
     for mod, importing_clusters in sorted(
@@ -468,20 +489,24 @@ def identify_facade_candidates(
         else:
             facade_ns = "logos.imports.runtime"
 
-        candidates.append({
-            "module": mod,
-            "importing_cluster_count": len(importing_clusters),
-            "importing_clusters": sorted(importing_clusters),
-            "own_cluster": membership.get(mod),
-            "in_degree": in_deg,
-            "out_degree": out_deg,
-            "centrality_score": centrality,
-            "betweenness_centrality": round(betweenness, 6),
-            "is_violation_target": is_violation_target,
-            "recommended_facade_namespace": facade_ns,
-        })
+        candidates.append(
+            {
+                "module": mod,
+                "importing_cluster_count": len(importing_clusters),
+                "importing_clusters": sorted(importing_clusters),
+                "own_cluster": membership.get(mod),
+                "in_degree": in_deg,
+                "out_degree": out_deg,
+                "centrality_score": centrality,
+                "betweenness_centrality": round(betweenness, 6),
+                "is_violation_target": is_violation_target,
+                "recommended_facade_namespace": facade_ns,
+            }
+        )
 
-    candidates.sort(key=lambda c: (-c["importing_cluster_count"], -c["betweenness_centrality"]))
+    candidates.sort(
+        key=lambda c: (-c["importing_cluster_count"], -c["betweenness_centrality"])
+    )
     print(f"  [i] Facade candidates: {len(candidates)}")
     return candidates
 
@@ -490,27 +515,28 @@ def identify_facade_candidates(
 # STEP 10 — Repair Feasibility Assessment
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def repair_feasibility(
     violations_classified: list[dict],
     candidates: list[dict],
     membership: dict[str, int],
 ) -> dict:
     """
-    Assess whether deep imports can be repaired algorithmically.
-    Rewrite rule: for each violation where target_cluster has a known facade,
-    the import can be rewritten as:
-        from <facade_namespace> import <symbol>
+        Assess whether deep imports can be repaired algorithmically.
+        Rewrite rule: for each violation where target_cluster has a known facade,
+        the import can be rewritten as:
+            from <facade_namespace> import <symbol>
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
-OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
+    OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
-def write_report(name: str, data) -> None:
-    path = OUTPUT_ROOT / name
-    with open(path, "w", encoding="utf-8") as f:
-        import json as _json
-        _json.dump(data, f, indent=2)
-    print(f"  Report written: {path}")
+    def write_report(name: str, data) -> None:
+        path = OUTPUT_ROOT / name
+        with open(path, "w", encoding="utf-8") as f:
+            import json as _json
+            _json.dump(data, f, indent=2)
+        print(f"  Report written: {path}")
 
     """
     # Build facade map: cluster_id → best facade module
@@ -569,6 +595,7 @@ def write_report(name: str, data) -> None:
 # STEP 11 — Write Output Artifacts
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def write_artifacts(
     membership: dict[str, int],
     cluster_summaries: list[dict],
@@ -595,7 +622,8 @@ def write_artifacts(
         cid = s["cluster_id"]
         # count how many modules in this cluster are in a non-trivial SCC
         s["cyclic_module_count"] = sum(
-            1 for mod, c in membership.items()
+            1
+            for mod, c in membership.items()
             if c == cid and mod in non_trivial_scc_mods
         )
         enhanced_summaries.append(s)
@@ -619,6 +647,7 @@ def write_artifacts(
 # STEP 12 — Architecture Report
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def write_report(
     G: nx.DiGraph,
     membership: dict[str, int],
@@ -634,10 +663,13 @@ def write_report(
 
     num_clusters = len(cluster_summaries)
     cross_cluster_count = sum(
-        1 for v in violations_classified
+        1
+        for v in violations_classified
         if v["classification"] in ("cross-cluster", "deep-cross-cluster")
     )
-    intra_cluster_count = sum(1 for v in violations_classified if v["classification"] == "intra-cluster")
+    _intra_cluster_count = sum(
+        1 for v in violations_classified if v["classification"] == "intra-cluster"
+    )
     total_violations = len(violations_classified)
 
     top_bc = sorted(bc.items(), key=lambda x: -x[1])[:15]
@@ -662,8 +694,8 @@ def write_report(
         "",
         "## 2. Cluster Summary",
         "",
-        f"| Cluster | Dominant Layer | Modules | Internal Edges | External Out | Density | Cyclic |",
-        f"|---------|---------------|---------|---------------|-------------|---------|--------|",
+        "| Cluster | Dominant Layer | Modules | Internal Edges | External Out | Density | Cyclic |",
+        "|---------|---------------|---------|---------------|-------------|---------|--------|",
     ]
     for s in cluster_summaries[:30]:
         lines.append(
@@ -672,7 +704,7 @@ def write_report(
             f"| {s['density']:.4f} | {s['cyclic_module_count']} |"
         )
     if len(cluster_summaries) > 30:
-        lines.append(f"| … | … | … | … | … | … | … |")
+        lines.append("| … | … | … | … | … | … | … |")
 
     lines += [
         "",
@@ -745,7 +777,9 @@ def write_report(
         "| Classification | Count |",
         "|---------------|-------|",
     ]
-    type_counts: dict[str, int] = collections.Counter(v["classification"] for v in violations_classified)
+    type_counts: dict[str, int] = collections.Counter(
+        v["classification"] for v in violations_classified
+    )
     for t, cnt in sorted(type_counts.items()):
         lines.append(f"| `{t}` | {cnt} |")
 
@@ -756,12 +790,23 @@ def write_report(
         "| Source Module | Illegal Import | Depth | Src Cluster | Tgt Cluster |",
         "|--------------|----------------|-------|-------------|-------------|",
     ]
-    cross = [v for v in violations_classified
-              if v["classification"] in ("cross-cluster", "deep-cross-cluster")]
+    cross = [
+        v
+        for v in violations_classified
+        if v["classification"] in ("cross-cluster", "deep-cross-cluster")
+    ]
     cross_sorted = sorted(cross, key=lambda v: -v["depth"])[:20]
     for v in cross_sorted:
-        src = v["source_module"][-50:] if len(v["source_module"]) > 50 else v["source_module"]
-        tgt = v["illegal_import"][-60:] if len(v["illegal_import"]) > 60 else v["illegal_import"]
+        src = (
+            v["source_module"][-50:]
+            if len(v["source_module"]) > 50
+            else v["source_module"]
+        )
+        tgt = (
+            v["illegal_import"][-60:]
+            if len(v["illegal_import"]) > 60
+            else v["illegal_import"]
+        )
         lines.append(
             f"| `{src}` | `{tgt}` | {v['depth']} "
             f"| {v['source_cluster']} | {v['target_cluster']} |"
@@ -814,8 +859,16 @@ def write_report(
         "|--------|---------------|-----------------|",
     ]
     for rule in repair["repair_rules"][:15]:
-        src = rule["source_module"][-45:] if len(rule["source_module"]) > 45 else rule["source_module"]
-        ill = rule["illegal_import"][-55:] if len(rule["illegal_import"]) > 55 else rule["illegal_import"]
+        src = (
+            rule["source_module"][-45:]
+            if len(rule["source_module"]) > 45
+            else rule["source_module"]
+        )
+        ill = (
+            rule["illegal_import"][-55:]
+            if len(rule["illegal_import"]) > 55
+            else rule["illegal_import"]
+        )
         facade = rule["proposed_facade"] or "MANUAL"
         lines.append(f"| `{src}` | `{ill}` | `{facade}` |")
 
@@ -860,6 +913,7 @@ def write_report(
 # VALIDATION
 # ══════════════════════════════════════════════════════════════════════════════
 
+
 def validate(
     G: nx.DiGraph,
     membership: dict[str, int],
@@ -872,7 +926,9 @@ def validate(
     # Every graph node must be in membership
     missing = [n for n in G.nodes() if n not in membership]
     if missing:
-        print(f"  [FAIL] {len(missing)} nodes not assigned to any cluster: {missing[:5]}")
+        print(
+            f"  [FAIL] {len(missing)} nodes not assigned to any cluster: {missing[:5]}"
+        )
         ok = False
     else:
         print(f"  [✓] All {G.number_of_nodes()} graph nodes assigned to a cluster")
@@ -887,7 +943,9 @@ def validate(
 
     # Cluster graph cycles documented
     if not cluster_graph["is_dag"]:
-        print(f"  [i] Cluster graph has {len(cluster_graph['cluster_cycles'])} cycle(s) — documented in report")
+        print(
+            f"  [i] Cluster graph has {len(cluster_graph['cluster_cycles'])} cycle(s) — documented in report"
+        )
     else:
         print("  [✓] Cluster dependency graph is acyclic (DAG)")
 
@@ -915,6 +973,7 @@ def validate(
 # ══════════════════════════════════════════════════════════════════════════════
 # MAIN
 # ══════════════════════════════════════════════════════════════════════════════
+
 
 def main():
     print("=" * 70)
@@ -956,14 +1015,27 @@ def main():
 
     # STEP 11 — Write artifacts
     write_artifacts(
-        membership, cluster_summaries, cluster_graph,
-        violations_classified, facade_candidates, sccs, bc, repair,
+        membership,
+        cluster_summaries,
+        cluster_graph,
+        violations_classified,
+        facade_candidates,
+        sccs,
+        bc,
+        repair,
     )
 
     # STEP 12 — Report
     write_report(
-        G, membership, cluster_summaries, cluster_graph,
-        violations_classified, facade_candidates, sccs, bc, repair,
+        G,
+        membership,
+        cluster_summaries,
+        cluster_graph,
+        violations_classified,
+        facade_candidates,
+        sccs,
+        bc,
+        repair,
     )
 
     # VALIDATION
@@ -975,12 +1047,17 @@ def main():
     print("=" * 70)
     print(f"  Clusters detected                : {len(communities)}")
     for s in cluster_summaries[:10]:
-        print(f"    Cluster {s['cluster_id']:3d} ({s['dominant_layer']:20s}) — {s['module_count']} modules")
+        print(
+            f"    Cluster {s['cluster_id']:3d} ({s['dominant_layer']:20s}) — {s['module_count']} modules"
+        )
     if len(cluster_summaries) > 10:
         print(f"    … and {len(cluster_summaries) - 10} more clusters")
     print(f"  Cross-cluster import edges       : {len(cluster_graph['cluster_edges'])}")
-    cross_viol = sum(1 for v in violations_classified
-                     if v["classification"] in ("cross-cluster", "deep-cross-cluster"))
+    cross_viol = sum(
+        1
+        for v in violations_classified
+        if v["classification"] in ("cross-cluster", "deep-cross-cluster")
+    )
     print(f"  Deep-import violations (cross)   : {cross_viol}")
     print(f"  Auto-repairable                  : {repair['auto_repairable']}")
     print(f"  Facade candidates                : {len(facade_candidates)}")

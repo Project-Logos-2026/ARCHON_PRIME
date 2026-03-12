@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -64,10 +65,9 @@ READ_ONLY
 
 import ast
 import json
-import os
+import math
 import re
 import sys
-import math
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -94,9 +94,18 @@ OUT_DIR = REPO_ROOT / "Application_Function_Extraction"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SIGNAL_KEYWORDS = {
-    "execute", "resolve", "apply", "determine", "select",
-    "infer", "gate", "normalize", "translate", "inject",
-    "compose", "reconstruct",
+    "execute",
+    "resolve",
+    "apply",
+    "determine",
+    "select",
+    "infer",
+    "gate",
+    "normalize",
+    "translate",
+    "inject",
+    "compose",
+    "reconstruct",
 }
 
 # Minimum words in a docstring to consider it non-trivial
@@ -110,6 +119,7 @@ N_CLUSTERS_MAX = 20
 # ---------------------------------------------------------------------------
 # STEP 1 — AST PARSING
 # ---------------------------------------------------------------------------
+
 
 def should_exclude(path: Path) -> bool:
     return bool(EXCLUDE_PARTS.intersection(path.parts))
@@ -147,7 +157,9 @@ def extract_docstrings(py_path: Path, repo_root: Path):
     records = []
 
     for node in ast.walk(tree):
-        if isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+        if isinstance(
+            node, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)
+        ):
             doc = ast.get_docstring(node, clean=True)
             if not doc:
                 continue
@@ -159,12 +171,14 @@ def extract_docstrings(py_path: Path, repo_root: Path):
                 symbol = getattr(node, "name", "<unknown>")
                 lineno = getattr(node, "lineno", 0)
 
-            records.append({
-                "file_path": rel,
-                "symbol_name": symbol,
-                "docstring_text": doc,
-                "line_number": lineno,
-            })
+            records.append(
+                {
+                    "file_path": rel,
+                    "symbol_name": symbol,
+                    "docstring_text": doc,
+                    "line_number": lineno,
+                }
+            )
 
     return records
 
@@ -175,7 +189,6 @@ def step1_ast_parse(dirs):
     print(f"  Python files found: {len(py_files)}")
 
     all_records = []
-    failed = 0
     for pf in py_files:
         recs = extract_docstrings(pf, REPO_ROOT)
         all_records.extend(recs)
@@ -192,10 +205,11 @@ def step1_ast_parse(dirs):
 # STEP 2 — HEURISTIC FILTERING
 # ---------------------------------------------------------------------------
 
+
 def score_docstring(text: str) -> dict:
     """Return match info for signal keywords in a docstring."""
     lower = text.lower()
-    words = re.findall(r'\b\w+\b', lower)
+    words = re.findall(r"\b\w+\b", lower)
     word_set = set(words)
 
     matched = SIGNAL_KEYWORDS.intersection(word_set)
@@ -215,7 +229,7 @@ def score_docstring(text: str) -> dict:
 
 
 def is_trivial(doc: str) -> bool:
-    words = re.findall(r'\b\w+\b', doc)
+    words = re.findall(r"\b\w+\b", doc)
     if len(words) < MIN_WORDS:
         return True
     # Pure "documentation only" pattern: very short, no verbs/action words
@@ -250,8 +264,9 @@ def step2_filter(candidates: list):
 # STEP 3 — TF-IDF VECTORIZATION (Pure Python, no sklearn dependency)
 # ---------------------------------------------------------------------------
 
+
 def tokenize(text: str):
-    return re.findall(r'\b[a-z][a-z0-9_]{2,}\b', text.lower())
+    return re.findall(r"\b[a-z][a-z0-9_]{2,}\b", text.lower())
 
 
 def build_tfidf(docs: list):
@@ -300,17 +315,19 @@ def step3_vectorize(filtered: list):
 
     # Serialize: store top-10 terms per vector as readable signature
     embeddings = []
-    for i, (rec, vec) in enumerate(zip(filtered, vectors)):
+    for i, (rec, vec) in enumerate(zip(filtered, vectors, strict=False)):
         top_terms = sorted(vec, key=lambda w: -vec[w])[:10]
-        dense = vec_to_list(vec, vocab)
-        embeddings.append({
-            "index": i,
-            "file_path": rec["file_path"],
-            "symbol_name": rec["symbol_name"],
-            "line_number": rec["line_number"],
-            "semantic_signature": top_terms,
-            "vector_dim": len(vocab),
-        })
+        _dense = vec_to_list(vec, vocab)
+        embeddings.append(
+            {
+                "index": i,
+                "file_path": rec["file_path"],
+                "symbol_name": rec["symbol_name"],
+                "line_number": rec["line_number"],
+                "semantic_signature": top_terms,
+                "vector_dim": len(vocab),
+            }
+        )
 
     out = OUT_DIR / "application_function_embeddings.json"
     out.write_text(json.dumps(embeddings, indent=2, ensure_ascii=False))
@@ -323,6 +340,7 @@ def step3_vectorize(filtered: list):
 # ---------------------------------------------------------------------------
 # STEP 4 — CLUSTERING (Pure Python KMeans-style)
 # ---------------------------------------------------------------------------
+
 
 def dot(a: dict, b: dict) -> float:
     """Dot product of two sparse vectors."""
@@ -342,17 +360,6 @@ def kmeans_cosine(vectors: list, k: int, max_iter: int = 50):
     Initialization: spread seeds by picking maximally distant items.
     """
     import random
-
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
-OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
-
-
-def write_report(name: str, data) -> None:
-    path = OUTPUT_ROOT / name
-    with open(path, "w", encoding="utf-8") as f:
-        import json as _json
-        _json.dump(data, f, indent=2)
-    print(f"  Report written: {path}")
 
     random.seed(42)
 
@@ -453,23 +460,28 @@ def step4_cluster(filtered: list, vectors: list, embeddings: list):
     top_terms = cluster_top_terms(vectors, labels, k)
 
     cluster_dist = Counter(labels)
-    print(f"  Cluster sizes: " + ", ".join(f"C{c}:{cluster_dist[c]}" for c in sorted(cluster_dist)))
+    print(
+        "  Cluster sizes: "
+        + ", ".join(f"C{c}:{cluster_dist[c]}" for c in sorted(cluster_dist))
+    )
 
     # Build output
     cluster_entries = []
-    for i, (rec, emb) in enumerate(zip(filtered, embeddings)):
+    for i, (rec, emb) in enumerate(zip(filtered, embeddings, strict=False)):
         cluster_id = labels[i]
-        cluster_entries.append({
-            "index": i,
-            "cluster_id": cluster_id,
-            "cluster_label": f"cluster_{cluster_id:02d}",
-            "cluster_top_terms": top_terms.get(cluster_id, []),
-            "file_path": rec["file_path"],
-            "symbol_name": rec["symbol_name"],
-            "line_number": rec["line_number"],
-            "matched_keywords": rec["matched_keywords"],
-            "semantic_signature": emb["semantic_signature"],
-        })
+        cluster_entries.append(
+            {
+                "index": i,
+                "cluster_id": cluster_id,
+                "cluster_label": f"cluster_{cluster_id:02d}",
+                "cluster_top_terms": top_terms.get(cluster_id, []),
+                "file_path": rec["file_path"],
+                "symbol_name": rec["symbol_name"],
+                "line_number": rec["line_number"],
+                "matched_keywords": rec["matched_keywords"],
+                "semantic_signature": emb["semantic_signature"],
+            }
+        )
 
     out = OUT_DIR / "application_function_clusters.json"
     out.write_text(json.dumps(cluster_entries, indent=2, ensure_ascii=False))
@@ -480,6 +492,7 @@ def step4_cluster(filtered: list, vectors: list, embeddings: list):
 # ---------------------------------------------------------------------------
 # STEP 5 — REGISTRY GENERATION
 # ---------------------------------------------------------------------------
+
 
 def derive_module(file_path: str) -> str:
     """Convert file_path to module notation."""
@@ -521,6 +534,7 @@ def step5_registry(filtered: list, cluster_entries: list):
 # STEP 6 — REPORT
 # ---------------------------------------------------------------------------
 
+
 def step6_report(
     all_candidates: list,
     filtered: list,
@@ -559,14 +573,14 @@ def step6_report(
     lines = [
         "# ARCHON PRIME — Application Function Extraction Report",
         f"**Generated:** {now}  ",
-        f"**Mode:** Semantic-Heuristic Analysis (Read-Only)  ",
+        "**Mode:** Semantic-Heuristic Analysis (Read-Only)  ",
         "",
         "---",
         "",
         "## Summary",
         "",
-        f"| Metric | Value |",
-        f"|--------|-------|",
+        "| Metric | Value |",
+        "|--------|-------|",
         f"| Total docstrings scanned | {total_scanned} |",
         f"| Candidate application functions | {candidate_count} |",
         f"| Clusters detected | {clusters_detected} |",
@@ -608,36 +622,40 @@ def step6_report(
     for fp, count in top_files:
         lines.append(f"| `{fp}` | {count} |")
 
-    lines += [
-        "",
-        "---",
-        "",
-        "## Cluster Summary",
-        "",
-        "| Cluster | Size | Top Representative Terms |",
-        "|---------|------|--------------------------|",
-    ] + cluster_rows + [
-        "",
-        "---",
-        "",
-        "## Output Artifacts",
-        "",
-        "| File | Description |",
-        "|------|-------------|",
-        "| `application_function_candidates.json` | All docstrings extracted via AST |",
-        "| `application_function_filtered.json` | Heuristic-filtered application function candidates |",
-        "| `application_function_embeddings.json` | TF-IDF semantic vectors per candidate |",
-        "| `application_function_clusters.json` | Cluster assignment per candidate |",
-        "| `application_function_registry.json` | Full DRAC registry with symbol, module, cluster, signature |",
-        "| `application_function_report.md` | This report |",
-        "",
-        "---",
-        "",
-        "## Governance Note",
-        "",
-        "This pass is **read-only**. No repository mutations were performed.  ",
-        "Registry entries are candidates for DRAC classification and require human review before activation.",
-    ]
+    lines += (
+        [
+            "",
+            "---",
+            "",
+            "## Cluster Summary",
+            "",
+            "| Cluster | Size | Top Representative Terms |",
+            "|---------|------|--------------------------|",
+        ]
+        + cluster_rows
+        + [
+            "",
+            "---",
+            "",
+            "## Output Artifacts",
+            "",
+            "| File | Description |",
+            "|------|-------------|",
+            "| `application_function_candidates.json` | All docstrings extracted via AST |",
+            "| `application_function_filtered.json` | Heuristic-filtered application function candidates |",
+            "| `application_function_embeddings.json` | TF-IDF semantic vectors per candidate |",
+            "| `application_function_clusters.json` | Cluster assignment per candidate |",
+            "| `application_function_registry.json` | Full DRAC registry with symbol, module, cluster, signature |",
+            "| `application_function_report.md` | This report |",
+            "",
+            "---",
+            "",
+            "## Governance Note",
+            "",
+            "This pass is **read-only**. No repository mutations were performed.  ",
+            "Registry entries are candidates for DRAC classification and require human review before activation.",
+        ]
+    )
 
     report_text = "\n".join(lines)
     out = OUT_DIR / "application_function_report.md"

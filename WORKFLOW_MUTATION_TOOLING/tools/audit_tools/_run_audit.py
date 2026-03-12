@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -33,12 +34,11 @@ PROMPT_013_R1
 All output written to /workspaces/ARCHON_PRIME/AP_SYSTEM_AUDIT/Complettion_Audit/
 """
 
-import os
-import sys
-import re
-import json
 import ast
 import datetime
+import json
+import os
+import re
 from pathlib import Path
 
 REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
@@ -46,6 +46,7 @@ OUTPUT_DIR = REPO_ROOT / "AP_SYSTEM_AUDIT" / "Complettion_Audit"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 step_failures = []
+
 
 def write_json(path, data):
     path = Path(path)
@@ -55,6 +56,7 @@ def write_json(path, data):
     path.write_text(text, encoding="utf-8")
     print(f"  [WROTE] {path.name}")
 
+
 def record_failure(step, message, exc=None):
     record = {"step": step, "message": message}
     if exc:
@@ -62,8 +64,10 @@ def record_failure(step, message, exc=None):
     step_failures.append(record)
     print(f"  [FAIL] {step}: {message}")
 
+
 def flush_failures():
     write_json(OUTPUT_DIR / "step_failures.json", step_failures)
+
 
 # ─────────────────────────────────────────────
 # STEP 1 — Parse MODULE_INVENTORY.md
@@ -83,9 +87,11 @@ def step1_parse_module_inventory():
     i = 0
 
     # Subsystem pattern: ## SUBSYSTEM N — NAME
-    subsystem_re = re.compile(r'^##\s+SUBSYSTEM\s+(\d+)\s+[—\-]+\s+(.+)', re.IGNORECASE)
+    subsystem_re = re.compile(r"^##\s+SUBSYSTEM\s+(\d+)\s+[—\-]+\s+(.+)", re.IGNORECASE)
     # Module header: ### MXX — `filename`  (or ### MXX — filename)
-    module_header_re = re.compile(r'^###\s+(M\d+)\s+[—\-]+\s+[`\"]?([^\`\"]+)[`\"]?', re.IGNORECASE)
+    module_header_re = re.compile(
+        r"^###\s+(M\d+)\s+[—\-]+\s+[`\"]?([^\`\"]+)[`\"]?", re.IGNORECASE
+    )
 
     subsystem_name_map = {
         "0": "S0_FOUNDATION",
@@ -123,16 +129,16 @@ def step1_parse_module_inventory():
             j = i + 1
             while j < len(lines) and j < i + 20:
                 tline = lines[j].strip()
-                if tline.startswith('|') and '|' in tline[1:]:
-                    parts = [p.strip() for p in tline.split('|')]
+                if tline.startswith("|") and "|" in tline[1:]:
+                    parts = [p.strip() for p in tline.split("|")]
                     parts = [p for p in parts if p]
                     if len(parts) >= 2:
-                        key = parts[0].replace('**', '').strip()
-                        val = parts[1].replace('**', '').strip()
+                        key = parts[0].replace("**", "").strip()
+                        val = parts[1].replace("**", "").strip()
                         # Clean backticks and markdown from value
-                        val = val.replace('`', '').strip()
+                        val = val.replace("`", "").strip()
                         fields[key] = val
-                elif tline.startswith('#'):
+                elif tline.startswith("#"):
                     break
                 j += 1
 
@@ -155,22 +161,27 @@ def step1_parse_module_inventory():
             if current_subsystem is None:
                 current_subsystem = "S_UNKNOWN"
 
-            modules.append({
-                "module_id": module_id,
-                "module_name": module_name,
-                "expected_path": expected_path,
-                "expected_full_path": expected_full_path,
-                "subsystem": current_subsystem,
-                "blocking_class": blocking_class,
-                "phase": phase,
-                "required": True,
-            })
+            modules.append(
+                {
+                    "module_id": module_id,
+                    "module_name": module_name,
+                    "expected_path": expected_path,
+                    "expected_full_path": expected_full_path,
+                    "subsystem": current_subsystem,
+                    "blocking_class": blocking_class,
+                    "phase": phase,
+                    "required": True,
+                }
+            )
 
         i += 1
 
     print(f"  Parsed {len(modules)} modules from MODULE_INVENTORY.md")
     if len(modules) < 35:
-        record_failure("Step1", f"Parsing warning: only {len(modules)} modules parsed (expected ~39). Possible parser error.")
+        record_failure(
+            "Step1",
+            f"Parsing warning: only {len(modules)} modules parsed (expected ~39). Possible parser error.",
+        )
 
     write_json(OUTPUT_DIR / "spec_module_inventory.json", modules)
     return modules
@@ -190,9 +201,7 @@ def step2_repo_file_inventory():
     for root, dirs, filenames in os.walk(REPO_ROOT):
         # Prune excluded directories
         dirs[:] = [
-            d for d in dirs
-            if d not in EXCLUDE_DIRS
-            and not d.endswith(".egg-info")
+            d for d in dirs if d not in EXCLUDE_DIRS and not d.endswith(".egg-info")
         ]
         # Also skip __pycache__ anywhere
         dirs[:] = [d for d in dirs if "__pycache__" not in d]
@@ -221,14 +230,16 @@ def step2_repo_file_inventory():
                 except Exception:
                     line_count = None
 
-            files.append({
-                "relative_path": rel_str,
-                "absolute_path": str(fpath),
-                "filename": fname,
-                "extension": ext,
-                "size_bytes": size,
-                "line_count": line_count,
-            })
+            files.append(
+                {
+                    "relative_path": rel_str,
+                    "absolute_path": str(fpath),
+                    "filename": fname,
+                    "extension": ext,
+                    "size_bytes": size,
+                    "line_count": line_count,
+                }
+            )
 
     total_py = sum(1 for f in files if f["extension"] == ".py")
 
@@ -288,13 +299,15 @@ def step3_config_file_presence():
             size = None
             is_empty = None
 
-        results.append({
-            "config_file": cfg["config_file"],
-            "exists": exists,
-            "size_bytes": size,
-            "is_empty": is_empty,
-            "blocker_impact": cfg["blocker_impact"],
-        })
+        results.append(
+            {
+                "config_file": cfg["config_file"],
+                "exists": exists,
+                "size_bytes": size,
+                "is_empty": is_empty,
+                "blocker_impact": cfg["blocker_impact"],
+            }
+        )
         status = "PRESENT" if exists else "MISSING"
         print(f"  {cfg['config_file']}: {status}")
 
@@ -325,7 +338,7 @@ def step4_module_presence(spec_modules, file_inventory):
         # Strip leading ARCHON_PRIME/ prefix since repo root IS ARCHON_PRIME
         p = p.replace("\\", "/")
         if p.startswith("ARCHON_PRIME/"):
-            p = p[len("ARCHON_PRIME/"):]
+            p = p[len("ARCHON_PRIME/") :]
         return p
 
     matrix = []
@@ -355,13 +368,15 @@ def step4_module_presence(spec_modules, file_inventory):
                 actual_path = None
 
         counts[status] += 1
-        matrix.append({
-            "module_id": module_id,
-            "module_name": module_name,
-            "expected_full_path": expected_full_path,
-            "status": status,
-            "actual_path": actual_path,
-        })
+        matrix.append(
+            {
+                "module_id": module_id,
+                "module_name": module_name,
+                "expected_full_path": expected_full_path,
+                "status": status,
+                "actual_path": actual_path,
+            }
+        )
         print(f"  {module_id} ({module_name}): {status}")
 
     print(f"\n  Summary: {counts}")
@@ -409,47 +424,71 @@ def step5_implementation_depth(spec_modules, presence_matrix):
         except SyntaxError as e:
             record_failure("Step5", f"Syntax error in {actual_path}: {e}")
             # Still record what we can
-            depth_results.append({
-                "module_id": mid,
-                "module_name": mname,
-                "actual_path": actual_path,
-                "line_count": line_count,
-                "function_count": 0,
-                "class_count": 0,
-                "has_only_pass": False,
-                "has_only_print": False,
-                "has_docstring_only": False,
-                "has_no_output": True,
-                "classification": "SKELETON",
-                "parse_error": str(e),
-            })
+            depth_results.append(
+                {
+                    "module_id": mid,
+                    "module_name": mname,
+                    "actual_path": actual_path,
+                    "line_count": line_count,
+                    "function_count": 0,
+                    "class_count": 0,
+                    "has_only_pass": False,
+                    "has_only_print": False,
+                    "has_docstring_only": False,
+                    "has_no_output": True,
+                    "classification": "SKELETON",
+                    "parse_error": str(e),
+                }
+            )
             continue
 
         # Count functions and classes
-        function_count = sum(1 for node in ast.walk(tree) if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)))
-        class_count = sum(1 for node in ast.walk(tree) if isinstance(node, ast.ClassDef))
+        function_count = sum(
+            1
+            for node in ast.walk(tree)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        )
+        class_count = sum(
+            1 for node in ast.walk(tree) if isinstance(node, ast.ClassDef)
+        )
 
         # Analyze function bodies
-        all_funcs = [node for node in ast.walk(tree) if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))]
+        all_funcs = [
+            node
+            for node in ast.walk(tree)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        ]
 
         def body_is_only_pass(func):
             body = func.body
             # Skip docstring at start
             effective_body = body
-            if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant):
+            if (
+                body
+                and isinstance(body[0], ast.Expr)
+                and isinstance(body[0].value, ast.Constant)
+            ):
                 effective_body = body[1:]
             if not effective_body:
                 return True
             return all(
-                isinstance(stmt, (ast.Pass,)) or
-                (isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Constant) and stmt.value.value is ...)
+                isinstance(stmt, (ast.Pass,))
+                or (
+                    isinstance(stmt, ast.Expr)
+                    and isinstance(stmt.value, ast.Constant)
+                    and stmt.value.value is ...
+                )
                 for stmt in effective_body
             )
 
         def body_is_only_print(func):
             body = func.body
             effective_body = body
-            if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant):
+            if (
+                body
+                and isinstance(body[0], ast.Expr)
+                and isinstance(body[0].value, ast.Constant)
+            ):
                 effective_body = body[1:]
             if not effective_body:
                 return False
@@ -474,7 +513,9 @@ def step5_implementation_depth(spec_modules, presence_matrix):
                 return True
             # docstring is first expr with a constant
             start = 0
-            if isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant):
+            if isinstance(body[0], ast.Expr) and isinstance(
+                body[0].value, ast.Constant
+            ):
                 start = 1
             else:
                 return False  # no docstring = not docstring-only
@@ -483,8 +524,8 @@ def step5_implementation_depth(spec_modules, presence_matrix):
                 return True
             # rest must be only pass or return None
             return all(
-                isinstance(s, ast.Pass) or
-                (isinstance(s, ast.Return) and s.value is None)
+                isinstance(s, ast.Pass)
+                or (isinstance(s, ast.Return) and s.value is None)
                 for s in rest
             )
 
@@ -515,9 +556,11 @@ def step5_implementation_depth(spec_modules, presence_matrix):
         # Classification (first match wins)
         if line_count < 30 and function_count <= 1 and class_count == 0:
             classification = "SKELETON"
-        elif function_count >= 1 and (has_only_pass or has_only_print or has_docstring_only):
+        elif function_count >= 1 and (
+            has_only_pass or has_only_print or has_docstring_only
+        ):
             classification = "NO_OP"
-        elif not has_no_output is False:  # has_no_output == True => no output
+        elif has_no_output is not False:  # has_no_output == True => no output
             if has_no_output:
                 classification = "PARTIAL"
             else:
@@ -534,21 +577,25 @@ def step5_implementation_depth(spec_modules, presence_matrix):
             else:
                 classification = "FUNCTIONAL"
 
-        depth_results.append({
-            "module_id": mid,
-            "module_name": mname,
-            "actual_path": actual_path,
-            "line_count": line_count,
-            "function_count": function_count,
-            "class_count": class_count,
-            "has_only_pass": has_only_pass,
-            "has_only_print": has_only_print,
-            "has_docstring_only": has_docstring_only,
-            "has_no_output": has_no_output,
-            "classification": classification,
-        })
+        depth_results.append(
+            {
+                "module_id": mid,
+                "module_name": mname,
+                "actual_path": actual_path,
+                "line_count": line_count,
+                "function_count": function_count,
+                "class_count": class_count,
+                "has_only_pass": has_only_pass,
+                "has_only_print": has_only_print,
+                "has_docstring_only": has_docstring_only,
+                "has_no_output": has_no_output,
+                "classification": classification,
+            }
+        )
 
-        print(f"  {mid} ({mname}): {classification} (lines={line_count}, funcs={function_count}, classes={class_count})")
+        print(
+            f"  {mid} ({mname}): {classification} (lines={line_count}, funcs={function_count}, classes={class_count})"
+        )
 
     write_json(OUTPUT_DIR / "module_implementation_depth.json", depth_results)
     return depth_results
@@ -611,24 +658,30 @@ def step6_subsystem_metrics(spec_modules, presence_matrix, depth_results):
             elif cls == "SKELETON":
                 skeleton += 1
 
-        completion_pct = round((functional / required) * 100, 1) if required > 0 else 0.0
+        completion_pct = (
+            round((functional / required) * 100, 1) if required > 0 else 0.0
+        )
 
-        metrics.append({
-            "subsystem": ss,
-            "required_modules": required,
-            "present_modules": present,
-            "correct_path_modules": correct,
-            "misplaced_modules": misplaced,
-            "missing_modules": missing,
-            "functional_modules": functional,
-            "partial_modules": partial,
-            "noop_modules": noop,
-            "skeleton_modules": skeleton,
-            "blocking_modules_missing": blocking_missing,
-            "completion_percent": completion_pct,
-        })
+        metrics.append(
+            {
+                "subsystem": ss,
+                "required_modules": required,
+                "present_modules": present,
+                "correct_path_modules": correct,
+                "misplaced_modules": misplaced,
+                "missing_modules": missing,
+                "functional_modules": functional,
+                "partial_modules": partial,
+                "noop_modules": noop,
+                "skeleton_modules": skeleton,
+                "blocking_modules_missing": blocking_missing,
+                "completion_percent": completion_pct,
+            }
+        )
 
-        print(f"  {ss}: required={required}, present={present}, functional={functional}, missing={missing}, completion={completion_pct}%")
+        print(
+            f"  {ss}: required={required}, present={present}, functional={functional}, missing={missing}, completion={completion_pct}%"
+        )
 
     write_json(OUTPUT_DIR / "subsystem_completion_metrics.json", metrics)
     return metrics
@@ -651,15 +704,22 @@ def step7_pipeline_stage_readiness(presence_matrix, depth_results):
         {
             "stage_id": "Stage_0",
             "stage_name": "Foundation: Schemas + Config Layer",
-            "required_modules": ["schema_registry.py", "routing_table_loader.py", "repair_registry_loader.py"],
+            "required_modules": [
+                "schema_registry.py",
+                "routing_table_loader.py",
+                "repair_registry_loader.py",
+            ],
         },
         {
             "stage_id": "Stage_1",
             "stage_name": "Pre-Crawl Audit Regeneration Scripts",
             "required_modules": [
-                "repo_directory_scanner.py", "python_file_collector.py",
-                "import_extractor.py", "symbol_import_extractor.py",
-                "header_schema_scanner.py", "governance_contract_scanner.py",
+                "repo_directory_scanner.py",
+                "python_file_collector.py",
+                "import_extractor.py",
+                "symbol_import_extractor.py",
+                "header_schema_scanner.py",
+                "governance_contract_scanner.py",
                 "runtime_phase_scanner.py",
             ],
         },
@@ -667,9 +727,12 @@ def step7_pipeline_stage_readiness(presence_matrix, depth_results):
             "stage_id": "Stage_2",
             "stage_name": "Repo Analysis Tools",
             "required_modules": [
-                "module_index_builder.py", "dependency_graph_builder.py",
-                "circular_dependency_detector.py", "runtime_phase_mapper.py",
-                "runtime_boot_sequencer.py", "canonical_import_registry_builder.py",
+                "module_index_builder.py",
+                "dependency_graph_builder.py",
+                "circular_dependency_detector.py",
+                "runtime_phase_mapper.py",
+                "runtime_boot_sequencer.py",
+                "canonical_import_registry_builder.py",
             ],
         },
         {
@@ -680,33 +743,50 @@ def step7_pipeline_stage_readiness(presence_matrix, depth_results):
         {
             "stage_id": "Stage_4",
             "stage_name": "Validation Pipeline + Syntax Tools",
-            "required_modules": ["syntax_validator.py", "governance_validator.py", "phase_validator.py"],
+            "required_modules": [
+                "syntax_validator.py",
+                "governance_validator.py",
+                "phase_validator.py",
+            ],
         },
         {
             "stage_id": "Stage_5",
             "stage_name": "Simulation Layer",
             "required_modules": [
-                "repo_simulator.py", "runtime_simulator.py", "import_simulator.py",
-                "crawl_planner.py", "execution_graph_builder.py",
+                "repo_simulator.py",
+                "runtime_simulator.py",
+                "import_simulator.py",
+                "crawl_planner.py",
+                "execution_graph_builder.py",
             ],
         },
         {
             "stage_id": "Stage_6",
             "stage_name": "Crawl Executor + Processing Pipeline",
-            "required_modules": ["module_processor.py", "crawl_executor.py", "crawl_monitor.py"],
+            "required_modules": [
+                "module_processor.py",
+                "crawl_executor.py",
+                "crawl_monitor.py",
+            ],
         },
         {
             "stage_id": "Stage_7",
             "stage_name": "Error Classification + Repair + Quarantine",
             "required_modules": [
-                "error_classifier.py", "repair_router.py",
-                "repair_executor.py", "quarantine_manager.py",
+                "error_classifier.py",
+                "repair_router.py",
+                "repair_executor.py",
+                "quarantine_manager.py",
             ],
         },
         {
             "stage_id": "Stage_8",
             "stage_name": "Artifact Routing + Reporting + Commit",
-            "required_modules": ["artifact_router.py", "report_generator.py", "commit_finalizer.py"],
+            "required_modules": [
+                "artifact_router.py",
+                "report_generator.py",
+                "commit_finalizer.py",
+            ],
         },
         {
             "stage_id": "Stage_9",
@@ -770,7 +850,10 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
     gaps_path = REPO_ROOT / "AP_SYSTEM_AUDIT" / "AP_AUDIT_GAPS.json"
     if not gaps_path.exists():
         record_failure("Step8", f"AP_AUDIT_GAPS.json not found at {gaps_path}")
-        write_json(OUTPUT_DIR / "prior_audit_verification.json", {"error": "AP_AUDIT_GAPS.json not found"})
+        write_json(
+            OUTPUT_DIR / "prior_audit_verification.json",
+            {"error": "AP_AUDIT_GAPS.json not found"},
+        )
         return {}
 
     gaps_data = json.loads(gaps_path.read_text(encoding="utf-8"))
@@ -786,14 +869,14 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
     # Build lookups
     presence_by_name = {}
     for p in presence_matrix:
-        name = p["module_name"]
-        loc = p["expected_full_path"]
         key = p["module_name"]
         if key not in presence_by_name:
             presence_by_name[key] = p
 
     # Also build path-based lookup for misplaced checks
-    presence_by_relpath = {p["actual_path"]: p for p in presence_matrix if p["actual_path"]}
+    _presence_by_relpath = {
+        p["actual_path"]: p for p in presence_matrix if p["actual_path"]
+    }
     depth_by_path = {}
     for d in depth_results:
         depth_by_path[d["actual_path"]] = d
@@ -819,23 +902,29 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
         if matched is None:
             # Search filename-based
             verified = "CONFIRMED"
-            evidence = f"No module found matching location '{location}' — claim CONFIRMED"
+            evidence = (
+                f"No module found matching location '{location}' — claim CONFIRMED"
+            )
         elif matched_status == "MISSING":
             verified = "CONFIRMED"
             evidence = f"{matched['module_name']} status=MISSING at {matched['expected_full_path']}"
         elif matched_status == "PRESENT_CORRECT":
             verified = "REFUTED"
-            evidence = f"{matched['module_name']} PRESENT_CORRECT at {matched['actual_path']}"
+            evidence = (
+                f"{matched['module_name']} PRESENT_CORRECT at {matched['actual_path']}"
+            )
         else:
             verified = "PARTIAL — file exists but misplaced"
             evidence = f"{matched['module_name']} PRESENT_MISPLACED at {matched['actual_path']}"
 
-        missing_claims.append({
-            "claim_location": location,
-            "claim_expected": expected,
-            "verified_status": verified,
-            "evidence": evidence,
-        })
+        missing_claims.append(
+            {
+                "claim_location": location,
+                "claim_expected": expected,
+                "verified_status": verified,
+                "evidence": evidence,
+            }
+        )
 
     # Verify partial_module claims
     partial_claims = []
@@ -849,7 +938,9 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
         depth = None
         # Try by path
         for d in depth_results:
-            if d["actual_path"] and (module_path in d["actual_path"] or d["actual_path"] in module_path):
+            if d["actual_path"] and (
+                module_path in d["actual_path"] or d["actual_path"] in module_path
+            ):
                 depth = d
                 break
         if not depth:
@@ -883,12 +974,14 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
                 verified = "PARTIAL — exists but incomplete"
                 evidence = f"classification: {cls}, line_count: {depth['line_count']}"
 
-        partial_claims.append({
-            "claim_module": module_path,
-            "claim_issue": issue,
-            "verified_status": verified,
-            "evidence": evidence,
-        })
+        partial_claims.append(
+            {
+                "claim_module": module_path,
+                "claim_issue": issue,
+                "verified_status": verified,
+                "evidence": evidence,
+            }
+        )
 
     # Verify logos_readiness_blockers
     blocker_claims = []
@@ -903,7 +996,9 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
             cfg = config_by_key.get("AP_SYSTEM_CONFIG/logos_targets.yaml", {})
             if not cfg.get("exists", False):
                 verified = "CONFIRMED"
-                evidence = "logos_targets.yaml: exists=false in config_file_presence.json"
+                evidence = (
+                    "logos_targets.yaml: exists=false in config_file_presence.json"
+                )
             else:
                 verified = "REFUTED"
                 evidence = "logos_targets.yaml found"
@@ -934,20 +1029,29 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
                 else:
                     cls = depth["classification"] if depth else "MISSING"
                     verified = "CONFIRMED"
-                    evidence = f"controller_main.py classification: {cls} — not end-to-end"
+                    evidence = (
+                        f"controller_main.py classification: {cls} — not end-to-end"
+                    )
             else:
                 verified = "CONFIRMED"
                 evidence = "controller_main.py MISSING from repo"
         elif "repair" in b_lower:
             # Check repair modules
-            repair_present = [p for p in presence_matrix
-                              if "repair" in p["module_name"] and p["status"] != "MISSING"]
+            repair_present = [
+                p
+                for p in presence_matrix
+                if "repair" in p["module_name"] and p["status"] != "MISSING"
+            ]
             if not repair_present:
                 verified = "CONFIRMED"
                 evidence = "No repair modules present in repo"
             else:
-                functional_repair = [d for d in depth_results
-                                     if "repair" in d["module_name"] and d["classification"] == "FUNCTIONAL"]
+                functional_repair = [
+                    d
+                    for d in depth_results
+                    if "repair" in d["module_name"]
+                    and d["classification"] == "FUNCTIONAL"
+                ]
                 if not functional_repair:
                     verified = "CONFIRMED"
                     evidence = f"Repair modules present but none FUNCTIONAL: {[p['module_name'] for p in repair_present]}"
@@ -955,10 +1059,17 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
                     verified = "REFUTED"
                     evidence = f"Functional repair modules: {[d['module_name'] for d in functional_repair]}"
         elif "simulation" in b_lower:
-            sim_present = [p for p in presence_matrix
-                           if "simulator" in p["module_name"] and p["status"] != "MISSING"]
-            functional_sim = [d for d in depth_results
-                              if "simulator" in d["module_name"] and d["classification"] == "FUNCTIONAL"]
+            sim_present = [
+                p
+                for p in presence_matrix
+                if "simulator" in p["module_name"] and p["status"] != "MISSING"
+            ]
+            functional_sim = [
+                d
+                for d in depth_results
+                if "simulator" in d["module_name"]
+                and d["classification"] == "FUNCTIONAL"
+            ]
             if not functional_sim:
                 verified = "CONFIRMED"
                 evidence = f"Simulation modules status: present={[p['module_name'] for p in sim_present]}, none FUNCTIONAL"
@@ -972,7 +1083,14 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
                     crawl_exec = p
                     break
             if crawl_exec and crawl_exec["status"] != "MISSING":
-                depth = next((d for d in depth_results if d["module_name"] == crawl_exec["module_name"]), None)
+                depth = next(
+                    (
+                        d
+                        for d in depth_results
+                        if d["module_name"] == crawl_exec["module_name"]
+                    ),
+                    None,
+                )
                 cls = depth["classification"] if depth else "SKELETON"
                 if cls == "FUNCTIONAL":
                     verified = "REFUTED"
@@ -987,11 +1105,13 @@ def step8_prior_audit_verification(presence_matrix, depth_results, config_presen
             verified = "UNVERIFIABLE"
             evidence = f"Claim '{blocker}' — no direct mapping to audit artifact"
 
-        blocker_claims.append({
-            "blocker": blocker,
-            "verified_status": verified,
-            "evidence": evidence,
-        })
+        blocker_claims.append(
+            {
+                "blocker": blocker,
+                "verified_status": verified,
+                "evidence": evidence,
+            }
+        )
 
     result = {
         "prior_audit_score": prior_score,
@@ -1016,12 +1136,18 @@ def step9_completion_score(subsystem_metrics, config_presence):
     total_required = sum(m["required_modules"] for m in subsystem_metrics)
     total_present = sum(m["present_modules"] for m in subsystem_metrics)
     total_functional = sum(m["functional_modules"] for m in subsystem_metrics)
-    total_skeleton_noop = sum(m["skeleton_modules"] + m["noop_modules"] for m in subsystem_metrics)
+    total_skeleton_noop = sum(
+        m["skeleton_modules"] + m["noop_modules"] for m in subsystem_metrics
+    )
     total_missing = sum(m["missing_modules"] for m in subsystem_metrics)
     blocking_gaps = sum(m["blocking_modules_missing"] for m in subsystem_metrics)
     config_files_missing = sum(1 for c in config_presence if not c["exists"])
 
-    completion_score = round((total_functional / total_required) * 100, 1) if total_required > 0 else 0.0
+    completion_score = (
+        round((total_functional / total_required) * 100, 1)
+        if total_required > 0
+        else 0.0
+    )
 
     # Grade
     if completion_score >= 90:
@@ -1056,16 +1182,24 @@ def step9_completion_score(subsystem_metrics, config_presence):
     write_json(OUTPUT_DIR / "repo_completion_score.json", score)
     print(f"\n  Completion Score: {completion_score}% (Grade: {grade})")
     print(f"  Prior Audit: {prior_score}%, Delta: {delta:+.1f}%")
-    print(f"  Total Required: {total_required}, Present: {total_present}, Functional: {total_functional}, Missing: {total_missing}")
+    print(
+        f"  Total Required: {total_required}, Present: {total_present}, Functional: {total_functional}, Missing: {total_missing}"
+    )
     return score
 
 
 # ─────────────────────────────────────────────
 # STEP 10 — Final Mechanical Audit Report
 # ─────────────────────────────────────────────
-def step10_final_report(config_presence, presence_matrix, depth_results,
-                        subsystem_metrics, stage_readiness, prior_verification,
-                        completion_score):
+def step10_final_report(
+    config_presence,
+    presence_matrix,
+    depth_results,
+    subsystem_metrics,
+    stage_readiness,
+    prior_verification,
+    completion_score,
+):
     print("\n=== STEP 10: Final Mechanical Audit Report ===")
 
     now = datetime.datetime.utcnow().isoformat() + "Z"
@@ -1082,7 +1216,9 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
     lines.append("| config_file | exists | size_bytes | blocker_impact |")
     lines.append("|-------------|--------|------------|----------------|")
     for c in config_presence:
-        lines.append(f"| {c['config_file']} | {c['exists']} | {c['size_bytes']} | {c['blocker_impact']} |")
+        lines.append(
+            f"| {c['config_file']} | {c['exists']} | {c['size_bytes']} | {c['blocker_impact']} |"
+        )
     lines.append("")
 
     # ── Section 2: Module Presence Summary ──
@@ -1099,17 +1235,23 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
     # Build blocking class lookup from spec
     spec_path = OUTPUT_DIR / "spec_module_inventory.json"
     spec_data = json.loads(spec_path.read_text()) if spec_path.exists() else []
-    blocking_by_id = {m["module_id"]: m.get("blocking_class", "UNKNOWN") for m in spec_data}
+    blocking_by_id = {
+        m["module_id"]: m.get("blocking_class", "UNKNOWN") for m in spec_data
+    }
 
     missing_mods = [p for p in presence_matrix if p["status"] == "MISSING"]
     if missing_mods:
         lines.append("### Missing Modules")
         lines.append("")
-        lines.append("| module_id | module_name | expected_full_path | blocking_class |")
+        lines.append(
+            "| module_id | module_name | expected_full_path | blocking_class |"
+        )
         lines.append("|-----------|-------------|-------------------|----------------|")
         for m in missing_mods:
             bc = blocking_by_id.get(m["module_id"], "UNKNOWN")
-            lines.append(f"| {m['module_id']} | {m['module_name']} | {m['expected_full_path']} | {bc} |")
+            lines.append(
+                f"| {m['module_id']} | {m['module_name']} | {m['expected_full_path']} | {bc} |"
+            )
     lines.append("")
 
     # ── Section 3: Misplaced Modules ──
@@ -1123,7 +1265,9 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
         for m in misplaced_mods:
             spec = spec_by_id.get(m["module_id"], {})
             exp = spec.get("expected_path", m["expected_full_path"])
-            lines.append(f"| {m['module_id']} | {m['module_name']} | {exp} | {m['actual_path']} |")
+            lines.append(
+                f"| {m['module_id']} | {m['module_name']} | {exp} | {m['actual_path']} |"
+            )
     else:
         lines.append("_No misplaced modules detected._")
     lines.append("")
@@ -1131,12 +1275,16 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
     # ── Section 4: Skeleton and No-Op Modules ──
     lines.append("## 4. Skeleton and No-Op Modules")
     lines.append("")
-    degraded = [d for d in depth_results if d["classification"] in ("SKELETON", "NO_OP")]
+    degraded = [
+        d for d in depth_results if d["classification"] in ("SKELETON", "NO_OP")
+    ]
     if degraded:
         lines.append("| module_id | module_name | line_count | classification |")
         lines.append("|-----------|-------------|------------|----------------|")
         for d in degraded:
-            lines.append(f"| {d['module_id']} | {d['module_name']} | {d['line_count']} | {d['classification']} |")
+            lines.append(
+                f"| {d['module_id']} | {d['module_name']} | {d['line_count']} | {d['classification']} |"
+            )
     else:
         lines.append("_No skeleton or no-op modules detected._")
     lines.append("")
@@ -1144,8 +1292,12 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
     # ── Section 5: Subsystem Completion Table ──
     lines.append("## 5. Subsystem Completion Table")
     lines.append("")
-    lines.append("| subsystem | required | present | functional | missing | blocking_missing | completion_pct |")
-    lines.append("|-----------|----------|---------|------------|---------|-----------------|----------------|")
+    lines.append(
+        "| subsystem | required | present | functional | missing | blocking_missing | completion_pct |"
+    )
+    lines.append(
+        "|-----------|----------|---------|------------|---------|-----------------|----------------|"
+    )
     for m in subsystem_metrics:
         lines.append(
             f"| {m['subsystem']} | {m['required_modules']} | {m['present_modules']} | "
@@ -1157,8 +1309,12 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
     # ── Section 6: Pipeline Stage Readiness ──
     lines.append("## 6. Pipeline Stage Readiness Table")
     lines.append("")
-    lines.append("| stage | stage_name | readiness_status | validation_gate_passable | missing_modules |")
-    lines.append("|-------|------------|-----------------|------------------------|----------------|")
+    lines.append(
+        "| stage | stage_name | readiness_status | validation_gate_passable | missing_modules |"
+    )
+    lines.append(
+        "|-------|------------|-----------------|------------------------|----------------|"
+    )
     for s in stage_readiness:
         missing_str = ", ".join(s["modules_missing"]) if s["modules_missing"] else "—"
         lines.append(
@@ -1175,13 +1331,19 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
 
     for c in prior_verification.get("missing_module_claims", []):
         claim_text = f"{c['claim_location']} — {c['claim_expected']}"
-        lines.append(f"| missing_module | {claim_text} | {c['verified_status']} | {c['evidence']} |")
+        lines.append(
+            f"| missing_module | {claim_text} | {c['verified_status']} | {c['evidence']} |"
+        )
 
     for c in prior_verification.get("partial_module_claims", []):
-        lines.append(f"| partial_module | {c['claim_module']}: {c['claim_issue'][:60]} | {c['verified_status']} | {c['evidence']} |")
+        lines.append(
+            f"| partial_module | {c['claim_module']}: {c['claim_issue'][:60]} | {c['verified_status']} | {c['evidence']} |"
+        )
 
     for c in prior_verification.get("readiness_blocker_claims", []):
-        lines.append(f"| readiness_blocker | {c['blocker']} | {c['verified_status']} | {c['evidence']} |")
+        lines.append(
+            f"| readiness_blocker | {c['blocker']} | {c['verified_status']} | {c['evidence']} |"
+        )
 
     lines.append("")
 
@@ -1189,7 +1351,9 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
     lines.append("## 8. Global Completion Score")
     lines.append("")
     cs = completion_score
-    lines.append(f"- **completion_score**: {cs['completion_score']}% (Grade: {cs['completion_grade']})")
+    lines.append(
+        f"- **completion_score**: {cs['completion_score']}% (Grade: {cs['completion_grade']})"
+    )
     lines.append(f"- **prior_audit_score**: {cs['prior_audit_score']}%")
     lines.append(f"- **delta**: {cs['delta_from_prior_audit']:+.1f}%")
     lines.append(f"- **total_required_modules**: {cs['total_required_modules']}")
@@ -1206,13 +1370,19 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
 
     if abs(delta) <= 5:
         verdict = "CONFIRMED"
-        verdict_detail = f"Completion score {score}% is within ±5% of prior audit claim {prior}%."
+        verdict_detail = (
+            f"Completion score {score}% is within ±5% of prior audit claim {prior}%."
+        )
     elif score > prior + 5:
         verdict = "REFUTED"
-        verdict_detail = f"Completion score {score}% materially exceeds prior audit claim {prior}%."
+        verdict_detail = (
+            f"Completion score {score}% materially exceeds prior audit claim {prior}%."
+        )
     else:
         verdict = "PARTIALLY_CONFIRMED"
-        verdict_detail = f"Completion score {score}% differs from prior audit claim {prior}%."
+        verdict_detail = (
+            f"Completion score {score}% differs from prior audit claim {prior}%."
+        )
 
     lines.append(f"**Verdict vs Prior Audit**: {verdict}")
     lines.append(f"_{verdict_detail}_")
@@ -1220,7 +1390,7 @@ def step10_final_report(config_presence, presence_matrix, depth_results,
 
     report_path = OUTPUT_DIR / "ap_repo_mechanical_audit_report.md"
     report_path.write_text("\n".join(lines), encoding="utf-8")
-    print(f"  [WROTE] ap_repo_mechanical_audit_report.md")
+    print("  [WROTE] ap_repo_mechanical_audit_report.md")
 
 
 # ─────────────────────────────────────────────
@@ -1263,7 +1433,9 @@ def main():
         depth_results = []
 
     try:
-        subsystem_metrics = step6_subsystem_metrics(spec_modules, presence_matrix, depth_results)
+        subsystem_metrics = step6_subsystem_metrics(
+            spec_modules, presence_matrix, depth_results
+        )
     except Exception as e:
         record_failure("Step6", "Fatal error", e)
         subsystem_metrics = []
@@ -1275,7 +1447,9 @@ def main():
         stage_readiness = []
 
     try:
-        prior_verification = step8_prior_audit_verification(presence_matrix, depth_results, config_presence)
+        prior_verification = step8_prior_audit_verification(
+            presence_matrix, depth_results, config_presence
+        )
     except Exception as e:
         record_failure("Step8", "Fatal error", e)
         prior_verification = {}
@@ -1284,11 +1458,23 @@ def main():
         score = step9_completion_score(subsystem_metrics, config_presence)
     except Exception as e:
         record_failure("Step9", "Fatal error", e)
-        score = {"completion_score": 0, "completion_grade": "F", "prior_audit_score": 38.0, "delta_from_prior_audit": -38.0}
+        score = {
+            "completion_score": 0,
+            "completion_grade": "F",
+            "prior_audit_score": 38.0,
+            "delta_from_prior_audit": -38.0,
+        }
 
     try:
-        step10_final_report(config_presence, presence_matrix, depth_results,
-                            subsystem_metrics, stage_readiness, prior_verification, score)
+        step10_final_report(
+            config_presence,
+            presence_matrix,
+            depth_results,
+            subsystem_metrics,
+            stage_readiness,
+            prior_verification,
+            score,
+        )
     except Exception as e:
         record_failure("Step10", "Fatal error", e)
 

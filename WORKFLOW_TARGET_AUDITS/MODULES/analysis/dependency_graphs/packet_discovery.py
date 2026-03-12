@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -65,13 +66,11 @@ READ_ONLY
 
 import ast
 import json
-import os
-import re
-import sys
-from collections import defaultdict, deque
 from pathlib import Path
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -79,6 +78,7 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
@@ -88,7 +88,9 @@ def write_report(name: str, data) -> None:
 # ---------------------------------------------------------------------------
 
 SCAN_ROOTS = [
-    Path("/workspaces/ARCHON_PRIME/WORKFLOW_TARGET_PROCESSING/INCOMING_TARGETS/TARGETS"),
+    Path(
+        "/workspaces/ARCHON_PRIME/WORKFLOW_TARGET_PROCESSING/INCOMING_TARGETS/TARGETS"
+    ),
     Path("/workspaces/ARCHON_PRIME/WORKFLOW_TARGET_PROCESSING/COMPLETED"),
     Path("/workspaces/ARCHON_PRIME/WORKFLOW_TARGET_PROCESSING/COMPLETED"),
 ]
@@ -101,44 +103,120 @@ REPO_ROOT = Path("/workspaces/ARCHON_PRIME")
 # Semantic classification signals
 PACKET_CLASSES = {
     "reasoning": {
-        "infer", "deduce", "abduct", "reason", "logic", "proof",
-        "bayesian", "modal", "deductive", "inductive", "heuristic",
-        "counterfactual", "game_theoretic", "analogi", "pxl_engine",
-        "meta_reason", "optimization", "topological", "temporal_reason",
-        "categorical", "probability",
+        "infer",
+        "deduce",
+        "abduct",
+        "reason",
+        "logic",
+        "proof",
+        "bayesian",
+        "modal",
+        "deductive",
+        "inductive",
+        "heuristic",
+        "counterfactual",
+        "game_theoretic",
+        "analogi",
+        "pxl_engine",
+        "meta_reason",
+        "optimization",
+        "topological",
+        "temporal_reason",
+        "categorical",
+        "probability",
     },
     "semantic": {
-        "translate", "semantic", "ontology", "ontoprops", "meaning",
-        "language", "nlp", "embedding", "transformer", "mtp",
-        "encode", "decode", "annotation", "symbol",
+        "translate",
+        "semantic",
+        "ontology",
+        "ontoprops",
+        "meaning",
+        "language",
+        "nlp",
+        "embedding",
+        "transformer",
+        "mtp",
+        "encode",
+        "decode",
+        "annotation",
+        "symbol",
     },
     "agent": {
-        "agent", "identity", "consciousness", "principal", "sign",
-        "agentic", "axiom", "belief", "collaboration", "coordinator",
-        "dispatcher", "planning", "planner", "task_intake", "smp",
-        "iel", "autonomous",
+        "agent",
+        "identity",
+        "consciousness",
+        "principal",
+        "sign",
+        "agentic",
+        "axiom",
+        "belief",
+        "collaboration",
+        "coordinator",
+        "dispatcher",
+        "planning",
+        "planner",
+        "task_intake",
+        "smp",
+        "iel",
+        "autonomous",
     },
     "safety": {
-        "safety", "validate", "constraint", "ethics", "policy", "guard",
-        "gate", "privation", "privation_gate", "integrity", "ultima",
-        "coherence", "monitor", "attestation", "etgc",
+        "safety",
+        "validate",
+        "constraint",
+        "ethics",
+        "policy",
+        "guard",
+        "gate",
+        "privation",
+        "privation_gate",
+        "integrity",
+        "ultima",
+        "coherence",
+        "monitor",
+        "attestation",
+        "etgc",
     },
     "math": {
-        "math", "privation_mathematics", "banach", "fractal", "orbital",
-        "topology", "algebra", "geometric", "bijection", "divergence",
-        "symbolic_math", "arithmetic",
+        "math",
+        "privation_mathematics",
+        "banach",
+        "fractal",
+        "orbital",
+        "topology",
+        "algebra",
+        "geometric",
+        "bijection",
+        "divergence",
+        "symbolic_math",
+        "arithmetic",
     },
     "utility": {
-        "schema", "config", "loader", "registry", "adapter",
-        "parser", "serializer", "logging", "wrapper", "helper",
-        "tools", "utility", "utils", "constants", "types",
-        "errors", "hashing", "router",
+        "schema",
+        "config",
+        "loader",
+        "registry",
+        "adapter",
+        "parser",
+        "serializer",
+        "logging",
+        "wrapper",
+        "helper",
+        "tools",
+        "utility",
+        "utils",
+        "constants",
+        "types",
+        "errors",
+        "hashing",
+        "router",
     },
 }
 
 # ---------------------------------------------------------------------------
 # STEP 1 — MODULE SCAN
 # ---------------------------------------------------------------------------
+
 
 def collect_modules() -> dict[str, Path]:
     """Return {module_key: Path} for all Python files in scan roots."""
@@ -161,6 +239,7 @@ def collect_modules() -> dict[str, Path]:
 # ---------------------------------------------------------------------------
 # STEP 2 — BUILD DEPENDENCY GRAPH
 # ---------------------------------------------------------------------------
+
 
 def parse_imports(source: str, path: Path) -> list[str]:
     """Return list of module/name strings imported by this file."""
@@ -226,6 +305,7 @@ def build_graph(modules: dict[str, Path]) -> dict[str, list[str]]:
 # STEP 3 — SCC DETECTION (Tarjan's algorithm, iterative)
 # ---------------------------------------------------------------------------
 
+
 def tarjan_scc(graph: dict[str, list[str]]) -> list[list[str]]:
     """
     Iterative Tarjan's SCC algorithm.
@@ -288,6 +368,7 @@ def tarjan_scc(graph: dict[str, list[str]]) -> list[list[str]]:
 # STEP 4 — SEMANTIC CLASSIFICATION
 # ---------------------------------------------------------------------------
 
+
 def classify_packet(nodes: list[str], modules: dict[str, Path]) -> str:
     """Classify an SCC packet by semantic signals in module names + first 500 chars."""
     combined = " ".join(nodes).lower()
@@ -296,7 +377,10 @@ def classify_packet(nodes: list[str], modules: dict[str, Path]) -> str:
         path = modules.get(node)
         if path and path.exists():
             try:
-                combined += " " + path.read_text(encoding="utf-8", errors="replace")[:800].lower()
+                combined += (
+                    " "
+                    + path.read_text(encoding="utf-8", errors="replace")[:800].lower()
+                )
             except Exception:
                 pass
 
@@ -318,16 +402,22 @@ def classify_all_signals(nodes: list[str], modules: dict[str, Path]) -> dict[str
         path = modules.get(node)
         if path and path.exists():
             try:
-                combined += " " + path.read_text(encoding="utf-8", errors="replace")[:500].lower()
+                combined += (
+                    " "
+                    + path.read_text(encoding="utf-8", errors="replace")[:500].lower()
+                )
             except Exception:
                 pass
-    return {cls: sum(1 for s in signals if s in combined)
-            for cls, signals in PACKET_CLASSES.items()}
+    return {
+        cls: sum(1 for s in signals if s in combined)
+        for cls, signals in PACKET_CLASSES.items()
+    }
 
 
 # ---------------------------------------------------------------------------
 # STEP 5 — PACKET REPORT CONSTRUCTION
 # ---------------------------------------------------------------------------
+
 
 def build_packet_records(sccs, graph, modules, repo_root):
     packets = []
@@ -354,17 +444,19 @@ def build_packet_records(sccs, graph, modules, repo_root):
                 except Exception:
                     file_paths.append(str(p))
 
-        packets.append({
-            "packet_id": f"PKT_{i:04d}",
-            "module_count": len(scc),
-            "is_cycle": is_cycle,
-            "classification": cls,
-            "class_scores": scores,
-            "modules": sorted(scc),
-            "file_paths": sorted(file_paths),
-            "external_dependencies": sorted(external_deps),
-            "external_dep_count": len(external_deps),
-        })
+        packets.append(
+            {
+                "packet_id": f"PKT_{i:04d}",
+                "module_count": len(scc),
+                "is_cycle": is_cycle,
+                "classification": cls,
+                "class_scores": scores,
+                "modules": sorted(scc),
+                "file_paths": sorted(file_paths),
+                "external_dependencies": sorted(external_deps),
+                "external_dep_count": len(external_deps),
+            }
+        )
 
     # Sort: cycles first, then by size desc
     packets.sort(key=lambda p: (-int(p["is_cycle"]), -p["module_count"]))
@@ -382,12 +474,13 @@ def build_packet_records(sccs, graph, modules, repo_root):
 
 PACKET_COLORS = {
     "reasoning": "#4A90D9",
-    "semantic":  "#7B68EE",
-    "agent":     "#50C878",
-    "safety":    "#FF6B6B",
-    "math":      "#FFB347",
-    "utility":   "#B0B0B0",
+    "semantic": "#7B68EE",
+    "agent": "#50C878",
+    "safety": "#FF6B6B",
+    "math": "#FFB347",
+    "utility": "#B0B0B0",
 }
+
 
 def build_dot(packets, graph, modules):
     """
@@ -413,14 +506,14 @@ def build_dot(packets, graph, modules):
 
     lines = [
         "digraph module_packet_graph {",
-        "  graph [rankdir=LR, fontname=\"Helvetica\", splines=true, overlap=false];",
-        "  node  [shape=box, style=filled, fontsize=10, fontname=\"Helvetica\"];",
-        "  edge  [arrowsize=0.7, color=\"#666666\"];",
+        '  graph [rankdir=LR, fontname="Helvetica", splines=true, overlap=false];',
+        '  node  [shape=box, style=filled, fontsize=10, fontname="Helvetica"];',
+        '  edge  [arrowsize=0.7, color="#666666"];',
         "",
     ]
 
     for pkt in packets:
-        pid   = pkt["packet_id"]
+        pid = pkt["packet_id"]
         label = "\\n".join(pkt["modules"][:5])
         if pkt["module_count"] > 5:
             label += f"\\n(+{pkt['module_count'] - 5} more)"
@@ -442,6 +535,7 @@ def build_dot(packets, graph, modules):
 # ---------------------------------------------------------------------------
 # MAIN
 # ---------------------------------------------------------------------------
+
 
 def run():
     print("=" * 60)
@@ -481,7 +575,9 @@ def run():
 
     # Write module_packets.json — all packets
     out_all = TOOLS_DIR / "module_packets.json"
-    out_all.write_text(json.dumps(packets, indent=2, ensure_ascii=False), encoding="utf-8")
+    out_all.write_text(
+        json.dumps(packets, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     print(f"\n  Written: {out_all} ({len(packets)} packets)")
 
     # Write module_packet_graph.json — graph structure
@@ -499,7 +595,9 @@ def run():
         "edges": [],
     }
     # Build edge list from inter-packet deps
-    module_to_packet_id = {mod: pkt["packet_id"] for pkt in packets for mod in pkt["modules"]}
+    module_to_packet_id = {
+        mod: pkt["packet_id"] for pkt in packets for mod in pkt["modules"]
+    }
     edge_set = set()
     for pkt in packets:
         for dep in pkt["external_dependencies"]:
@@ -511,21 +609,27 @@ def run():
                     graph_json["edges"].append({"from": pkt["packet_id"], "to": tgt})
 
     out_graph = TOOLS_DIR / "module_packet_graph.json"
-    out_graph.write_text(json.dumps(graph_json, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"  Written: {out_graph} ({len(graph_json['nodes'])} nodes, {len(graph_json['edges'])} edges)")
+    out_graph.write_text(
+        json.dumps(graph_json, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(
+        f"  Written: {out_graph} ({len(graph_json['nodes'])} nodes, {len(graph_json['edges'])} edges)"
+    )
 
     # Write classification-specific files
     def write_class_file(cls_name: str, filename: str):
         matching = [p for p in packets if p["classification"] == cls_name]
         path = TOOLS_DIR / filename
-        path.write_text(json.dumps(matching, indent=2, ensure_ascii=False), encoding="utf-8")
+        path.write_text(
+            json.dumps(matching, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
         print(f"  Written: {path} ({len(matching)} packets)")
         return matching
 
     print("\n=== STEP 5: CLASSIFICATION-SPECIFIC REPORTS ===")
     write_class_file("reasoning", "reasoning_packets.json")
-    write_class_file("semantic",  "semantic_packets.json")
-    write_class_file("agent",     "arp_packets.json")   # ARP = agent reasoning packets
+    write_class_file("semantic", "semantic_packets.json")
+    write_class_file("agent", "arp_packets.json")  # ARP = agent reasoning packets
 
     # Step 6 — DOT file
     print("\n=== STEP 6: DOT DEPENDENCY MAP ===")
@@ -540,7 +644,9 @@ def run():
         mods = ", ".join(pkt["modules"][:4])
         if pkt["module_count"] > 4:
             mods += f"... (+{pkt['module_count'] - 4})"
-        print(f"  {pkt['packet_id']} [{pkt['classification']}] {pkt['module_count']} modules: {mods}")
+        print(
+            f"  {pkt['packet_id']} [{pkt['classification']}] {pkt['module_count']} modules: {mods}"
+        )
 
     print("\n" + "=" * 60)
     print("PACKET DISCOVERY COMPLETE")

@@ -20,6 +20,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -67,15 +68,16 @@ READ_ONLY
 """
 
 import ast
+import collections
 import json
 import os
 import sys
-import collections
-import math
 from pathlib import Path
 from typing import Any
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -83,6 +85,7 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
@@ -102,14 +105,33 @@ RUNTIME_DIRS = [
 OUTPUT_DIR = REPO_ROOT / "ARCHON_RUNTIME_ANALYSIS"
 
 EXCLUDED_SEGMENTS = {
-    "ARCHIVE", "ARCHIVES", "HISTORY", "REPORT", "REPORTS",
-    "DATA", "DATASETS", "SNAPSHOT", "SNAPSHOTS", "EXPORT", "EXPORTS",
-    "CACHE", "CACHE_FILES", "TEMP", "TMP", "LOG", "LOGS",
-    "BUILD", "DIST", "VENV", ".VENV", "__pycache__",
+    "ARCHIVE",
+    "ARCHIVES",
+    "HISTORY",
+    "REPORT",
+    "REPORTS",
+    "DATA",
+    "DATASETS",
+    "SNAPSHOT",
+    "SNAPSHOTS",
+    "EXPORT",
+    "EXPORTS",
+    "CACHE",
+    "CACHE_FILES",
+    "TEMP",
+    "TMP",
+    "LOG",
+    "LOGS",
+    "BUILD",
+    "DIST",
+    "VENV",
+    ".VENV",
+    "__pycache__",
 }
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
+
 
 def should_skip(path: Path) -> bool:
     """Return True if any segment of this path matches an excluded keyword."""
@@ -140,7 +162,8 @@ def file_to_module_path(file_path: Path) -> str:
 
 # ── STEP 1  —  Directory Tree ──────────────────────────────────────────────────
 
-def build_tree(path: Path) -> dict:
+
+def build_tree(path: Path) -> dict | None:
     if should_skip(path):
         return None
     if path.is_file():
@@ -176,6 +199,7 @@ def step1_directory_tree() -> None:
 
 # ── STEP 2  —  Python File Inventory ──────────────────────────────────────────
 
+
 def collect_python_files() -> list[Path]:
     py_files = []
     for d in RUNTIME_DIRS:
@@ -199,12 +223,14 @@ def step2_python_inventory(py_files: list[Path]) -> None:
         if is_init:
             # __init__ → the package itself
             package = ".".join(parts[:-1]) if len(parts) > 1 else ""
-        records.append({
-            "module_path": module_path,
-            "file_path": str(f.relative_to(REPO_ROOT)),
-            "package": package,
-            "is_package": is_init,
-        })
+        records.append(
+            {
+                "module_path": module_path,
+                "file_path": str(f.relative_to(REPO_ROOT)),
+                "package": package,
+                "is_package": is_init,
+            }
+        )
     write_json(OUTPUT_DIR / "runtime_python_files.json", records)
     print(f"  [i] Total Python files: {len(records)}")
 
@@ -239,35 +265,41 @@ def parse_imports(file_path: Path):
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             for alias in node.names:
-                imports.append({
-                    "source_module": source,
-                    "import_type": "import",
-                    "target_module": alias.name,
-                    "symbols": [],
-                })
+                imports.append(
+                    {
+                        "source_module": source,
+                        "import_type": "import",
+                        "target_module": alias.name,
+                        "symbols": [],
+                    }
+                )
         elif isinstance(node, ast.ImportFrom):
             target = node.module or ""
             if node.level:  # relative import — prepend package prefix
                 parts = source.split(".")
                 # go up `level` steps
-                base_parts = parts[:max(0, len(parts) - node.level)]
+                base_parts = parts[: max(0, len(parts) - node.level)]
                 if target:
                     target = ".".join(base_parts) + "." + target
                 else:
                     target = ".".join(base_parts)
             symbols = [alias.name for alias in node.names]
-            imports.append({
-                "source_module": source,
-                "import_type": "from",
-                "target_module": target,
-                "symbols": symbols,
-            })
-            for sym in symbols:
-                symbol_imports.append({
+            imports.append(
+                {
                     "source_module": source,
+                    "import_type": "from",
                     "target_module": target,
-                    "symbol": sym,
-                })
+                    "symbols": symbols,
+                }
+            )
+            for sym in symbols:
+                symbol_imports.append(
+                    {
+                        "source_module": source,
+                        "target_module": target,
+                        "symbol": sym,
+                    }
+                )
 
     return imports, symbol_imports
 
@@ -298,6 +330,7 @@ def step3_4_imports(py_files: list[Path]):
 
 # ── STEP 5  —  Dependency Graph ────────────────────────────────────────────────
 
+
 def step5_dependency_graph(all_imports: list[dict], py_files: list[Path]) -> dict:
     print("\n[STEP 5] Building dependency graph …")
     # Nodes = all known modules (source + non-stdlib targets within repo)
@@ -324,6 +357,7 @@ def step5_dependency_graph(all_imports: list[dict], py_files: list[Path]) -> dic
 
 # ── STEP 6  —  Runtime Surface Detection ──────────────────────────────────────
 
+
 def step6_runtime_surfaces(graph: dict, py_files: list[Path]) -> list[dict]:
     print("\n[STEP 6] Computing runtime surface metrics …")
     known_modules = {file_to_module_path(f) for f in py_files}
@@ -338,7 +372,7 @@ def step6_runtime_surfaces(graph: dict, py_files: list[Path]) -> list[dict]:
     all_mods = known_modules | set(in_degree.keys()) | set(out_degree.keys())
     total = len(all_mods)
 
-    records = []
+    records: list[dict[str, Any]] = []
     for mod in sorted(all_mods):
         ind = in_degree.get(mod, 0)
         outd = out_degree.get(mod, 0)
@@ -349,24 +383,31 @@ def step6_runtime_surfaces(graph: dict, py_files: list[Path]) -> list[dict]:
             centrality = 2 * norm_in * norm_out / (norm_in + norm_out)
         else:
             centrality = 0.0
-        records.append({
-            "module": mod,
-            "in_degree": ind,
-            "out_degree": outd,
-            "centrality_score": round(centrality, 6),
-        })
+        records.append(
+            {
+                "module": mod,
+                "in_degree": ind,
+                "out_degree": outd,
+                "centrality_score": round(centrality, 6),
+            }
+        )
 
-    records.sort(key=lambda r: (-r["centrality_score"], -r["in_degree"], -r["out_degree"]))
+    records.sort(
+        key=lambda r: (-r["centrality_score"], -r["in_degree"], -r["out_degree"])
+    )
     write_json(OUTPUT_DIR / "runtime_surface_modules.json", records)
 
     top = records[:10]
     print("  [i] Top runtime surface modules (by centrality):")
     for r in top:
-        print(f"      {r['module'][:80]}  in={r['in_degree']} out={r['out_degree']} c={r['centrality_score']:.4f}")
+        print(
+            f"      {r['module'][:80]}  in={r['in_degree']} out={r['out_degree']} c={r['centrality_score']:.4f}"
+        )
     return records
 
 
 # ── STEP 7  —  Deep Import Violations ─────────────────────────────────────────
+
 
 def import_depth(module: str) -> int:
     """Count number of package separators → depth of the dotted path."""
@@ -383,11 +424,13 @@ def step7_deep_violations(all_imports: list[dict]) -> list[dict]:
         tgt = imp["target_module"]
         depth = import_depth(tgt)
         if depth > DEEP_THRESHOLD:
-            violations.append({
-                "source_module": imp["source_module"],
-                "illegal_import": tgt,
-                "depth": depth,
-            })
+            violations.append(
+                {
+                    "source_module": imp["source_module"],
+                    "illegal_import": tgt,
+                    "depth": depth,
+                }
+            )
 
     # de-duplicate (same source + target)
     seen = set()
@@ -405,6 +448,7 @@ def step7_deep_violations(all_imports: list[dict]) -> list[dict]:
 
 
 # ── STEP 8  —  Canonical Facade Candidates ────────────────────────────────────
+
 
 def guess_facade_namespace(module: str) -> str:
     """Assign a recommended facade namespace based on module path segments."""
@@ -440,7 +484,11 @@ def step8_facade_candidates(
     else:
         median = 0.0
 
-    high_centrality = {r["module"] for r in surface_modules if r["centrality_score"] >= median and r["centrality_score"] > 0}
+    high_centrality = {
+        r["module"]
+        for r in surface_modules
+        if r["centrality_score"] >= median and r["centrality_score"] > 0
+    }
 
     # Gather all symbols imported FROM high-centrality modules
     candidates = []
@@ -452,18 +500,23 @@ def step8_facade_candidates(
             key = (tgt, sym)
             if key not in seen:
                 seen.add(key)
-                candidates.append({
-                    "symbol": sym,
-                    "source_module": tgt,
-                    "recommended_facade": guess_facade_namespace(tgt),
-                })
+                candidates.append(
+                    {
+                        "symbol": sym,
+                        "source_module": tgt,
+                        "recommended_facade": guess_facade_namespace(tgt),
+                    }
+                )
 
-    candidates.sort(key=lambda c: (c["recommended_facade"], c["source_module"], c["symbol"]))
+    candidates.sort(
+        key=lambda c: (c["recommended_facade"], c["source_module"], c["symbol"])
+    )
     write_json(OUTPUT_DIR / "canonical_facade_candidates.json", candidates)
     print(f"  [i] Canonical facade candidates: {len(candidates)}")
 
 
 # ── STEP 9  —  Graphviz ────────────────────────────────────────────────────────
+
 
 def step9_graphviz(graph: dict, surface_modules: list[dict]) -> None:
     print("\n[STEP 9] Generating Graphviz diagram …")
@@ -474,15 +527,14 @@ def step9_graphviz(graph: dict, surface_modules: list[dict]) -> None:
 
     # Filter edges to only those where both ends are in top_modules
     filtered_edges = [
-        e for e in graph["edges"]
-        if e["from"] in top_modules and e["to"] in top_modules
+        e for e in graph["edges"] if e["from"] in top_modules and e["to"] in top_modules
     ]
 
     dot_lines = [
         "digraph LOGOS_Runtime {",
-        '  rankdir=LR;',
+        "  rankdir=LR;",
         '  node [shape=box fontname="Helvetica" fontsize=8];',
-        '  edge [fontsize=7];',
+        "  edge [fontsize=7];",
     ]
 
     # Color nodes by facade namespace
@@ -503,7 +555,9 @@ def step9_graphviz(graph: dict, surface_modules: list[dict]) -> None:
         label = mod.split(".")[-1] or mod
         color = node_color(mod)
         safe_id = mod.replace(".", "_").replace("-", "_")
-        dot_lines.append(f'  "{safe_id}" [label="{label}" fillcolor="{color}" style=filled tooltip="{mod}"];')
+        dot_lines.append(
+            f'  "{safe_id}" [label="{label}" fillcolor="{color}" style=filled tooltip="{mod}"];'
+        )
 
     for e in filtered_edges:
         src_id = e["from"].replace(".", "_").replace("-", "_")
@@ -531,10 +585,11 @@ def step9_graphviz(graph: dict, surface_modules: list[dict]) -> None:
         else:
             # Write a placeholder so artifact list is complete
             png_path.write_bytes(b"")
-            print(f"  [!] Graphviz not available. Empty placeholder written.")
+            print("  [!] Graphviz not available. Empty placeholder written.")
 
 
 # ── STEP 10  —  Topology Report ───────────────────────────────────────────────
+
 
 def step10_report(
     py_files: list[Path],
@@ -552,7 +607,7 @@ def step10_report(
     top10 = surface_modules[:10]
 
     # Cluster detection — group modules by top-level package
-    clusters: dict[str, int] = collections.Counter()
+    clusters: collections.Counter[str] = collections.Counter()
     for mod in graph["nodes"]:
         top = mod.split(".")[0] if "." in mod else mod
         clusters[top] += 1
@@ -573,8 +628,8 @@ def step10_report(
         "",
         "## 1. Summary Metrics",
         "",
-        f"| Metric | Value |",
-        f"|--------|-------|",
+        "| Metric | Value |",
+        "|--------|-------|",
         f"| Runtime Python files | {total_files} |",
         f"| Dependency graph nodes | {total_nodes} |",
         f"| Dependency graph edges | {total_edges} |",
@@ -639,8 +694,16 @@ def step10_report(
             "|---------------|------------------------|-------|",
         ]
         for v in violations[:20]:
-            src = v["source_module"][-60:] if len(v["source_module"]) > 60 else v["source_module"]
-            tgt = v["illegal_import"][-80:] if len(v["illegal_import"]) > 80 else v["illegal_import"]
+            src = (
+                v["source_module"][-60:]
+                if len(v["source_module"]) > 60
+                else v["source_module"]
+            )
+            tgt = (
+                v["illegal_import"][-80:]
+                if len(v["illegal_import"]) > 80
+                else v["illegal_import"]
+            )
             lines.append(f"| `{src}` | `{tgt}` | {v['depth']} |")
 
     lines += [
@@ -711,6 +774,7 @@ def step10_report(
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
+
 
 def main():
     print("=" * 70)

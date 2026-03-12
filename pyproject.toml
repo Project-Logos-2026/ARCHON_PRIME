@@ -8,7 +8,9 @@ line-length = 88
 
 [tool.ruff.lint]
 select = ["E", "F", "B", "I"]
-ignore = []
+# E402: AP module header places enforce_runtime_gate() before subsequent imports by design
+# E501: AP header canonical_path fields in comments may exceed 88 chars
+ignore = ["E402", "E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "*.py" = []
@@ -24,4 +26,6 @@ exclude = [
     "ALL_ARTIFACTS_P1/",
     "AP_SYSTEM_AUDIT/",
     "STAGING_ARTIFACTS/",
+    "SYSTEM_AUDITS_AND_REPORTS/",
+    "WORKFLOW_NEXUS/",
 ]

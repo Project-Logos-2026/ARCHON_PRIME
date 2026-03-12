@@ -19,6 +19,7 @@
 # status:               canonical
 # ============================================================
 from WORKFLOW_NEXUS.Governance.workflow_gate import enforce_runtime_gate
+
 enforce_runtime_gate()
 
 # ------------------------------------------------------------
@@ -64,7 +65,9 @@ READ_ONLY
 from pathlib import Path
 from typing import Iterator
 
-OUTPUT_ROOT = Path("/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS")
+OUTPUT_ROOT = Path(
+    "/workspaces/ARCHON_PRIME/SYSTEM_AUDITS_AND_REPORTS/PIPELINE_OUTPUTS"
+)
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -72,11 +75,20 @@ def write_report(name: str, data) -> None:
     path = OUTPUT_ROOT / name
     with open(path, "w", encoding="utf-8") as f:
         import json as _json
+
         _json.dump(data, f, indent=2)
     print(f"  Report written: {path}")
 
 
-IGNORE_DIRS = {"__pycache__", ".git", "node_modules", "venv", ".venv", ".mypy_cache", ".pytest_cache"}
+IGNORE_DIRS = {
+    "__pycache__",
+    ".git",
+    "node_modules",
+    "venv",
+    ".venv",
+    ".mypy_cache",
+    ".pytest_cache",
+}
 
 
 def scan(root: Path) -> Iterator[Path]:
